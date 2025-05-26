@@ -24,20 +24,13 @@ collections:
           - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - label: "Ticket Buttons"
             name: "ticket_buttons"
-            widget: "object"
+            widget: "list"
             fields:
-              - label: "Exhibition Ticket"
-                name: "exhibition"
-                widget: "object"
-                fields:
-                  - {label: "Text", name: "text", widget: "string", default: "Exhibition Tickets"}
-                  - {label: "Link", name: "link", widget: "string", default: "https://www.iticket.co.nz"}
-              - label: "Resonate Ticket"
-                name: "resonate"
-                widget: "object"
-                fields:
-                  - {label: "Text", name: "text", widget: "string", default: "Resonate Tickets"}
-                  - {label: "Link", name: "link", widget: "string", default: "https://www.undertheradar.co.nz"}
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Is Sold Out", name: "sold_out", widget: "boolean", default: false}
+              - {label: "Target", name: "target", widget: "select", options: ["_blank", "_self"], default: "_blank"}
+            summary: "{{fields.text}} {{fields.sold_out | ternary '(Sold Out)' ''}}"
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
