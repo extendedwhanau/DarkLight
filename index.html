@@ -18,28 +18,11 @@
     <link rel="shortcut icon" href="favicon.png">
     
     <!-- CMS & Identity -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
-
-<script>
-// Load home page content
-fetch('/content/home.md')
-  .then(response => response.text())
-  .then(text => {
-    const content = text.split('---')[1]; // Extract YAML frontmatter
-    const data = jsyaml.load(content);
-    
-    // Update page elements
-    document.getElementById('main-title').textContent = data.title;
-    document.getElementById('subtitle').textContent = data.subtitle;
-    
-    console.log('Loaded content:', data); // Debug log
-  })
-  .catch(err => console.error('Failed to load content:', err));
-</script>
 
 <body class="homepage">
     <!-- Logo (Simplified version) -->
@@ -51,14 +34,14 @@ fetch('/content/home.md')
 
     <!-- Main Content -->
     <div class="content">
-        <h2>A first-of-its-kind light & sound experience</h2>
-        <h1>
+        <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
+        <h1 id="main-title">
             A Descent Into Colour<br>
-            2-4th May 2025<br>
-            9/11 Durham Lane, Auckland
+            <span id="dates">2-4th May 2025</span><br>
+            <span id="location">9/11 Durham Lane, Auckland</span>
         </h1>
         
-        <div class="ticket-container">
+        <div class="ticket-container" id="buttons-container">
             <button class="ticket-button">
                 <a href="https://www.iticket.co.nz" target="_blank">Exhibition Tickets</a>
             </button>
@@ -109,17 +92,53 @@ fetch('/content/home.md')
             });
         }
 
+        // Load home page content
+        fetch('/content/home.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load content');
+                }
+                return response.text();
+            })
+            .then(text => {
+                // Split the content at the frontmatter markers
+                const parts = text.split('---');
+                if (parts.length >= 2) {
+                    const yamlContent = parts[1];
+                    const data = jsyaml.load(yamlContent);
+                    
+                    // Update page elements with CMS content
+                    if (data.title) document.getElementById('main-title').innerHTML = data.title;
+                    if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
+                    if (data.dates) document.getElementById('dates').textContent = data.dates;
+                    if (data.location) document.getElementById('location').textContent = data.location;
+                    
+                    // Handle buttons if they exist
+                    if (data.buttons && Array.isArray(data.buttons)) {
+                        const container = document.getElementById('buttons-container');
+                        container.innerHTML = ''; // Clear existing buttons
+                        
+                        data.buttons.forEach(button => {
+                            const buttonHtml = `
+                                <button class="ticket-button">
+                                    <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
+                                </button>
+                            `;
+                            container.innerHTML += buttonHtml;
+                        });
+                    }
+                    
+                    console.log('CMS content loaded successfully:', data);
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load CMS content:', err);
+            });
+
         // Partners Toggle
         document.getElementById('partners-btn').addEventListener('click', function() {
             document.getElementById('partners-section').classList.toggle('active');
         });
-
-        // CMS Content Loading (Example - adapt as needed)
-        fetch('content/home.md')
-            .then(response => response.text())
-            .then(text => {
-                // Your content parsing logic here
-            });
     </script>
 </body>
 </html>

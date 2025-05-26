@@ -5,8 +5,8 @@ backend:
     create: "Create {{collection}} '{{slug}}'"
     update: "Update {{collection}} '{{slug}}'"
 
-# Media storage (must be in static/)
-media_folder: "static/images/uploads"
+# Media storage
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
@@ -28,6 +28,18 @@ collections:
               - {label: "Text", name: "text", widget: "string"}
               - {label: "Link", name: "link", widget: "string"}
               - {label: "Target", name: "target", widget: "string", default: "_blank"}
+          - label: "Floating Buttons"
+            name: "floating_buttons"
+            widget: "list"
+            fields:
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
+          - label: "Social Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Instagram", name: "instagram", widget: "string"}
+              - {label: "Facebook", name: "facebook", widget: "string"}
 
       - name: "about_darklight"
         label: "About Darklight"
