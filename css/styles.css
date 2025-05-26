@@ -161,8 +161,8 @@ button {
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: .6rem;
-    letter-spacing: .5px;
+    font-size: .8rem;
+    letter-spacing: .08rem;
     border: none;
     display: flex;
     height: 35px;
