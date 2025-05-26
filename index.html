@@ -41,13 +41,13 @@
             <span id="location">9/11 Durham Lane, Auckland</span>
         </h1>
         
-        <!-- Static Ticket Container -->
+        <!-- Ticket Container -->
         <div class="ticket-container">
             <button class="ticket-button">
-                <a href="https://www.iticket.co.nz" target="_blank">Exhibition Tickets</a>
+                <a href="https://www.iticket.co.nz" target="_blank" id="exhibition-ticket-link">Exhibition Tickets</a>
             </button>
             <button class="ticket-button">
-                <a href="https://www.undertheradar.co.nz" target="_blank">Resonate Tickets</a>
+                <a href="https://www.undertheradar.co.nz" target="_blank" id="resonate-ticket-link">Resonate Tickets</a>
             </button>
         </div>
     </div>
@@ -142,6 +142,30 @@
                     if (data.background_image) {
                         document.body.style.backgroundImage = `url('${data.background_image}')`;
                         log('Updated background image', data.background_image);
+                    }
+
+                    // Update ticket buttons if they exist
+                    if (data.ticket_buttons) {
+                        const exhibition = data.ticket_buttons.exhibition;
+                        const resonate = data.ticket_buttons.resonate;
+                        
+                        if (exhibition) {
+                            const exhibitionLink = document.getElementById('exhibition-ticket-link');
+                            if (exhibitionLink) {
+                                exhibitionLink.href = exhibition.link;
+                                exhibitionLink.textContent = exhibition.text;
+                                log('Updated exhibition ticket', exhibition);
+                            }
+                        }
+                        
+                        if (resonate) {
+                            const resonateLink = document.getElementById('resonate-ticket-link');
+                            if (resonateLink) {
+                                resonateLink.href = resonate.link;
+                                resonateLink.textContent = resonate.text;
+                                log('Updated resonate ticket', resonate);
+                            }
+                        }
                     }
                     
                     // Handle floating buttons

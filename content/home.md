@@ -4,6 +4,13 @@ subtitle: A Descent Into Colour
 dates: Coming Soon
 location: 9/11 Durham Lane, Auckland
 background_image: /images/background-image.jpg
+ticket_buttons:
+  exhibition:
+    text: Exhibition Tickets
+    link: https://www.iticket.co.nz
+  resonate:
+    text: Resonate Tickets
+    link: https://www.undertheradar.co.nz
 floating_buttons:
   - text: About
     link: about-darklight.html

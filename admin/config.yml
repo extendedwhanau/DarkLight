@@ -22,6 +22,22 @@ collections:
           - {label: "Dates", name: "dates", widget: "string"}
           - {label: "Location", name: "location", widget: "string"}
           - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
+          - label: "Ticket Buttons"
+            name: "ticket_buttons"
+            widget: "object"
+            fields:
+              - label: "Exhibition Ticket"
+                name: "exhibition"
+                widget: "object"
+                fields:
+                  - {label: "Text", name: "text", widget: "string", default: "Exhibition Tickets"}
+                  - {label: "Link", name: "link", widget: "string", default: "https://www.iticket.co.nz"}
+              - label: "Resonate Ticket"
+                name: "resonate"
+                widget: "object"
+                fields:
+                  - {label: "Text", name: "text", widget: "string", default: "Resonate Tickets"}
+                  - {label: "Link", name: "link", widget: "string", default: "https://www.undertheradar.co.nz"}
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
