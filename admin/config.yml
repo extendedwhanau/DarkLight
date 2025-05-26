@@ -40,7 +40,6 @@ collections:
         file: "content/about-darklight.md"
         fields:
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Logo", name: "logo", widget: "image"}
           - {label: "Main Content", name: "content", widget: "markdown"}
           - label: "Sections"
             name: "sections"
@@ -55,7 +54,6 @@ collections:
         file: "content/about-resonate.md"
         fields:
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Logo", name: "logo", widget: "image"}
           - {label: "Main Content", name: "content", widget: "markdown"}
           - label: "Performers"
             name: "performers"
