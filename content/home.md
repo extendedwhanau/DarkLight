@@ -3,7 +3,13 @@ title: A first-of-its-kind light & sound experience
 subtitle: A Descent Into Colour
 dates: Coming Soon
 location: 9/11 Durham Lane, Auckland
-buttons: []
+buttons:
+  - text: Exhibition Tickets
+    link: https://www.iticket.co.nz
+    target: _blank
+  - text: Resonate Tickets
+    link: https://www.undertheradar.co.nz
+    target: _blank
 floating_buttons:
   - text: About
     link: about-darklight.html

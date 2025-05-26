@@ -138,19 +138,25 @@
                     updateElement('location', data.location);
                     
                     // Handle buttons if they exist
-                    if (data.buttons && Array.isArray(data.buttons)) {
+                    if (data.buttons && Array.isArray(data.buttons) && data.buttons.length > 0) {
                         const container = document.getElementById('buttons-container');
-                        container.innerHTML = ''; // Clear existing buttons
-                        
-                        data.buttons.forEach(button => {
-                            const buttonHtml = `
-                                <button class="ticket-button">
-                                    <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
-                                </button>
-                            `;
-                            container.innerHTML += buttonHtml;
-                        });
-                        log('Updated buttons', data.buttons);
+                        if (container) {
+                            container.innerHTML = ''; // Clear existing buttons
+                            data.buttons.forEach(button => {
+                                if (button.text && button.link) {
+                                    const buttonHtml = `
+                                        <button class="ticket-button">
+                                            <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
+                                        </button>
+                                    `;
+                                    container.innerHTML += buttonHtml;
+                                }
+                            });
+                            log('Updated buttons', data.buttons);
+                        }
+                    } else {
+                        // Keep default buttons if no CMS buttons are defined
+                        log('No CMS buttons found, keeping defaults');
                     }
                     
                     // Handle floating buttons
