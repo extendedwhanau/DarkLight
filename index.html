@@ -47,16 +47,6 @@
         </div>
     </div>
 
-    <!-- Partners Section -->
-    <div id="partners-section">
-        <h2>Special thanks</h2>
-        <div class="partners-logos">
-            <a href="https://www.drinkalmighty.com/" target="_blank"><img src="images/partners/almighty.svg" alt="Almighty"></a>
-            <a href="https://www.asahibeverages.co.nz" target="_blank"><img src="images/partners/asahi.svg" alt="Asahi"></a>
-            <!-- Add other partner logos -->
-        </div>
-    </div>
-
     <!-- Social Icons -->
     <div class="social-icons">
         <a href="https://instagram.com/darklight_experience" target="_blank">
@@ -69,10 +59,17 @@
 
     <!-- Floating Buttons -->
     <div class="floating-buttons hidden">
-        <button><a href="about-darklight.html">About</a></button>
-        <button><a href="faq-darklight.html">FAQs</a></button>
-        <button><a href="about-resonate.html">Resonate</a></button>
-        <button id="partners-btn">Partners</button>
+        <!-- Buttons will be dynamically inserted here -->
+    </div>
+
+    <!-- Partners Section -->
+    <div id="partners-section">
+        <h2>Special thanks</h2>
+        <div class="partners-logos">
+            <a href="https://www.drinkalmighty.com/" target="_blank"><img src="images/partners/almighty.svg" alt="Almighty"></a>
+            <a href="https://www.asahibeverages.co.nz" target="_blank"><img src="images/partners/asahi.svg" alt="Asahi"></a>
+            <!-- Add other partner logos -->
+        </div>
     </div>
 
     <!-- Toggle Button -->
@@ -189,7 +186,7 @@
                         }
                     }
                     
-                    // Handle floating buttons
+                    // Update floating buttons if they exist
                     if (data.floating_buttons && Array.isArray(data.floating_buttons)) {
                         const floatingButtons = document.querySelector('.floating-buttons');
                         if (floatingButtons) {
@@ -203,7 +200,28 @@
                                     log('Added floating button', button);
                                 }
                             });
-                            floatingButtons.style.display = hasButtons ? 'flex' : 'none';
+                            // Add partners button
+                            floatingButtons.innerHTML += '<button id="partners-btn">Partners</button>';
+                            
+                            // Add toggle button if not already present
+                            let toggleBtn = document.querySelector('.toggle-floating-buttons');
+                            if (!toggleBtn) {
+                                toggleBtn = document.createElement('div');
+                                toggleBtn.className = 'toggle-floating-buttons';
+                                toggleBtn.textContent = '+';
+                                document.body.appendChild(toggleBtn);
+                            }
+
+                            // Setup toggle functionality
+                            toggleBtn.addEventListener('click', function() {
+                                floatingButtons.classList.toggle('hidden');
+                                this.classList.toggle('active');
+                            });
+
+                            // Setup partners button
+                            document.getElementById('partners-btn')?.addEventListener('click', function() {
+                                document.getElementById('partners-section')?.classList.toggle('active');
+                            });
                         }
                     }
 
@@ -249,18 +267,25 @@
         // Load content when the page loads
         window.addEventListener('DOMContentLoaded', loadContent);
 
-        // Partners Toggle
-        document.getElementById('partners-btn').addEventListener('click', function() {
-            document.getElementById('partners-section').classList.toggle('active');
-        });
+        // Wait for DOM content to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Partners Toggle
+            document.getElementById('partners-btn').addEventListener('click', function() {
+                document.getElementById('partners-section').classList.toggle('active');
+            });
 
-        // Floating Buttons Toggle
-        const toggleBtn = document.querySelector('.toggle-floating-buttons');
-        const floatingButtons = document.querySelector('.floating-buttons');
-        
-        toggleBtn.addEventListener('click', function() {
-            floatingButtons.classList.toggle('hidden');
-            this.classList.toggle('active');
+            // Floating Buttons Toggle
+            const toggleBtn = document.querySelector('.toggle-floating-buttons');
+            const floatingButtons = document.querySelector('.floating-buttons');
+            
+            if (toggleBtn && floatingButtons) {
+                toggleBtn.addEventListener('click', function() {
+                    floatingButtons.classList.toggle('hidden');
+                    this.classList.toggle('active');
+                });
+            } else {
+                console.error('Toggle button or floating buttons not found');
+            }
         });
     </script>
 </body>
