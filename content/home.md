@@ -1,5 +1,5 @@
 ---
-title: A Descent Into Colour
+title: A Descent Into ColourS
 subtitle: A first-of-its-kind light & sound experience
 dates: Coming Soon
 location: 9/11 Durham Lane, Auckland
