@@ -17,9 +17,8 @@ collections:
         label: "Home Page"
         file: "content/home.md"
         fields:
-
+          - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
-                    - {label: "Title", name: "title", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string"}
           - {label: "Location", name: "location", widget: "string"}
           - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
