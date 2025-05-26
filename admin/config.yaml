@@ -1,52 +1,28 @@
 backend:
   name: git-gateway
-  branch: main # Must match your default branch
-  commit_messages:
-    create: "Created {{collection}} “{{slug}}”"
-    update: "Updated {{collection}} “{{slug}}”"
-    delete: "Deleted {{collection}} “{{slug}}”"
-    uploadMedia: "Uploaded media “{{path}}”"
-    deleteMedia: "Deleted media “{{path}}”"
+  branch: main
 
-# Media storage
-media_folder: "static/images/uploads" # Netlify requires 'static' folder
-public_folder: "/images/uploads"
+media_folder: "images/uploads"     # Where uploaded images go (relative to repo root)
+public_folder: "/images/uploads"   # How those images are referenced in the site
 
-# Editorial Workflow (optional - enables draft/publish)
-publish_mode: editorial_workflow
+media_library:
+  name: uploadcare
+  config: {}
 
-# Collections
 collections:
-  - name: "pages"
-    label: "Pages"
-    label_singular: "Page"
-    folder: "content"
-    create: true
-    slug: "{{slug}}"
-    media_folder: "" # Can override per collection
-    public_folder: ""
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "home_page"
-    label: "Home Page"
-    file: "content/home.md"
-    fields:
-      - { label: "Hero Title", name: "title", widget: "string" }
-      - { label: "Hero Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Event Date", name: "date", widget: "string" }
-      - { label: "Location", name: "location", widget: "string" }
-      - label: "Buttons"
-        name: "buttons"
-        widget: "list"
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - file: "index.md"
+        label: "Homepage Content"
+        name: "home"
         fields:
-          - { label: "Text", name: "text", widget: "string" }
-          - { label: "Link", name: "link", widget: "string" }
-          - { label: "Style", name: "style", widget: "select", options: ["primary", "secondary"] }
-
-# Required for Netlify Identity
-local_backend: false # Must be false for production
-display_url: https://darklightexperience.netlify.app/
+          - { name: "title", label: "Event Title", widget: "string" }
+          - { name: "date", label: "Date", widget: "string" }
+          - { name: "location", label: "Location", widget: "string" }
+          - { name: "button_1_text", label: "First Button Text", widget: "string" }
+          - { name: "button_2_text", label: "Second Button Text", widget: "string" }
+          - { name: "social_links", label: "Social Links", widget: "list", fields: [
+              { name: "name", label: "Name", widget: "string" },
+              { name: "url", label: "URL", widget: "string" }
+            ] }
