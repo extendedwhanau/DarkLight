@@ -68,12 +68,15 @@
     </div>
 
     <!-- Floating Buttons -->
-    <div class="floating-buttons">
+    <div class="floating-buttons hidden">
         <button><a href="about-darklight.html">About</a></button>
         <button><a href="faq-darklight.html">FAQs</a></button>
         <button><a href="about-resonate.html">Resonate</a></button>
         <button id="partners-btn">Partners</button>
     </div>
+
+    <!-- Toggle Button -->
+    <div class="toggle-floating-buttons">+</div>
 
     <style>
         .ticket-button.sold-out {
@@ -249,6 +252,15 @@
         // Partners Toggle
         document.getElementById('partners-btn').addEventListener('click', function() {
             document.getElementById('partners-section').classList.toggle('active');
+        });
+
+        // Floating Buttons Toggle
+        const toggleBtn = document.querySelector('.toggle-floating-buttons');
+        const floatingButtons = document.querySelector('.floating-buttons');
+        
+        toggleBtn.addEventListener('click', function() {
+            floatingButtons.classList.toggle('hidden');
+            this.classList.toggle('active');
         });
     </script>
 </body>

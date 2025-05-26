@@ -198,6 +198,44 @@ button:hover {
     bottom: 15px;
     display: flex;
     gap: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-buttons.hidden {
+    transform: translateX(calc(100% + 15px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toggle-floating-buttons {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(217, 217, 217, 0.20);
+    color: #D3D3D3;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toggle-floating-buttons.active {
+    transform: rotate(45deg);
+}
+
+.toggle-floating-buttons:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-floating-buttons.active:hover {
+    transform: scale(1.1) rotate(45deg);
 }
 
 .social-icons {
