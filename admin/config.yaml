@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: "images/uploads"     # Where uploaded images go (relative to repo root)
-public_folder: "/images/uploads"   # How those images are referenced in the site
+public_folder: "static/images/uploads"   # How those images are referenced in the site
 
 media_library:
   name: uploadcare
