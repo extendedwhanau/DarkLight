@@ -5,9 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Debug any CMS initialization issues
+    window.CMS_MANUAL_INIT = true;
+  </script>
 </head>
 <body>
   <!-- IMPORTANT: Use latest Decap CMS version -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Initialize the CMS with debugging
+    window.addEventListener('load', function() {
+      try {
+        console.log('Initializing CMS...');
+        window.netlifyIdentity.on('init', user => {
+          console.log('NetlifyIdentity init', user);
+        });
+        
+        window.CMS.init();
+        
+        // Listen for successful initialization
+        window.CMS.on('mounted', function() {
+          console.log('CMS has mounted successfully');
+        });
+        
+        // Listen for errors
+        window.CMS.on('error', function(err) {
+          console.error('CMS Error:', err);
+        });
+      } catch (err) {
+        console.error('Failed to initialize CMS:', err);
+      }
+    });
+  </script>
 </body>
 </html>
