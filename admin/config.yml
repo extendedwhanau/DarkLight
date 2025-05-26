@@ -21,13 +21,6 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string"}
           - {label: "Location", name: "location", widget: "string"}
-          - label: "Buttons"
-            name: "buttons"
-            widget: "list"
-            fields:
-              - {label: "Text", name: "text", widget: "string"}
-              - {label: "Link", name: "link", widget: "string"}
-              - {label: "Target", name: "target", widget: "string", default: "_blank"}
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
