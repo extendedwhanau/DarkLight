@@ -24,6 +24,23 @@
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
 
+<script>
+// Load home page content
+fetch('/content/home.md')
+  .then(response => response.text())
+  .then(text => {
+    const content = text.split('---')[1]; // Extract YAML frontmatter
+    const data = jsyaml.load(content);
+    
+    // Update page elements
+    document.getElementById('main-title').textContent = data.title;
+    document.getElementById('subtitle').textContent = data.subtitle;
+    
+    console.log('Loaded content:', data); // Debug log
+  })
+  .catch(err => console.error('Failed to load content:', err));
+</script>
+
 <body class="homepage">
     <!-- Logo (Simplified version) -->
      <div class="logo">
