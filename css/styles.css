@@ -144,7 +144,7 @@ background: url('../images/background-image.jpg');
 }
 
 .about-page .content-column p[style*="text-decoration: underline"] + p {
-    margin-top: 20px; /* Space between title and content */
+    margin-top: 1px; /* Space between title and content */
 }
 
 /* Remove extra spacing for last elements */
