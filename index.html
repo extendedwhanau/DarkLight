@@ -41,7 +41,8 @@
             <span id="location">9/11 Durham Lane, Auckland</span>
         </h1>
         
-        <div class="ticket-container" id="buttons-container">
+        <!-- Static Ticket Container -->
+        <div class="ticket-container">
             <button class="ticket-button">
                 <a href="https://www.iticket.co.nz" target="_blank">Exhibition Tickets</a>
             </button>
@@ -141,28 +142,6 @@
                     if (data.background_image) {
                         document.body.style.backgroundImage = `url('${data.background_image}')`;
                         log('Updated background image', data.background_image);
-                    }
-                    
-                    // Handle buttons if they exist
-                    if (data.buttons && Array.isArray(data.buttons) && data.buttons.length > 0) {
-                        const container = document.getElementById('buttons-container');
-                        if (container) {
-                            container.innerHTML = ''; // Clear existing buttons
-                            data.buttons.forEach(button => {
-                                if (button.text && button.link) {
-                                    const buttonHtml = `
-                                        <button class="ticket-button">
-                                            <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
-                                        </button>
-                                    `;
-                                    container.innerHTML += buttonHtml;
-                                }
-                            });
-                            log('Updated buttons', data.buttons);
-                        }
-                    } else {
-                        // Keep default buttons if no CMS buttons are defined
-                        log('No CMS buttons found, keeping defaults');
                     }
                     
                     // Handle floating buttons
