@@ -129,6 +129,16 @@ background: url('../images/background-image.jpg');
     margin-bottom: 30px;
 }
 
+/* Remove bottom margin for FAQ answer paragraphs */
+.about-page .content-column .section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Add space between FAQ sections instead */
+.about-page .content-column .section {
+    margin-bottom: 30px;
+}
+
 .about-page .content-column p:last-child {
     margin-bottom: 60px;  /* Extra space at the bottom */
 }
