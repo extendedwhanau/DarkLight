@@ -35,8 +35,8 @@
     <!-- Main Content -->
     <div class="content">
         <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
-        <h1 id="main-title">
-            A Descent Into Colour<br>
+        <h1>
+            <span id="main-title">A Descent Into Colour</span><br>
             <span id="dates">2-4th May 2025</span><br>
             <span id="location">9/11 Durham Lane, Auckland</span>
         </h1>
@@ -124,22 +124,18 @@
                     log('Parsed data', data);
                     
                     // Update page elements with CMS content
-                    if (data.title) {
-                        document.getElementById('main-title').innerHTML = data.title;
-                        log('Updated title', data.title);
-                    }
-                    if (data.subtitle) {
-                        document.getElementById('subtitle').textContent = data.subtitle;
-                        log('Updated subtitle', data.subtitle);
-                    }
-                    if (data.dates) {
-                        document.getElementById('dates').textContent = data.dates;
-                        log('Updated dates', data.dates);
-                    }
-                    if (data.location) {
-                        document.getElementById('location').textContent = data.location;
-                        log('Updated location', data.location);
-                    }
+                    const updateElement = (id, value) => {
+                        const element = document.getElementById(id);
+                        if (element && value) {
+                            element.textContent = value;
+                            log(`Updated ${id}`, value);
+                        }
+                    };
+
+                    updateElement('main-title', data.title);
+                    updateElement('subtitle', data.subtitle);
+                    updateElement('dates', data.dates);
+                    updateElement('location', data.location);
                     
                     // Handle buttons if they exist
                     if (data.buttons && Array.isArray(data.buttons)) {
