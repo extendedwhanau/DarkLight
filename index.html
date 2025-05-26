@@ -20,26 +20,10 @@
     <!-- CMS & Identity -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
-
-<script>
-// Load home page content
-fetch('/content/home.md')
-  .then(response => response.text())
-  .then(text => {
-    const content = text.split('---')[1]; // Extract YAML frontmatter
-    const data = jsyaml.load(content);
-    
-    // Update page elements
-    document.getElementById('main-title').textContent = data.title;
-    document.getElementById('subtitle').textContent = data.subtitle;
-    
-    console.log('Loaded content:', data); // Debug log
-  })
-  .catch(err => console.error('Failed to load content:', err));
-</script>
 
 <body class="homepage">
     <!-- Logo (Simplified version) -->
@@ -51,20 +35,15 @@ fetch('/content/home.md')
 
     <!-- Main Content -->
     <div class="content">
-        <h2>A first-of-its-kind light & sound experience</h2>
-        <h1>
-            A Descent Into Colour<br>
-            2-4th May 2025<br>
-            9/11 Durham Lane, Auckland
+        <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
+        <h1 id="main-content">
+            <span id="title">A Descent Into Colour</span><br>
+            <span id="dates">2-4th May 2025</span><br>
+            <span id="location">9/11 Durham Lane, Auckland</span>
         </h1>
         
-        <div class="ticket-container">
-            <button class="ticket-button">
-                <a href="https://www.iticket.co.nz" target="_blank">Exhibition Tickets</a>
-            </button>
-            <button class="ticket-button">
-                <a href="https://www.undertheradar.co.nz" target="_blank">Resonate Tickets</a>
-            </button>
+        <div class="ticket-container" id="ticket-container">
+            <!-- Ticket buttons will be dynamically inserted here -->
         </div>
     </div>
 
@@ -98,6 +77,38 @@ fetch('/content/home.md')
 
     <!-- JavaScript -->
     <script>
+        // Load home page content
+        fetch('/content/home.md')
+            .then(response => response.text())
+            .then(text => {
+                const parts = text.split('---');
+                if (parts.length >= 2) {
+                    const yamlContent = parts[1];
+                    const data = jsyaml.load(yamlContent);
+                    
+                    // Update page elements
+                    if (data.title) document.getElementById('title').textContent = data.title;
+                    if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
+                    if (data.dates) document.getElementById('dates').textContent = data.dates;
+                    if (data.location) document.getElementById('location').textContent = data.location;
+                    
+                    // Handle ticket buttons
+                    const ticketContainer = document.getElementById('ticket-container');
+                    if (data.ticket_buttons && data.ticket_buttons.length > 0) {
+                        ticketContainer.innerHTML = data.ticket_buttons
+                            .map(button => `
+                                <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
+                                    <a href="${button.link}" target="${button.target || '_blank'}">${button.text}${button.sold_out ? ' (Sold Out)' : ''}</a>
+                                </button>
+                            `)
+                            .join('');
+                    }
+                    
+                    console.log('Loaded content:', data);
+                }
+            })
+            .catch(err => console.error('Failed to load content:', err));
+
         // Netlify Identity
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {

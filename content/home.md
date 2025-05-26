@@ -4,7 +4,15 @@ subtitle: A Descent Into Colour
 dates: 1–4th May 2025
 location: Stay tuned for future events
 background_image: /images/background-image.jpg
-ticket_buttons: []
+ticket_buttons:
+  - text: Exhibition Tickets
+    link: https://www.iticket.co.nz
+    target: _blank
+    sold_out: false
+  - text: Resonate Tickets
+    link: https://www.undertheradar.co.nz
+    target: _blank
+    sold_out: false
 floating_buttons:
   - text: About
     link: about-darklight.html
