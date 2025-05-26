@@ -1,69 +1,52 @@
 backend:
   name: git-gateway
-  branch: main # Your default branch
+  branch: main # Must match your default branch
   commit_messages:
-    create: "Create {{collection}} “{{slug}}”"
-    update: "Update {{collection}} “{{slug}}”"
+    create: "Created {{collection}} “{{slug}}”"
+    update: "Updated {{collection}} “{{slug}}”"
+    delete: "Deleted {{collection}} “{{slug}}”"
+    uploadMedia: "Uploaded media “{{path}}”"
+    deleteMedia: "Deleted media “{{path}}”"
 
-media_folder: "static/images/uploads"
+# Media storage
+media_folder: "static/images/uploads" # Netlify requires 'static' folder
 public_folder: "/images/uploads"
 
+# Editorial Workflow (optional - enables draft/publish)
+publish_mode: editorial_workflow
+
+# Collections
 collections:
   - name: "pages"
     label: "Pages"
-    files:
-      - name: "home"
-        label: "Home Page"
-        file: "content/home.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          # Add all your fields here
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
-          - {label: "Dates", name: "dates", widget: "string"}
-          - {label: "Location", name: "location", widget: "string"}
-          - label: "Buttons"
-            name: "buttons"
-            widget: "list"
-            fields:
-              - {label: "Button Text", name: "text", widget: "string"}
-              - {label: "Button Link", name: "link", widget: "string"}
-              - {label: "Button Target", name: "target", widget: "string", default: "_blank"}
-          - label: "Floating Buttons"
-            name: "floating_buttons"
-            widget: "list"
-            fields:
-              - {label: "Button Text", name: "text", widget: "string"}
-              - {label: "Button Link", name: "link", widget: "string"}
-          - {label: "Social Links", name: "social", widget: "object", fields: [
-              {label: "Instagram", name: "instagram", widget: "string"},
-              {label: "Facebook", name: "facebook", widget: "string"}
-            ]}
+    label_singular: "Page"
+    folder: "content"
+    create: true
+    slug: "{{slug}}"
+    media_folder: "" # Can override per collection
+    public_folder: ""
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
-      - name: "about_darklight"
-        label: "About Darklight"
-        file: "content/about_darklight.md"
+  - name: "home_page"
+    label: "Home Page"
+    file: "content/home.md"
+    fields:
+      - { label: "Hero Title", name: "title", widget: "string" }
+      - { label: "Hero Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Event Date", name: "date", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - label: "Buttons"
+        name: "buttons"
+        widget: "list"
         fields:
-          - {label: "Logo Image", name: "logo", widget: "image"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Content", name: "content", widget: "markdown"}
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - {label: "Section Title", name: "title", widget: "string"}
-              - {label: "Section Content", name: "content", widget: "markdown"}
+          - { label: "Text", name: "text", widget: "string" }
+          - { label: "Link", name: "link", widget: "string" }
+          - { label: "Style", name: "style", widget: "select", options: ["primary", "secondary"] }
 
-      - name: "about_resonate"
-        label: "About Resonate"
-        file: "content/about_resonate.md"
-        fields:
-          - {label: "Logo Image", name: "logo", widget: "image"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Content", name: "content", widget: "markdown"}
-          - label: "Performers"
-            name: "performers"
-            widget: "list"
-            fields:
-              - {label: "Name", name: "name", widget: "string"}
-              - {label: "Description", name: "description", widget: "markdown"}
+# Required for Netlify Identity
+local_backend: false # Must be false for production
+display_url: https://darklightexperience.netlify.app/
