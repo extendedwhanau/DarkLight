@@ -68,11 +68,8 @@
     </div>
 
     <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <button><a href="about-darklight.html">About</a></button>
-        <button><a href="faq-darklight.html">FAQs</a></button>
-        <button><a href="about-resonate.html">Resonate</a></button>
-        <button><a href="#partners-section">Partners</a></button>
+    <div class="floating-buttons" id="floating-buttons">
+        <!-- Floating buttons will be dynamically inserted here -->
     </div>
 
     <!-- JavaScript -->
@@ -99,6 +96,19 @@
                             .map(button => `
                                 <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
                                     <a href="${button.link}" target="${button.target || '_blank'}">${button.text}${button.sold_out ? ' (Sold Out)' : ''}</a>
+                                </button>
+                            `)
+                            .join('');
+                    }
+
+                    // Handle floating buttons
+                    const floatingButtonsContainer = document.getElementById('floating-buttons');
+                    if (data.floating_buttons && data.floating_buttons.length > 0) {
+                        floatingButtonsContainer.innerHTML = data.floating_buttons
+                            .filter(button => button.visible)
+                            .map(button => `
+                                <button>
+                                    <a href="${button.link}">${button.text}</a>
                                 </button>
                             `)
                             .join('');
