@@ -145,7 +145,11 @@
                         const element = document.getElementById(id);
                         if (element && value) {
                             element.textContent = value;
+                            element.style.display = 'block';
                             log(`Updated ${id}`, value);
+                        } else if (element) {
+                            element.style.display = 'none';
+                            log(`Hiding ${id} due to no content`);
                         }
                     };
 
@@ -166,14 +170,19 @@
                         if (container) {
                             container.innerHTML = ''; // Clear existing buttons
                             data.ticket_buttons.forEach(button => {
-                                const buttonHtml = `
-                                    <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
-                                        <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
-                                    </button>
-                                `;
-                                container.innerHTML += buttonHtml;
+                                // Only create button if it has text and link
+                                if (button.text && button.link) {
+                                    const buttonHtml = `
+                                        <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
+                                            <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
+                                        </button>
+                                    `;
+                                    container.innerHTML += buttonHtml;
+                                    log('Added ticket button', button);
+                                }
                             });
-                            log('Updated ticket buttons', data.ticket_buttons);
+                            // Hide container if no buttons were added
+                            container.style.display = container.innerHTML ? 'flex' : 'none';
                         }
                     }
                     
@@ -182,26 +191,43 @@
                         const floatingButtons = document.querySelector('.floating-buttons');
                         if (floatingButtons) {
                             floatingButtons.innerHTML = '';
+                            let hasButtons = false;
                             data.floating_buttons.forEach(button => {
-                                const buttonHtml = `<button><a href="${button.link}">${button.text}</a></button>`;
-                                floatingButtons.innerHTML += buttonHtml;
+                                if (button.text && button.link) {
+                                    const buttonHtml = `<button><a href="${button.link}">${button.text}</a></button>`;
+                                    floatingButtons.innerHTML += buttonHtml;
+                                    hasButtons = true;
+                                    log('Added floating button', button);
+                                }
                             });
-                            log('Updated floating buttons', data.floating_buttons);
+                            floatingButtons.style.display = hasButtons ? 'flex' : 'none';
                         }
                     }
 
                     // Handle social links
                     if (data.social) {
                         const socialIcons = document.querySelector('.social-icons');
-                        if (socialIcons && data.social.instagram) {
-                            const instagramLink = socialIcons.querySelector('a[href*="instagram"]');
-                            if (instagramLink) instagramLink.href = data.social.instagram;
+                        if (socialIcons) {
+                            let hasSocial = false;
+                            if (data.social.instagram) {
+                                const instagramLink = socialIcons.querySelector('a[href*="instagram"]');
+                                if (instagramLink) {
+                                    instagramLink.href = data.social.instagram;
+                                    instagramLink.style.display = 'flex';
+                                    hasSocial = true;
+                                }
+                            }
+                            if (data.social.facebook) {
+                                const facebookLink = socialIcons.querySelector('a[href*="facebook"]');
+                                if (facebookLink) {
+                                    facebookLink.href = data.social.facebook;
+                                    facebookLink.style.display = 'flex';
+                                    hasSocial = true;
+                                }
+                            }
+                            socialIcons.style.display = hasSocial ? 'flex' : 'none';
+                            log('Updated social links visibility', hasSocial);
                         }
-                        if (socialIcons && data.social.facebook) {
-                            const facebookLink = socialIcons.querySelector('a[href*="facebook"]');
-                            if (facebookLink) facebookLink.href = data.social.facebook;
-                        }
-                        log('Updated social links', data.social);
                     }
                 }
             } catch (err) {
