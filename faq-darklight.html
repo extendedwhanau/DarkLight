@@ -7,9 +7,10 @@
     <title>DarkLight FAQ</title>
     <link rel="stylesheet" href="https://use.typekit.net/efe5rwd.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 </head>
 
-<body class="about-page"> <!-- Using your existing about-page style -->
+<body class="about-page">
     <div class="logo">
         <a href="index.html">
             <img src="images/logo1.svg" alt="DARKLIGHT" width="100%">
@@ -25,16 +26,29 @@
 
     <script>
     // Load FAQ content
-    fetch('/content/faq.md')
-        .then(response => response.text())
-        .then(text => {
+    async function loadFAQContent() {
+        try {
+            const response = await fetch('/content/faq-darklight.md');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const text = await response.text();
+            console.log('Raw FAQ content:', text);
+            
+            // Split the content at the frontmatter markers
             const parts = text.split('---');
             if (parts.length >= 2) {
-                const data = jsyaml.load(parts[1]);
+                const yamlContent = parts[1];
+                console.log('YAML content:', yamlContent);
+                
+                const data = jsyaml.load(yamlContent);
+                console.log('Parsed data:', data);
+                
+                // Render the FAQ content
                 renderFAQ(data);
             }
-        })
-        .catch(err => {
+        } catch (err) {
             console.error('Failed to load FAQ:', err);
             document.getElementById('faq-container').innerHTML = `
                 <div class="about-title">
@@ -44,7 +58,8 @@
                     <p>Failed to load content. Please refresh the page.</p>
                 </div>
             `;
-        });
+        }
+    }
 
     function renderFAQ(data) {
         document.getElementById('faq-container').innerHTML = `
@@ -52,15 +67,25 @@
                 <p>${data.title || 'Frequently Asked Questions'}</p>
             </div>
             <div class="content-column">
-                ${data.sections.map(section => `
+                ${data.faqs ? data.faqs.map(faq => `
                     <div class="section">
-                        <p class="section-title">${section.question}</p>
-                        <p class="section-copy">${section.answer.replace(/\n/g, '<br>')}</p>
+                        <p style="text-decoration: underline; text-underline-offset: 5px;">${faq.question}</p>
+                        <p>${faq.answer.replace(/\n/g, '<br>')}</p>
                     </div>
-                `).join('')}
+                `).join('') : '<p>No FAQs available</p>'}
             </div>
         `;
     }
+
+    // Load content when the page loads
+    window.addEventListener('DOMContentLoaded', loadFAQContent);
     </script>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button><a href="index.html">Home</a></button>
+        <button><a href="about-darklight.html">About</a></button>
+        <button><a href="about-resonate.html">Resonate</a></button>
+    </div>
 </body>
 </html>
