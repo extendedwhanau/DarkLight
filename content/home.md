@@ -1,6 +1,6 @@
 ---
 title: A Descent Into ColourS
-subtitle: A first-of-its-kind light & sound experience
+subtitle: just want to test
 dates: Coming Soon
 location: 9/11 Durham Lane, Auckland
 buttons: []
