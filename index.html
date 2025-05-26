@@ -34,9 +34,9 @@
     </div>
 
     <!-- Main Content -->
-    <div class="content">
+    <div class="content" id="main-content">
         <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
-        <h1 id="main-content">
+        <h1>
             <span id="title">A Descent Into Colour</span><br>
             <span id="dates">2-4th May 2025</span><br>
             <span id="location">9/11 Durham Lane, Auckland</span>
@@ -49,11 +49,9 @@
 
     <!-- Partners Section -->
     <div id="partners-section">
-        <h2>Special thanks</h2>
-        <div class="partners-logos">
-            <a href="https://www.drinkalmighty.com/" target="_blank"><img src="images/partners/almighty.svg" alt="Almighty"></a>
-            <a href="https://www.asahibeverages.co.nz" target="_blank"><img src="images/partners/asahi.svg" alt="Asahi"></a>
-            <!-- Add other partner logos -->
+        <h2 id="partners-title">Special thanks</h2>
+        <div class="partners-logos" id="partners-logos">
+            <!-- Partners will be dynamically inserted here -->
         </div>
     </div>
 
@@ -89,6 +87,26 @@
                     if (data.dates) document.getElementById('dates').textContent = data.dates;
                     if (data.location) document.getElementById('location').textContent = data.location;
                     
+                    // Handle partners section
+                    if (data.partners_section) {
+                        const partnersTitle = document.getElementById('partners-title');
+                        const partnersLogos = document.getElementById('partners-logos');
+                        
+                        if (partnersTitle && data.partners_section.title) {
+                            partnersTitle.textContent = data.partners_section.title;
+                        }
+                        
+                        if (partnersLogos && data.partners_section.partners) {
+                            partnersLogos.innerHTML = data.partners_section.partners
+                                .map(partner => `
+                                    <a href="${partner.link}" target="_blank">
+                                        <img src="${partner.logo}" alt="${partner.alt}">
+                                    </a>
+                                `)
+                                .join('');
+                        }
+                    }
+                    
                     // Handle ticket buttons
                     const ticketContainer = document.getElementById('ticket-container');
                     if (data.ticket_buttons && data.ticket_buttons.length > 0) {
@@ -107,11 +125,32 @@
                         floatingButtonsContainer.innerHTML = data.floating_buttons
                             .filter(button => button.visible)
                             .map(button => `
-                                <button>
+                                <button${button.text === 'Partners' ? ' id="partners-btn"' : ''}>
                                     <a href="${button.link}">${button.text}</a>
                                 </button>
                             `)
                             .join('');
+                    }
+                    
+                    // Set up partners toggle functionality
+                    const partnersBtn = document.getElementById('partners-btn');
+                    const partnersSection = document.getElementById('partners-section');
+                    const mainContent = document.getElementById('main-content');
+                    
+                    if (partnersBtn) {
+                        let showingPartners = false;
+                        
+                        partnersBtn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            showingPartners = !showingPartners;
+                            if (showingPartners) {
+                                partnersSection.classList.add('active');
+                                mainContent.style.opacity = 0;
+                            } else {
+                                partnersSection.classList.remove('active');
+                                mainContent.style.opacity = 1;
+                            }
+                        });
                     }
                     
                     console.log('Loaded content:', data);

@@ -4,7 +4,42 @@ subtitle: A Descent Into Colour
 dates: 1–4th May 2025
 location: Stay tuned for future events
 background_image: /images/background-image.jpg
-ticket_buttons: []
+partners_section:
+  title: Special thanks
+  partners:
+    - name: Almighty
+      logo: /images/partners/almighty.svg
+      link: https://www.drinkalmighty.com/
+      alt: Almighty
+    - name: Asahi
+      logo: /images/partners/asahi.svg
+      link: https://www.asahibeverages.co.nz
+      alt: Asahi
+    - name: Brad's Warehouse
+      logo: /images/partners/brads.svg
+      link: https://brads-warehouse.com
+      alt: Brad's Warehouse
+    - name: Culprit
+      logo: /images/partners/culprit.svg
+      link: https://www.culpritdiningroom.co.nz
+      alt: Culprit
+    - name: Scapegrace
+      logo: /images/partners/sg.svg
+      link: https://scapegracedistillery.com
+      alt: Scapegrace
+    - name: East Imperial
+      logo: /images/partners/ei.svg
+      link: https://eastimperial.co.nz
+      alt: East Imperial
+ticket_buttons:
+  - text: Exhibition Tickets
+    link: https://www.iticket.co.nz
+    target: _blank
+    sold_out: false
+  - text: Resonate Tickets
+    link: https://www.undertheradar.co.nz
+    target: _blank
+    sold_out: false
 floating_buttons:
   - text: About
     link: about-darklight.html
@@ -14,7 +49,7 @@ floating_buttons:
     visible: true
   - text: Resonate
     link: about-resonate.html
-    visible: false
+    visible: true
   - text: Partners
     link: "#"
     visible: true
