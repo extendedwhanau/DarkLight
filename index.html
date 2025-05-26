@@ -42,13 +42,8 @@
         </h1>
         
         <!-- Ticket Container -->
-        <div class="ticket-container">
-            <button class="ticket-button">
-                <a href="https://www.iticket.co.nz" target="_blank" id="exhibition-ticket-link">Exhibition Tickets</a>
-            </button>
-            <button class="ticket-button">
-                <a href="https://www.undertheradar.co.nz" target="_blank" id="resonate-ticket-link">Resonate Tickets</a>
-            </button>
+        <div class="ticket-container" id="ticket-container">
+            <!-- Ticket buttons will be dynamically inserted here -->
         </div>
     </div>
 
@@ -79,6 +74,27 @@
         <button><a href="about-resonate.html">Resonate</a></button>
         <button id="partners-btn">Partners</button>
     </div>
+
+    <style>
+        .ticket-button.sold-out {
+            opacity: 0.7;
+            position: relative;
+        }
+        .ticket-button.sold-out::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #D3D3D3;
+            transform: rotate(-10deg);
+        }
+        .ticket-button.sold-out a {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+    </style>
 
     <!-- JavaScript -->
     <script>
@@ -144,27 +160,20 @@
                         log('Updated background image', data.background_image);
                     }
 
-                    // Update ticket buttons if they exist
-                    if (data.ticket_buttons) {
-                        const exhibition = data.ticket_buttons.exhibition;
-                        const resonate = data.ticket_buttons.resonate;
-                        
-                        if (exhibition) {
-                            const exhibitionLink = document.getElementById('exhibition-ticket-link');
-                            if (exhibitionLink) {
-                                exhibitionLink.href = exhibition.link;
-                                exhibitionLink.textContent = exhibition.text;
-                                log('Updated exhibition ticket', exhibition);
-                            }
-                        }
-                        
-                        if (resonate) {
-                            const resonateLink = document.getElementById('resonate-ticket-link');
-                            if (resonateLink) {
-                                resonateLink.href = resonate.link;
-                                resonateLink.textContent = resonate.text;
-                                log('Updated resonate ticket', resonate);
-                            }
+                    // Update ticket buttons
+                    if (data.ticket_buttons && Array.isArray(data.ticket_buttons)) {
+                        const container = document.getElementById('ticket-container');
+                        if (container) {
+                            container.innerHTML = ''; // Clear existing buttons
+                            data.ticket_buttons.forEach(button => {
+                                const buttonHtml = `
+                                    <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
+                                        <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
+                                    </button>
+                                `;
+                                container.innerHTML += buttonHtml;
+                            });
+                            log('Updated ticket buttons', data.ticket_buttons);
                         }
                     }
                     
