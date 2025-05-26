@@ -4,15 +4,7 @@ subtitle: A Descent Into Colour
 dates: Coming Soon
 location: ""
 background_image: /images/background-image.jpg
-ticket_buttons:
-  - text: Exhibition Tickets
-    link: https://www.iticket.co.nz
-    target: _blank
-    sold_out: false
-  - text: Resonate Tickets
-    link: https://www.undertheradar.co.nz
-    target: _blank
-    sold_out: false
+ticket_buttons: []
 floating_buttons:
   - text: About
     link: about-darklight.html
