@@ -6,3 +6,15 @@
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
+
+[[headers]]
+  for = "/admin/*"
+    [headers.values]
+    Basic-Auth = "off"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/content/*"
+    [headers.values]
+    Cache-Control = "no-cache"
+    Access-Control-Allow-Origin = "*"

@@ -81,37 +81,65 @@
 
     <!-- JavaScript -->
     <script>
+        // Debug logging function
+        function log(message, data) {
+            console.log(`[CMS Debug] ${message}:`, data);
+        }
+
         // Netlify Identity
         if (window.netlifyIdentity) {
+            log('Netlify Identity Widget loaded');
             window.netlifyIdentity.on("init", user => {
+                log('Identity Init', user);
                 if (!user) {
                     window.netlifyIdentity.on("login", () => {
                         document.location.href = "/admin/";
                     });
                 }
             });
+        } else {
+            console.error('[CMS Debug] Netlify Identity Widget not loaded');
         }
 
         // Load home page content
-        fetch('/content/home.md')
-            .then(response => {
+        async function loadContent() {
+            try {
+                log('Fetching content from', '/content/home.md');
+                const response = await fetch('/content/home.md');
+                
                 if (!response.ok) {
-                    throw new Error('Failed to load content');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.text();
-            })
-            .then(text => {
+                
+                const text = await response.text();
+                log('Raw content received', text);
+                
                 // Split the content at the frontmatter markers
                 const parts = text.split('---');
                 if (parts.length >= 2) {
                     const yamlContent = parts[1];
+                    log('YAML content', yamlContent);
+                    
                     const data = jsyaml.load(yamlContent);
+                    log('Parsed data', data);
                     
                     // Update page elements with CMS content
-                    if (data.title) document.getElementById('main-title').innerHTML = data.title;
-                    if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
-                    if (data.dates) document.getElementById('dates').textContent = data.dates;
-                    if (data.location) document.getElementById('location').textContent = data.location;
+                    if (data.title) {
+                        document.getElementById('main-title').innerHTML = data.title;
+                        log('Updated title', data.title);
+                    }
+                    if (data.subtitle) {
+                        document.getElementById('subtitle').textContent = data.subtitle;
+                        log('Updated subtitle', data.subtitle);
+                    }
+                    if (data.dates) {
+                        document.getElementById('dates').textContent = data.dates;
+                        log('Updated dates', data.dates);
+                    }
+                    if (data.location) {
+                        document.getElementById('location').textContent = data.location;
+                        log('Updated location', data.location);
+                    }
                     
                     // Handle buttons if they exist
                     if (data.buttons && Array.isArray(data.buttons)) {
@@ -126,14 +154,51 @@
                             `;
                             container.innerHTML += buttonHtml;
                         });
+                        log('Updated buttons', data.buttons);
                     }
                     
-                    console.log('CMS content loaded successfully:', data);
+                    // Handle floating buttons
+                    if (data.floating_buttons && Array.isArray(data.floating_buttons)) {
+                        const floatingButtons = document.querySelector('.floating-buttons');
+                        if (floatingButtons) {
+                            floatingButtons.innerHTML = '';
+                            data.floating_buttons.forEach(button => {
+                                const buttonHtml = `<button><a href="${button.link}">${button.text}</a></button>`;
+                                floatingButtons.innerHTML += buttonHtml;
+                            });
+                            log('Updated floating buttons', data.floating_buttons);
+                        }
+                    }
+
+                    // Handle social links
+                    if (data.social) {
+                        const socialIcons = document.querySelector('.social-icons');
+                        if (socialIcons && data.social.instagram) {
+                            const instagramLink = socialIcons.querySelector('a[href*="instagram"]');
+                            if (instagramLink) instagramLink.href = data.social.instagram;
+                        }
+                        if (socialIcons && data.social.facebook) {
+                            const facebookLink = socialIcons.querySelector('a[href*="facebook"]');
+                            if (facebookLink) facebookLink.href = data.social.facebook;
+                        }
+                        log('Updated social links', data.social);
+                    }
                 }
-            })
-            .catch(err => {
-                console.error('Failed to load CMS content:', err);
-            });
+            } catch (err) {
+                console.error('[CMS Debug] Error loading content:', err);
+                // Try to load the content directly from the file system as fallback
+                try {
+                    const response = await fetch('content/home.md');
+                    const text = await response.text();
+                    log('Fallback content loaded', text);
+                } catch (fallbackErr) {
+                    console.error('[CMS Debug] Fallback also failed:', fallbackErr);
+                }
+            }
+        }
+
+        // Load content when the page loads
+        window.addEventListener('DOMContentLoaded', loadContent);
 
         // Partners Toggle
         document.getElementById('partners-btn').addEventListener('click', function() {
