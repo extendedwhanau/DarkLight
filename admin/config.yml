@@ -39,4 +39,12 @@ collections:
         file: "content/about-darklight.md"
         fields:
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Content", name: "body", widget: "markdown"}
+          - {label: "Logo", name: "logo", widget: "image"}
+          - {label: "Main Content", name: "content", widget: "markdown"}
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - {label: "Section Title", name: "title", widget: "string"}
+              - {label: "Section Content", name: "content", widget: "markdown"}
+            summary: "{{fields.title}}"
