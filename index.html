@@ -145,7 +145,7 @@
                         const element = document.getElementById(id);
                         if (element && value) {
                             element.textContent = value;
-                            element.style.display = 'block';
+                            element.style.removeProperty('display');
                             log(`Updated ${id}`, value);
                         } else if (element) {
                             element.style.display = 'none';
