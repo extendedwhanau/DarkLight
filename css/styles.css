@@ -143,9 +143,15 @@ background: url('../images/background-image.jpg');
     margin-bottom: 60px;  /* Extra space at the bottom */
 }
 
+/* Section title styling */
 .about-page .content-column p[style*="text-decoration: underline"] {
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Remove space after underlined titles */
+}
+
+/* Add space before the next paragraph after a title */
+.about-page .content-column p[style*="text-decoration: underline"] + p {
+    margin-top: 20px;
 }
 
 /* First section title should not have extra top margin */
