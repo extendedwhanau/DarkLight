@@ -19,30 +19,33 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
-          - {label: "Dates", name: "dates", widget: "string"}
-          - {label: "Location", name: "location", widget: "string"}
+          - {label: "Dates", name: "dates", widget: "string", required: false}
+          - {label: "Location", name: "location", widget: "string", required: false}
           - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
+            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Text", name: "text", widget: "string", required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
               - {label: "Is Sold Out", name: "sold_out", widget: "boolean", default: false}
               - {label: "Target", name: "target", widget: "select", options: ["_blank", "_self"], default: "_blank"}
             summary: "{{fields.text}} {{fields.sold_out | ternary '(Sold Out)' ''}}"
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
+            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Text", name: "text", widget: "string", required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
           - label: "Social Links"
             name: "social"
             widget: "object"
+            required: false
             fields:
-              - {label: "Instagram", name: "instagram", widget: "string"}
-              - {label: "Facebook", name: "facebook", widget: "string"}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
 
       - name: "about_darklight"
         label: "About Darklight"
