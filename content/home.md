@@ -8,12 +8,16 @@ ticket_buttons: []
 floating_buttons:
   - text: About
     link: about-darklight.html
+    visible: true
   - text: FAQs
     link: faq-darklight.html
+    visible: true
   - text: Resonate
     link: about-resonate.html
+    visible: true
   - text: Partners
     link: "#"
+    visible: true
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/

@@ -18,11 +18,28 @@
     <link rel="shortcut icon" href="favicon.png">
     
     <!-- CMS & Identity -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
+
+<script>
+// Load home page content
+fetch('/content/home.md')
+  .then(response => response.text())
+  .then(text => {
+    const content = text.split('---')[1]; // Extract YAML frontmatter
+    const data = jsyaml.load(content);
+    
+    // Update page elements
+    document.getElementById('main-title').textContent = data.title;
+    document.getElementById('subtitle').textContent = data.subtitle;
+    
+    console.log('Loaded content:', data); // Debug log
+  })
+  .catch(err => console.error('Failed to load content:', err));
+</script>
 
 <body class="homepage">
     <!-- Logo (Simplified version) -->
@@ -34,16 +51,30 @@
 
     <!-- Main Content -->
     <div class="content">
-        <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
+        <h2>A first-of-its-kind light & sound experience</h2>
         <h1>
-            <span id="main-title">A Descent Into Colour</span><br>
-            <span id="dates">2-4th May 2025</span><br>
-            <span id="location">9/11 Durham Lane, Auckland</span>
+            A Descent Into Colour<br>
+            2-4th May 2025<br>
+            9/11 Durham Lane, Auckland
         </h1>
         
-        <!-- Ticket Container -->
-        <div class="ticket-container" id="ticket-container">
-            <!-- Ticket buttons will be dynamically inserted here -->
+        <div class="ticket-container">
+            <button class="ticket-button">
+                <a href="https://www.iticket.co.nz" target="_blank">Exhibition Tickets</a>
+            </button>
+            <button class="ticket-button">
+                <a href="https://www.undertheradar.co.nz" target="_blank">Resonate Tickets</a>
+            </button>
+        </div>
+    </div>
+
+    <!-- Partners Section -->
+    <div id="partners-section">
+        <h2>Special thanks</h2>
+        <div class="partners-logos">
+            <a href="https://www.drinkalmighty.com/" target="_blank"><img src="images/partners/almighty.svg" alt="Almighty"></a>
+            <a href="https://www.asahibeverages.co.nz" target="_blank"><img src="images/partners/asahi.svg" alt="Asahi"></a>
+            <!-- Add other partner logos -->
         </div>
     </div>
 
@@ -58,235 +89,25 @@
     </div>
 
     <!-- Floating Buttons -->
-    <div class="floating-buttons hidden">
-        <!-- Buttons will be dynamically inserted here -->
+    <div class="floating-buttons">
+        <button><a href="about-darklight.html">About</a></button>
+        <button><a href="faq-darklight.html">FAQs</a></button>
+        <button><a href="about-resonate.html">Resonate</a></button>
+        <button><a href="#partners-section">Partners</a></button>
     </div>
-
-    <!-- Partners Section -->
-    <div id="partners-section">
-        <h2>Special thanks</h2>
-        <div class="partners-logos">
-            <a href="https://www.drinkalmighty.com/" target="_blank"><img src="images/partners/almighty.svg" alt="Almighty"></a>
-            <a href="https://www.asahibeverages.co.nz" target="_blank"><img src="images/partners/asahi.svg" alt="Asahi"></a>
-            <!-- Add other partner logos -->
-        </div>
-    </div>
-
-    <!-- Toggle Button -->
-    <div class="toggle-floating-buttons">+</div>
-
-    <style>
-        .ticket-button.sold-out {
-            opacity: 0.7;
-            position: relative;
-        }
-        .ticket-button.sold-out::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #D3D3D3;
-            transform: rotate(-10deg);
-        }
-        .ticket-button.sold-out a {
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-    </style>
 
     <!-- JavaScript -->
     <script>
-        // Debug logging function
-        function log(message, data) {
-            console.log(`[CMS Debug] ${message}:`, data);
-        }
-
         // Netlify Identity
         if (window.netlifyIdentity) {
-            log('Netlify Identity Widget loaded');
             window.netlifyIdentity.on("init", user => {
-                log('Identity Init', user);
                 if (!user) {
                     window.netlifyIdentity.on("login", () => {
                         document.location.href = "/admin/";
                     });
                 }
             });
-        } else {
-            console.error('[CMS Debug] Netlify Identity Widget not loaded');
         }
-
-        // Load home page content
-        async function loadContent() {
-            try {
-                log('Fetching content from', '/content/home.md');
-                const response = await fetch('/content/home.md');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const text = await response.text();
-                log('Raw content received', text);
-                
-                // Split the content at the frontmatter markers
-                const parts = text.split('---');
-                if (parts.length >= 2) {
-                    const yamlContent = parts[1];
-                    log('YAML content', yamlContent);
-                    
-                    const data = jsyaml.load(yamlContent);
-                    log('Parsed data', data);
-                    
-                    // Update page elements with CMS content
-                    const updateElement = (id, value) => {
-                        const element = document.getElementById(id);
-                        if (element && value) {
-                            element.textContent = value;
-                            element.style.removeProperty('display');
-                            log(`Updated ${id}`, value);
-                        } else if (element) {
-                            element.style.display = 'none';
-                            log(`Hiding ${id} due to no content`);
-                        }
-                    };
-
-                    updateElement('main-title', data.title);
-                    updateElement('subtitle', data.subtitle);
-                    updateElement('dates', data.dates);
-                    updateElement('location', data.location);
-                    
-                    // Update background image if it exists
-                    if (data.background_image) {
-                        document.body.style.backgroundImage = `url('${data.background_image}')`;
-                        log('Updated background image', data.background_image);
-                    }
-
-                    // Update ticket buttons
-                    if (data.ticket_buttons && Array.isArray(data.ticket_buttons)) {
-                        const container = document.getElementById('ticket-container');
-                        if (container) {
-                            container.innerHTML = ''; // Clear existing buttons
-                            data.ticket_buttons.forEach(button => {
-                                // Only create button if it has text and link
-                                if (button.text && button.link) {
-                                    const buttonHtml = `
-                                        <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
-                                            <a href="${button.link}" target="${button.target || '_blank'}">${button.text}</a>
-                                        </button>
-                                    `;
-                                    container.innerHTML += buttonHtml;
-                                    log('Added ticket button', button);
-                                }
-                            });
-                            // Hide container if no buttons were added
-                            container.style.display = container.innerHTML ? 'flex' : 'none';
-                        }
-                    }
-                    
-                    // Update floating buttons if they exist
-                    if (data.floating_buttons && Array.isArray(data.floating_buttons)) {
-                        const floatingButtons = document.querySelector('.floating-buttons');
-                        if (floatingButtons) {
-                            floatingButtons.innerHTML = '';
-                            let hasButtons = false;
-                            data.floating_buttons.forEach(button => {
-                                if (button.text && button.link) {
-                                    const buttonHtml = `<button><a href="${button.link}">${button.text}</a></button>`;
-                                    floatingButtons.innerHTML += buttonHtml;
-                                    hasButtons = true;
-                                    log('Added floating button', button);
-                                }
-                            });
-                            // Add partners button
-                            floatingButtons.innerHTML += '<button id="partners-btn">Partners</button>';
-                            
-                            // Add toggle button if not already present
-                            let toggleBtn = document.querySelector('.toggle-floating-buttons');
-                            if (!toggleBtn) {
-                                toggleBtn = document.createElement('div');
-                                toggleBtn.className = 'toggle-floating-buttons';
-                                toggleBtn.textContent = '+';
-                                document.body.appendChild(toggleBtn);
-                            }
-
-                            // Setup toggle functionality
-                            toggleBtn.addEventListener('click', function() {
-                                floatingButtons.classList.toggle('hidden');
-                                this.classList.toggle('active');
-                            });
-
-                            // Setup partners button
-                            document.getElementById('partners-btn')?.addEventListener('click', function() {
-                                document.getElementById('partners-section')?.classList.toggle('active');
-                            });
-                        }
-                    }
-
-                    // Handle social links
-                    if (data.social) {
-                        const socialIcons = document.querySelector('.social-icons');
-                        if (socialIcons) {
-                            let hasSocial = false;
-                            if (data.social.instagram) {
-                                const instagramLink = socialIcons.querySelector('a[href*="instagram"]');
-                                if (instagramLink) {
-                                    instagramLink.href = data.social.instagram;
-                                    instagramLink.style.display = 'flex';
-                                    hasSocial = true;
-                                }
-                            }
-                            if (data.social.facebook) {
-                                const facebookLink = socialIcons.querySelector('a[href*="facebook"]');
-                                if (facebookLink) {
-                                    facebookLink.href = data.social.facebook;
-                                    facebookLink.style.display = 'flex';
-                                    hasSocial = true;
-                                }
-                            }
-                            socialIcons.style.display = hasSocial ? 'flex' : 'none';
-                            log('Updated social links visibility', hasSocial);
-                        }
-                    }
-                }
-            } catch (err) {
-                console.error('[CMS Debug] Error loading content:', err);
-                // Try to load the content directly from the file system as fallback
-                try {
-                    const response = await fetch('content/home.md');
-                    const text = await response.text();
-                    log('Fallback content loaded', text);
-                } catch (fallbackErr) {
-                    console.error('[CMS Debug] Fallback also failed:', fallbackErr);
-                }
-            }
-        }
-
-        // Load content when the page loads
-        window.addEventListener('DOMContentLoaded', loadContent);
-
-        // Wait for DOM content to load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Partners Toggle
-            document.getElementById('partners-btn').addEventListener('click', function() {
-                document.getElementById('partners-section').classList.toggle('active');
-            });
-
-            // Floating Buttons Toggle
-            const toggleBtn = document.querySelector('.toggle-floating-buttons');
-            const floatingButtons = document.querySelector('.floating-buttons');
-            
-            if (toggleBtn && floatingButtons) {
-                toggleBtn.addEventListener('click', function() {
-                    floatingButtons.classList.toggle('hidden');
-                    this.classList.toggle('active');
-                });
-            } else {
-                console.error('Toggle button or floating buttons not found');
-            }
-        });
     </script>
 </body>
 </html>
