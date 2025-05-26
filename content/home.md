@@ -3,7 +3,7 @@ title: A first-of-its-kind light & sound experience
 subtitle: A Descent Into Colour
 dates: Coming Soon
 location: 9/11 Durham Lane, Auckland
-logo: /images/logo1.svg
+background_image: /images/background-image.jpg
 floating_buttons:
   - text: About
     link: about-darklight.html

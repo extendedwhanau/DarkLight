@@ -21,7 +21,7 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string"}
           - {label: "Location", name: "location", widget: "string"}
-          - {label: "Logo", name: "logo", widget: "image", required: true, default: "/images/logo1.svg"}
+          - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"

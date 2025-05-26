@@ -137,6 +137,12 @@
                     updateElement('dates', data.dates);
                     updateElement('location', data.location);
                     
+                    // Update background image if it exists
+                    if (data.background_image) {
+                        document.body.style.backgroundImage = `url('${data.background_image}')`;
+                        log('Updated background image', data.background_image);
+                    }
+                    
                     // Handle buttons if they exist
                     if (data.buttons && Array.isArray(data.buttons) && data.buttons.length > 0) {
                         const container = document.getElementById('buttons-container');
