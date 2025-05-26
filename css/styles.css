@@ -122,41 +122,35 @@ background: url('../images/background-image.jpg');
     width: 625px;
     padding-right: 15px;
     box-sizing: border-box;
+    margin-bottom: 60px; /* Bottom padding for the entire content */
 }
 
 /* Section spacing for about page */
 .about-page .content-column p {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Default paragraph spacing */
 }
 
-/* Remove bottom margin for FAQ answer paragraphs */
-.about-page .content-column .section p:last-child {
-    margin-bottom: 0;
-}
-
-/* Add space between FAQ sections instead */
 .about-page .content-column .section {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Space between FAQ sections */
 }
 
-.about-page .content-column p:last-child {
-    margin-bottom: 60px;  /* Extra space at the bottom */
-}
-
-/* Section title styling */
+/* Title styling */
 .about-page .content-column p[style*="text-decoration: underline"] {
-    margin-top: 40px;
-    margin-bottom: 0; /* Remove space after underlined titles */
+    margin: 40px 0 0; /* Space before new sections, no bottom margin */
 }
 
-/* Add space before the next paragraph after a title */
-.about-page .content-column p[style*="text-decoration: underline"] + p {
-    margin-top: 20px;
-}
-
-/* First section title should not have extra top margin */
 .about-page .content-column p[style*="text-decoration: underline"]:first-child {
-    margin-top: 0;
+    margin-top: 0; /* Remove top margin for first title */
+}
+
+.about-page .content-column p[style*="text-decoration: underline"] + p {
+    margin-top: 20px; /* Space between title and content */
+}
+
+/* Remove extra spacing for last elements */
+.about-page .content-column .section p:last-child,
+.about-page .content-column p:last-child {
+    margin-bottom: 0;
 }
 
 /* Shared button styles */
