@@ -1,6 +1,9 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # Your default branch
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
@@ -13,6 +16,8 @@ collections:
         label: "Home Page"
         file: "content/home.md"
         fields:
+          - {label: "Title", name: "title", widget: "string"}
+          # Add all your fields here
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string"}
