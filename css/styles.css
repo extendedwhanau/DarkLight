@@ -275,7 +275,7 @@ button:hover {
     z-index: 2000;
     text-align: center;
     width: 90%;
-    max-width: 1200px;
+    max-width: 850px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -298,11 +298,12 @@ button:hover {
 
 .partners-logos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     padding: 20px;
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 
 .partners-logos a {
@@ -431,10 +432,9 @@ button:hover {
         width: 100%;
         height: auto;
         padding: 20px 15px;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: -25px; /* Adjust this value to match main content positioning */
     }
 
     #partners-section h2 {
@@ -443,10 +443,8 @@ button:hover {
     }
 
     .partners-logos {
-        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         padding: 0;
-        width: 100%;
     }
 
     .partners-logos img {
