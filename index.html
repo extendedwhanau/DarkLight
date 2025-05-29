@@ -87,6 +87,35 @@
                     if (data.dates) document.getElementById('dates').textContent = data.dates;
                     if (data.location) document.getElementById('location').textContent = data.location;
                     
+                    // Handle partners section
+                    const partnersTitle = document.getElementById('partners-title');
+                    const partnersLogos = document.getElementById('partners-logos');
+                    
+                    if (data.partners_section) {
+                        if (partnersTitle && data.partners_section.title) {
+                            partnersTitle.textContent = data.partners_section.title;
+                        }
+                        
+                        if (partnersLogos && data.partners_section.partners) {
+                            partnersLogos.innerHTML = data.partners_section.partners
+                                .map(partner => `
+                                    <a href="${partner.link}" target="_blank" rel="noopener noreferrer">
+                                        <img src="${partner.logo}" alt="${partner.alt}" loading="lazy">
+                                    </a>
+                                `)
+                                .join('');
+                            
+                            // Ensure all images are loaded
+                            const images = partnersLogos.getElementsByTagName('img');
+                            Array.from(images).forEach(img => {
+                                img.onerror = () => {
+                                    console.error(`Failed to load partner logo: ${img.src}`);
+                                    img.style.display = 'none';
+                                };
+                            });
+                        }
+                    }
+
                     // Handle social icons
                     const socialIcons = document.getElementById('social-icons');
                     if (data.social && socialIcons) {
@@ -128,37 +157,4 @@
                                 partnersSection.classList.add('active');
                                 mainContent.style.opacity = 0;
                             } else {
-                                partnersSection.classList.remove('active');
-                                mainContent.style.opacity = 1;
-                            }
-                        });
-                    }
                     
-                    console.log('Loaded content:', data);
-                }
-            })
-            .catch(err => {
-                console.error('Failed to load content:', err);
-                // Show error state or fallback content
-                const floatingButtons = document.getElementById('floating-buttons');
-                if (floatingButtons) {
-                    floatingButtons.innerHTML = `
-                        <button><a href="about-darklight.html">About</a></button>
-                        <button><a href="faq-darklight.html">FAQs</a></button>
-                    `;
-                }
-            });
-
-        // Netlify Identity
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
-</body>
-</html>

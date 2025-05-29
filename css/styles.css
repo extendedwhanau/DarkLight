@@ -274,6 +274,11 @@ button:hover {
     transition: opacity 0.5s ease;
     z-index: 1000;
     text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #partners-section.active {
@@ -294,6 +299,18 @@ button:hover {
 .partners-logos img {
     max-height: 40px;
     transition: transform 0.3s ease;
+}
+
+.partners-logos a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.partners-logos a:hover {
+    transform: scale(1.1);
 }
 
 /* Mobile styles */
@@ -391,6 +408,33 @@ button:hover {
         height: auto;
         padding: 20px 15px;
         margin-top: -50px; /* Adjust content position on mobile */
+    }
+
+    #partners-section {
+        width: 95%;
+        padding: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    #partners-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .partners-logos {
+        padding-top: 15px;
+        grid-column-gap: 20px;
+        grid-row-gap: 15px;
+    }
+
+    .partners-logos img {
+        max-height: 30px;
+        width: auto;
+    }
+
+    .partners-logos a {
+        padding: 5px;
     }
 }
 
