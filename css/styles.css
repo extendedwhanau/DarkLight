@@ -406,14 +406,11 @@ button:hover {
 
     .about-page .about-title {
         flex: 100%;
-        padding: 0;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
         text-align: center;
     }
 
-    .about-page .container {
-        margin-top: 10vh;
-        margin-bottom: 10vh;
-    }
 
     .about-page .content-column {
         width: 100%;
