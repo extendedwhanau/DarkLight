@@ -216,11 +216,12 @@ button:hover {
 
 /* Floating elements */
 .floating-buttons {
-    position: absolute;
+    position: fixed;
     right: 15px;
     bottom: 15px;
     display: flex;
     gap: 10px;
+    z-index: 1000;
 }
 
 .social-icons {
@@ -346,4 +347,137 @@ button:hover {
     .homepage .content {
         width: 100%;
         padding-left: 15px;
-        padding-right:
+        padding-right: 15px;
+    }
+
+    .homepage h1 {
+        font-size: 1.1rem;
+    }
+
+    .homepage h2 {
+        font-size: 0.6rem;
+    }
+
+    .social-icons {
+        bottom: 10px;
+        left: 10px;
+        transform: none;
+        gap: 5px;
+        z-index: 1000;
+        position: fixed;
+        display: flex !important;
+    }
+
+    .social-icons a {
+        height: 30px;
+        width: 30px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .ticket-container {
+        gap: 5px;
+    }
+
+    .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+        gap: 5px;
+        transform: none;
+        z-index: 1000;
+        position: fixed;
+        display: flex !important;
+        opacity: 1;
+    }
+
+    button {
+        height: 30px;
+        padding: 10px 14px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .about-page p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 1px;
+    }
+
+    .about-page .about-title {
+        flex: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .about-page .container {
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+    .about-page .content-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .homepage {
+        background-position: center center;
+        background-attachment: scroll;
+        height: 100vh; /* Ensure full height on mobile */
+        width: 100%; /* Use 100% instead of 100vw to prevent horizontal scroll */
+        overflow-x: hidden;
+    }
+
+    .homepage .content {
+        width: 100%;
+        height: auto;
+        padding: 20px 15px;
+        margin-top: -50px; /* Adjust content position on mobile */
+    }
+
+    #partners-section {
+        width: 100%;
+        height: auto;
+        padding: 20px 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #partners-section h2 {
+        font-size: 0.6rem;
+        margin-bottom: 30px;
+    }
+
+    .partners-logos {
+        gap: 20px;
+        padding: 0;
+    }
+
+    .partners-logos img {
+        max-height: 30px;
+    }
+
+    .partners-logos a {
+        padding: 5px;
+    }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+    .homepage {
+        min-height: 100vh;
+    }
+
+    .homepage .content {
+        margin-top: 0;
+        padding: 60px 15px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .homepage .content {
+        width: 80%;
+        height: auto;
+        max-width: 850px;
+    }
+}
