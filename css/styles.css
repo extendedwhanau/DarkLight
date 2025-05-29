@@ -42,19 +42,25 @@ body {
 
 /* Homepage specific styles */
 .homepage {
-background: url('../images/background-image.jpg');
+    background: url('../images/background-image.jpg') center center no-repeat;
+    background-size: cover;
     height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
     text-align: center;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-      background-size: cover;
- position: relative;
-  min-height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+    overflow: hidden;
+}
+
+/* Add object-fit support for browsers that need it */
+@supports (-webkit-overflow-scrolling: touch) {
+    .homepage {
+        background-attachment: scroll;
+    }
 }
 
 .homepage .logo {
@@ -321,11 +327,16 @@ button:hover {
         left: 10px;
         transform: none;
         gap: 5px;
+        z-index: 1000;
+        position: fixed;
+        display: flex !important;
     }
 
     .social-icons a {
         height: 30px;
         width: 30px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.2);
     }
 
     .ticket-container {
@@ -337,11 +348,16 @@ button:hover {
         right: 10px;
         gap: 5px;
         transform: none;
+        z-index: 1000;
+        position: fixed;
+        display: flex !important;
     }
 
     button {
         height: 30px;
         padding: 10px 14px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.2);
     }
 
     .about-page p {
@@ -360,5 +376,39 @@ button:hover {
     .about-page .content-column {
         width: 100%;
         padding: 0;
+    }
+
+    .homepage {
+        background-position: center center;
+        background-attachment: scroll;
+        height: 100vh; /* Ensure full height on mobile */
+        width: 100%; /* Use 100% instead of 100vw to prevent horizontal scroll */
+        overflow-x: hidden;
+    }
+
+    .homepage .content {
+        width: 100%;
+        height: auto;
+        padding: 20px 15px;
+        margin-top: -50px; /* Adjust content position on mobile */
+    }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+    .homepage {
+        min-height: 100vh;
+    }
+
+    .homepage .content {
+        margin-top: 0;
+        padding: 60px 15px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .homepage .content {
+        width: 80%;
+        height: auto;
+        max-width: 850px;
     }
 }

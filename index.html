@@ -56,11 +56,11 @@
     </div>
 
     <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://instagram.com/darklight_experience" target="_blank">
+    <div class="social-icons" id="social-icons">
+        <a href="https://instagram.com/darklight_experience" target="_blank" rel="noopener noreferrer">
             <img src="images/Instagram.svg" alt="Instagram">
         </a>
-        <a href="https://facebook.com/experiencedarklight" target="_blank">
+        <a href="https://facebook.com/experiencedarklight" target="_blank" rel="noopener noreferrer">
             <img src="images/Facebook.svg" alt="Facebook">
         </a>
     </div>
@@ -87,46 +87,27 @@
                     if (data.dates) document.getElementById('dates').textContent = data.dates;
                     if (data.location) document.getElementById('location').textContent = data.location;
                     
-                    // Handle partners section
-                    if (data.partners_section) {
-                        const partnersTitle = document.getElementById('partners-title');
-                        const partnersLogos = document.getElementById('partners-logos');
-                        
-                        if (partnersTitle && data.partners_section.title) {
-                            partnersTitle.textContent = data.partners_section.title;
+                    // Handle social icons
+                    const socialIcons = document.getElementById('social-icons');
+                    if (data.social && socialIcons) {
+                        if (data.social.instagram) {
+                            const instagramLink = socialIcons.querySelector('a[href*="instagram"]');
+                            if (instagramLink) instagramLink.href = data.social.instagram;
                         }
-                        
-                        if (partnersLogos && data.partners_section.partners) {
-                            partnersLogos.innerHTML = data.partners_section.partners
-                                .map(partner => `
-                                    <a href="${partner.link}" target="_blank">
-                                        <img src="${partner.logo}" alt="${partner.alt}">
-                                    </a>
-                                `)
-                                .join('');
+                        if (data.social.facebook) {
+                            const facebookLink = socialIcons.querySelector('a[href*="facebook"]');
+                            if (facebookLink) facebookLink.href = data.social.facebook;
                         }
-                    }
-                    
-                    // Handle ticket buttons
-                    const ticketContainer = document.getElementById('ticket-container');
-                    if (data.ticket_buttons && data.ticket_buttons.length > 0) {
-                        ticketContainer.innerHTML = data.ticket_buttons
-                            .map(button => `
-                                <button class="ticket-button${button.sold_out ? ' sold-out' : ''}">
-                                    <a href="${button.link}" target="${button.target || '_blank'}">${button.text}${button.sold_out ? ' (Sold Out)' : ''}</a>
-                                </button>
-                            `)
-                            .join('');
                     }
 
                     // Handle floating buttons
                     const floatingButtonsContainer = document.getElementById('floating-buttons');
-                    if (data.floating_buttons && data.floating_buttons.length > 0) {
+                    if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
                         floatingButtonsContainer.innerHTML = data.floating_buttons
                             .filter(button => button.visible)
                             .map(button => `
                                 <button${button.text === 'Partners' ? ' id="partners-btn"' : ''}>
-                                    <a href="${button.link}">${button.text}</a>
+                                    <a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a>
                                 </button>
                             `)
                             .join('');
@@ -137,7 +118,7 @@
                     const partnersSection = document.getElementById('partners-section');
                     const mainContent = document.getElementById('main-content');
                     
-                    if (partnersBtn) {
+                    if (partnersBtn && partnersSection && mainContent) {
                         let showingPartners = false;
                         
                         partnersBtn.addEventListener('click', (e) => {
@@ -156,7 +137,17 @@
                     console.log('Loaded content:', data);
                 }
             })
-            .catch(err => console.error('Failed to load content:', err));
+            .catch(err => {
+                console.error('Failed to load content:', err);
+                // Show error state or fallback content
+                const floatingButtons = document.getElementById('floating-buttons');
+                if (floatingButtons) {
+                    floatingButtons.innerHTML = `
+                        <button><a href="about-darklight.html">About</a></button>
+                        <button><a href="faq-darklight.html">FAQs</a></button>
+                    `;
+                }
+            });
 
         // Netlify Identity
         if (window.netlifyIdentity) {
