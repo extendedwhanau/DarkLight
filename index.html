@@ -150,6 +150,7 @@
                             
                         // Set up partners toggle functionality
                         const partnersBtn = document.getElementById('partners-btn');
+                        const mainContent = document.getElementById('main-content');
                         
                         if (partnersBtn && partnersSection) {
                             console.log('Setting up partners button click handler');
@@ -163,9 +164,13 @@
                                 
                                 if (showingPartners) {
                                     partnersSection.classList.add('active');
+                                    mainContent.style.opacity = '0';
+                                    mainContent.style.visibility = 'hidden';
                                     document.body.style.overflow = 'hidden';
                                 } else {
                                     partnersSection.classList.remove('active');
+                                    mainContent.style.opacity = '1';
+                                    mainContent.style.visibility = 'visible';
                                     document.body.style.overflow = '';
                                 }
                             });
@@ -175,6 +180,8 @@
                                 if (showingPartners && !partnersSection.contains(e.target) && e.target !== partnersBtn) {
                                     showingPartners = false;
                                     partnersSection.classList.remove('active');
+                                    mainContent.style.opacity = '1';
+                                    mainContent.style.visibility = 'visible';
                                     document.body.style.overflow = '';
                                 }
                             });
