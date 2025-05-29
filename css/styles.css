@@ -276,11 +276,7 @@ button:hover {
     text-align: center;
     width: 90%;
     max-width: 1200px;
-    background: rgba(0, 0, 0, 0.95);
     padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 #partners-section.active {
@@ -292,7 +288,9 @@ button:hover {
 #partners-section h2 {
     color: #D3D3D3;
     margin-bottom: 20px;
-    font-size: 1.5rem;
+    font-size: .8rem;
+    letter-spacing: .08rem;
+    font-weight: 400;
 }
 
 .partners-logos {
@@ -432,7 +430,6 @@ button:hover {
         top: 0;
         left: 0;
         transform: none;
-        border-radius: 0;
         padding: 60px 15px;
         overflow-y: auto;
         display: flex;
@@ -442,7 +439,7 @@ button:hover {
     }
 
     #partners-section h2 {
-        font-size: 1.2rem;
+        font-size: 0.6rem;
         margin-bottom: 30px;
     }
 
