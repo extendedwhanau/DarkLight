@@ -90,6 +90,9 @@
                     // Handle partners section
                     const partnersTitle = document.getElementById('partners-title');
                     const partnersLogos = document.getElementById('partners-logos');
+                    const partnersSection = document.getElementById('partners-section');
+                    
+                    console.log('Partners data:', data.partners_section);
                     
                     if (data.partners_section) {
                         if (partnersTitle && data.partners_section.title) {
@@ -97,10 +100,11 @@
                         }
                         
                         if (partnersLogos && data.partners_section.partners) {
+                            console.log('Setting up partners logos');
                             partnersLogos.innerHTML = data.partners_section.partners
                                 .map(partner => `
                                     <a href="${partner.link}" target="_blank" rel="noopener noreferrer">
-                                        <img src="${partner.logo}" alt="${partner.alt}" loading="lazy">
+                                        <img src="${partner.logo}" alt="${partner.alt}" loading="lazy" onerror="this.style.display='none'">
                                     </a>
                                 `)
                                 .join('');
@@ -111,6 +115,9 @@
                                 img.onerror = () => {
                                     console.error(`Failed to load partner logo: ${img.src}`);
                                     img.style.display = 'none';
+                                };
+                                img.onload = () => {
+                                    console.log(`Successfully loaded partner logo: ${img.src}`);
                                 };
                             });
                         }
@@ -140,21 +147,65 @@
                                 </button>
                             `)
                             .join('');
+                            
+                        // Set up partners toggle functionality
+                        const partnersBtn = document.getElementById('partners-btn');
+                        
+                        if (partnersBtn && partnersSection) {
+                            console.log('Setting up partners button click handler');
+                            let showingPartners = false;
+                            
+                            partnersBtn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                showingPartners = !showingPartners;
+                                console.log('Partners button clicked, showing:', showingPartners);
+                                
+                                if (showingPartners) {
+                                    partnersSection.classList.add('active');
+                                    document.body.style.overflow = 'hidden';
+                                } else {
+                                    partnersSection.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                            });
+
+                            // Close partners section when clicking outside
+                            document.addEventListener('click', (e) => {
+                                if (showingPartners && !partnersSection.contains(e.target) && e.target !== partnersBtn) {
+                                    showingPartners = false;
+                                    partnersSection.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                            });
+                        }
                     }
                     
-                    // Set up partners toggle functionality
-                    const partnersBtn = document.getElementById('partners-btn');
-                    const partnersSection = document.getElementById('partners-section');
-                    const mainContent = document.getElementById('main-content');
-                    
-                    if (partnersBtn && partnersSection && mainContent) {
-                        let showingPartners = false;
-                        
-                        partnersBtn.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            showingPartners = !showingPartners;
-                            if (showingPartners) {
-                                partnersSection.classList.add('active');
-                                mainContent.style.opacity = 0;
-                            } else {
-                    
+                    console.log('Loaded content:', data);
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load content:', err);
+                // Show error state or fallback content
+                const floatingButtons = document.getElementById('floating-buttons');
+                if (floatingButtons) {
+                    floatingButtons.innerHTML = `
+                        <button><a href="about-darklight.html">About</a></button>
+                        <button><a href="faq-darklight.html">FAQs</a></button>
+                    `;
+                }
+            });
+
+        // Netlify Identity
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
