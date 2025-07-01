@@ -3,7 +3,7 @@ title: A first-of-its-kind light & sound experience
 subtitle: A Descent Into Colour
 dates: 1–4th May 2025
 location: Stay tuned for future events
-background_image: /images/background-image.jpg
+background_image: https://vimeo.com/1092003281
 ticket_buttons: []
 floating_buttons:
   - text: About
