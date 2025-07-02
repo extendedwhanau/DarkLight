@@ -1,8 +1,8 @@
 ---
 title: Let darkness guide you. Let light transform you.
 subtitle: WATCH THIS SPACE
-dates: .
-location: .
+dates: ""
+location: ""
 background_image: /images/uploads/amd-darklight-testgrade.jpg
 ticket_buttons: []
 floating_buttons:
