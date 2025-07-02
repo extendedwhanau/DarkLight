@@ -1,6 +1,6 @@
 ---
 title: Let darkness guide you. Let light transform you.
-subtitle: A Descent Into Colour
+subtitle: .
 dates: Dates TBC
 location: ""
 background_image: /images/uploads/amd-darklight-testgrade.jpg
