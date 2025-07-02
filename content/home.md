@@ -1,6 +1,6 @@
 ---
 title: Let darkness guide you. Let light transform you.
-subtitle: WATCH THIS SPACE
+subtitle: COMING SOON
 dates: ""
 location: ""
 background_image: /images/uploads/amd-darklight-testgrade.jpg
