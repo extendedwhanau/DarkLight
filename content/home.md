@@ -1,8 +1,8 @@
 ---
-title: Let darkness guide you. Let light transform you.
-subtitle: .
+title: .
+subtitle: Let darkness guide you. Let light transform you.
 dates: Dates TBC
-location: ""
+location: .
 background_image: /images/uploads/amd-darklight-testgrade.jpg
 ticket_buttons: []
 floating_buttons:
