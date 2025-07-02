@@ -1,8 +1,8 @@
 ---
-title: A first-of-its-kind light & sound experience
+title: Let darkness guide you. Let light transform you.
 subtitle: A Descent Into Colour
-dates: 1–4th May 2025
-location: Stay tuned for future events
+dates: Dates TBC
+location: ""
 background_image: /images/uploads/amd-darklight-testgrade.jpg
 ticket_buttons: []
 floating_buttons:
