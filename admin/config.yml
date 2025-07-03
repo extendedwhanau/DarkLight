@@ -24,21 +24,11 @@ collections:
           - label: "Background Type"
             name: "background_type"
             widget: "select"
-            options: ["image", "video", "uploaded_video"]
+            options: ["image", "video"]
             default: "image"
-            hint: "Choose between a static image, Vimeo video, or uploaded video file background"
+            hint: "Choose between a static image or auto-playing Vimeo video background"
           - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Enter the full Vimeo URL (e.g., https://vimeo.com/123456789)"}
-          - label: "Uploaded Video File"
-            name: "uploaded_video"
-            widget: "file"
-            required: false
-            media_library:
-              config:
-                multiple: false
-                public_folder: "/images/uploads"
-                media_folder: "images/uploads"
-            hint: "Upload a .mp4 or .mov video file for the homepage background"
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
