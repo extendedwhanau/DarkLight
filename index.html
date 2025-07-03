@@ -25,7 +25,7 @@
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
 
-<body class="homepage">
+<body class="homepage loading">
     <!-- Background Video Container -->
     <div id="background-video-container" style="display: none;">
         <iframe id="background-video" 
@@ -112,6 +112,7 @@
                             // Fade out overlay when video loads
                             backgroundVideo.onload = () => {
                                 document.getElementById('video-fade').style.opacity = '0';
+                                document.body.classList.remove('loading');
                             };
                         }
                     } else if (data.background_image) {
@@ -119,6 +120,7 @@
                         backgroundVideoContainer.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
                         document.getElementById('video-fade').style.opacity = '0';
+                        document.body.classList.remove('loading');
                     }
                     
                     // Update page elements

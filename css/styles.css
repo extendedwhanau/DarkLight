@@ -530,3 +530,16 @@ button:hover {
         max-width: 850px;
     }
 }
+
+body.loading .logo,
+body.loading .content,
+body.loading .social-icons,
+body.loading .floating-buttons,
+body.loading #partners-section {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+body.loading {
+    background-image: none !important;
+}
