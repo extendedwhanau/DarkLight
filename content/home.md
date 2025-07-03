@@ -3,7 +3,9 @@ title: Let darkness guide you. Let light transform you.
 subtitle: COMING SOON
 dates: ""
 location: ""
+background_type: image
 background_image: /images/uploads/amd-darklight-testgrade.jpg
+vimeo_url: ""
 ticket_buttons: []
 floating_buttons:
   - text: About

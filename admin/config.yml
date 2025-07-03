@@ -21,7 +21,14 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string", required: false}
           - {label: "Location", name: "location", widget: "string", required: false}
-          - {label: "Background Image", name: "background_image", widget: "image", required: true, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
+          - label: "Background Type"
+            name: "background_type"
+            widget: "select"
+            options: ["image", "video"]
+            default: "image"
+            hint: "Choose between a static image or auto-playing video background"
+          - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
+          - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Enter the full Vimeo URL (e.g., https://vimeo.com/123456789)"}
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"

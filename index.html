@@ -26,6 +26,16 @@
 </head>
 
 <body class="homepage">
+    <!-- Background Video Container -->
+    <div id="background-video-container" style="display: none;">
+        <iframe id="background-video" 
+                src="" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
     <!-- Logo (Simplified version) -->
      <div class="logo">
         <a href="index.html">
@@ -84,6 +94,26 @@
                 if (parts.length >= 2) {
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
+                    
+                    // Handle background (image or video)
+                    const backgroundVideoContainer = document.getElementById('background-video-container');
+                    const backgroundVideo = document.getElementById('background-video');
+                    
+                    if (data.background_type === 'video' && data.vimeo_url) {
+                        // Extract Vimeo ID from URL
+                        const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
+                        if (vimeoMatch) {
+                            const vimeoId = vimeoMatch[1];
+                            const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&controls=0&background=1&autopause=0`;
+                            backgroundVideo.src = embedUrl;
+                            backgroundVideoContainer.style.display = 'block';
+                            document.body.style.backgroundImage = 'none';
+                        }
+                    } else if (data.background_image) {
+                        // Use background image
+                        backgroundVideoContainer.style.display = 'none';
+                        document.body.style.backgroundImage = `url(${data.background_image})`;
+                    }
                     
                     // Update page elements
                     if (data.title) document.getElementById('title').textContent = data.title;
