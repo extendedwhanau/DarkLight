@@ -568,8 +568,12 @@ body.loading {
     padding: 2rem 2.5rem;
     background: rgba(0,0,0,0.7);
     border-radius: 1.5rem;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: .8rem;
+    letter-spacing: .08rem;
+    font-weight: 400;
+    color: #D3D3D3;
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    text-align: center;
 }
 
 @media (min-width: 769px) {
