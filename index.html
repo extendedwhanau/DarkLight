@@ -116,10 +116,7 @@
         autoplay
         playsinline
         preload="auto"
-    >
-        <source id="mux-hls-source" src="" type="application/x-mpegURL">
-        <source id="mux-mp4-source" src="" type="video/mp4">
-    </video>
+    ></video>
 
     <!-- JavaScript -->
     <script>
@@ -142,20 +139,37 @@
                     const backgroundVideo = document.getElementById('background-video');
                     const muxPlayer = document.getElementById('mux-background-video');
                     const muxNative = document.getElementById('mux-background-native');
-                    const muxHlsSource = document.getElementById('mux-hls-source');
-                    const muxMp4Source = document.getElementById('mux-mp4-source');
                     
                     if (data.background_type === 'mux' && data.mux_url) {
-                        // Hide Vimeo and mux-player
                         backgroundVideo.style.display = 'none';
                         muxPlayer.style.display = 'none';
-                        // Show native video
                         muxNative.style.display = 'block';
-                        muxHlsSource.src = data.mux_url;
-                        muxMp4Source.src = data.mux_mp4 || '';
-                        muxNative.load();
                         backgroundVideoContainer.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
+
+                        // Remove all sources first
+                        while (muxNative.firstChild) {
+                            muxNative.removeChild(muxNative.firstChild);
+                        }
+
+                        function canPlayHLS() {
+                            const v = document.createElement('video');
+                            return v.canPlayType('application/vnd.apple.mpegURL') !== '';
+                        }
+                        if (canPlayHLS()) {
+                            // Safari: use HLS
+                            const hlsSource = document.createElement('source');
+                            hlsSource.src = data.mux_url;
+                            hlsSource.type = 'application/x-mpegURL';
+                            muxNative.appendChild(hlsSource);
+                        } else if (data.mux_mp4) {
+                            // Chrome/Firefox/Edge: use MP4
+                            const mp4Source = document.createElement('source');
+                            mp4Source.src = data.mux_mp4;
+                            mp4Source.type = 'video/mp4';
+                            muxNative.appendChild(mp4Source);
+                        }
+                        muxNative.load();
 
                         if (isMobile()) {
                             const tapOverlay = document.getElementById('video-tap-overlay');
