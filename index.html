@@ -35,6 +35,7 @@
                 allowfullscreen>
         </iframe>
     </div>
+    <div id="video-fade"></div>
 
     <!-- Logo (Simplified version) -->
      <div class="logo">
@@ -108,11 +109,16 @@
                             backgroundVideo.src = embedUrl;
                             backgroundVideoContainer.style.display = 'block';
                             document.body.style.backgroundImage = 'none';
+                            // Fade out overlay when video loads
+                            backgroundVideo.onload = () => {
+                                document.getElementById('video-fade').style.opacity = '0';
+                            };
                         }
                     } else if (data.background_image) {
                         // Use background image
                         backgroundVideoContainer.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
+                        document.getElementById('video-fade').style.opacity = '0';
                     }
                     
                     // Update page elements
