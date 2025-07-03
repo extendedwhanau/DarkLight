@@ -24,11 +24,16 @@ collections:
           - label: "Background Type"
             name: "background_type"
             widget: "select"
-            options: ["image", "video"]
+            options: ["image", "video", "mux"]
             default: "image"
-            hint: "Choose between a static image or auto-playing Vimeo video background"
+            hint: "Choose between a static image, Vimeo video, or Mux video background"
           - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Enter the full Vimeo URL (e.g., https://vimeo.com/123456789)"}
+          - label: "Mux Playback ID"
+            name: "mux_playback_id"
+            widget: "string"
+            required: false
+            hint: "Paste your Mux Playback ID (e.g., E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM)"
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"

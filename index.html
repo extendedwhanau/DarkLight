@@ -22,6 +22,8 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+    
     <title>DARKLIGHT Immersive Light & Sound Exhibition</title>
 </head>
 
@@ -36,6 +38,15 @@
                 playsinline
                 webkit-playsinline
         ></iframe>
+        <mux-player id="mux-background-video"
+            style="width:100vw;height:100vh;object-fit:cover;position:absolute;top:0;left:0;z-index:-1;display:none;"
+            muted
+            loop
+            autoplay
+            playsinline
+            preload="auto"
+            background>
+        </mux-player>
     </div>
     <div id="video-fade"></div>
     <div id="video-tap-overlay" style="display:none;">
@@ -112,8 +123,39 @@
                     // Handle background (image or video)
                     const backgroundVideoContainer = document.getElementById('background-video-container');
                     const backgroundVideo = document.getElementById('background-video');
+                    const muxPlayer = document.getElementById('mux-background-video');
                     
-                    if (data.background_type === 'video' && data.vimeo_url) {
+                    if (data.background_type === 'mux' && data.mux_playback_id) {
+                        // Hide Vimeo iframe
+                        backgroundVideo.style.display = 'none';
+                        // Show Mux player
+                        muxPlayer.style.display = 'block';
+                        muxPlayer.setAttribute('playback-id', data.mux_playback_id);
+                        backgroundVideoContainer.style.display = 'block';
+                        document.body.style.backgroundImage = 'none';
+
+                        if (isMobile()) {
+                            const tapOverlay = document.getElementById('video-tap-overlay');
+                            tapOverlay.style.display = 'flex';
+                            tapOverlay.style.opacity = '1';
+                            tapOverlay.onclick = function() {
+                                tapOverlay.style.opacity = '0';
+                                setTimeout(() => { tapOverlay.style.display = 'none'; }, 500);
+                                muxPlayer.play();
+                                document.getElementById('video-fade').style.opacity = '0';
+                                document.body.classList.remove('loading');
+                            };
+                        } else {
+                            muxPlayer.addEventListener('loadeddata', () => {
+                                document.getElementById('video-fade').style.opacity = '0';
+                                document.body.classList.remove('loading');
+                            });
+                        }
+                    } else if (data.background_type === 'video' && data.vimeo_url) {
+                        // Hide Mux player
+                        muxPlayer.style.display = 'none';
+                        // Show Vimeo iframe
+                        backgroundVideo.style.display = 'block';
                         if (isMobile()) {
                             // Show tap overlay
                             const tapOverlay = document.getElementById('video-tap-overlay');
@@ -152,7 +194,9 @@
                             }
                         }
                     } else if (data.background_image) {
-                        // Use background image
+                        // Hide both video players
+                        muxPlayer.style.display = 'none';
+                        backgroundVideo.style.display = 'none';
                         backgroundVideoContainer.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
                         document.getElementById('video-fade').style.opacity = '0';
