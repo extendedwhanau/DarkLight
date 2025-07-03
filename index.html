@@ -116,7 +116,10 @@
         autoplay
         playsinline
         preload="auto"
-    ></video>
+    >
+        <source id="mux-hls-source" src="" type="application/x-mpegURL">
+        <source id="mux-mp4-source" src="" type="video/mp4">
+    </video>
 
     <!-- JavaScript -->
     <script>
@@ -139,6 +142,8 @@
                     const backgroundVideo = document.getElementById('background-video');
                     const muxPlayer = document.getElementById('mux-background-video');
                     const muxNative = document.getElementById('mux-background-native');
+                    const muxHlsSource = document.getElementById('mux-hls-source');
+                    const muxMp4Source = document.getElementById('mux-mp4-source');
                     
                     if (data.background_type === 'mux' && data.mux_url) {
                         // Hide Vimeo and mux-player
@@ -146,7 +151,9 @@
                         muxPlayer.style.display = 'none';
                         // Show native video
                         muxNative.style.display = 'block';
-                        muxNative.src = data.mux_url;
+                        muxHlsSource.src = data.mux_url;
+                        muxMp4Source.src = data.mux_mp4 || '';
+                        muxNative.load();
                         backgroundVideoContainer.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
 

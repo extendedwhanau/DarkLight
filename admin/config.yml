@@ -34,6 +34,11 @@ collections:
             widget: "string"
             required: false
             hint: "Paste your full Mux video URL (e.g., https://stream.mux.com/PLAYBACK_ID.m3u8 or .mp4)"
+          - label: "Mux MP4 Video URL (optional)"
+            name: "mux_mp4"
+            widget: "string"
+            required: false
+            hint: "Paste your Mux MP4 video URL (e.g., https://stream.mux.com/PLAYBACK_ID/medium.mp4) for desktop fallback."
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
