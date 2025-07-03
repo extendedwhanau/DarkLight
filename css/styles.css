@@ -585,18 +585,18 @@ body.loading {
 /* Ensure Mux Player background video always covers the viewport */
 #mux-background-video,
 mux-player#mux-background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     min-width: 100vw;
     min-height: 100vh;
+    width: 177.78vh;
+    height: 56.25vw;
+    transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;
     border: none;
     background: transparent;
     z-index: -1;
     display: block;
-    transform: none;
 }
