@@ -543,3 +543,37 @@ body.loading #partners-section {
 body.loading {
     background-image: none !important;
 }
+
+#video-tap-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family: inherit;
+    text-align: center;
+    transition: opacity 0.5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#video-tap-overlay span {
+    padding: 2rem 2.5rem;
+    background: rgba(0,0,0,0.7);
+    border-radius: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+@media (min-width: 769px) {
+    #video-tap-overlay {
+        display: none !important;
+    }
+}

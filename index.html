@@ -38,6 +38,9 @@
         ></iframe>
     </div>
     <div id="video-fade"></div>
+    <div id="video-tap-overlay" style="display:none;">
+        <span>Tap to start experience</span>
+    </div>
     <button id="video-play-btn" style="display:none;" aria-label="Play background video">
         ▶
     </button>
@@ -111,17 +114,42 @@
                     const backgroundVideo = document.getElementById('background-video');
                     
                     if (data.background_type === 'video' && data.vimeo_url) {
-                        const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
-                        if (vimeoMatch) {
-                            const vimeoId = vimeoMatch[1];
-                            const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
-                            backgroundVideo.src = embedUrl;
-                            backgroundVideoContainer.style.display = 'block';
-                            document.body.style.backgroundImage = 'none';
-                            backgroundVideo.onload = () => {
-                                document.getElementById('video-fade').style.opacity = '0';
-                                document.body.classList.remove('loading');
+                        if (isMobile()) {
+                            // Show tap overlay
+                            const tapOverlay = document.getElementById('video-tap-overlay');
+                            tapOverlay.style.display = 'flex';
+                            tapOverlay.style.opacity = '1';
+                            tapOverlay.onclick = function() {
+                                tapOverlay.style.opacity = '0';
+                                setTimeout(() => { tapOverlay.style.display = 'none'; }, 500);
+                                // Now load and play video
+                                const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
+                                if (vimeoMatch) {
+                                    const vimeoId = vimeoMatch[1];
+                                    const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
+                                    backgroundVideo.src = embedUrl;
+                                    backgroundVideoContainer.style.display = 'block';
+                                    document.body.style.backgroundImage = 'none';
+                                    backgroundVideo.onload = () => {
+                                        document.getElementById('video-fade').style.opacity = '0';
+                                        document.body.classList.remove('loading');
+                                    };
+                                }
                             };
+                        } else {
+                            // Desktop: load video immediately
+                            const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
+                            if (vimeoMatch) {
+                                const vimeoId = vimeoMatch[1];
+                                const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
+                                backgroundVideo.src = embedUrl;
+                                backgroundVideoContainer.style.display = 'block';
+                                document.body.style.backgroundImage = 'none';
+                                backgroundVideo.onload = () => {
+                                    document.getElementById('video-fade').style.opacity = '0';
+                                    document.body.classList.remove('loading');
+                                };
+                            }
                         }
                     } else if (data.background_image) {
                         // Use background image
