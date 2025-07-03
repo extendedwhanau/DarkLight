@@ -87,6 +87,17 @@ body {
     line-height: 125%;
 }
 
+.homepage h1 #dates-container,
+.homepage h1 #location-container {
+    margin: 0;
+    padding: 0;
+}
+
+.homepage h1 #dates-container:empty,
+.homepage h1 #location-container:empty {
+    display: none;
+}
+
 .homepage h2 {
     font-size: .8rem;
     letter-spacing: .08rem;

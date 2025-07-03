@@ -37,9 +37,13 @@
     <div class="content" id="main-content">
         <h2 id="subtitle">A first-of-its-kind light & sound experience</h2>
         <h1>
-            <span id="title">A Descent Into Colour</span><br>
-            <span id="dates">2-4th May 2025</span><br>
-            <span id="location">9/11 Durham Lane, Auckland</span>
+            <span id="title">A Descent Into Colour</span>
+            <div id="dates-container">
+                <span id="dates">2-4th May 2025</span>
+            </div>
+            <div id="location-container">
+                <span id="location">9/11 Durham Lane, Auckland</span>
+            </div>
         </h1>
         
         <div class="ticket-container" id="ticket-container">
@@ -84,8 +88,26 @@
                     // Update page elements
                     if (data.title) document.getElementById('title').textContent = data.title;
                     if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
-                    if (data.dates) document.getElementById('dates').textContent = data.dates;
-                    if (data.location) document.getElementById('location').textContent = data.location;
+                    
+                    // Handle dates - hide container if empty
+                    const datesContainer = document.getElementById('dates-container');
+                    const datesElement = document.getElementById('dates');
+                    if (data.dates && data.dates.trim()) {
+                        datesElement.textContent = data.dates;
+                        datesContainer.style.display = 'block';
+                    } else {
+                        datesContainer.style.display = 'none';
+                    }
+                    
+                    // Handle location - hide container if empty
+                    const locationContainer = document.getElementById('location-container');
+                    const locationElement = document.getElementById('location');
+                    if (data.location && data.location.trim()) {
+                        locationElement.textContent = data.location;
+                        locationContainer.style.display = 'block';
+                    } else {
+                        locationContainer.style.display = 'none';
+                    }
                     
                     // Handle partners section
                     const partnersTitle = document.getElementById('partners-title');
