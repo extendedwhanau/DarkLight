@@ -5,7 +5,7 @@ dates: ""
 location: ""
 background_type: video
 background_image: /images/uploads/amd-darklight-testgrade.jpg
-vimeo_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
+vimeo_url: https://vimeo.com/1092003281
 ticket_buttons: []
 floating_buttons:
   - text: About
