@@ -1,12 +1,9 @@
 ---
-title: Let darkness guide you. Let light transform you.
-subtitle: COMING SOON
 dates: ""
-location: ""
 background_type: mux
 background_image: /images/uploads/amd-darklight-testgrade.jpg
-vimeo_url: https://vimeo.com/1092003281
-mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.mp4
+mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
+mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.mp4
 ticket_buttons: []
 floating_buttons:
   - text: About
@@ -25,6 +22,10 @@ social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
 mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
+title: Let darkness guide you. Let light transform you.
+subtitle: COMING SOON
+location: ""
+vimeo_url: https://vimeo.com/1092003281
 partners_section:
   title: Special thanks
   partners:
