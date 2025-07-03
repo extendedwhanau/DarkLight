@@ -33,7 +33,7 @@ collections:
             name: "mux_url"
             widget: "string"
             required: false
-            hint: "Paste your full Mux video URL (e.g., https://stream.mux.com/PLAYBACK_ID.m3u8 or .mp4)"
+            hint: "Paste your full Mux video URL (e.g., https://stream.mux.com/PLAYBACK_ID.m3u8)"
           - label: "Mux MP4 Video URL (optional)"
             name: "mux_mp4"
             widget: "string"

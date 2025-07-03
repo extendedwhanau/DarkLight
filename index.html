@@ -140,7 +140,7 @@
                     const muxPlayer = document.getElementById('mux-background-video');
                     const muxNative = document.getElementById('mux-background-native');
                     
-                    if (data.background_type === 'mux' && data.mux_url) {
+                    if (data.background_type === 'mux' && data.mux_mp4) {
                         backgroundVideo.style.display = 'none';
                         muxPlayer.style.display = 'none';
                         muxNative.style.display = 'block';
@@ -152,23 +152,10 @@
                             muxNative.removeChild(muxNative.firstChild);
                         }
 
-                        function canPlayHLS() {
-                            const v = document.createElement('video');
-                            return v.canPlayType('application/vnd.apple.mpegURL') !== '';
-                        }
-                        if (canPlayHLS()) {
-                            // Safari: use HLS
-                            const hlsSource = document.createElement('source');
-                            hlsSource.src = data.mux_url;
-                            hlsSource.type = 'application/x-mpegURL';
-                            muxNative.appendChild(hlsSource);
-                        } else if (data.mux_mp4) {
-                            // Chrome/Firefox/Edge: use MP4
-                            const mp4Source = document.createElement('source');
-                            mp4Source.src = data.mux_mp4;
-                            mp4Source.type = 'video/mp4';
-                            muxNative.appendChild(mp4Source);
-                        }
+                        const mp4Source = document.createElement('source');
+                        mp4Source.src = data.mux_mp4;
+                        mp4Source.type = 'video/mp4';
+                        muxNative.appendChild(mp4Source);
                         muxNative.load();
 
                         if (isMobile()) {
