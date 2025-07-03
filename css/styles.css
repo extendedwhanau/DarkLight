@@ -543,35 +543,3 @@ body.loading #partners-section {
 body.loading {
     background-image: none !important;
 }
-
-#video-play-btn {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    font-size: 2.5rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.3s;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-}
-
-#video-play-btn:active {
-    background: rgba(0,0,0,0.9);
-}
-
-@media (min-width: 769px) {
-    #video-play-btn {
-        display: none !important;
-    }
-}

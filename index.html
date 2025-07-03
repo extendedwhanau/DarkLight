@@ -111,40 +111,31 @@
                     const backgroundVideo = document.getElementById('background-video');
                     
                     if (data.background_type === 'video' && data.vimeo_url) {
-                        if (isMobile()) {
-                            // On mobile: show play button, only load video after tap
-                            const playBtn = document.getElementById('video-play-btn');
-                            playBtn.style.display = 'flex';
-                            playBtn.onclick = function() {
-                                playBtn.style.opacity = '0';
-                                setTimeout(() => { playBtn.style.display = 'none'; }, 300);
-                                // Now load and play video
-                                const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
-                                if (vimeoMatch) {
-                                    const vimeoId = vimeoMatch[1];
-                                    const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
-                                    backgroundVideo.src = embedUrl;
-                                    backgroundVideoContainer.style.display = 'block';
-                                    document.body.style.backgroundImage = 'none';
-                                    backgroundVideo.onload = () => {
+                        const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
+                        if (vimeoMatch) {
+                            const vimeoId = vimeoMatch[1];
+                            const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
+                            backgroundVideo.src = embedUrl;
+                            backgroundVideoContainer.style.display = 'block';
+                            document.body.style.backgroundImage = 'none';
+                            let videoLoaded = false;
+                            backgroundVideo.onload = () => {
+                                videoLoaded = true;
+                                document.getElementById('video-fade').style.opacity = '0';
+                                document.body.classList.remove('loading');
+                            };
+                            // Fallback for mobile: if video doesn't load in 2s, show image background
+                            if (isMobile()) {
+                                setTimeout(() => {
+                                    if (!videoLoaded) {
+                                        backgroundVideoContainer.style.display = 'none';
+                                        if (data.background_image) {
+                                            document.body.style.backgroundImage = `url(${data.background_image})`;
+                                        }
                                         document.getElementById('video-fade').style.opacity = '0';
                                         document.body.classList.remove('loading');
-                                    };
-                                }
-                            };
-                        } else {
-                            // Desktop: load video immediately
-                            const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
-                            if (vimeoMatch) {
-                                const vimeoId = vimeoMatch[1];
-                                const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
-                                backgroundVideo.src = embedUrl;
-                                backgroundVideoContainer.style.display = 'block';
-                                document.body.style.backgroundImage = 'none';
-                                backgroundVideo.onload = () => {
-                                    document.getElementById('video-fade').style.opacity = '0';
-                                    document.body.classList.remove('loading');
-                                };
+                                    }
+                                }, 2000);
                             }
                         }
                     } else if (data.background_image) {
