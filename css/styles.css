@@ -581,3 +581,22 @@ body.loading {
         display: none !important;
     }
 }
+
+/* Ensure Mux Player background video fills the viewport like Vimeo */
+#mux-background-video,
+mux-player#mux-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 177.78vh;
+    height: 56.25vw;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    border: none;
+    background: transparent;
+    z-index: -1;
+    display: block;
+}
