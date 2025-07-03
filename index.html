@@ -107,6 +107,17 @@
         <!-- Floating buttons will be dynamically inserted here -->
     </div>
 
+    <!-- Native Video -->
+    <video
+        id="mux-background-native"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1; pointer-events:none; background:black;"
+        muted
+        loop
+        autoplay
+        playsinline
+        preload="auto"
+    ></video>
+
     <!-- JavaScript -->
     <script>
         // Utility: detect mobile
@@ -127,15 +138,15 @@
                     const backgroundVideoContainer = document.getElementById('background-video-container');
                     const backgroundVideo = document.getElementById('background-video');
                     const muxPlayer = document.getElementById('mux-background-video');
+                    const muxNative = document.getElementById('mux-background-native');
                     
-                    if (data.background_type === 'mux' && data.mux_playback_id) {
-                        // Hide Vimeo iframe
+                    if (data.background_type === 'mux' && data.mux_url) {
+                        // Hide Vimeo and mux-player
                         backgroundVideo.style.display = 'none';
-                        // Show Mux player
-                        muxPlayer.style.display = 'block';
-                        muxPlayer.setAttribute('playback-id', data.mux_playback_id);
-                        muxPlayer.controls = false;
-                        muxPlayer.setAttribute('controls', 'false');
+                        muxPlayer.style.display = 'none';
+                        // Show native video
+                        muxNative.style.display = 'block';
+                        muxNative.src = data.mux_url;
                         backgroundVideoContainer.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
 
@@ -146,12 +157,12 @@
                             tapOverlay.onclick = function() {
                                 tapOverlay.style.opacity = '0';
                                 setTimeout(() => { tapOverlay.style.display = 'none'; }, 500);
-                                muxPlayer.play();
+                                muxNative.play();
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
                             };
                         } else {
-                            muxPlayer.addEventListener('loadeddata', () => {
+                            muxNative.addEventListener('loadeddata', () => {
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
                             });
