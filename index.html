@@ -134,6 +134,8 @@
                         // Show Mux player
                         muxPlayer.style.display = 'block';
                         muxPlayer.setAttribute('playback-id', data.mux_playback_id);
+                        muxPlayer.controls = false;
+                        muxPlayer.setAttribute('controls', 'false');
                         backgroundVideoContainer.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
 
