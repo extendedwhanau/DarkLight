@@ -2,8 +2,8 @@
 dates: ""
 background_type: mux
 background_image: /images/uploads/amd-darklight-testgrade.jpg
-mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
-mux_mp4: https://player.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
+mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.mp4
+mux_mp4: ""
 ticket_buttons: []
 floating_buttons:
   - text: About
