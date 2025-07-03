@@ -118,23 +118,10 @@
                             backgroundVideo.src = embedUrl;
                             backgroundVideoContainer.style.display = 'block';
                             document.body.style.backgroundImage = 'none';
-                            let videoLoaded = false;
                             backgroundVideo.onload = () => {
-                                videoLoaded = true;
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
                             };
-                            // Unconditional fallback for mobile: after 2s, always show image background and hide overlay
-                            if (isMobile()) {
-                                setTimeout(() => {
-                                    backgroundVideoContainer.style.display = 'none';
-                                    if (data.background_image) {
-                                        document.body.style.backgroundImage = `url(${data.background_image})`;
-                                    }
-                                    document.getElementById('video-fade').style.opacity = '0';
-                                    document.body.classList.remove('loading');
-                                }, 2000);
-                            }
                         }
                     } else if (data.background_image) {
                         // Use background image
