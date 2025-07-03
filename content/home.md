@@ -1,7 +1,7 @@
 ---
 title: Let darkness guide you. Let light transform you.
 subtitle: COMING SOON
-dates: 25th Jan
+dates: ""
 location: ""
 background_image: /images/uploads/amd-darklight-testgrade.jpg
 ticket_buttons: []
