@@ -39,13 +39,16 @@
                 webkit-playsinline
         ></iframe>
         <mux-player id="mux-background-video"
-            style="width:100vw;height:100vh;object-fit:cover;position:absolute;top:0;left:0;z-index:-1;display:none;"
+            style="width:100vw;height:100vh;object-fit:cover;position:fixed;top:0;left:0;z-index:-1;display:none;"
             muted
             loop
             autoplay
             playsinline
             preload="auto"
-            background>
+            background
+            stream-type="on-demand"
+            nohotkeys
+            controls="false">
         </mux-player>
     </div>
     <div id="video-fade"></div>
