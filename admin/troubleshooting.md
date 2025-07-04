@@ -19,6 +19,7 @@
 - **Public folder**: `/images/uploads`
 - **Backend**: git-gateway
 - **Branch**: main
+- **Media library**: Uses default Decap CMS media library (no custom configuration needed)
 
 ### 4. Debugging Steps
 1. Open browser developer tools (F12)
