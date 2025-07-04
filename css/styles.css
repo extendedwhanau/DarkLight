@@ -190,7 +190,7 @@ body {
 
 .about-page .content-column p[style*="text-decoration: underline"],
 .about-page .content-column p[style*="text-decoration: underline"]:first-child {
-    color: #7B7B7B !important;
+    color: #D3D3D3;
     text-decoration: underline !important;
     text-underline-offset: 0 !important;
     border-bottom: none !important;
@@ -638,7 +638,7 @@ mux-player#mux-background-video::part(controls) {
 }
 
 #title {
-    color: #7B7B7B !important;
+    color: #D3D3D3;
 }
 
 #background-vimeo-embed {
