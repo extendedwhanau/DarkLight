@@ -13,7 +13,7 @@ floating_buttons:
     visible: true
   - text: FAQs
     link: faq-darklight.html
-    visible: true
+    visible: false
   - text: Resonate
     link: about-resonate.html
     visible: false
