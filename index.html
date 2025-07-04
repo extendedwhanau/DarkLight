@@ -145,18 +145,34 @@
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
                     
-                    // Handle background (image or vimeo page)
+                    // Handle background (image, native video, or vimeo page)
                     const vimeoEmbed = document.getElementById('background-vimeo-embed');
-                    
-                    if (data.background_type === 'vimeo-page' && data.vimeo_page_url) {
+                    const nativeVideo = document.getElementById('background-native-video');
+
+                    // Prefer native video if mux_mp4 is present
+                    if (data.mux_mp4 && data.mux_mp4.trim() !== '') {
+                        // Hide Vimeo embed
+                        vimeoEmbed.style.display = 'none';
+                        vimeoEmbed.src = '';
+                        // Show and set native video
+                        nativeVideo.style.display = 'block';
+                        nativeVideo.src = data.mux_mp4.replace(/\)$/, ''); // Remove trailing ) if present
+                        document.body.style.backgroundImage = 'none';
+                        nativeVideo.onloadeddata = () => {
+                            document.getElementById('video-fade').style.opacity = '0';
+                            document.body.classList.remove('loading');
+                        };
+                    } else if (data.background_type === 'vimeo-page' && data.vimeo_page_url) {
                         // Convert regular Vimeo page link to embed link
                         const match = data.vimeo_page_url.match(/vimeo\.com\/(\d+)/);
                         if (match) {
                             const vimeoId = match[1];
                             let embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0`;
                             vimeoEmbed.style.display = 'block';
-                            document.body.style.backgroundImage = 'none';
                             vimeoEmbed.src = embedUrl;
+                            document.body.style.backgroundImage = 'none';
+                            nativeVideo.style.display = 'none';
+                            nativeVideo.src = '';
                             vimeoEmbed.onload = () => {
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
@@ -164,6 +180,9 @@
                         }
                     } else if (data.background_image) {
                         vimeoEmbed.style.display = 'none';
+                        vimeoEmbed.src = '';
+                        nativeVideo.style.display = 'none';
+                        nativeVideo.src = '';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
                         document.getElementById('video-fade').style.opacity = '0';
                         document.body.classList.remove('loading');
