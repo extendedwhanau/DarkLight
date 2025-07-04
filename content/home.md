@@ -3,7 +3,7 @@ mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u
 mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
 vimeo_mp4_url: ""
-background_type: vimeo-embed
+background_type: vimeo-page
 background_image: /images/uploads/amd-darklight-testgrade.jpg
 vimeo_embed_url: ""
 ticket_buttons: []
