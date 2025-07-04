@@ -55,7 +55,7 @@ body {
     z-index: 1;
 }
 
-/* Vimeo video background */
+/* Vimeo video background - always cover, never letterbox */
 .vimeo-background {
     position: fixed;
     top: 0;
@@ -68,15 +68,16 @@ body {
 }
 
 .vimeo-background iframe {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     min-width: 100vw;
     min-height: 100vh;
+    width: auto;
+    height: 100vh;
+    transform: translate(-50%, -50%);
     object-fit: cover;
     border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 /* Ensure content stays above video */
