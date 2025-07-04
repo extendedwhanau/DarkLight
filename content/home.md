@@ -4,7 +4,7 @@ mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/med
 dates: ""
 vimeo_mp4_url: ""
 background_type: image
-background_image: /images/uploads/amd-darklight-testgrade.jpg
+background_image: /images/uploads/background-image.jpg
 vimeo_embed_url: ""
 ticket_buttons: []
 floating_buttons:
@@ -53,7 +53,7 @@ partners_section:
       alt: East Imperial
 vimeo_url: https://vimeo.com/1092003281
 title: Let darkness guide you. Let light transform you.
-subtitle: COMING SOON
+subtitle: NEXT EVENT COMING SOON
 location: ""
-vimeo_page_url: https://vimeo.com/1092003281
+vimeo_page_url: ""
 ---
