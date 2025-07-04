@@ -2,7 +2,7 @@
 mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
 mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
-background_type: vimeo
+background_type: image
 background_image: /images/uploads/background-image.jpg
 ticket_buttons: []
 floating_buttons:
@@ -25,7 +25,7 @@ mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
 title: Let darkness guide you. Let light transform you.
 subtitle: NEXT EVENT COMING SOON
 location: ""
-vimeo_url: https://player.vimeo.com/video/1098907408?h=faec21b5d3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
+vimeo_url: https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1751671752~exp=1751675352~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=a715ff560b51d534c56843e11bdfe6eb7f18b7964eefa705471f999291a6fce4&r=dXMtY2VudHJhbDE%3D
 partners_section:
   title: Special thanks
   partners:
