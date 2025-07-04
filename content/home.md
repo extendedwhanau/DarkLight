@@ -1,9 +1,10 @@
 ---
+mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
+mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
 background_type: video
 background_image: /images/uploads/amd-darklight-testgrade.jpg
-mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
-mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
+vimeo_mp4_url: https://vimeo.com/1092003281
 ticket_buttons: []
 floating_buttons:
   - text: About
@@ -22,10 +23,6 @@ social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
 mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
-title: Let darkness guide you. Let light transform you.
-subtitle: COMING SOON
-location: ""
-vimeo_url: https://vimeo.com/1092003281
 partners_section:
   title: Special thanks
   partners:
@@ -53,4 +50,8 @@ partners_section:
       logo: /images/partners/ei.svg
       link: https://eastimperial.co.nz
       alt: East Imperial
+vimeo_url: https://vimeo.com/1092003281
+title: Let darkness guide you. Let light transform you.
+subtitle: COMING SOON
+location: ""
 ---
