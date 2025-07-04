@@ -10,7 +10,7 @@ ticket_buttons: []
 floating_buttons:
   - text: About
     link: about-darklight.html
-    visible: true
+    visible: false
   - text: FAQs
     link: faq-darklight.html
     visible: true
