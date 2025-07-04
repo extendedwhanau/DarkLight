@@ -12,7 +12,6 @@ a {
 
 body {
     color: #D3D3D3;
-    background-color: black;
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -42,9 +41,6 @@ body {
 
 /* Homepage specific styles */
 .homepage {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     height: 100vh;
     min-height: 100vh;
     width: 100vw;
@@ -65,45 +61,7 @@ body {
     }
 }
 
-/* Background Video Styles */
-#background-video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-    background: black;
-}
 
-#background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: 177.78vh;
-    height: 56.25vw;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    border: none;
-    background: transparent;
-}
-
-#video-fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    z-index: 0;
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity 1s ease;
-}
 
 .homepage .logo {
     width: 100vw;
@@ -556,18 +514,7 @@ button:hover {
     }
 }
 
-body.loading .logo,
-body.loading .content,
-body.loading .social-icons,
-body.loading .floating-buttons,
-body.loading #partners-section {
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
 
-body.loading {
-    /* Keep background image during loading, just fade it */
-}
 
 #video-tap-overlay {
     position: fixed;
@@ -607,56 +554,8 @@ body.loading {
     }
 }
 
-/* Ensure Mux Player background video always covers the viewport */
-#mux-background-video,
-mux-player#mux-background-video {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    object-fit: cover !important;
-    z-index: -1 !important;
-    display: block !important;
-    pointer-events: none !important;
-    background: transparent !important;
-}
-
-mux-player#mux-background-video::part(video) {
-    object-fit: cover !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    pointer-events: none !important;
-}
-
-mux-player#mux-background-video::part(controls) {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-
 #title {
     color: #D3D3D3;
-}
-
-#background-vimeo-embed {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    object-fit: cover !important;
-    z-index: -1 !important;
-    display: block !important;
-    pointer-events: none !important;
-    background: black !important;
-    border: none !important;
 }
 
 html, body {
