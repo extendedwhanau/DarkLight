@@ -2,7 +2,7 @@
 mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
 mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
-background_type: vimeo
+background_type: image
 background_image: /images/uploads/background-image.jpg
 ticket_buttons: []
 floating_buttons:
