@@ -141,7 +141,6 @@ body {
 
 /* About page styles */
 .about-page {
-    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: black;
