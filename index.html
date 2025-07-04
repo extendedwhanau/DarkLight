@@ -109,7 +109,7 @@
 
     <!-- Native Video -->
     <video
-        id="mux-background-native"
+        id="background-native-video"
         style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1; pointer-events:none; background:black;"
         muted
         loop
@@ -135,28 +135,21 @@
                     const data = jsyaml.load(yamlContent);
                     
                     // Handle background (image or video)
-                    const backgroundVideoContainer = document.getElementById('background-video-container');
-                    const backgroundVideo = document.getElementById('background-video');
-                    const muxPlayer = document.getElementById('mux-background-video');
-                    const muxNative = document.getElementById('mux-background-native');
+                    const nativeVideo = document.getElementById('background-native-video');
                     
-                    if (data.background_type === 'mux' && data.mux_mp4) {
-                        backgroundVideo.style.display = 'none';
-                        muxPlayer.style.display = 'none';
-                        muxNative.style.display = 'block';
-                        backgroundVideoContainer.style.display = 'block';
+                    if (data.background_type === 'video' && data.vimeo_mp4_url) {
+                        nativeVideo.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
 
                         // Remove all sources first
-                        while (muxNative.firstChild) {
-                            muxNative.removeChild(muxNative.firstChild);
+                        while (nativeVideo.firstChild) {
+                            nativeVideo.removeChild(nativeVideo.firstChild);
                         }
-
                         const mp4Source = document.createElement('source');
-                        mp4Source.src = data.mux_mp4;
+                        mp4Source.src = data.vimeo_mp4_url;
                         mp4Source.type = 'video/mp4';
-                        muxNative.appendChild(mp4Source);
-                        muxNative.load();
+                        nativeVideo.appendChild(mp4Source);
+                        nativeVideo.load();
 
                         if (isMobile()) {
                             const tapOverlay = document.getElementById('video-tap-overlay');
@@ -165,63 +158,18 @@
                             tapOverlay.onclick = function() {
                                 tapOverlay.style.opacity = '0';
                                 setTimeout(() => { tapOverlay.style.display = 'none'; }, 500);
-                                muxNative.play();
+                                nativeVideo.play();
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
                             };
                         } else {
-                            muxNative.addEventListener('loadeddata', () => {
+                            nativeVideo.addEventListener('loadeddata', () => {
                                 document.getElementById('video-fade').style.opacity = '0';
                                 document.body.classList.remove('loading');
                             });
                         }
-                    } else if (data.background_type === 'video' && data.vimeo_url) {
-                        // Hide Mux player
-                        muxPlayer.style.display = 'none';
-                        // Show Vimeo iframe
-                        backgroundVideo.style.display = 'block';
-                        if (isMobile()) {
-                            // Show tap overlay
-                            const tapOverlay = document.getElementById('video-tap-overlay');
-                            tapOverlay.style.display = 'flex';
-                            tapOverlay.style.opacity = '1';
-                            tapOverlay.onclick = function() {
-                                tapOverlay.style.opacity = '0';
-                                setTimeout(() => { tapOverlay.style.display = 'none'; }, 500);
-                                // Now load and play video
-                                const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
-                                if (vimeoMatch) {
-                                    const vimeoId = vimeoMatch[1];
-                                    const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
-                                    backgroundVideo.src = embedUrl;
-                                    backgroundVideoContainer.style.display = 'block';
-                                    document.body.style.backgroundImage = 'none';
-                                    backgroundVideo.onload = () => {
-                                        document.getElementById('video-fade').style.opacity = '0';
-                                        document.body.classList.remove('loading');
-                                    };
-                                }
-                            };
-                        } else {
-                            // Desktop: load video immediately
-                            const vimeoMatch = data.vimeo_url.match(/vimeo\.com\/(\d+)/);
-                            if (vimeoMatch) {
-                                const vimeoId = vimeoMatch[1];
-                                const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&controls=0&autopause=0`;
-                                backgroundVideo.src = embedUrl;
-                                backgroundVideoContainer.style.display = 'block';
-                                document.body.style.backgroundImage = 'none';
-                                backgroundVideo.onload = () => {
-                                    document.getElementById('video-fade').style.opacity = '0';
-                                    document.body.classList.remove('loading');
-                                };
-                            }
-                        }
                     } else if (data.background_image) {
-                        // Hide both video players
-                        muxPlayer.style.display = 'none';
-                        backgroundVideo.style.display = 'none';
-                        backgroundVideoContainer.style.display = 'none';
+                        nativeVideo.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
                         document.getElementById('video-fade').style.opacity = '0';
                         document.body.classList.remove('loading');
