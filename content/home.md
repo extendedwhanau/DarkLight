@@ -2,10 +2,7 @@
 mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
 mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
-vimeo_mp4_url: ""
-background_type: vimeo-page
 background_image: /images/uploads/background-image.jpg
-vimeo_embed_url: https://player.vimeo.com/video/1098907408
 ticket_buttons: []
 floating_buttons:
   - text: About
@@ -51,9 +48,7 @@ partners_section:
       logo: /images/partners/ei.svg
       link: https://eastimperial.co.nz
       alt: East Imperial
-vimeo_url: https://vimeo.com/1092003281
 title: Let darkness guide you. Let light transform you.
 subtitle: NEXT EVENT COMING SOON
 location: ""
-vimeo_page_url: ""
 ---

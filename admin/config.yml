@@ -21,15 +21,7 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string"}
           - {label: "Dates", name: "dates", widget: "string", required: false}
           - {label: "Location", name: "location", widget: "string", required: false}
-          - label: "Background Type"
-            name: "background_type"
-            widget: "select"
-            options: ["image", "vimeo-page"]
-            default: "image"
-            hint: "Choose between a static image or a regular Vimeo page background"
           - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
-          - {label: "Vimeo Page Link", name: "vimeo_page_url", widget: "string", required: false, hint: "Paste your regular Vimeo page link here (e.g., https://vimeo.com/123456789)"}
-          - {label: "Vimeo Embed Link", name: "vimeo_embed_url", widget: "string", required: false, hint: "Paste your Vimeo embed link here (e.g., https://player.vimeo.com/video/123456789)"}
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
