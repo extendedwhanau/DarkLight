@@ -55,6 +55,40 @@ body {
     z-index: 1;
 }
 
+/* Vimeo video background */
+.vimeo-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.vimeo-background iframe {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    border: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Ensure content stays above video */
+.homepage .logo,
+.homepage .content,
+.homepage .social-icons,
+.homepage .floating-buttons,
+.homepage #partners-section {
+    position: relative;
+    z-index: 2;
+}
+
 /* Add object-fit support for browsers that need it */
 @supports (-webkit-overflow-scrolling: touch) {
     .homepage {
@@ -460,6 +494,13 @@ button:hover {
         width: 100%; /* Use 100% instead of 100vw to prevent horizontal scroll */
         overflow-x: hidden;
         /* Don't override background-image here - let JavaScript handle it */
+    }
+    
+    /* Mobile Vimeo background adjustments */
+    .vimeo-background iframe {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
     }
 
     .homepage .content {

@@ -98,9 +98,32 @@
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);
                     
-                    // Set background image - simple approach
-                    if (data.background_image) {
-                        console.log('Setting background:', data.background_image);
+                    // Handle background (image or Vimeo video)
+                    if (data.background_type === 'vimeo' && data.vimeo_url) {
+                        console.log('Setting Vimeo background:', data.vimeo_url);
+                        
+                        // Remove any existing background image
+                        document.body.style.background = '';
+                        
+                        // Create Vimeo iframe with autoplay and no audio
+                        const vimeoUrl = data.vimeo_url + '?autoplay=1&muted=1&loop=1&background=1&controls=0&showinfo=0&byline=0&title=0&portrait=0&sidedock=0';
+                        
+                        const vimeoBackground = document.createElement('div');
+                        vimeoBackground.className = 'vimeo-background';
+                        vimeoBackground.innerHTML = `
+                            <iframe 
+                                src="${vimeoUrl}"
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        `;
+                        
+                        // Insert at the beginning of body
+                        document.body.insertBefore(vimeoBackground, document.body.firstChild);
+                        
+                    } else if (data.background_image) {
+                        console.log('Setting background image:', data.background_image);
                         document.body.style.background = `url(${data.background_image}) center center / cover no-repeat`;
                         
                         // Test if image loads
