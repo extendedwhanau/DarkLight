@@ -95,6 +95,9 @@
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
                     
+                    console.log('Browser:', navigator.userAgent);
+                    console.log('Full data loaded:', data);
+                    
                     // Set background image - simple approach
                     if (data.background_image) {
                         console.log('Setting background:', data.background_image);
@@ -183,8 +186,12 @@
                     // Handle floating buttons
                     const floatingButtonsContainer = document.getElementById('floating-buttons');
                     if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
-                        floatingButtonsContainer.innerHTML = data.floating_buttons
-                            .filter(button => button.visible)
+                        console.log('Floating buttons data:', data.floating_buttons);
+                        
+                        const visibleButtons = data.floating_buttons.filter(button => button.visible);
+                        console.log('Visible buttons:', visibleButtons);
+                        
+                        floatingButtonsContainer.innerHTML = visibleButtons
                             .map(button => `
                                 <button${button.text === 'Partners' ? ' id="partners-btn"' : ''}>
                                     <a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a>
@@ -195,6 +202,9 @@
                         // Set up partners toggle functionality
                         const partnersBtn = document.getElementById('partners-btn');
                         const mainContent = document.getElementById('main-content');
+                        
+                        console.log('Partners button found:', !!partnersBtn);
+                        console.log('Partners section found:', !!partnersSection);
                         
                         if (partnersBtn && partnersSection) {
                             console.log('Setting up partners button click handler');
@@ -231,6 +241,29 @@
                             });
                         }
                     }
+                    
+                    // Ensure floating buttons are rendered consistently
+                    setTimeout(() => {
+                        const floatingButtonsContainer = document.getElementById('floating-buttons');
+                        console.log('Floating buttons container:', floatingButtonsContainer);
+                        console.log('Container innerHTML:', floatingButtonsContainer?.innerHTML);
+                        
+                        if (floatingButtonsContainer && data.floating_buttons && data.floating_buttons.length > 0) {
+                            const visibleButtons = data.floating_buttons.filter(button => button.visible);
+                            console.log('Final visible buttons to render:', visibleButtons.map(b => b.text));
+                            
+                            const buttonsHTML = visibleButtons
+                                .map(button => `
+                                    <button${button.text === 'Partners' ? ' id="partners-btn"' : ''}>
+                                        <a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a>
+                                    </button>
+                                `)
+                                .join('');
+                            
+                            floatingButtonsContainer.innerHTML = buttonsHTML;
+                            console.log('Final rendered HTML:', buttonsHTML);
+                        }
+                    }, 100);
                     
                 }
             })
