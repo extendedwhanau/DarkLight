@@ -105,27 +105,16 @@
         // Handle mobile video autoplay
         function handleMobileVideo() {
             const video = document.querySelector('.video-cover video');
-            if (!video) return;
+            const videoCover = document.querySelector('.video-cover');
+            if (!video || !videoCover) return;
 
-            // Force video to load and play on mobile
             if (isMobile()) {
-                video.load();
-                
-                // Try to play the video
-                const playPromise = video.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('Video autoplay started successfully on mobile');
-                    }).catch(error => {
-                        console.log('Mobile autoplay prevented, showing poster image');
-                        // Video will show poster image if autoplay fails
-                    });
-                }
-                
-                // Ensure video is muted for mobile autoplay
-                video.muted = true;
-                video.volume = 0;
+                console.log('Mobile device detected, hiding video and showing background image');
+                // Hide video on mobile - background image will show instead
+                videoCover.style.display = 'none';
+            } else {
+                // Desktop - show video normally
+                videoCover.style.display = 'block';
             }
         }
 
