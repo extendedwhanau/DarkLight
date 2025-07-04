@@ -4,7 +4,6 @@ mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/med
 dates: ""
 background_type: vimeo
 background_image: /images/uploads/background-image.jpg
-vimeo_url: https://player.vimeo.com/video/1098907408
 ticket_buttons: []
 floating_buttons:
   - text: About
@@ -23,6 +22,10 @@ social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
 mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
+title: Let darkness guide you. Let light transform you.
+subtitle: NEXT EVENT COMING SOON
+location: ""
+vimeo_url: https://player.vimeo.com/video/1098907408?h=faec21b5d3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
 partners_section:
   title: Special thanks
   partners:
@@ -50,7 +53,4 @@ partners_section:
       logo: /images/partners/ei.svg
       link: https://eastimperial.co.nz
       alt: East Imperial
-title: Let darkness guide you. Let light transform you.
-subtitle: NEXT EVENT COMING SOON
-location: ""
 ---
