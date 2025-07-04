@@ -9,6 +9,14 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+# Enable image transformations and proper handling
+media_library:
+  name: netlify
+  config:
+    api_root: https://api.netlify.com/api/v1
+    media_folder: images/uploads
+    public_folder: /images/uploads
+
 collections:
   - name: "pages"
     label: "Pages"
@@ -27,7 +35,7 @@ collections:
             options: ["image", "vimeo-page"]
             default: "image"
             hint: "Choose between a static image or a regular Vimeo page background"
-          - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
+          - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page", choose_url: false, media_folder: "images/uploads", public_folder: "/images/uploads"}
           - {label: "Vimeo Page Link", name: "vimeo_page_url", widget: "string", required: false, hint: "Paste your regular Vimeo page link here (e.g., https://vimeo.com/123456789)"}
           - {label: "Vimeo Embed Link", name: "vimeo_embed_url", widget: "string", required: false, hint: "Paste your Vimeo embed link here (e.g., https://player.vimeo.com/video/123456789)"}
           - label: "Ticket Buttons"
@@ -66,7 +74,7 @@ collections:
                 widget: "list"
                 fields:
                   - {label: "Name", name: "name", widget: "string"}
-                  - {label: "Logo", name: "logo", widget: "image"}
+                  - {label: "Logo", name: "logo", widget: "image", choose_url: false, media_folder: "images/uploads", public_folder: "/images/uploads"}
                   - {label: "Link", name: "link", widget: "string"}
                   - {label: "Alt Text", name: "alt", widget: "string"}
                 summary: "{{fields.name}}"

@@ -4,7 +4,7 @@ mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/med
 dates: ""
 vimeo_mp4_url: ""
 background_type: image
-background_image: /images/uploads/background-image.jpg
+background_image: /images/background-image.jpg
 vimeo_embed_url: ""
 ticket_buttons: []
 floating_buttons:

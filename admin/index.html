@@ -18,10 +18,23 @@
     window.addEventListener('load', function() {
       try {
         console.log('Initializing CMS...');
-        window.netlifyIdentity.on('init', user => {
-          console.log('NetlifyIdentity init', user);
-        });
         
+        // Check if Netlify Identity is available
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', user => {
+            console.log('NetlifyIdentity init', user);
+          });
+          
+          window.netlifyIdentity.on('login', user => {
+            console.log('User logged in:', user);
+          });
+          
+          window.netlifyIdentity.on('logout', () => {
+            console.log('User logged out');
+          });
+        }
+        
+        // Initialize CMS
         window.CMS.init();
         
         // Listen for successful initialization
@@ -29,10 +42,25 @@
           console.log('CMS has mounted successfully');
         });
         
+        // Listen for media library events
+        window.CMS.on('mediaLibrary:open', function() {
+          console.log('Media library opened');
+        });
+        
+        window.CMS.on('mediaLibrary:close', function() {
+          console.log('Media library closed');
+        });
+        
         // Listen for errors
         window.CMS.on('error', function(err) {
           console.error('CMS Error:', err);
         });
+        
+        // Listen for image upload events
+        window.CMS.on('mediaLibrary:insert', function(media) {
+          console.log('Media inserted:', media);
+        });
+        
       } catch (err) {
         console.error('Failed to initialize CMS:', err);
       }
