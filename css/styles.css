@@ -607,3 +607,13 @@ html, body {
     width: 100%;
     overflow: hidden;
 }
+
+/* Allow scrolling on about page */
+.about-page {
+    overflow: auto !important;
+}
+
+.about-page html,
+.about-page body {
+    overflow: auto !important;
+}
