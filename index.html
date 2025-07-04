@@ -118,6 +118,17 @@
         preload="auto"
     ></video>
 
+    <!-- Vimeo Embed Video -->
+    <iframe
+        id="background-vimeo-embed"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1; pointer-events:none; background:black; border:none;"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        playsinline
+        webkit-playsinline
+    ></iframe>
+
     <!-- JavaScript -->
     <script>
         // Utility: detect mobile
@@ -134,13 +145,31 @@
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
                     
-                    // Handle background (image or video)
+                    // Handle background (image, video, or vimeo embed)
                     const nativeVideo = document.getElementById('background-native-video');
+                    const vimeoEmbed = document.getElementById('background-vimeo-embed');
                     
-                    if (data.background_type === 'video' && data.vimeo_mp4_url) {
+                    if (data.background_type === 'vimeo-embed' && data.vimeo_embed_url) {
+                        // Hide other video elements
+                        nativeVideo.style.display = 'none';
+                        vimeoEmbed.style.display = 'block';
+                        document.body.style.backgroundImage = 'none';
+                        // Add autoplay, loop, muted, background params if not present
+                        let embedUrl = data.vimeo_embed_url;
+                        if (!embedUrl.includes('autoplay=1')) embedUrl += (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+                        if (!embedUrl.includes('loop=1')) embedUrl += '&loop=1';
+                        if (!embedUrl.includes('muted=1')) embedUrl += '&muted=1';
+                        if (!embedUrl.includes('background=1')) embedUrl += '&background=1';
+                        if (!embedUrl.includes('controls=0')) embedUrl += '&controls=0';
+                        vimeoEmbed.src = embedUrl;
+                        vimeoEmbed.onload = () => {
+                            document.getElementById('video-fade').style.opacity = '0';
+                            document.body.classList.remove('loading');
+                        };
+                    } else if (data.background_type === 'video' && data.vimeo_mp4_url) {
+                        vimeoEmbed.style.display = 'none';
                         nativeVideo.style.display = 'block';
                         document.body.style.backgroundImage = 'none';
-
                         // Remove all sources first
                         while (nativeVideo.firstChild) {
                             nativeVideo.removeChild(nativeVideo.firstChild);
@@ -150,7 +179,6 @@
                         mp4Source.type = 'video/mp4';
                         nativeVideo.appendChild(mp4Source);
                         nativeVideo.load();
-
                         if (isMobile()) {
                             const tapOverlay = document.getElementById('video-tap-overlay');
                             tapOverlay.style.display = 'flex';
@@ -169,6 +197,7 @@
                             });
                         }
                     } else if (data.background_image) {
+                        vimeoEmbed.style.display = 'none';
                         nativeVideo.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
                         document.getElementById('video-fade').style.opacity = '0';
