@@ -42,8 +42,9 @@ body {
 
 /* Homepage specific styles */
 .homepage {
-    background: url('../images/background-image.jpg') center center no-repeat;
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     height: 100vh;
     min-height: 100vh;
     width: 100vw;
@@ -498,6 +499,7 @@ button:hover {
         height: 100vh; /* Ensure full height on mobile */
         width: 100%; /* Use 100% instead of 100vw to prevent horizontal scroll */
         overflow-x: hidden;
+        /* Don't override background-image here - let JavaScript handle it */
     }
 
     .homepage .content {
@@ -564,7 +566,7 @@ body.loading #partners-section {
 }
 
 body.loading {
-    background-image: none !important;
+    /* Keep background image during loading, just fade it */
 }
 
 #video-tap-overlay {

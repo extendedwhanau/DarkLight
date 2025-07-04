@@ -140,10 +140,12 @@
         fetch('/content/home.md')
             .then(response => response.text())
             .then(text => {
+                console.log('Raw content loaded:', text.substring(0, 200) + '...');
                 const parts = text.split('---');
                 if (parts.length >= 2) {
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
+                    console.log('Parsed data:', data);
                     
                     // Handle background (image or vimeo page)
                     const vimeoEmbed = document.getElementById('background-vimeo-embed');
@@ -163,10 +165,25 @@
                             };
                         }
                     } else if (data.background_image) {
+                        console.log('Setting background image:', data.background_image);
                         vimeoEmbed.style.display = 'none';
                         document.body.style.backgroundImage = `url(${data.background_image})`;
+                        document.body.style.backgroundSize = 'cover';
+                        document.body.style.backgroundPosition = 'center center';
+                        document.body.style.backgroundRepeat = 'no-repeat';
+                        document.body.style.backgroundColor = 'transparent';
                         document.getElementById('video-fade').style.opacity = '0';
                         document.body.classList.remove('loading');
+                        
+                        // Test if image loads successfully
+                        const testImg = new Image();
+                        testImg.onload = () => {
+                            console.log('Background image loaded successfully:', data.background_image);
+                        };
+                        testImg.onerror = () => {
+                            console.error('Failed to load background image:', data.background_image);
+                        };
+                        testImg.src = data.background_image;
                     }
                     
                     // Update page elements
