@@ -55,29 +55,24 @@ body {
     z-index: 1;
 }
 
-/* Vimeo video background - always cover, never letterbox */
-.vimeo-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
+/* Video background using native HTML5 video (like Beyond The Valley) */
+.video-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.vimeo-background iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: auto;
-    height: 100vh;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    border: none;
+.video-cover video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Ensure content stays above video */
@@ -502,7 +497,7 @@ button:hover {
     }
     
     /* Mobile Vimeo background adjustments */
-    .vimeo-background iframe {
+    .video-cover video {
         width: 100%;
         height: 100%;
         object-fit: cover;
