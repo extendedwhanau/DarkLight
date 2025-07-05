@@ -55,5 +55,5 @@ sections:
     content_type: about_us
     about_us_items:
       - name: General
-        description: dan@angusmuirdesign.co.nz
+        description: info@darklight.co
 ---
