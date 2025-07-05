@@ -82,13 +82,15 @@ collections:
               - {label: "Number", name: "number", widget: "string", hint: "e.g., 01, 02, 03"}
               - {label: "Label", name: "label", widget: "string", hint: "e.g., Darklight, FAQ, About Us"}
               - {label: "Section ID", name: "section_id", widget: "string", hint: "e.g., about-darklight, faq, about-us"}
-            summary: "{{fields.number}} {{fields.label}}"
+              - {label: "Visible", name: "visible", widget: "boolean", default: true, hint: "Show this section in navigation and on page"}
+            summary: "{{fields.number}} {{fields.label}} {{fields.visible | ternary '' '(Hidden)'}}"
           - label: "Sections"
             name: "sections"
             widget: "list"
             fields:
               - {label: "Section ID", name: "section_id", widget: "string", hint: "Must match navigation section_id"}
               - {label: "Section Title", name: "title", widget: "string"}
+              - {label: "Visible", name: "visible", widget: "boolean", default: true, hint: "Show this section on the page"}
               - label: "Content Type"
                 name: "content_type"
                 widget: "select"
@@ -114,7 +116,7 @@ collections:
                   - {label: "Name", name: "name", widget: "string"}
                   - {label: "Description", name: "description", widget: "markdown"}
                 summary: "{{fields.name}}"
-            summary: "{{fields.title}} ({{fields.content_type}})"
+            summary: "{{fields.title}} ({{fields.content_type}}) {{fields.visible | ternary '' '(Hidden)'}}"
 
       - name: "about_resonate"
         label: "About Resonate"

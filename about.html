@@ -267,10 +267,11 @@
     }
 
     function renderAboutPage(data) {
-        // Render navigation
+        // Render navigation (only visible items)
         const navigation = document.getElementById('navigation');
         if (data.navigation && data.navigation.length > 0) {
-            navigation.innerHTML = data.navigation.map(nav => `
+            const visibleNav = data.navigation.filter(nav => nav.visible !== false);
+            navigation.innerHTML = visibleNav.map(nav => `
                 <a href="#${nav.section_id}" id="nav-${nav.section_id.replace('about-', '')}">
                     <span class="nav-num">${nav.number}</span> 
                     <span class="nav-label">${nav.label}</span>
@@ -278,10 +279,11 @@
             `).join('');
         }
 
-        // Render content sections
+        // Render content sections (only visible items)
         const content = document.getElementById('content');
         if (data.sections && data.sections.length > 0) {
-            content.innerHTML = data.sections.map(section => {
+            const visibleSections = data.sections.filter(section => section.visible !== false);
+            content.innerHTML = visibleSections.map(section => {
                 let sectionContent = '';
                 
                 if (section.content_type === 'text') {

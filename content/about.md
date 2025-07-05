@@ -4,15 +4,19 @@ navigation:
   - number: "01"
     label: "Darklight"
     section_id: "about-darklight"
+    visible: true
   - number: "02"
     label: "FAQ"
     section_id: "faq"
+    visible: true
   - number: "03"
     label: "About Us"
     section_id: "about-us"
+    visible: false
 sections:
   - section_id: "about-darklight"
     title: "About DarkLight"
+    visible: true
     content_type: "text"
     content: |
       DarkLight is created by Angus Muir Design, an award-winning studio known for immersive installations using light, sound, and materials. Led by Angus Muir, with event producer Dan Move, co-founder of LUMA Queenstown, the team brings creative visions to life globally.
@@ -46,6 +50,7 @@ sections:
 
   - section_id: "faq"
     title: "Frequently Asked Questions"
+    visible: true
     content_type: "faq"
     faq_items:
       - question: "What is Darklight?"
@@ -63,6 +68,7 @@ sections:
 
   - section_id: "about-us"
     title: "About Us"
+    visible: false
     content_type: "about_us"
     about_us_items:
       - name: "Angus Muir"
