@@ -121,6 +121,14 @@
                 }
             };
 
+            // Show content when video is ready
+            const showContent = () => {
+                const logo = document.querySelector('.logo');
+                const content = document.querySelector('.content');
+                if (logo) logo.classList.add('loaded');
+                if (content) content.classList.add('loaded');
+            };
+
             // Hide loading screen when video starts playing
             const hideLoadingScreen = () => {
                 if (loadingOverlay) {
@@ -129,9 +137,12 @@
             };
 
             // Listen for video events
-            video.addEventListener('play', hideLoadingScreen);
-            video.addEventListener('canplay', hideLoadingScreen);
-            video.addEventListener('loadeddata', hideLoadingScreen);
+            video.addEventListener('play', () => {
+                hideLoadingScreen();
+                showContent();
+            });
+            video.addEventListener('canplay', showContent);
+            video.addEventListener('loadeddata', showContent);
             
             // For mobile, check if autoplay fails and show loading screen
             if (isMobile()) {
