@@ -68,9 +68,6 @@ function hidePreloader() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  // if (localStorage.getItem('preloaderShown')) {
-  //   hidePreloader();
-  // } else {
     injectPreloader();
     setTimeout(() => {
       hidePreloader();
