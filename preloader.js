@@ -62,13 +62,13 @@ function hidePreloader() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('preloaderShown')) {
-    hidePreloader();
-  } else {
+  // if (localStorage.getItem('preloaderShown')) {
+  //   hidePreloader();
+  // } else {
     injectPreloader();
     setTimeout(() => {
       hidePreloader();
       localStorage.setItem('preloaderShown', 'true');
     }, 2500); // 2.5s to ensure animation completes
-  }
+  // }
 }); 
