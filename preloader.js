@@ -54,10 +54,16 @@ function hidePreloader() {
     overlay.classList.add('hide');
     setTimeout(() => {
       overlay.remove();
-      if (mainContent) mainContent.style.visibility = '';
-    }, 500); // match CSS transition
+      if (mainContent) {
+        mainContent.style.visibility = '';
+        mainContent.classList.add('fade-in');
+      }
+    }, 700); // match CSS transition (increased to 700ms)
   } else {
-    if (mainContent) mainContent.style.visibility = '';
+    if (mainContent) {
+      mainContent.style.visibility = '';
+      mainContent.classList.add('fade-in');
+    }
   }
 }
 
