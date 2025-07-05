@@ -45,7 +45,8 @@
         webkit-playsinline 
         x5-playsinline
         width="100%" 
-        data-object-fit="cover"
+        height="100%"
+        style="object-fit: cover;"
         poster="/images/uploads/background-image.jpg"
       >
         <source src="https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1751686223~exp=1751689823~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=5ef00d404fd9b9ab0d514cbd918576c99a9117224bd4aba80544963711423929&r=dXMtY2VudHJhbDE%3D" type="video/mp4">
@@ -120,7 +121,6 @@
             
             if (!video || !videoCover) return;
 
-<<<<<<< HEAD
             // Show content when video is ready
             const showContent = () => {
                 const logo = document.querySelector('.logo');
@@ -131,6 +131,7 @@
 
             // Hide loading screen when video starts playing
             const hideLoadingScreen = () => {
+                const loadingOverlay = document.getElementById('loading-overlay');
                 if (loadingOverlay) {
                     loadingOverlay.classList.add('hidden');
                 }
@@ -145,8 +146,6 @@
             video.addEventListener('loadeddata', showContent);
             
             // For mobile, also handle tap-to-play if autoplay fails
-=======
->>>>>>> parent of c0194b2 (mm)
             if (isMobile()) {
                 console.log('Mobile device detected, setting up tap-to-play');
                 // Show video but handle autoplay with tap-to-play overlay
@@ -210,6 +209,36 @@
         // Initialize mobile video handling
         document.addEventListener('DOMContentLoaded', handleMobileVideo);
         window.addEventListener('load', handleMobileVideo);
+
+        // Add video debugging
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.video-cover video');
+            if (video) {
+                console.log('Video element found:', video);
+                console.log('Video src:', video.querySelector('source')?.src);
+                console.log('Video readyState:', video.readyState);
+                console.log('Video networkState:', video.networkState);
+                
+                video.addEventListener('loadstart', () => console.log('Video loadstart'));
+                video.addEventListener('loadedmetadata', () => console.log('Video loadedmetadata'));
+                video.addEventListener('loadeddata', () => console.log('Video loadeddata'));
+                video.addEventListener('canplay', () => console.log('Video canplay'));
+                video.addEventListener('canplaythrough', () => console.log('Video canplaythrough'));
+                video.addEventListener('play', () => console.log('Video play'));
+                video.addEventListener('playing', () => console.log('Video playing'));
+                video.addEventListener('error', (e) => {
+                    console.error('Video error:', e);
+                    console.error('Video error details:', video.error);
+                });
+                
+                // Try to play the video
+                video.play().then(() => {
+                    console.log('Video autoplay successful');
+                }).catch(err => {
+                    console.error('Video autoplay failed:', err);
+                });
+            }
+        });
 
         // Simple content loading
         fetch('/content/home.md')

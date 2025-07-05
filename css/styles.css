@@ -109,18 +109,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#video-tap-overlay.hidden {
-=======
-  z-index: 5;
   cursor: pointer;
->>>>>>> parent of c0194b2 (mm)
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
