@@ -120,14 +120,6 @@
             
             if (!video || !videoCover) return;
 
-<<<<<<< HEAD
-            // Show loading screen
-            const showLoadingScreen = () => {
-                if (loadingOverlay) {
-                    loadingOverlay.classList.remove('hidden');
-                }
-            };
-
             // Show content when video is ready
             const showContent = () => {
                 const logo = document.querySelector('.logo');
@@ -136,8 +128,6 @@
                 if (content) content.classList.add('loaded');
             };
 
-=======
->>>>>>> parent of 0508173 (sss)
             // Hide loading screen when video starts playing
             const hideLoadingScreen = () => {
                 if (loadingOverlay) {

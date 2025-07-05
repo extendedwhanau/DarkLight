@@ -133,7 +133,7 @@ body {
 .homepage .content {
     position: relative;
     z-index: 2;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease;
 }
 
