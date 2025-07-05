@@ -12,7 +12,7 @@ navigation:
   - number: "03"
     label: Contact
     section_id: contact
-    visible: false
+    visible: true
 sections:
   - section_id: about-darklight
     title: About DarkLight
