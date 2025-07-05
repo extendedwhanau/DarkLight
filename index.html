@@ -114,6 +114,13 @@
             
             if (!video || !videoCover) return;
 
+            // Show loading screen
+            const showLoadingScreen = () => {
+                if (loadingOverlay) {
+                    loadingOverlay.classList.remove('hidden');
+                }
+            };
+
             // Hide loading screen when video starts playing
             const hideLoadingScreen = () => {
                 if (loadingOverlay) {
@@ -126,7 +133,7 @@
             video.addEventListener('canplay', hideLoadingScreen);
             video.addEventListener('loadeddata', hideLoadingScreen);
             
-            // For mobile, also handle tap-to-play if autoplay fails
+            // For mobile, check if autoplay fails and show loading screen
             if (isMobile()) {
                 console.log('Mobile device detected, setting up loading screen');
                 videoCover.style.display = 'block';
@@ -145,7 +152,8 @@
                 // Check if video is playing after a delay
                 setTimeout(() => {
                     if (video.paused) {
-                        // Autoplay failed, make overlay clickable
+                        // Autoplay failed, show loading screen
+                        showLoadingScreen();
                         if (loadingOverlay) {
                             loadingOverlay.style.cursor = 'pointer';
                         }
@@ -153,10 +161,8 @@
                 }, 2000);
                 
             } else {
-                // Desktop - show video normally
+                // Desktop - show video normally, no loading screen needed
                 videoCover.style.display = 'block';
-                // Hide loading screen after a short delay on desktop
-                setTimeout(hideLoadingScreen, 1000);
             }
         }
 
