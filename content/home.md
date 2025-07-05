@@ -22,7 +22,7 @@ mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
 title: Let darkness guide you. Let light transform you.
 subtitle: NEXT EVENT COMING SOON
 location: ""
-vimeo_url: https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1751671752~exp=1751675352~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=a715ff560b51d534c56843e11bdfe6eb7f18b7964eefa705471f999291a6fce4&r=dXMtY2VudHJhbDE%3D
+vimeo_url: https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1751686223~exp=1751689823~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=5ef00d404fd9b9ab0d514cbd918576c99a9117224bd4aba80544963711423929&r=dXMtY2VudHJhbDE%3D
 partners_section:
   title: Special thanks
   partners:
