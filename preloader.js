@@ -20,6 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       hidePreloader();
       localStorage.setItem('preloaderShown', 'true');
-    }, 1600); // 1.2s animation + 0.4s buffer
+    }, 2500); // 2.5s to ensure animation completes
   }
 }); 
