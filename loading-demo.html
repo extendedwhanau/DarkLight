@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background: #222;
+      background: black;
       height: 100vh;
       overflow: hidden;
     }
@@ -15,7 +15,7 @@
       position: fixed;
       z-index: 9999;
       inset: 0;
-      background: #222;
+      background: black;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -23,49 +23,57 @@
       transition: opacity 0.5s;
     }
     
-    .loading-grid {
-      display: grid;
-      grid-template-rows: 80px 80px;
-      gap: 0;
-      width: 160px;
-      height: 160px;
-      position: relative;
-      overflow: hidden;
+    .loading-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     
-    .loading-row {
+    .loading-pill {
+      width: 800px;
+      height: 200px;
+      aspect-ratio: 4/1;
+      position: relative;
+      overflow: visible;
+      margin: 0;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
     
     #loading-left, #loading-right {
-      width: 160px;
-      height: 80px;
-      opacity: 0;
       position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
       transition: opacity 0.5s, left 1.2s cubic-bezier(.77,0,.18,1), right 1.2s cubic-bezier(.77,0,.18,1);
     }
     
+    #loading-left svg, #loading-right svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    
     #loading-left {
-      left: -200px;
+      left: -120%;
       top: 0;
       animation: moveLeftToCenter 1.2s forwards;
       animation-delay: 0.1s;
     }
     
     #loading-right {
-      right: -200px;
-      top: 80px;
+      right: -120%;
+      top: 0;
       animation: moveRightToCenter 1.2s forwards;
       animation-delay: 0.1s;
-      transform: translateY(-1px);
     }
     
     @keyframes moveLeftToCenter {
       0% {
-        left: -200px;
+        left: -120%;
         opacity: 0;
       }
       100% {
@@ -76,7 +84,7 @@
     
     @keyframes moveRightToCenter {
       0% {
-        right: -200px;
+        right: -120%;
         opacity: 0;
       }
       100% {
@@ -90,16 +98,53 @@
       pointer-events: none;
       transition: opacity 0.5s;
     }
+    
+    @media (max-width: 600px) {
+      .loading-pill {
+        width: 600px;
+        height: 150px;
+      }
+    }
   </style>
 </head>
 <body>
   <div id="loading-overlay">
-    <div class="loading-grid">
-      <div class="loading-row">
-        <img src="images/left.svg" id="loading-left" alt="Loading Left"/>
+    <div class="loading-stack">
+      <div class="loading-pill">
+        <div id="loading-left">
+          <svg width="560" height="140" viewBox="0 0 329 137" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M260.975 0H68.0252C30.4559 0 0 30.6685 0 68.5C0 106.332 30.4559 137 68.0252 137H260.975C298.544 137 329 106.332 329 68.5C329 30.6685 298.544 0 260.975 0Z" fill="url(#paint0_linear_413_185)"/>
+            <defs>
+              <linearGradient id="paint0_linear_413_185" x1="328.956" y1="68.4559" x2="0" y2="68.4559" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="0.17" stop-color="white" stop-opacity="0.71"/>
+                <stop offset="0.33" stop-color="white" stop-opacity="0.46"/>
+                <stop offset="0.48" stop-color="white" stop-opacity="0.26"/>
+                <stop offset="0.61" stop-color="white" stop-opacity="0.12"/>
+                <stop offset="0.72" stop-color="white" stop-opacity="0.03"/>
+                <stop offset="0.78" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
       </div>
-      <div class="loading-row">
-        <img src="images/right.svg" id="loading-right" alt="Loading Right"/>
+      <div class="loading-pill">
+        <div id="loading-right">
+          <svg width="560" height="140" viewBox="0 0 329 137" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M68.0251 137L260.975 137C298.544 137 329 106.332 329 68.5C329 30.6685 298.544 0 260.975 0L68.0251 0C30.4559 0 0 30.6685 0 68.5C0 106.332 30.4559 137 68.0251 137Z" fill="url(#paint0_linear_413_186)"/>
+            <defs>
+              <linearGradient id="paint0_linear_413_186" x1="0.0438027" y1="68.5" x2="329" y2="68.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="0.17" stop-color="white" stop-opacity="0.71"/>
+                <stop offset="0.33" stop-color="white" stop-opacity="0.46"/>
+                <stop offset="0.48" stop-color="white" stop-opacity="0.26"/>
+                <stop offset="0.61" stop-color="white" stop-opacity="0.12"/>
+                <stop offset="0.72" stop-color="white" stop-opacity="0.03"/>
+                <stop offset="0.78" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,88 @@
+#loading-overlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: opacity 0.5s;
+}
+
+.loading-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-pill {
+  width: 800px;
+  height: 200px;
+  aspect-ratio: 4/1;
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loading-left, #loading-right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s, left 1.2s cubic-bezier(.77,0,.18,1), right 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+#loading-left svg, #loading-right svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#loading-left {
+  left: -120%;
+  top: 0;
+  animation: moveLeftToCenter 1.2s forwards;
+  animation-delay: 0.1s;
+}
+
+#loading-right {
+  right: -120%;
+  top: 0;
+  animation: moveRightToCenter 1.2s forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes moveLeftToCenter {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes moveRightToCenter {
+  0% {
+    right: -120%;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .loading-pill {
+    width: 600px;
+    height: 150px;
+  }
+} 
