@@ -140,26 +140,40 @@
                         // Remove any existing background image
                         document.body.style.background = '';
                         
-                        // Create Vimeo iframe with autoplay and no audio
-                        const vimeoUrl = data.vimeo_url + '?autoplay=1&muted=1&loop=1&background=1&controls=0&showinfo=0&byline=0&title=0&portrait=0&sidedock=0';
+                        // Show the existing video element and update its source
+                        const existingVideo = document.querySelector('.video-cover');
+                        const videoElement = document.querySelector('.video-cover video source');
                         
-                        const vimeoBackground = document.createElement('div');
-                        vimeoBackground.className = 'vimeo-background';
-                        vimeoBackground.innerHTML = `
-                            <iframe 
-                                src="${vimeoUrl}"
-                                frameborder="0" 
-                                allow="autoplay; fullscreen; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        `;
+                        if (existingVideo && videoElement) {
+                            existingVideo.style.display = 'block';
+                            videoElement.src = data.vimeo_url;
+                            const video = document.querySelector('.video-cover video');
+                            if (video) {
+                                video.load();
+                            }
+                        }
                         
-                        // Insert at the beginning of body
-                        document.body.insertBefore(vimeoBackground, document.body.firstChild);
+                        // Remove any existing Vimeo background
+                        const existingVimeo = document.querySelector('.vimeo-background');
+                        if (existingVimeo) {
+                            existingVimeo.remove();
+                        }
                         
                     } else if (data.background_image) {
                         console.log('Setting background image:', data.background_image);
                         document.body.style.background = `url(${data.background_image}) center center / cover no-repeat`;
+                        
+                        // Show the existing video element for fallback
+                        const existingVideo = document.querySelector('.video-cover');
+                        if (existingVideo) {
+                            existingVideo.style.display = 'block';
+                        }
+                        
+                        // Remove any existing Vimeo background
+                        const existingVimeo = document.querySelector('.vimeo-background');
+                        if (existingVimeo) {
+                            existingVimeo.remove();
+                        }
                         
                         // Test if image loads
                         const img = new Image();

@@ -75,6 +75,28 @@ body {
   object-fit: cover;
 }
 
+/* Vimeo background styling */
+.vimeo-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vimeo-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 /* Ensure content stays above video */
 .homepage .logo,
 .homepage .content {
