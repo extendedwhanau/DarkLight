@@ -110,8 +110,8 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
@@ -634,8 +634,8 @@ button:hover {
     font-family: inherit;
     text-align: center;
     transition: opacity 0.5s;
-    opacity: 1;
-    pointer-events: all;
+    opacity: 0;
+    pointer-events: none;
 }
 
 #video-tap-overlay span {
@@ -686,8 +686,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: all;
+  pointer-events: none;
   transition: opacity 0.5s;
+  opacity: 0;
 }
 #loading-left {
   width: 320px;
