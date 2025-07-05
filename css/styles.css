@@ -677,3 +677,72 @@ html, body {
 .about-page body {
     overflow: auto !important;
 }
+
+#loading-overlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: opacity 0.5s;
+}
+#loading-left {
+  width: 320px;
+  max-width: 40vw;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 10vw;
+  z-index: 2;
+  transform: translateY(-50%);
+  animation: moveLeftToCenter 1.2s forwards;
+  animation-delay: 0.1s;
+}
+#loading-right {
+  width: 320px;
+  max-width: 40vw;
+  opacity: 0;
+  position: absolute;
+  top: 60%;
+  left: 90vw;
+  z-index: 1;
+  transform: translateY(-50%);
+  animation: moveRightToCenter 1.2s forwards;
+  animation-delay: 0.1s;
+}
+@keyframes moveLeftToCenter {
+  0% {
+    left: 10vw;
+    top: 50%;
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    left: 50%;
+    top: 50%;
+    opacity: 1;
+    transform: translate(-100%, -50%);
+  }
+}
+@keyframes moveRightToCenter {
+  0% {
+    left: 90vw;
+    top: 60%;
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    left: 50%;
+    top: 60%;
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+#loading-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
