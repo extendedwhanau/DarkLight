@@ -14,7 +14,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: true
+    visible: false
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
