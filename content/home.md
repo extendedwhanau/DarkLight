@@ -1,6 +1,4 @@
 ---
-mux_url: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM.m3u8
-mux_mp4: https://stream.mux.com/E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM/medium.mp4)
 dates: ""
 background_type: vimeo
 background_image: /images/uploads/background-image.jpg
@@ -18,7 +16,6 @@ floating_buttons:
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
-mux_playback_id: E2jWRWSz02tV1QRfJoTj8Bo3zF6jOUZESWkChuUfA6YM
 title: Let darkness guide you. Let light transform you.
 subtitle: NEXT EVENT COMING SOON
 location: ""
