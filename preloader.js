@@ -75,6 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       hidePreloader();
       localStorage.setItem('preloaderShown', 'true');
-    }, 2500); // 2.5s to ensure animation completes
+    }, 1500); // 2.5s to ensure animation completes
   // }
 }); 
