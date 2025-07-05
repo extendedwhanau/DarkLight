@@ -51,6 +51,11 @@
         <source src="https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1751671752~exp=1751675352~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=a715ff560b51d534c56843e11bdfe6eb7f18b7964eefa705471f999291a6fce4&r=dXMtY2VudHJhbDE%3D" type="video/mp4">
         Your browser doesn't support HTML5 video tag.
       </video>
+      
+      <!-- Tap to play overlay for mobile -->
+      <div id="video-tap-overlay">
+        <span>TAP TO ENTER EXPERIENCE</span>
+      </div>
     </div>
 
     <!-- Main Content -->
@@ -101,19 +106,71 @@
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
-        // Handle mobile video autoplay
+        // Handle mobile video autoplay and tap-to-play
         function handleMobileVideo() {
             const video = document.querySelector('.video-cover video');
             const videoCover = document.querySelector('.video-cover');
+            const tapOverlay = document.getElementById('video-tap-overlay');
+            
             if (!video || !videoCover) return;
 
             if (isMobile()) {
-                console.log('Mobile device detected, hiding video and showing background image');
-                // Hide video on mobile - background image will show instead
-                videoCover.style.display = 'none';
-            } else {
-                // Desktop - show video normally
+                console.log('Mobile device detected, setting up tap-to-play');
+                // Show video but handle autoplay with tap-to-play overlay
                 videoCover.style.display = 'block';
+                
+                // Check if video is playing
+                const checkVideoPlayback = () => {
+                    if (video.paused || video.ended) {
+                        // Video is not playing, show overlay
+                        if (tapOverlay) {
+                            tapOverlay.classList.add('active');
+                        }
+                    } else {
+                        // Video is playing, hide overlay
+                        if (tapOverlay) {
+                            tapOverlay.classList.remove('active');
+                        }
+                    }
+                };
+                
+                // Check initially
+                checkVideoPlayback();
+                
+                // Set up tap-to-play functionality
+                if (tapOverlay) {
+                    tapOverlay.addEventListener('click', () => {
+                        video.play().then(() => {
+                            tapOverlay.classList.remove('active');
+                        }).catch(err => {
+                            console.log('Video play failed:', err);
+                        });
+                    });
+                }
+                
+                // Listen for video events
+                video.addEventListener('play', () => {
+                    if (tapOverlay) tapOverlay.classList.remove('active');
+                });
+                
+                video.addEventListener('pause', () => {
+                    if (tapOverlay) tapOverlay.classList.add('active');
+                });
+                
+                video.addEventListener('ended', () => {
+                    if (tapOverlay) tapOverlay.classList.add('active');
+                });
+                
+                // Check periodically for autoplay success/failure
+                setTimeout(checkVideoPlayback, 1000);
+                setTimeout(checkVideoPlayback, 2000);
+                
+            } else {
+                // Desktop - show video normally, hide overlay
+                videoCover.style.display = 'block';
+                if (tapOverlay) {
+                    tapOverlay.classList.remove('active');
+                }
             }
         }
 
