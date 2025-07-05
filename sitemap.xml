@@ -11,12 +11,7 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://darklight.co/about-darklight.html</loc>
-  <lastmod>2025-03-11T19:34:30+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://darklight.co/faq-darklight.html</loc>
+  <loc>https://darklight.co/about.html</loc>
   <lastmod>2025-03-11T19:34:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>

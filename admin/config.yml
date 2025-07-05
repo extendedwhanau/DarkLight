@@ -70,19 +70,51 @@ collections:
                   - {label: "Alt Text", name: "alt", widget: "string"}
                 summary: "{{fields.name}}"
 
-      - name: "about_darklight"
-        label: "About Darklight"
-        file: "content/about-darklight.md"
+      - name: "about"
+        label: "About Page"
+        file: "content/about.md"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Main Content", name: "content", widget: "markdown"}
+          - {label: "Page Title", name: "page_title", widget: "string", default: "About & FAQ"}
+          - label: "Navigation"
+            name: "navigation"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string", hint: "e.g., 01, 02, 03"}
+              - {label: "Label", name: "label", widget: "string", hint: "e.g., Darklight, FAQ, About Us"}
+              - {label: "Section ID", name: "section_id", widget: "string", hint: "e.g., about-darklight, faq, about-us"}
+            summary: "{{fields.number}} {{fields.label}}"
           - label: "Sections"
             name: "sections"
             widget: "list"
             fields:
+              - {label: "Section ID", name: "section_id", widget: "string", hint: "Must match navigation section_id"}
               - {label: "Section Title", name: "title", widget: "string"}
-              - {label: "Section Content", name: "content", widget: "markdown"}
-            summary: "{{fields.title}}"
+              - label: "Content Type"
+                name: "content_type"
+                widget: "select"
+                options: ["text", "faq", "about_us"]
+                default: "text"
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
+                required: false
+              - label: "FAQ Items"
+                name: "faq_items"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Question", name: "question", widget: "string"}
+                  - {label: "Answer", name: "answer", widget: "markdown"}
+                summary: "{{fields.question}}"
+              - label: "About Us Items"
+                name: "about_us_items"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Description", name: "description", widget: "markdown"}
+                summary: "{{fields.name}}"
+            summary: "{{fields.title}} ({{fields.content_type}})"
 
       - name: "about_resonate"
         label: "About Resonate"
@@ -97,16 +129,3 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Description", name: "description", widget: "markdown"}
             summary: "{{fields.name}}"
-
-      - name: "faq"
-        label: "FAQ Page"
-        file: "content/faq-darklight.md"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - label: "FAQ Items"
-            name: "faqs"
-            widget: "list"
-            fields:
-              - {label: "Question", name: "question", widget: "string"}
-              - {label: "Answer", name: "answer", widget: "markdown"}
-            summary: "{{fields.question}}"

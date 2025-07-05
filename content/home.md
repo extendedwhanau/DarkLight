@@ -7,11 +7,8 @@ background_image: /images/uploads/background-image.jpg
 ticket_buttons: []
 floating_buttons:
   - text: About
-    link: about-darklight.html
+    link: about.html
     visible: true
-  - text: FAQs
-    link: faq-darklight.html
-    visible: false
   - text: Resonate
     link: about-resonate.html
     visible: false
