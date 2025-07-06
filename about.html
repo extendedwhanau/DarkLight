@@ -236,6 +236,13 @@
             letter-spacing: 2px;
             text-align: left;
         }
+        .about-us-name {
+            color: #D3D3D3;
+            font-size: 18px;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-align: left;
+        }
     </style>
 </head>
 <body class="about-page">
@@ -373,7 +380,7 @@
 
         return section.about_us_items.map(item => `
             <div class="about-us-item">
-                <h1>${item.name}</h1>
+                ${item.name ? `<p class="about-us-name">${item.name}</p>` : ''}
                 <div>${convertMarkdownToHtml(item.description)}</div>
             </div>
         `).join('');
