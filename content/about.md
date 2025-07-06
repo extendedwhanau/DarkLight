@@ -92,6 +92,6 @@ sections:
     visible: true
     content_type: about_us
     about_us_items:
-      - name: General Formation
+      - name: General info
         description: dan@angusmuirdesign.co.nz
 ---
