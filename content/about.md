@@ -87,7 +87,7 @@ sections:
       - question: Can I take photos?
         answer: Yes! Photography is encouraged. Please tag us @darklight_experience in
           your social media posts.
-  - section_id: Contact
+  - section_id: contact
     title: Contact
     visible: true
     content_type: about_us
