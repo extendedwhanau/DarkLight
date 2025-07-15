@@ -17,6 +17,9 @@ floating_buttons:
   - text: Partners
     link: "#"
     visible: false
+  - visible: true
+    text: Archive
+    link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
