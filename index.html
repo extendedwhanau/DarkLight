@@ -37,7 +37,7 @@
     </div>
 
     <!-- Video background using direct video file (like Beyond The Valley) -->
-    <div class="video-cover">
+    <div class="video-cover" style="display: none;">
       <video 
         autoplay 
         loop 
@@ -253,6 +253,13 @@
                     if (videoCover) videoCover.style.display = 'none';
                     document.body.style.background = '';
 
+                    // Wait for preloader to finish before showing background image
+                    function showImageBackground() {
+                        if (data.background_image) {
+                            document.body.style.background = `url(${data.background_image}) center center / cover no-repeat`;
+                        }
+                    }
+
                     if (data.background_type === 'vimeo' && data.vimeo_url) {
                         // Show video, hide image background
                         if (videoCover) videoCover.style.display = 'block';
@@ -266,9 +273,24 @@
                         }
                         document.body.style.background = '';
                     } else if (data.background_type === 'image' && data.background_image) {
-                        // Hide video, show image background
+                        // Hide video, show image background only after preloader
                         if (videoCover) videoCover.style.display = 'none';
-                        document.body.style.background = `url(${data.background_image}) center center / cover no-repeat`;
+                        // Wait for preloader to finish
+                        const preloader = document.getElementById('loading-overlay');
+                        if (preloader) {
+                            const observer = new MutationObserver((mutations) => {
+                                mutations.forEach((mutation) => {
+                                    if (mutation.attributeName === 'class' && preloader.classList.contains('hide')) {
+                                        showImageBackground();
+                                        observer.disconnect();
+                                    }
+                                });
+                            });
+                            observer.observe(preloader, { attributes: true });
+                        } else {
+                            // If no preloader, show immediately
+                            showImageBackground();
+                        }
                     }
                     // --- END: Background logic update ---
                     
