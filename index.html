@@ -244,6 +244,34 @@
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
                     
+                    // --- BEGIN: Background logic update ---
+                    const videoCover = document.querySelector('.video-cover');
+                    const videoElement = document.querySelector('.video-cover video');
+                    const videoSource = document.querySelector('.video-cover video source');
+
+                    // Hide both by default
+                    if (videoCover) videoCover.style.display = 'none';
+                    document.body.style.background = '';
+
+                    if (data.background_type === 'vimeo' && data.vimeo_url) {
+                        // Show video, hide image background
+                        if (videoCover) videoCover.style.display = 'block';
+                        if (videoSource) {
+                            videoSource.src = data.vimeo_url;
+                            if (videoElement) videoElement.load();
+                        }
+                        // Optionally set poster if background_image is set
+                        if (videoElement && data.background_image) {
+                            videoElement.setAttribute('poster', data.background_image);
+                        }
+                        document.body.style.background = '';
+                    } else if (data.background_type === 'image' && data.background_image) {
+                        // Hide video, show image background
+                        if (videoCover) videoCover.style.display = 'none';
+                        document.body.style.background = `url(${data.background_image}) center center / cover no-repeat`;
+                    }
+                    // --- END: Background logic update ---
+                    
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);
                     
