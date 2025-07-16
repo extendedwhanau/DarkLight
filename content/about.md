@@ -19,13 +19,39 @@ sections:
     visible: true
     content_type: text
     content: >-
-      DarkLight is created by Angus Muir Design, an award-winning studio known
-      for immersive installations using light, sound, and materials. Led by
-      Angus Muir, with event producer Dan Move, co-founder of LUMA Queenstown,
-      the team brings creative visions to life globally.
+      After a sold-out debut earlier this year, the acclaimed light art
+      experience Darklight by Angus Muir Design returns this September with a
+      bold new chapter: **Darklight: The Edge of Light**. Set against the
+      sweeping backdrop of Okahu Bay, the exhibition will run from 2 to 4
+      September, with the return of the much-loved one-night-only music event
+      **Resonate** on 5 September.
 
 
-      Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unravelling the structure of light to reveal the spectrum of colour within.
+      Inspired by the in-between moments where day turns to night, land meets sea, and the natural world blends with the built environment, The Edge of Light invites audiences into a richly atmospheric experience. 
+
+
+      Darklight: The Edge of Light introduces seven new installations that follow a line of transition - light shifts, space evolves and sound deepens from stillness to resonance. 
+
+
+      “This is where light becomes emotion and space becomes experience,” says Angus Muir. “It’s about the edge. Not just in the landscape, but within ourselves. The edge is where we transform.”
+
+
+      This year’s programme features a line-up of some of Aotearoa’s most inventive artists, including **Angus Muir, Catherine Ellis, Matt Liggins, Simon Holden, Peter Hobbs, Luke Foley-Martin and Sarah Jayne Kavali**. Each artist brings their own perspective to the shared theme of transition.
+
+
+      The event takes place at OKAHU, located at 18 Tamaki Drive, with panoramic views across the Waitematā. The waterfront setting becomes part of the exhibition, reflecting and amplifying the installations as the evening light shifts. The venue’s open-air design also creates a strong connection between the work and the natural elements.
+
+
+      Sessions are much more limited this time around. Four timed sessions will run each night, starting on the hour from 6pm to 10pm.
+
+
+      On Friday 5 September, Resonate returns in partnership with Music First. This one-night music-led experience features a curated lineup of DJs including Frank Booker and Love Language, bringing together deep soundscapes, movement, and visuals in a shared space. It continues the sensory story of Darklight through rhythm, community, and celebration. Resonate was a sold-out experience earlier this year and will once again be an unmissable experience for art lovers, design enthusiasts, and anyone interested in the emotional and transformative power of light. 
+
+
+      Earlier this year, Darklight: A Descent Into Colour earned rave reviews and sold out across multiple nights. Audiences described it as “unlike anything Auckland has seen”. 
+
+
+      With public appetite for immersive, artist-led experiences continuing to grow, The Edge of Light is expected to do the same. Tickets available on-sale from 17th July.
   - section_id: faq
     title: Frequently Asked Questions
     visible: true
