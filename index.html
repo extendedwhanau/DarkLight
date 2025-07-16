@@ -378,6 +378,31 @@
                         locationContainer.style.display = 'none';
                     }
                     
+                    // Handle ticket buttons
+                    const ticketContainer = document.getElementById('ticket-container');
+                    if (data.ticket_buttons && data.ticket_buttons.length > 0 && ticketContainer) {
+                        console.log('Ticket buttons data:', data.ticket_buttons);
+                        
+                        ticketContainer.innerHTML = data.ticket_buttons
+                            .map(button => {
+                                const buttonClass = button.sold_out ? 'ticket-button sold-out' : 'ticket-button';
+                                return `
+                                    <div class="${buttonClass}">
+                                        <a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+                                            ${button.text}
+                                        </a>
+                                    </div>
+                                `;
+                            })
+                            .join('');
+                        
+                        console.log('Ticket buttons rendered');
+                    } else if (ticketContainer) {
+                        // Hide ticket container if no buttons
+                        ticketContainer.style.display = 'none';
+                        console.log('No ticket buttons to display');
+                    }
+                    
                     // Handle partners section
                     const partnersTitle = document.getElementById('partners-title');
                     const partnersLogos = document.getElementById('partners-logos');
