@@ -76,9 +76,11 @@ sections:
         answer: Yes! Photography is encouraged. Please tag us @darklight_experience in
           your social media posts.
       - question: Is food included in the ticket price?
-        answer: Yes - A curated taste experience is included, designed to complement the
-          event, but it is not intended as a full
-          meal.[](https://www.google.com/search?sca_esv=279152694601b767&rlz=1C1SQJL_enNZ809NZ809&sxsrf=AE3TifM9aVxc7YgGDCK8AsAz6DOkwkQthA:1752652389259&q=Yes+-+A+curated+taste+experience+is+included,+designed+to+complement+the+event,+but+it+is+not+intended+as+a+full+meal&spell=1&sa=X&ved=2ahUKEwi_hs748sCOAxUksVYBHbdRLIgQkeECKAB6BAgMEAE)
+        answer: "[](https://www.google.com/search?sca_esv=279152694601b767&rlz=1C1SQJL_\
+          enNZ809NZ809&sxsrf=AE3TifM9aVxc7YgGDCK8AsAz6DOkwkQthA:1752652389259&q\
+          =Yes+-+A+curated+taste+experience+is+included,+designed+to+complement\
+          +the+event,+but+it+is+not+intended+as+a+full+meal&spell=1&sa=X&ved=2a\
+          hUKEwi_hs748sCOAxUksVYBHbdRLIgQkeECKAB6BAgMEAE)"
   - section_id: contact
     title: Contact
     visible: true
