@@ -1,6 +1,6 @@
 ---
-title: Let darkness guide you. Let light transform you.
-subtitle: NEXT EVENT COMING SOON
+title: The Edge of Light
+subtitle: Darklight Returns with
 dates: ""
 location: ""
 background_type: image
