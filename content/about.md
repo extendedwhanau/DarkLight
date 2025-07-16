@@ -24,7 +24,7 @@ sections:
       bold new chapter: **Darklight: The Edge of Light**. Set against the
       sweeping backdrop of Okahu Bay, the exhibition will run from 2 to 4
       September, with the return of the much-loved one-night-only music event
-      **Resonate** on 5 September.
+      Resonate on 5 September.
 
 
       Inspired by the in-between moments where day turns to night, land meets sea, and the natural world blends with the built environment, The Edge of Light invites audiences into a richly atmospheric experience. 
@@ -36,7 +36,7 @@ sections:
       “This is where light becomes emotion and space becomes experience,” says Angus Muir. “It’s about the edge. Not just in the landscape, but within ourselves. The edge is where we transform.”
 
 
-      This year’s programme features a line-up of some of Aotearoa’s most inventive artists, including **Angus Muir, Catherine Ellis, Matt Liggins, Simon Holden, Peter Hobbs, Luke Foley-Martin and Sarah Jayne Kavali**. Each artist brings their own perspective to the shared theme of transition.
+      This year’s programme features a line-up of some of Aotearoa’s most inventive artists, including Angus Muir, Catherine Ellis, Matt Liggins, Simon Holden, Peter Hobbs, Luke Foley-Martin and Sarah Jayne Kavali. Each artist brings their own perspective to the shared theme of transition.
 
 
       The event takes place at OKAHU, located at 18 Tamaki Drive, with panoramic views across the Waitematā. The waterfront setting becomes part of the exhibition, reflecting and amplifying the installations as the evening light shifts. The venue’s open-air design also creates a strong connection between the work and the natural elements.
