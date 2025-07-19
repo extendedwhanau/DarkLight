@@ -134,9 +134,7 @@ collections:
 
       - name: "gallery"
         label: "Gallery"
-        folder: content
-        create: false
-        slug: gallery
+        file: content/gallery.md
         fields:
           - { name: title, label: Gallery Title, widget: string }
           - label: Images
@@ -145,4 +143,3 @@ collections:
             fields:
               - { name: url, label: Image, widget: image }
               - { name: caption, label: Caption, widget: string, required: false }
-        summary: "{{fields.title}} ({{fields.content_type}}) {{fields.visible | ternary '' '(Hidden)'}}"
