@@ -106,7 +106,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  display: none;
+  display: none !important;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -114,12 +114,13 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
 }
 
 #video-tap-overlay.active {
   opacity: 1;
   visibility: visible;
-  display: flex;
+  display: flex !important;
   pointer-events: auto;
 }
 
@@ -633,7 +634,7 @@ button:hover {
     height: 100vh;
     background: rgba(0,0,0,0.95);
     z-index: 10000;
-    display: none;
+    display: none !important;
     align-items: center;
     justify-content: center;
     color: #fff;
