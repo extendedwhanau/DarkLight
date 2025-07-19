@@ -134,12 +134,15 @@ collections:
 
       - name: "gallery"
         label: "Gallery"
-        file: "content/gallery.md"
+        folder: content
+        create: false
+        slug: gallery
         fields:
-          - label: "Gallery Images"
-            name: "images"
-            widget: "list"
+          - { name: title, label: Gallery Title, widget: string }
+          - label: Images
+            name: images
+            widget: list
             fields:
-              - {label: "Image", name: "url", widget: "image", hint: "Upload or select an image for the gallery"}
-              - {label: "Caption", name: "caption", widget: "string", required: false, hint: "Optional caption for the image"}
-            summary: "{{fields.caption | default: 'Image'}}"
+              - { name: url, label: Image, widget: image }
+              - { name: caption, label: Caption, widget: string, required: false }
+        summary: "{{fields.title}} ({{fields.content_type}}) {{fields.visible | ternary '' '(Hidden)'}}"

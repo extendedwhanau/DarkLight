@@ -1,4 +1,5 @@
 ---
+title: A Descent Into Colour
 images:
   - url: /images/uploads/background-image.jpg
     caption: ""
