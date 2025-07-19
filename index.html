@@ -758,8 +758,8 @@
                 imgElement.style.display = index === 0 ? 'block' : 'none';
                 imgElement.setAttribute('data-index', index);
                 
-                // Add a fallback text in case image doesn't load
-                imgElement.innerHTML = `<div style="color: white; text-align: center; padding-top: 50px;">Loading image: ${image.url}</div>`;
+                // No fallback text - keep empty
+                imgElement.innerHTML = '';
                 
                 if (image.caption) {
                     const caption = document.createElement('div');
