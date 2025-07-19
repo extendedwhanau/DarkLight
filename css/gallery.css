@@ -1,21 +1,22 @@
-/* Gallery Page Styles */
-.gallery-page {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    height: 100vh;
+/* Gallery Overlay Styles */
+.gallery-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
     overflow: hidden;
-    position: relative;
     font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
 /* Gallery Title */
 .gallery-title {
     position: fixed;
-    bottom: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 1000;
     text-align: center;
     pointer-events: none;
@@ -23,9 +24,9 @@
 
 .gallery-title h1 {
     color: #D3D3D3;
-    font-size: 0.8rem;
+    font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 0.08rem;
+    letter-spacing: 0.15rem;
     margin: 0;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     opacity: 0.8;
@@ -105,8 +106,8 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .gallery-title h1 {
-        font-size: 0.7rem;
-        letter-spacing: 0.06rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
     }
 
     .image-caption {
@@ -126,7 +127,7 @@
 /* Landscape Mobile */
 @media (orientation: landscape) and (max-width: 768px) {
     .gallery-title h1 {
-        font-size: 0.6rem;
+        font-size: 1.2rem;
     }
 
     .image-caption {
@@ -146,7 +147,7 @@
 /* Tablet Styles */
 @media (min-width: 769px) and (max-width: 1024px) {
     .gallery-title h1 {
-        font-size: 0.75rem;
+        font-size: 1.8rem;
     }
 
     .image-counter-bubble {

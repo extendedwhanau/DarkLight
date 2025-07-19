@@ -13,6 +13,7 @@
     <!-- Fonts & Styles -->
     <link rel="stylesheet" href="https://use.typekit.net/efe5rwd.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="preloader.css">
     
     <!-- Favicon -->
@@ -99,6 +100,24 @@
     <!-- Floating Buttons -->
     <div class="floating-buttons" id="floating-buttons">
         <!-- Floating buttons will be dynamically inserted here -->
+    </div>
+
+    <!-- Gallery Overlay -->
+    <div class="gallery-overlay" id="gallery-overlay" style="display: none;">
+        <!-- Gallery Container -->
+        <div class="gallery-container" id="gallery-container">
+            <!-- Images will be dynamically loaded here -->
+        </div>
+
+        <!-- Gallery Title Overlay -->
+        <div class="gallery-title" id="gallery-title">
+            <h1>A Descent Into Colour</h1>
+        </div>
+
+        <!-- Image Counter Bubble -->
+        <div class="image-counter-bubble" id="image-counter-bubble">
+            <span id="current-image">1</span> / <span id="total-images">0</span>
+        </div>
     </div>
 
     <!-- JavaScript -->
@@ -528,6 +547,8 @@
                             .map(button => {
                                 if (button.text === 'Partners') {
                                     return `<button id="partners-btn">${button.text}</button>`;
+                                } else if (button.text === 'Gallery') {
+                                    return `<button id="gallery-btn">${button.text}</button>`;
                                 } else {
                                     return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
                                 }
@@ -606,7 +627,17 @@
                             
                             // Re-attach event listeners after re-rendering
                             const partnersBtn = document.getElementById('partners-btn');
+                            const galleryBtn = document.getElementById('gallery-btn');
                             const mainContent = document.getElementById('main-content');
+                            
+                            // Gallery button handler
+                            if (galleryBtn) {
+                                galleryBtn.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    showGallery();
+                                });
+                            }
                             
                             if (partnersBtn && partnersSection) {
                                 console.log('Re-attaching partners button click handler');
@@ -665,6 +696,172 @@
                 }
             });
         }
+
+        // Gallery functionality
+        let currentImageIndex = 0;
+        let images = [];
+        let isGalleryLoaded = false;
+
+        // Load gallery data from CMS
+        function loadGallery() {
+            fetch('/content/gallery.md')
+                .then(response => response.text())
+                .then(text => {
+                    const parts = text.split('---');
+                    if (parts.length >= 2) {
+                        const yamlContent = parts[1];
+                        const data = jsyaml.load(yamlContent);
+                        
+                        if (data.images && data.images.length > 0) {
+                            images = data.images;
+                            renderGallery();
+                            isGalleryLoaded = true;
+                        } else {
+                            showNoImagesMessage();
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('Failed to load gallery:', err);
+                    showNoImagesMessage();
+                });
+        }
+
+        // Render gallery images
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = '';
+            
+            images.forEach((image, index) => {
+                const imgElement = document.createElement('div');
+                imgElement.className = 'gallery-image';
+                imgElement.style.backgroundImage = `url(${image.url})`;
+                imgElement.style.display = index === 0 ? 'block' : 'none';
+                imgElement.setAttribute('data-index', index);
+                
+                if (image.caption) {
+                    const caption = document.createElement('div');
+                    caption.className = 'image-caption';
+                    caption.textContent = image.caption;
+                    imgElement.appendChild(caption);
+                }
+                
+                container.appendChild(imgElement);
+            });
+            
+            updateCounter();
+        }
+
+        // Show current image
+        function showImage(index) {
+            const imageElements = document.querySelectorAll('.gallery-image');
+            imageElements.forEach((img, i) => {
+                img.style.display = i === index ? 'block' : 'none';
+            });
+            currentImageIndex = index;
+            updateCounter();
+        }
+
+        // Navigate to next image
+        function nextImage() {
+            if (images.length === 0) return;
+            const nextIndex = (currentImageIndex + 1) % images.length;
+            showImage(nextIndex);
+        }
+
+        // Navigate to previous image
+        function prevImage() {
+            if (images.length === 0) return;
+            const prevIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+            showImage(prevIndex);
+        }
+
+        // Update image counter
+        function updateCounter() {
+            const currentElement = document.getElementById('current-image');
+            const totalElement = document.getElementById('total-images');
+            
+            if (currentElement) currentElement.textContent = currentImageIndex + 1;
+            if (totalElement) totalElement.textContent = images.length;
+        }
+
+        // Show no images message
+        function showNoImagesMessage() {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = '<div class="no-images">No images available</div>';
+        }
+
+        // Show gallery overlay
+        function showGallery() {
+            const overlay = document.getElementById('gallery-overlay');
+            if (overlay) {
+                overlay.style.display = 'block';
+                loadGallery();
+            }
+        }
+
+        // Hide gallery overlay
+        function hideGallery() {
+            const overlay = document.getElementById('gallery-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // Keyboard navigation for gallery
+        function handleGalleryKeyPress(e) {
+            if (!isGalleryLoaded) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+                case 'Escape':
+                    hideGallery();
+                    break;
+            }
+        }
+
+        // Touch/swipe support for gallery
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleGalleryTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleGalleryTouchEnd(e) {
+            if (!isGalleryLoaded) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            handleGallerySwipe();
+        }
+
+        function handleGallerySwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextImage(); // Swipe left
+                } else {
+                    prevImage(); // Swipe right
+                }
+            }
+        }
+
+        // Add gallery event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gallery keyboard navigation
+            document.addEventListener('keydown', handleGalleryKeyPress);
+            
+            // Gallery touch events for mobile
+            document.addEventListener('touchstart', handleGalleryTouchStart);
+            document.addEventListener('touchend', handleGalleryTouchEnd);
+        });
     </script>
     <script src="preloader.js"></script>
 </body>

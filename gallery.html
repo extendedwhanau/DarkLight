@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gallery - A Descent Into Colour - DARKLIGHT Immersive Light & Sound Exhibition">
-    
-    <!-- Social Meta Tags -->
-    <meta property="og:title" content="Gallery – A Descent Into Colour – DARKLIGHT">
-    <meta property="og:image" content="https://example.com/path-to-social-image.jpg">
-    
-    <!-- Fonts & Styles -->
-    <link rel="stylesheet" href="https://use.typekit.net/efe5rwd.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/gallery.css">
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.png">
-    
-    <!-- CMS & Identity -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-    
-    <title>Gallery – A Descent Into Colour – DARKLIGHT</title>
-</head>
-
-<body class="gallery-page">
+<!-- Gallery Overlay -->
+<div class="gallery-overlay" id="gallery-overlay" style="display: none;">
     <!-- Gallery Container -->
     <div class="gallery-container" id="gallery-container">
         <!-- Images will be dynamically loaded here -->
@@ -41,9 +14,9 @@
     <div class="image-counter-bubble" id="image-counter-bubble">
         <span id="current-image">1</span> / <span id="total-images">0</span>
     </div>
+</div>
 
-    <!-- JavaScript -->
-    <script>
+<script>
         let currentImageIndex = 0;
         let images = [];
         let isGalleryLoaded = false;
@@ -179,10 +152,25 @@
             }
         }
 
+        // Show gallery overlay
+        function showGallery() {
+            const overlay = document.getElementById('gallery-overlay');
+            if (overlay) {
+                overlay.style.display = 'block';
+                loadGallery();
+            }
+        }
+
+        // Hide gallery overlay
+        function hideGallery() {
+            const overlay = document.getElementById('gallery-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
         // Initialize gallery
         document.addEventListener('DOMContentLoaded', () => {
-            loadGallery();
-            
             // Keyboard navigation
             document.addEventListener('keydown', handleKeyPress);
             
@@ -191,16 +179,7 @@
             document.addEventListener('touchend', handleTouchEnd);
         });
 
-        // Netlify Identity
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
-</body>
-</html> 
+        // Make functions globally available
+        window.showGallery = showGallery;
+        window.hideGallery = hideGallery;
+    </script> 
