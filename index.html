@@ -103,7 +103,7 @@
     </div>
 
     <!-- Gallery Overlay -->
-    <div class="gallery-overlay" id="gallery-overlay" style="display: none;">
+    <div class="gallery-overlay" id="gallery-overlay" style="display: none;" onclick="handleGalleryClick(event)">
         <!-- Gallery Container -->
         <div class="gallery-container" id="gallery-container">
             <!-- Images will be dynamically loaded here -->
@@ -548,7 +548,7 @@
                                 if (button.text === 'Partners') {
                                     return `<button id="partners-btn">${button.text}</button>`;
                                 } else if (button.text === 'Gallery') {
-                                    return `<button id="gallery-btn">${button.text}</button>`;
+                                    return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
                                 } else {
                                     return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
                                 }
@@ -616,6 +616,8 @@
                                 .map(button => {
                                     if (button.text === 'Partners') {
                                         return `<button id="partners-btn">${button.text}</button>`;
+                                    } else if (button.text === 'Gallery') {
+                                        return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
                                     } else {
                                         return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
                                     }
@@ -632,11 +634,15 @@
                             
                             // Gallery button handler
                             if (galleryBtn) {
+                                console.log('Gallery button found, adding click handler');
                                 galleryBtn.addEventListener('click', (e) => {
+                                    console.log('Gallery button clicked!');
                                     e.preventDefault();
                                     e.stopPropagation();
                                     showGallery();
                                 });
+                            } else {
+                                console.log('Gallery button not found');
                             }
                             
                             if (partnersBtn && partnersSection) {
@@ -704,19 +710,24 @@
 
         // Load gallery data from CMS
         function loadGallery() {
+            console.log('Loading gallery data...');
             fetch('/content/gallery.md')
                 .then(response => response.text())
                 .then(text => {
+                    console.log('Gallery data loaded:', text);
                     const parts = text.split('---');
                     if (parts.length >= 2) {
                         const yamlContent = parts[1];
                         const data = jsyaml.load(yamlContent);
+                        console.log('Parsed gallery data:', data);
                         
                         if (data.images && data.images.length > 0) {
                             images = data.images;
+                            console.log('Gallery images:', images);
                             renderGallery();
                             isGalleryLoaded = true;
                         } else {
+                            console.log('No images found in gallery data');
                             showNoImagesMessage();
                         }
                     }
@@ -729,15 +740,26 @@
 
         // Render gallery images
         function renderGallery() {
+            console.log('Rendering gallery...');
             const container = document.getElementById('gallery-container');
+            console.log('Gallery container:', container);
             container.innerHTML = '';
             
+            if (images.length === 0) {
+                container.innerHTML = '<div style="color: white; text-align: center; padding-top: 50px;">No images found</div>';
+                return;
+            }
+            
             images.forEach((image, index) => {
+                console.log('Creating image element for:', image.url);
                 const imgElement = document.createElement('div');
                 imgElement.className = 'gallery-image';
                 imgElement.style.backgroundImage = `url(${image.url})`;
                 imgElement.style.display = index === 0 ? 'block' : 'none';
                 imgElement.setAttribute('data-index', index);
+                
+                // Add a fallback text in case image doesn't load
+                imgElement.innerHTML = `<div style="color: white; text-align: center; padding-top: 50px;">Loading image: ${image.url}</div>`;
                 
                 if (image.caption) {
                     const caption = document.createElement('div');
@@ -749,6 +771,7 @@
                 container.appendChild(imgElement);
             });
             
+            console.log('Gallery rendered, updating counter...');
             updateCounter();
         }
 
@@ -791,12 +814,34 @@
             container.innerHTML = '<div class="no-images">No images available</div>';
         }
 
+        // Handle gallery click to advance to next image
+        function handleGalleryClick(event) {
+            console.log('Gallery click detected:', event.target);
+            console.log('Click target:', event.target);
+            console.log('Gallery title clicked:', event.target.closest('.gallery-title'));
+            console.log('Counter clicked:', event.target.closest('.image-counter-bubble'));
+            
+            // Don't advance if clicking on title or counter
+            if (event.target.closest('.gallery-title') || event.target.closest('.image-counter-bubble')) {
+                console.log('Click blocked - title or counter clicked');
+                return;
+            }
+            
+            console.log('Advancing to next image...');
+            nextImage();
+        }
+
         // Show gallery overlay
         function showGallery() {
+            console.log('showGallery function called');
             const overlay = document.getElementById('gallery-overlay');
+            console.log('Gallery overlay element:', overlay);
             if (overlay) {
                 overlay.style.display = 'block';
+                console.log('Gallery overlay display set to block');
                 loadGallery();
+            } else {
+                console.error('Gallery overlay element not found');
             }
         }
 
@@ -855,6 +900,16 @@
 
         // Add gallery event listeners
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, checking gallery elements...');
+            
+            // Check if gallery overlay exists
+            const overlay = document.getElementById('gallery-overlay');
+            console.log('Gallery overlay on load:', overlay);
+            
+            // Check if gallery button exists
+            const galleryBtn = document.getElementById('gallery-btn');
+            console.log('Gallery button on load:', galleryBtn);
+            
             // Gallery keyboard navigation
             document.addEventListener('keydown', handleGalleryKeyPress);
             

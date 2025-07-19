@@ -1,6 +1,7 @@
 ---
 images:
-  - url: /images/uploads/gallery-image-1.jpg
-    caption: ""
-  - url: /images/uploads/gallery-image-3.jpg
+  - url: /images/uploads/edge-of-light.jpg
+    caption: "A Descent Into Colour - Exhibition View 1"
+  - url: /images/uploads/background-image.jpg
+    caption: "A Descent Into Colour - Exhibition View 2"
 ---
