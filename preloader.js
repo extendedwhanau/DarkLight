@@ -58,7 +58,7 @@ function hidePreloader() {
         mainContent.style.visibility = '';
         mainContent.classList.add('fade-in');
       }
-    }, 700); // match CSS transition (increased to 700ms)
+    }, 300); // match CSS transition (reduced to 300ms)
   } else {
     if (mainContent) {
       mainContent.style.visibility = '';
@@ -68,10 +68,17 @@ function hidePreloader() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    injectPreloader();
-    setTimeout(() => {
-      hidePreloader();
-      localStorage.setItem('preloaderShown', 'true');
-    }, 1500); // 2.5s to ensure animation completes
+    // Preloader disabled - show main content immediately
+    if (mainContent) {
+      mainContent.style.visibility = '';
+      mainContent.classList.add('fade-in');
+    }
+    localStorage.setItem('preloaderShown', 'true');
+    
+    // injectPreloader(); // Disabled
+    // setTimeout(() => {
+    //   hidePreloader();
+    //   localStorage.setItem('preloaderShown', 'true');
+    // }, 700); // Reduced to 0.7s for even faster completion
   // }
 }); 

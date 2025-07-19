@@ -41,6 +41,18 @@
     transition: opacity 0.3s ease;
 }
 
+/* Counter positioned under title at same baseline */
+.gallery-title .counter {
+    color: #D3D3D3;
+    font-size: .8rem; /* Same as title */
+    letter-spacing: .08rem; /* Same as title */
+    font-weight: 400;
+    margin: 0;
+    margin-top: 5px; /* Small gap between title and counter */
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    opacity: 0.8;
+}
+
 /* Gallery Container */
 .gallery-container {
     position: absolute;
@@ -82,21 +94,9 @@
     display: none;
 }
 
-/* Image Counter Bubble */
+/* Image Counter Bubble - Now integrated into title */
 .image-counter-bubble {
-    position: fixed;
-    bottom: 15px; /* Same as social icons */
-    left: 85px; /* Adjusted spacing - closer to social icons */
-    color: #D3D3D3;
-    font-size: .8rem; /* Same as floating buttons */
-    letter-spacing: .08rem; /* Same as floating buttons */
-    font-weight: 400;
-    background: rgba(255, 255, 255, 0.2); /* Same as social icons */
-    padding: 12px 16px; /* Increased padding for better appearance */
-    border-radius: 20px;
-    z-index: 1000; /* Same as social icons */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Styles are now handled by .gallery-title .counter */
 }
 
 /* No Images Message */
@@ -128,12 +128,7 @@
         padding: 8px 15px;
     }
 
-    .image-counter-bubble {
-        bottom: 10px; /* Same as social icons on mobile */
-        left: 70px; /* Adjusted spacing - closer to social icons */
-        font-size: .8rem; /* Keep same size as floating buttons */
-        padding: 10px 14px; /* Increased padding for mobile */
-    }
+    /* Counter is now part of title, no separate mobile styles needed */
 }
 
 /* Landscape Mobile */
@@ -148,12 +143,7 @@
         padding: 6px 12px;
     }
 
-    .image-counter-bubble {
-        bottom: 8px;
-        left: 68px; /* Adjusted spacing - closer to social icons */
-        font-size: .8rem; /* Keep same size as floating buttons */
-        padding: 8px 12px; /* Increased padding for landscape mobile */
-    }
+    /* Counter is now part of title, no separate landscape mobile styles needed */
 }
 
 /* Tablet Styles */
@@ -162,12 +152,7 @@
         font-size: .8rem; /* Keep same size as floating buttons */
     }
 
-    .image-counter-bubble {
-        bottom: 12px;
-        left: 12px;
-        font-size: .8rem; /* Keep same size as floating buttons */
-        padding: 10px 14px; /* Increased padding for tablet */
-    }
+    /* Counter is now part of title, no separate tablet styles needed */
 }
 
 /* Loading State - Hidden */

@@ -32,7 +32,7 @@
 <body class="homepage">
 
     <!-- Logo (Simplified version) -->
-     <div class="logo">
+     <div class="logo" onclick="handleLogoClick()">
             <img src="images/logo1.svg" alt="DARKLIGHT immersive light and sound exhibition in Auckland" width="100%">
         </a>
     </div>
@@ -112,11 +112,9 @@
         <!-- Gallery Title Overlay -->
         <div class="gallery-title" id="gallery-title">
             <h1>A Descent Into Colour</h1>
-        </div>
-
-        <!-- Image Counter Bubble -->
-        <div class="image-counter-bubble" id="image-counter-bubble">
-            <span id="current-image">1</span> / <span id="total-images">0</span>
+            <div class="counter" id="image-counter-bubble">
+                <span id="current-image">1</span> / <span id="total-images">0</span>
+            </div>
         </div>
     </div>
 
@@ -632,15 +630,21 @@
                             const galleryBtn = document.getElementById('gallery-btn');
                             const mainContent = document.getElementById('main-content');
                             
-                            // Gallery button handler
+                            // Gallery button handler - don't override existing onclick
                             if (galleryBtn) {
-                                console.log('Gallery button found, adding click handler');
-                                galleryBtn.addEventListener('click', (e) => {
-                                    console.log('Gallery button clicked!');
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    showGallery();
-                                });
+                                console.log('Gallery button found, checking current onclick');
+                                const currentOnclick = galleryBtn.getAttribute('onclick');
+                                console.log('Current onclick:', currentOnclick);
+                                // Only add event listener if no onclick is set
+                                if (!currentOnclick) {
+                                    console.log('No onclick set, adding showGallery handler');
+                                    galleryBtn.addEventListener('click', (e) => {
+                                        console.log('Gallery button clicked!');
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        showGallery();
+                                    });
+                                }
                             } else {
                                 console.log('Gallery button not found');
                             }
@@ -814,6 +818,18 @@
             container.innerHTML = '<div class="no-images">No images available</div>';
         }
 
+        // Handle logo click to close gallery
+        function handleLogoClick() {
+            console.log('Logo clicked');
+            const overlay = document.getElementById('gallery-overlay');
+            if (overlay && overlay.style.display === 'block') {
+                console.log('Gallery is open, closing via logo click');
+                hideGallery();
+            } else {
+                console.log('Gallery is not open, logo click ignored');
+            }
+        }
+
         // Handle gallery click to advance to next image
         function handleGalleryClick(event) {
             console.log('Gallery click detected:', event.target);
@@ -840,6 +856,19 @@
                 overlay.style.display = 'block';
                 console.log('Gallery overlay display set to block');
                 loadGallery();
+                
+                // Change gallery button text to "Close"
+                const galleryBtn = document.getElementById('gallery-btn');
+                console.log('Gallery button found:', galleryBtn);
+                if (galleryBtn) {
+                    console.log('Changing button text to Close');
+                    galleryBtn.textContent = 'Close';
+                    console.log('Setting onclick to hideGallery()');
+                    galleryBtn.setAttribute('onclick', 'hideGallery()');
+                    console.log('Button onclick after change:', galleryBtn.getAttribute('onclick'));
+                } else {
+                    console.error('Gallery button not found!');
+                }
             } else {
                 console.error('Gallery overlay element not found');
             }
@@ -847,9 +876,24 @@
 
         // Hide gallery overlay
         function hideGallery() {
+            console.log('hideGallery function called');
             const overlay = document.getElementById('gallery-overlay');
             if (overlay) {
                 overlay.style.display = 'none';
+                console.log('Gallery overlay hidden');
+            }
+            
+            // Change gallery button text back to "Gallery"
+            const galleryBtn = document.getElementById('gallery-btn');
+            console.log('Gallery button found in hideGallery:', galleryBtn);
+            if (galleryBtn) {
+                console.log('Changing button text back to Gallery');
+                galleryBtn.textContent = 'Gallery';
+                console.log('Setting onclick back to showGallery()');
+                galleryBtn.setAttribute('onclick', 'showGallery()');
+                console.log('Button onclick after change:', galleryBtn.getAttribute('onclick'));
+            } else {
+                console.error('Gallery button not found in hideGallery!');
             }
         }
 
