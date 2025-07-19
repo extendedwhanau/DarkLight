@@ -61,7 +61,7 @@
             border: none;
             padding: 0;
             text-align: left;
-            transition: color 0.2s;
+            transition: color 0.1s;
             display: block;
         }
         .about-merged-nav a.active, .about-merged-nav a:hover {
@@ -128,7 +128,7 @@
             max-height: 0;
             overflow: hidden;
             margin-bottom: 0.5rem;
-            transition: max-height 0.8s ease-in-out, margin-bottom 0.8s ease-in-out;
+            transition: max-height 0.3s ease-out, margin-bottom 0.3s ease-out;
         }
         .faq-item.open .faq-answer {
             max-height: 200px;
@@ -262,25 +262,25 @@
     </div>
 
     <script>
-    // Load about page content
+    // Load about page content - optimized for speed
     async function loadAboutContent() {
         try {
+            // Remove loading indicator immediately for perceived speed
+            const contentElement = document.getElementById('content');
+            contentElement.innerHTML = '';
+            
             const response = await fetch('/content/about.md');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const text = await response.text();
-            console.log('Raw about content:', text);
             
             // Split the content at the frontmatter markers
             const parts = text.split('---');
             if (parts.length >= 2) {
                 const yamlContent = parts[1];
-                console.log('YAML content:', yamlContent);
-                
                 const data = jsyaml.load(yamlContent);
-                console.log('Parsed data:', data);
                 
                 // Render the about page content
                 renderAboutPage(data);
@@ -396,32 +396,46 @@
     }
 
     function initializeNavigation() {
+        // Throttle scroll events for better performance
+        let ticking = false;
+        
         function setActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            let found = false;
-            
-            sections.forEach(section => {
-                const sectionId = section.id;
-                const navLink = document.getElementById('nav-' + sectionId.replace('about-', ''));
-                
-                if (navLink && window.scrollY + 100 >= section.offsetTop) {
-                    document.querySelectorAll('.about-merged-nav a').forEach(a => a.classList.remove('active'));
-                    navLink.classList.add('active');
-                    found = true;
-                }
-            });
-            
-            if (!found) {
-                document.querySelectorAll('.about-merged-nav a').forEach(a => a.classList.remove('active'));
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const sections = document.querySelectorAll('section[id]');
+                    let found = false;
+                    
+                    sections.forEach(section => {
+                        const sectionId = section.id;
+                        const navLink = document.getElementById('nav-' + sectionId.replace('about-', ''));
+                        
+                        if (navLink && window.scrollY + 100 >= section.offsetTop) {
+                            document.querySelectorAll('.about-merged-nav a').forEach(a => a.classList.remove('active'));
+                            navLink.classList.add('active');
+                            found = true;
+                        }
+                    });
+                    
+                    if (!found) {
+                        document.querySelectorAll('.about-merged-nav a').forEach(a => a.classList.remove('active'));
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
             }
         }
 
-        window.addEventListener('scroll', setActiveNav);
+        window.addEventListener('scroll', setActiveNav, { passive: true });
         window.addEventListener('DOMContentLoaded', setActiveNav);
     }
 
-    // Load content when the page loads
-    window.addEventListener('DOMContentLoaded', loadAboutContent);
+    // Load content immediately for faster perceived loading
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadAboutContent);
+    } else {
+        loadAboutContent();
+    }
     </script>
 </body>
 </html> 
