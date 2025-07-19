@@ -565,9 +565,45 @@ button:hover {
     
     /* Mobile Vimeo background adjustments */
     .video-cover video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Remove any default video controls and styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  /* Ensure no controls are visible */
+  pointer-events: none;
+}
+
+/* Hide all video controls globally */
+.video-cover video::-webkit-media-controls,
+.video-cover video::-webkit-media-controls-panel,
+.video-cover video::-webkit-media-controls-play-button,
+.video-cover video::-webkit-media-controls-start-playback-button,
+.video-cover video::-webkit-media-controls-overlay-play-button,
+.video-cover video::-webkit-media-controls-enclosure,
+.video-cover video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+    /* Hide video controls completely on mobile */
+    .video-cover video::-webkit-media-controls,
+    .video-cover video::-webkit-media-controls-panel,
+    .video-cover video::-webkit-media-controls-play-button,
+    .video-cover video::-webkit-media-controls-start-playback-button,
+    .video-cover video::-webkit-media-controls-overlay-play-button {
+        display: none !important;
+    }
+
+    /* Additional mobile-specific video control hiding */
+    .video-cover video::-webkit-media-controls-enclosure {
+        display: none !important;
+    }
+
+    .video-cover video::-webkit-media-controls-fullscreen-button {
+        display: none !important;
     }
 
     .homepage .content {
