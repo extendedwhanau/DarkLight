@@ -1,7 +1,7 @@
 ---
 title: The Edge of Light
 subtitle: DARKLIGHT PRESENTS
-dates: ""
+dates: 2–5 September 2025
 location: ""
 background_type: image
 background_image: /images/uploads/edge-of-light.jpg
@@ -10,7 +10,7 @@ ticket_buttons:
   - sold_out: false
     target: _blank
     link: https://www.iticket.co.nz/events/2025/sep/darklight
-    text: Tickets
+    text: Buy Tickets
 floating_buttons:
   - text: About
     link: about.html
