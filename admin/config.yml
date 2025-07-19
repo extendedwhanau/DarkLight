@@ -131,3 +131,15 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Description", name: "description", widget: "markdown"}
             summary: "{{fields.name}}"
+
+      - name: "gallery"
+        label: "Gallery"
+        file: "content/gallery.md"
+        fields:
+          - label: "Gallery Images"
+            name: "images"
+            widget: "list"
+            fields:
+              - {label: "Image", name: "url", widget: "image", hint: "Upload or select an image for the gallery"}
+              - {label: "Caption", name: "caption", widget: "string", required: false, hint: "Optional caption for the image"}
+            summary: "{{fields.caption | default: 'Image'}}"

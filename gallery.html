@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery - A Descent Into Colour - DARKLIGHT Immersive Light & Sound Exhibition">
+    
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="Gallery – A Descent Into Colour – DARKLIGHT">
+    <meta property="og:image" content="https://example.com/path-to-social-image.jpg">
+    
+    <!-- Fonts & Styles -->
+    <link rel="stylesheet" href="https://use.typekit.net/efe5rwd.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png">
+    
+    <!-- CMS & Identity -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    
+    <title>Gallery – A Descent Into Colour – DARKLIGHT</title>
+</head>
+
+<body class="gallery-page">
+    <!-- Gallery Container -->
+    <div class="gallery-container" id="gallery-container">
+        <!-- Images will be dynamically loaded here -->
+    </div>
+
+    <!-- Gallery Title Overlay -->
+    <div class="gallery-title" id="gallery-title">
+        <h1>A Descent Into Colour</h1>
+    </div>
+
+    <!-- Image Counter Bubble -->
+    <div class="image-counter-bubble" id="image-counter-bubble">
+        <span id="current-image">1</span> / <span id="total-images">0</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let currentImageIndex = 0;
+        let images = [];
+        let isGalleryLoaded = false;
+
+        // Load gallery data from CMS
+        function loadGallery() {
+            fetch('/content/gallery.md')
+                .then(response => response.text())
+                .then(text => {
+                    const parts = text.split('---');
+                    if (parts.length >= 2) {
+                        const yamlContent = parts[1];
+                        const data = jsyaml.load(yamlContent);
+                        
+                        if (data.images && data.images.length > 0) {
+                            images = data.images;
+                            renderGallery();
+                            isGalleryLoaded = true;
+                        } else {
+                            showNoImagesMessage();
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('Failed to load gallery:', err);
+                    showNoImagesMessage();
+                });
+        }
+
+        // Render gallery images
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = '';
+            
+            images.forEach((image, index) => {
+                const imgElement = document.createElement('div');
+                imgElement.className = 'gallery-image';
+                imgElement.style.backgroundImage = `url(${image.url})`;
+                imgElement.style.display = index === 0 ? 'block' : 'none';
+                imgElement.setAttribute('data-index', index);
+                
+                if (image.caption) {
+                    const caption = document.createElement('div');
+                    caption.className = 'image-caption';
+                    caption.textContent = image.caption;
+                    imgElement.appendChild(caption);
+                }
+                
+                container.appendChild(imgElement);
+            });
+            
+            updateCounter();
+        }
+
+        // Show current image
+        function showImage(index) {
+            const imageElements = document.querySelectorAll('.gallery-image');
+            imageElements.forEach((img, i) => {
+                img.style.display = i === index ? 'block' : 'none';
+            });
+            currentImageIndex = index;
+            updateCounter();
+        }
+
+        // Navigate to next image
+        function nextImage() {
+            if (images.length === 0) return;
+            const nextIndex = (currentImageIndex + 1) % images.length;
+            showImage(nextIndex);
+        }
+
+        // Navigate to previous image
+        function prevImage() {
+            if (images.length === 0) return;
+            const prevIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+            showImage(prevIndex);
+        }
+
+        // Update image counter
+        function updateCounter() {
+            const currentElement = document.getElementById('current-image');
+            const totalElement = document.getElementById('total-images');
+            
+            if (currentElement) currentElement.textContent = currentImageIndex + 1;
+            if (totalElement) totalElement.textContent = images.length;
+        }
+
+        // Show no images message
+        function showNoImagesMessage() {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = '<div class="no-images">No images available</div>';
+        }
+
+        // Keyboard navigation
+        function handleKeyPress(e) {
+            if (!isGalleryLoaded) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+            }
+        }
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(e) {
+            if (!isGalleryLoaded) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextImage(); // Swipe left
+                } else {
+                    prevImage(); // Swipe right
+                }
+            }
+        }
+
+        // Initialize gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', handleKeyPress);
+            
+            // Touch events for mobile
+            document.addEventListener('touchstart', handleTouchStart);
+            document.addEventListener('touchend', handleTouchEnd);
+        });
+
+        // Netlify Identity
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

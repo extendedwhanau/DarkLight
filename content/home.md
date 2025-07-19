@@ -15,6 +15,9 @@ floating_buttons:
   - text: About
     link: about.html
     visible: true
+  - text: Gallery
+    link: gallery.html
+    visible: true
   - text: Resonate
     link: about-resonate.html
     visible: false

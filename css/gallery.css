@@ -1,0 +1,187 @@
+/* Gallery Page Styles */
+.gallery-page {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    font-family: "neue-haas-grotesk-display", sans-serif;
+}
+
+/* Gallery Title */
+.gallery-title {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    text-align: center;
+    pointer-events: none;
+}
+
+.gallery-title h1 {
+    color: #D3D3D3;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08rem;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* Gallery Container */
+.gallery-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+/* Gallery Images */
+.gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.5s ease;
+}
+
+/* Image Caption */
+.image-caption {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #D3D3D3;
+    font-size: 0.8rem;
+    letter-spacing: 0.08rem;
+    font-weight: 400;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 4px;
+    max-width: 80%;
+    opacity: 0.9;
+}
+
+/* Image Counter Bubble */
+.image-counter-bubble {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    color: #D3D3D3;
+    font-size: 0.8rem;
+    letter-spacing: 0.08rem;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+    z-index: 1001;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* No Images Message */
+.no-images {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #D3D3D3;
+    font-size: 1rem;
+    letter-spacing: 0.08rem;
+    text-align: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .gallery-title h1 {
+        font-size: 0.7rem;
+        letter-spacing: 0.06rem;
+    }
+
+    .image-caption {
+        bottom: 60px;
+        font-size: 0.7rem;
+        padding: 8px 15px;
+    }
+
+    .image-counter-bubble {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Landscape Mobile */
+@media (orientation: landscape) and (max-width: 768px) {
+    .gallery-title h1 {
+        font-size: 0.6rem;
+    }
+
+    .image-caption {
+        bottom: 50px;
+        font-size: 0.6rem;
+        padding: 6px 12px;
+    }
+
+    .image-counter-bubble {
+        bottom: 8px;
+        right: 8px;
+        font-size: 0.6rem;
+        padding: 5px 8px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gallery-title h1 {
+        font-size: 0.75rem;
+    }
+
+    .image-counter-bubble {
+        bottom: 12px;
+        right: 12px;
+        font-size: 0.75rem;
+        padding: 7px 11px;
+    }
+}
+
+/* Loading State */
+.gallery-container.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-container.loading::after {
+    content: "Loading...";
+    color: #D3D3D3;
+    font-size: 1rem;
+    letter-spacing: 0.08rem;
+}
+
+/* Fade transitions */
+.gallery-image {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-image[style*="display: block"] {
+    opacity: 1;
+}
+
+/* Hide counter bubble when no images */
+.gallery-container:empty ~ .image-counter-bubble {
+    display: none;
+} 
