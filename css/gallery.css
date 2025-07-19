@@ -114,7 +114,7 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .gallery-title {
-        bottom: 10px; /* Same as floating buttons on mobile */
+        bottom: 70px; /* Move title and counter above bottom nav on mobile */
     }
 
     .gallery-title h1 {
