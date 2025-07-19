@@ -5,11 +5,12 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 99999;
+    background-color: transparent;
+    z-index: 1;
     overflow: hidden;
     font-family: "neue-haas-grotesk-display", sans-serif;
     display: none;
+    pointer-events: none;
 }
 
 /* Gallery Title */
@@ -18,7 +19,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 100;
     text-align: center;
     pointer-events: none;
 }
@@ -41,7 +42,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: transparent;
+    z-index: 1;
 }
 
 /* Gallery Images */
@@ -87,7 +89,7 @@
     background: rgba(255, 255, 255, 0.2);
     padding: 8px 12px;
     border-radius: 20px;
-    z-index: 1001;
+    z-index: 1000;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }

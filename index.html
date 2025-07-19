@@ -118,9 +118,6 @@
         <div class="image-counter-bubble" id="image-counter-bubble">
             <span id="current-image">1</span> / <span id="total-images">0</span>
         </div>
-        
-        <!-- Test button to close gallery -->
-        <button onclick="hideGallery()" style="position: fixed; top: 20px; right: 20px; z-index: 100000; background: white; color: black; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Close Gallery</button>
     </div>
 
     <!-- JavaScript -->
@@ -635,15 +632,11 @@
                             
                             // Gallery button handler
                             if (galleryBtn) {
-                                console.log('Gallery button found, adding click handler');
                                 galleryBtn.addEventListener('click', (e) => {
-                                    console.log('Gallery button clicked');
                                     e.preventDefault();
                                     e.stopPropagation();
                                     showGallery();
                                 });
-                            } else {
-                                console.log('Gallery button not found');
                             }
                             
                             if (partnersBtn && partnersSection) {
@@ -711,24 +704,19 @@
 
         // Load gallery data from CMS
         function loadGallery() {
-            console.log('Loading gallery data...');
             fetch('/content/gallery.md')
                 .then(response => response.text())
                 .then(text => {
-                    console.log('Gallery data loaded:', text);
                     const parts = text.split('---');
                     if (parts.length >= 2) {
                         const yamlContent = parts[1];
                         const data = jsyaml.load(yamlContent);
-                        console.log('Parsed gallery data:', data);
                         
                         if (data.images && data.images.length > 0) {
                             images = data.images;
-                            console.log('Gallery images:', images);
                             renderGallery();
                             isGalleryLoaded = true;
                         } else {
-                            console.log('No images found in gallery data');
                             showNoImagesMessage();
                         }
                     }
@@ -805,15 +793,10 @@
 
         // Show gallery overlay
         function showGallery() {
-            console.log('showGallery function called');
             const overlay = document.getElementById('gallery-overlay');
-            console.log('Gallery overlay element:', overlay);
             if (overlay) {
                 overlay.style.display = 'block';
-                console.log('Gallery overlay display set to block');
                 loadGallery();
-            } else {
-                console.error('Gallery overlay element not found');
             }
         }
 
