@@ -131,72 +131,79 @@
                 }
             };
 
+            // Hide tap overlay permanently
+            const hideTapOverlay = () => {
+                if (tapOverlay) {
+                    tapOverlay.classList.remove('active');
+                    tapOverlay.style.display = 'none';
+                }
+            };
+
+            // Show tap overlay only when needed
+            const showTapOverlay = () => {
+                if (tapOverlay) {
+                    tapOverlay.classList.add('active');
+                    tapOverlay.style.display = 'flex';
+                }
+            };
+
             // Listen for video events
             video.addEventListener('play', () => {
                 hideLoadingScreen();
                 showContent();
+                hideTapOverlay();
             });
             video.addEventListener('canplay', showContent);
             video.addEventListener('loadeddata', showContent);
+            video.addEventListener('playing', hideTapOverlay);
             
-            // For mobile, also handle tap-to-play if autoplay fails
+            // For mobile, handle tap-to-play more intelligently
             if (isMobile()) {
-                console.log('Mobile device detected, setting up tap-to-play');
-                // Show video but handle autoplay with tap-to-play overlay
+                console.log('Mobile device detected, setting up improved tap-to-play');
                 videoCover.style.display = 'block';
                 
-                // Check if video is playing
-                const checkVideoPlayback = () => {
-                    if (video.paused || video.ended) {
-                        // Video is not playing, show overlay
-                        if (tapOverlay) {
-                            tapOverlay.classList.add('active');
-                        }
-                    } else {
-                        // Video is playing, hide overlay
-                        if (tapOverlay) {
-                            tapOverlay.classList.remove('active');
-                        }
-                    }
-                };
+                // Start with overlay hidden
+                hideTapOverlay();
                 
-                // Check initially
-                checkVideoPlayback();
+                // Try to autoplay first
+                video.play().then(() => {
+                    console.log('Mobile video autoplay successful');
+                    hideTapOverlay();
+                }).catch(err => {
+                    console.log('Mobile video autoplay failed, showing tap overlay:', err);
+                    showTapOverlay();
+                });
                 
                 // Set up tap-to-play functionality
                 if (tapOverlay) {
                     tapOverlay.addEventListener('click', () => {
                         video.play().then(() => {
-                            tapOverlay.classList.remove('active');
+                            hideTapOverlay();
                         }).catch(err => {
                             console.log('Video play failed:', err);
                         });
                     });
                 }
                 
-                // Listen for video events
-                video.addEventListener('play', () => {
-                    if (tapOverlay) tapOverlay.classList.remove('active');
-                });
-                
+                // Only show overlay if video is actually paused and user interaction is needed
                 video.addEventListener('pause', () => {
-                    if (tapOverlay) tapOverlay.classList.add('active');
+                    // Only show overlay if it's not a natural pause (like buffering)
+                    if (video.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+                        showTapOverlay();
+                    }
                 });
                 
-                video.addEventListener('ended', () => {
-                    if (tapOverlay) tapOverlay.classList.add('active');
-                });
+                // Hide overlay when video resumes
+                video.addEventListener('play', hideTapOverlay);
+                video.addEventListener('playing', hideTapOverlay);
                 
-                // Check periodically for autoplay success/failure
-                setTimeout(checkVideoPlayback, 1000);
-                setTimeout(checkVideoPlayback, 2000);
+                // Don't show overlay on ended - just let it loop
+                video.addEventListener('ended', hideTapOverlay);
                 
             } else {
                 // Desktop - show video normally, hide overlay
                 videoCover.style.display = 'block';
-                if (tapOverlay) {
-                    tapOverlay.classList.remove('active');
-                }
+                hideTapOverlay();
             }
         }
 
