@@ -141,6 +141,16 @@
             }
         }
 
+        // Completely remove video elements (for image backgrounds)
+        function removeVideoElements() {
+            const videoCover = document.querySelector('.video-cover');
+            if (videoCover) {
+                videoCover.remove();
+                console.log('Video cover element removed');
+            }
+            disableTapOverlay();
+        }
+
         // Handle mobile video autoplay and tap-to-play
         function handleMobileVideo() {
             const video = document.querySelector('.video-cover video');
@@ -149,9 +159,9 @@
             
             if (!video || !videoCover || videoHandlingInitialized) return;
             
-            // Only handle video if the video cover is actually visible (video background selected)
-            if (videoCover.style.display === 'none') {
-                console.log('Video cover is hidden, skipping mobile video handling');
+            // Only handle video if the video cover element exists (video background selected)
+            if (!document.contains(videoCover)) {
+                console.log('Video cover element removed, skipping mobile video handling');
                 return;
             }
             
@@ -304,12 +314,9 @@
                         }
                         document.body.style.background = '';
                     } else if (data.background_type === 'image' && data.background_image) {
-                        // Hide video completely, show image background only after preloader
-                        if (videoCover) {
-                            videoCover.style.display = 'none';
-                            // Completely disable tap overlay for image backgrounds
-                            disableTapOverlay();
-                        }
+                        // Completely remove video element when image background is selected
+                        removeVideoElements();
+                        
                         // Wait for preloader to finish
                         const preloader = document.getElementById('loading-overlay');
                         if (preloader) {
