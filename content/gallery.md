@@ -1,5 +1,5 @@
 ---
-title: A Descent Into Colour
+title: A Descent Into Colour – May 2025
 images:
   - url: /images/uploads/background-image.jpg
     caption: ""
