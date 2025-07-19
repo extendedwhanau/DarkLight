@@ -632,11 +632,15 @@
                             
                             // Gallery button handler
                             if (galleryBtn) {
+                                console.log('Gallery button found, adding click handler');
                                 galleryBtn.addEventListener('click', (e) => {
+                                    console.log('Gallery button clicked');
                                     e.preventDefault();
                                     e.stopPropagation();
                                     showGallery();
                                 });
+                            } else {
+                                console.log('Gallery button not found');
                             }
                             
                             if (partnersBtn && partnersSection) {
@@ -793,10 +797,15 @@
 
         // Show gallery overlay
         function showGallery() {
+            console.log('showGallery function called');
             const overlay = document.getElementById('gallery-overlay');
+            console.log('Gallery overlay element:', overlay);
             if (overlay) {
                 overlay.style.display = 'block';
+                console.log('Gallery overlay display set to block');
                 loadGallery();
+            } else {
+                console.error('Gallery overlay element not found');
             }
         }
 
