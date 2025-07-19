@@ -736,6 +736,14 @@
                         }
                     }
                 })
+                .then(() => {
+                    const titleElem = document.getElementById('gallery-dynamic-title');
+                    if (titleElem && data.title) {
+                      titleElem.textContent = data.title;
+                    } else if (titleElem) {
+                      titleElem.textContent = 'Gallery';
+                    }
+                })
                 .catch(err => {
                     console.error('Failed to load gallery:', err);
                     showNoImagesMessage();
