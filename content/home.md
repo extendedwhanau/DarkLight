@@ -1,6 +1,6 @@
 ---
 title: The Edge of Light
-subtitle: Darklight presents
+subtitle: DARKLIGHT PRESENTS
 dates: ""
 location: ""
 background_type: image
