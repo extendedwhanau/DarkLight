@@ -711,19 +711,24 @@
 
         // Load gallery data from CMS
         function loadGallery() {
+            console.log('Loading gallery data...');
             fetch('/content/gallery.md')
                 .then(response => response.text())
                 .then(text => {
+                    console.log('Gallery data loaded:', text);
                     const parts = text.split('---');
                     if (parts.length >= 2) {
                         const yamlContent = parts[1];
                         const data = jsyaml.load(yamlContent);
+                        console.log('Parsed gallery data:', data);
                         
                         if (data.images && data.images.length > 0) {
                             images = data.images;
+                            console.log('Gallery images:', images);
                             renderGallery();
                             isGalleryLoaded = true;
                         } else {
+                            console.log('No images found in gallery data');
                             showNoImagesMessage();
                         }
                     }
