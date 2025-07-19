@@ -719,9 +719,9 @@
                 .then(response => response.text())
                 .then(text => {
                     console.log('Gallery data loaded:', text);
-                    const parts = text.split('---');
-                    if (parts.length >= 2) {
-                        const yamlContent = parts[1];
+                    const match = text.match(/---([\s\S]*?)---/);
+                    if (match) {
+                        const yamlContent = match[1];
                         const data = jsyaml.load(yamlContent);
                         console.log('Parsed gallery data:', data);
                         
