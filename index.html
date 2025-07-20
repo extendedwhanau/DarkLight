@@ -1102,40 +1102,39 @@
                         if (videoContainer) {
                             console.log('Video container found, setting innerHTML');
                             
-                            // Try a simpler embed URL first
-                            const simpleEmbedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
-                            console.log('Simple embed URL for testing:', simpleEmbedUrl);
+                            // Try using the original video URL directly in a video element
+                            console.log('Using original video URL directly:', videoUrl);
                             
-                            videoContainer.innerHTML = `<iframe src="${simpleEmbedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video iframe loaded successfully')" onerror="console.error('Failed to load archive video iframe')" style="background: red;"></iframe>
+                            videoContainer.innerHTML = `<video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="${videoUrl}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                             <div id="manual-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 15px 30px; border-radius: 5px; cursor: pointer; z-index: 10; display: none;">Click to Play Video</div>`;
-                            console.log('Iframe HTML set');
+                            console.log('Video element HTML set');
                             
-                            // Test if iframe was created
-                            const iframe = videoContainer.querySelector('iframe');
-                            if (iframe) {
-                                console.log('Iframe element created successfully:', iframe);
-                                console.log('Iframe src:', iframe.src);
+                            // Test if video element was created
+                            const video = videoContainer.querySelector('video');
+                            if (video) {
+                                console.log('Video element created successfully:', video);
+                                console.log('Video src:', video.querySelector('source').src);
                                 
-                                // Add event listener to check if video loads
-                                iframe.addEventListener('load', function() {
-                                    console.log('Iframe load event fired');
-                                    // Try to trigger play
-                                    try {
-                                        iframe.contentWindow.postMessage('{"method":"play"}', '*');
-                                        console.log('Sent play message to iframe');
-                                    } catch (e) {
-                                        console.log('Could not send play message:', e);
-                                    }
-                                    
-                                    // Show manual play button after 3 seconds if video doesn't start
-                                    setTimeout(() => {
+                                // Add event listeners to video
+                                video.addEventListener('loadstart', () => console.log('Video loadstart event'));
+                                video.addEventListener('loadeddata', () => console.log('Video loadeddata event'));
+                                video.addEventListener('canplay', () => console.log('Video canplay event'));
+                                video.addEventListener('play', () => console.log('Video play event'));
+                                video.addEventListener('error', (e) => console.error('Video error:', e));
+                                
+                                // Show manual play button after 3 seconds if video doesn't start
+                                setTimeout(() => {
+                                    if (video.paused) {
                                         const manualPlayBtn = document.getElementById('manual-play-btn');
                                         if (manualPlayBtn) {
                                             manualPlayBtn.style.display = 'block';
-                                            console.log('Showing manual play button');
+                                            console.log('Showing manual play button - video is paused');
                                         }
-                                    }, 3000);
-                                });
+                                    }
+                                }, 3000);
                                 
                                 // Add click handler for manual play button
                                 setTimeout(() => {
@@ -1143,17 +1142,17 @@
                                     if (manualPlayBtn) {
                                         manualPlayBtn.addEventListener('click', function() {
                                             console.log('Manual play button clicked');
-                                            try {
-                                                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                                            video.play().then(() => {
+                                                console.log('Video started playing');
                                                 this.style.display = 'none';
-                                            } catch (e) {
-                                                console.log('Could not send play message:', e);
-                                            }
+                                            }).catch(e => {
+                                                console.error('Failed to play video:', e);
+                                            });
                                         });
                                     }
                                 }, 100);
                             } else {
-                                console.error('Iframe element not found after creation');
+                                console.error('Video element not found after creation');
                             }
                         } else {
                             console.error('Video container not found');
