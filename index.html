@@ -1081,6 +1081,10 @@
                     } else if (videoUrl.includes('vimeo.com/video/')) {
                         videoId = videoUrl.split('vimeo.com/video/')[1].split('?')[0];
                         console.log('Extracted video ID from vimeo.com/video/:', videoId);
+                    } else if (videoUrl.includes('playback/')) {
+                        // Handle direct video file URLs like: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4
+                        videoId = videoUrl.split('playback/')[1].split('/')[0];
+                        console.log('Extracted video ID from playback URL:', videoId);
                     }
                     
                     // Clean up video ID (remove any non-numeric characters)
@@ -1091,13 +1095,19 @@
                     
                     if (videoId) {
                         // Create proper Vimeo embed URL with autoplay and no sound
-                        const embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&background=1&controls=0&loop=1&title=0&byline=0&portrait=0`;
+                        const embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&background=1&controls=0&loop=1&title=0&byline=0&portrait=0&dnt=1`;
                         console.log('Final embed URL:', embedUrl);
                         
                         const videoContainer = document.getElementById('archive-video-container');
                         if (videoContainer) {
                             console.log('Video container found, setting innerHTML');
-                            videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video iframe loaded successfully')" onerror="console.error('Failed to load archive video iframe')" style="background: red;"></iframe>`;
+                            
+                            // Try a simpler embed URL first
+                            const simpleEmbedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
+                            console.log('Simple embed URL for testing:', simpleEmbedUrl);
+                            
+                            videoContainer.innerHTML = `<iframe src="${simpleEmbedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video iframe loaded successfully')" onerror="console.error('Failed to load archive video iframe')" style="background: red;"></iframe>
+                            <div id="manual-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 15px 30px; border-radius: 5px; cursor: pointer; z-index: 10; display: none;">Click to Play Video</div>`;
                             console.log('Iframe HTML set');
                             
                             // Test if iframe was created
@@ -1105,6 +1115,43 @@
                             if (iframe) {
                                 console.log('Iframe element created successfully:', iframe);
                                 console.log('Iframe src:', iframe.src);
+                                
+                                // Add event listener to check if video loads
+                                iframe.addEventListener('load', function() {
+                                    console.log('Iframe load event fired');
+                                    // Try to trigger play
+                                    try {
+                                        iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                                        console.log('Sent play message to iframe');
+                                    } catch (e) {
+                                        console.log('Could not send play message:', e);
+                                    }
+                                    
+                                    // Show manual play button after 3 seconds if video doesn't start
+                                    setTimeout(() => {
+                                        const manualPlayBtn = document.getElementById('manual-play-btn');
+                                        if (manualPlayBtn) {
+                                            manualPlayBtn.style.display = 'block';
+                                            console.log('Showing manual play button');
+                                        }
+                                    }, 3000);
+                                });
+                                
+                                // Add click handler for manual play button
+                                setTimeout(() => {
+                                    const manualPlayBtn = document.getElementById('manual-play-btn');
+                                    if (manualPlayBtn) {
+                                        manualPlayBtn.addEventListener('click', function() {
+                                            console.log('Manual play button clicked');
+                                            try {
+                                                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+                                                this.style.display = 'none';
+                                            } catch (e) {
+                                                console.log('Could not send play message:', e);
+                                            }
+                                        });
+                                    }
+                                }, 100);
                             } else {
                                 console.error('Iframe element not found after creation');
                             }
