@@ -26,7 +26,7 @@ floating_buttons:
     visible: false
   - visible: true
     text: Archive
-    link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
+    link: https://download-video-ak.vimeocdn.com/v3-1/playback/1b888e7c-c910-4be1-9a49-670923b32f16/1b9ea4f3-be9c5ab0?__token__=st=1752973157~exp=1752976757~acl=%2Fv3-1%2Fplayback%2F1b888e7c-c910-4be1-9a49-670923b32f16%2F1b9ea4f3-be9c5ab0%2A~hmac=125ba98bcbc121c5189119017588c965a5e28ef0ac72d47280ab9d91522882e7&r=dXMtY2VudHJhbDE%3D
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
