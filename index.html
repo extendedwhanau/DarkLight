@@ -127,7 +127,7 @@
 
         <!-- Archive Title Overlay -->
         <div class="archive-title" id="archive-title">
-            <h1 id="archive-dynamic-title">Archive</h1>
+            <h1 id="archive-dynamic-title"></h1>
         </div>
     </div>
 
@@ -1047,12 +1047,25 @@
                     const videoUrl = archiveButton.link;
                     console.log('Loading archive video:', videoUrl);
                     
-                    // Create Vimeo embed URL with autoplay and no sound
-                    const embedUrl = videoUrl.replace('/playback/', '/embed/') + '?autoplay=1&muted=1&background=1&controls=0&loop=1';
+                    // Extract video ID from Vimeo URL
+                    let videoId = '';
+                    if (videoUrl.includes('vimeo.com/')) {
+                        videoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
+                    } else if (videoUrl.includes('player.vimeo.com/')) {
+                        videoId = videoUrl.split('player.vimeo.com/video/')[1].split('?')[0];
+                    }
                     
-                    const videoContainer = document.getElementById('archive-video-container');
-                    if (videoContainer) {
-                        videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+                    if (videoId) {
+                        // Create proper Vimeo embed URL with autoplay and no sound
+                        const embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&background=1&controls=0&loop=1&title=0&byline=0&portrait=0`;
+                        console.log('Embed URL:', embedUrl);
+                        
+                        const videoContainer = document.getElementById('archive-video-container');
+                        if (videoContainer) {
+                            videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video loaded successfully')" onerror="console.error('Failed to load archive video')"></iframe>`;
+                        }
+                    } else {
+                        console.error('Could not extract video ID from URL:', videoUrl);
                     }
                 }
             }
