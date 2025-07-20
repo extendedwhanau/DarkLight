@@ -998,7 +998,11 @@
             if (overlay) {
                 overlay.style.display = 'block';
                 console.log('Archive overlay display set to block');
-                loadArchiveVideo();
+                
+                // Small delay to ensure user interaction is registered for autoplay
+                setTimeout(() => {
+                    loadArchiveVideo();
+                }, 100);
                 
                 // Change archive button text to "Close"
                 const archiveBtn = document.getElementById('archive-btn');
