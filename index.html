@@ -725,6 +725,14 @@
                         const data = jsyaml.load(yamlContent);
                         console.log('Parsed gallery data:', data);
                         
+                        // Set the gallery title here, inside the block where data is defined
+                        const titleElem = document.getElementById('gallery-dynamic-title');
+                        if (titleElem && data.title) {
+                          titleElem.textContent = data.title;
+                        } else if (titleElem) {
+                          titleElem.textContent = 'Gallery';
+                        }
+                        
                         if (data.images && data.images.length > 0) {
                             images = data.images;
                             console.log('Gallery images:', images);
@@ -734,14 +742,6 @@
                             console.log('No images found in gallery data');
                             showNoImagesMessage();
                         }
-                    }
-                })
-                .then(() => {
-                    const titleElem = document.getElementById('gallery-dynamic-title');
-                    if (titleElem && data.title) {
-                      titleElem.textContent = data.title;
-                    } else if (titleElem) {
-                      titleElem.textContent = 'Gallery';
                     }
                 })
                 .catch(err => {
