@@ -118,6 +118,19 @@
         </div>
     </div>
 
+    <!-- Archive Overlay -->
+    <div id="archive-overlay" class="archive-overlay" style="display: none;">
+        <!-- Archive Video Background -->
+        <div class="archive-video-container" id="archive-video-container">
+            <!-- Vimeo video will be loaded here -->
+        </div>
+
+        <!-- Archive Title Overlay -->
+        <div class="archive-title" id="archive-title">
+            <h1 id="archive-dynamic-title">Archive</h1>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // Global video handling functions
@@ -353,6 +366,9 @@
                     }
                     // --- END: Background logic update ---
                     
+                    // After parsing the CMS data, store it globally:
+                    window.homepageData = data;
+                    
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);
                     
@@ -547,6 +563,8 @@
                                     return `<button id="partners-btn">${button.text}</button>`;
                                 } else if (button.text === 'Gallery') {
                                     return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
+                                } else if (button.text === 'Archive') {
+                                    return `<button id="archive-btn" onclick="showArchive()">${button.text}</button>`;
                                 } else {
                                     return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
                                 }
@@ -616,6 +634,8 @@
                                         return `<button id="partners-btn">${button.text}</button>`;
                                     } else if (button.text === 'Gallery') {
                                         return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
+                                    } else if (button.text === 'Archive') {
+                                        return `<button id="archive-btn" onclick="showArchive()">${button.text}</button>`;
                                     } else {
                                         return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
                                     }
@@ -969,6 +989,91 @@
             document.addEventListener('touchstart', handleGalleryTouchStart);
             document.addEventListener('touchend', handleGalleryTouchEnd);
         });
+
+        // Archive functionality
+        function showArchive() {
+            console.log('showArchive function called');
+            const overlay = document.getElementById('archive-overlay');
+            console.log('Archive overlay element:', overlay);
+            if (overlay) {
+                overlay.style.display = 'block';
+                console.log('Archive overlay display set to block');
+                loadArchiveVideo();
+                
+                // Change archive button text to "Close"
+                const archiveBtn = document.getElementById('archive-btn');
+                console.log('Archive button found:', archiveBtn);
+                if (archiveBtn) {
+                    console.log('Changing button text to Close');
+                    archiveBtn.textContent = 'Close';
+                    console.log('Setting onclick to hideArchive()');
+                    archiveBtn.setAttribute('onclick', 'hideArchive()');
+                    console.log('Button onclick after change:', archiveBtn.getAttribute('onclick'));
+                } else {
+                    console.error('Archive button not found!');
+                }
+            } else {
+                console.error('Archive overlay element not found');
+            }
+        }
+
+        function hideArchive() {
+            console.log('hideArchive function called');
+            const overlay = document.getElementById('archive-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                console.log('Archive overlay hidden');
+            }
+            
+            // Change archive button text back to "Archive"
+            const archiveBtn = document.getElementById('archive-btn');
+            console.log('Archive button found in hideArchive:', archiveBtn);
+            if (archiveBtn) {
+                console.log('Changing button text back to Archive');
+                archiveBtn.textContent = 'Archive';
+                console.log('Setting onclick back to showArchive()');
+                archiveBtn.setAttribute('onclick', 'showArchive()');
+                console.log('Button onclick after change:', archiveBtn.getAttribute('onclick'));
+            } else {
+                console.error('Archive button not found in hideArchive!');
+            }
+        }
+
+        function loadArchiveVideo() {
+            // Get the archive video URL from the already loaded CMS data
+            if (window.homepageData && window.homepageData.floating_buttons) {
+                const archiveButton = window.homepageData.floating_buttons.find(button => button.text === 'Archive');
+                if (archiveButton && archiveButton.link) {
+                    const videoUrl = archiveButton.link;
+                    console.log('Loading archive video:', videoUrl);
+                    
+                    // Create Vimeo embed URL with autoplay and no sound
+                    const embedUrl = videoUrl.replace('/playback/', '/embed/') + '?autoplay=1&muted=1&background=1&controls=0&loop=1';
+                    
+                    const videoContainer = document.getElementById('archive-video-container');
+                    if (videoContainer) {
+                        videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+                    }
+                }
+            }
+        }
+
+        // Update logo click handler to also close archive
+        function handleLogoClick() {
+            console.log('Logo clicked');
+            const galleryOverlay = document.getElementById('gallery-overlay');
+            const archiveOverlay = document.getElementById('archive-overlay');
+            
+            if (galleryOverlay && galleryOverlay.style.display === 'block') {
+                console.log('Gallery is open, closing via logo click');
+                hideGallery();
+            } else if (archiveOverlay && archiveOverlay.style.display === 'block') {
+                console.log('Archive is open, closing via logo click');
+                hideArchive();
+            } else {
+                console.log('No overlay is open, logo click ignored');
+            }
+        }
     </script>
     <script src="preloader.js"></script>
 </body>

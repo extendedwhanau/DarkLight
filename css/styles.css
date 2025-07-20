@@ -746,3 +746,70 @@ html, body {
   opacity: 1;
   pointer-events: all;
 }
+
+/* Archive Overlay Styles */
+.archive-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 5; /* Behind UI elements but in front of background */
+    overflow: hidden;
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    display: none;
+    pointer-events: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.archive-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+
+.archive-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+/* Archive Title */
+.archive-title {
+    position: fixed;
+    bottom: 15px; /* Same as floating buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Same as floating buttons */
+    text-align: center;
+    pointer-events: none;
+}
+
+.archive-title h1 {
+    color: #D3D3D3;
+    font-size: .8rem; /* Same as floating buttons */
+    letter-spacing: .08rem; /* Same as floating buttons */
+    font-weight: 400;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* Mobile Styles for Archive */
+@media (max-width: 768px) {
+    .archive-title {
+        bottom: 70px; /* Move title above bottom nav on mobile */
+    }
+}
