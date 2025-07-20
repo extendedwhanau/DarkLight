@@ -878,6 +878,14 @@
         // Show gallery overlay
         function showGallery() {
             console.log('showGallery function called');
+            
+            // Close archive if it's open
+            const archiveOverlay = document.getElementById('archive-overlay');
+            if (archiveOverlay && archiveOverlay.style.display === 'block') {
+                console.log('Archive is open, closing it before opening gallery');
+                hideArchive();
+            }
+            
             const overlay = document.getElementById('gallery-overlay');
             console.log('Gallery overlay element:', overlay);
             if (overlay) {
@@ -993,6 +1001,14 @@
         // Archive functionality
         function showArchive() {
             console.log('showArchive function called');
+            
+            // Close gallery if it's open
+            const galleryOverlay = document.getElementById('gallery-overlay');
+            if (galleryOverlay && galleryOverlay.style.display === 'block') {
+                console.log('Gallery is open, closing it before opening archive');
+                hideGallery();
+            }
+            
             const overlay = document.getElementById('archive-overlay');
             console.log('Archive overlay element:', overlay);
             if (overlay) {
@@ -1044,34 +1060,70 @@
         }
 
         function loadArchiveVideo() {
+            console.log('loadArchiveVideo function called');
             // Get the archive video URL from the already loaded CMS data
             if (window.homepageData && window.homepageData.floating_buttons) {
+                console.log('Homepage data found:', window.homepageData);
                 const archiveButton = window.homepageData.floating_buttons.find(button => button.text === 'Archive');
+                console.log('Archive button found:', archiveButton);
                 if (archiveButton && archiveButton.link) {
                     const videoUrl = archiveButton.link;
-                    console.log('Loading archive video:', videoUrl);
+                    console.log('Original video URL:', videoUrl);
                     
                     // Extract video ID from Vimeo URL
                     let videoId = '';
                     if (videoUrl.includes('vimeo.com/')) {
                         videoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
+                        console.log('Extracted video ID from vimeo.com:', videoId);
                     } else if (videoUrl.includes('player.vimeo.com/')) {
                         videoId = videoUrl.split('player.vimeo.com/video/')[1].split('?')[0];
+                        console.log('Extracted video ID from player.vimeo.com:', videoId);
+                    } else if (videoUrl.includes('vimeo.com/video/')) {
+                        videoId = videoUrl.split('vimeo.com/video/')[1].split('?')[0];
+                        console.log('Extracted video ID from vimeo.com/video/:', videoId);
+                    }
+                    
+                    // Clean up video ID (remove any non-numeric characters)
+                    if (videoId) {
+                        videoId = videoId.replace(/[^0-9]/g, '');
+                        console.log('Cleaned video ID:', videoId);
                     }
                     
                     if (videoId) {
                         // Create proper Vimeo embed URL with autoplay and no sound
                         const embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&background=1&controls=0&loop=1&title=0&byline=0&portrait=0`;
-                        console.log('Embed URL:', embedUrl);
+                        console.log('Final embed URL:', embedUrl);
                         
                         const videoContainer = document.getElementById('archive-video-container');
                         if (videoContainer) {
-                            videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video loaded successfully')" onerror="console.error('Failed to load archive video')"></iframe>`;
+                            console.log('Video container found, setting innerHTML');
+                            videoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen onload="console.log('Archive video iframe loaded successfully')" onerror="console.error('Failed to load archive video iframe')" style="background: red;"></iframe>`;
+                            console.log('Iframe HTML set');
+                            
+                            // Test if iframe was created
+                            const iframe = videoContainer.querySelector('iframe');
+                            if (iframe) {
+                                console.log('Iframe element created successfully:', iframe);
+                                console.log('Iframe src:', iframe.src);
+                            } else {
+                                console.error('Iframe element not found after creation');
+                            }
+                        } else {
+                            console.error('Video container not found');
                         }
                     } else {
                         console.error('Could not extract video ID from URL:', videoUrl);
+                        // Show a fallback message
+                        const videoContainer = document.getElementById('archive-video-container');
+                        if (videoContainer) {
+                            videoContainer.innerHTML = `<div style="color: white; text-align: center; padding-top: 50px;">Could not load video. URL: ${videoUrl}</div>`;
+                        }
                     }
+                } else {
+                    console.error('Archive button or link not found');
                 }
+            } else {
+                console.error('Homepage data not available');
             }
         }
 
