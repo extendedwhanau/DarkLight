@@ -6,12 +6,12 @@ sections:
 
   - question: "Where/when does DarkLight take place?"
     answer: |
-      [Brad's Warehouse<br>9 - 11 Durham Lane, Auckland CBD](https://g.co/kgs/5FkM4N1)
+      [18 Tamaki Drive, Orakei, Auckland 1071](https://maps.google.com/?q=18+Tamaki+Drive+Orakei+Auckland+1071)
       
       2-4 May 2025
 
   - question: "Accessibility"
-    answer: "This edition of Darklight has limited accessibility. The venue is a historic building, the ground floor is fully accessible, and the upper floor is not. Sorry for any inconvenience."
+    answer: "This edition of Darklight is fully accessible. The venue is designed to accommodate all visitors. Please contact us if you have any specific accessibility requirements."
 
   - question: "Weather"
     answer: "Darklight is an indoor event."
@@ -85,7 +85,7 @@ sections:
 
   - question: "About the venue"
     answer: |
-      BRAD's is a two-level historic stone building which we understand was constructed in 1861, making it one of Auckland's most significant heritage buildings. The property is listed as a Category 'A' Building on the Schedule of Historic Heritage Places.
+      Located in the beautiful Orakei area, this stunning venue offers the perfect setting for our immersive light and sound experience with stunning waterfront views.
 ---
 
 <!-- This content will be ignored by the CMS -->
