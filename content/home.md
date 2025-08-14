@@ -11,6 +11,10 @@ ticket_buttons:
     target: _blank
     link: https://www.iticket.co.nz/events/2025/sep/darklight
     text: Buy Tickets
+  - sold_out: false
+    target: _blank
+    text: Resonate Tickets
+    link: https://www.undertheradar.co.nz/gig/97738/Resonate.utr
 floating_buttons:
   - text: About
     link: about.html
