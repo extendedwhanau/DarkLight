@@ -10,7 +10,7 @@ ticket_buttons:
   - sold_out: false
     target: _blank
     link: https://www.iticket.co.nz/events/2025/sep/darklight
-    text: Buy Tickets
+    text: Exhibition Tickets
   - sold_out: false
     target: _blank
     text: Resonate Tickets
