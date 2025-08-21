@@ -62,7 +62,7 @@ sections:
           stunning light installations with sound for a unique sensory
           experience.
       - question: When and where is it?
-        answer: The exhibition runs from September 2-4, 2025, at Okauhu Bay, 18 Tamaki
+        answer: The exhibition runs from September 2-4, 2025, at Okahu Bay, 18 Tamaki
           Drive, Orakei, Auckland.
       - question: How long is the experience?
         answer: The journey through DARKLIGHT takes approximately 45-60 minutes.
