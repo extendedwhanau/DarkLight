@@ -27,7 +27,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: false
+    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -41,18 +41,6 @@ partners_section:
       logo: /images/partners/almighty.svg
       link: https://www.drinkalmighty.com/
       alt: Almighty
-    - name: Asahi
-      logo: /images/partners/asahi.svg
-      link: https://www.asahibeverages.co.nz
-      alt: Asahi
-    - name: Brad's Warehouse
-      logo: /images/partners/brads.svg
-      link: https://brads-warehouse.com
-      alt: Brad's Warehouse
-    - name: Culprit
-      logo: /images/partners/culprit.svg
-      link: https://www.culpritdiningroom.co.nz
-      alt: Culprit
     - name: Scapegrace
       logo: /images/partners/sg.svg
       link: https://scapegracedistillery.com
