@@ -49,7 +49,7 @@ partners_section:
       logo: /images/partners/ei.svg
       link: https://eastimperial.co.nz
       alt: East Imperial
-    - name: AMD
+    - name: Alba
       logo: /images/uploads/alba-icons-8.png
       link: https://drinkalba.com/
       alt: Alba
