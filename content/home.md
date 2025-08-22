@@ -37,20 +37,24 @@ social:
 partners_section:
   title: Special thanks
   partners:
-    - name: Almighty
-      logo: /images/partners/almighty.svg
-      link: https://www.drinkalmighty.com/
-      alt: Almighty
-    - name: Scapegrace
-      logo: /images/partners/sg.svg
-      link: https://scapegracedistillery.com
-      alt: Scapegrace
-    - name: East Imperial
-      logo: /images/partners/ei.svg
-      link: https://eastimperial.co.nz
-      alt: East Imperial
+    - name: AMD
+      logo: /images/uploads/amd.png
+      link: https://www.angusmuirdesign.co.nz/
+      alt: Angus Muir Design
     - name: Alba
       logo: /images/uploads/alba-icons-8.png
       link: https://drinkalba.com/
       alt: Alba
+    - name: Almighty
+      logo: /images/partners/almighty.svg
+      link: https://www.drinkalmighty.com/
+      alt: Almighty
+    - name: East Imperial
+      logo: /images/partners/ei.svg
+      link: https://eastimperial.co.nz
+      alt: East Imperial
+    - name: Scapegrace
+      logo: /images/partners/sg.svg
+      link: https://scapegracedistillery.com
+      alt: Scapegrace
 ---
