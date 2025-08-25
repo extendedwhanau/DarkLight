@@ -150,9 +150,14 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string", default: "Installation"}
           - {label: "Image", name: "image", widget: "image", default: "/images/map.svg"}
-          - {label: "Artwork Number", name: "artwork_number", widget: "string", hint: "e.g., 1, 2, 3"}
-          - {label: "Artwork Name", name: "artwork_name", widget: "string", hint: "e.g., SIGNAL, LUMINOUS WAVES"}
-          - {label: "Artist", name: "artist", widget: "string", hint: "e.g., Angus Muir"}
-          - {label: "Sound Artist", name: "sound_artist", widget: "string", hint: "e.g., Paul Sweetman"}
-          - {label: "Bio", name: "bio", widget: "markdown", hint: "Description of the artwork"}
           - {label: "Visible", name: "visible", widget: "boolean", default: true, hint: "Show this page"}
+          - label: "Artworks"
+            name: "artworks"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string", hint: "e.g., 1, 2, 3"}
+              - {label: "Name", name: "name", widget: "string", hint: "e.g., SIGNAL, LUMINOUS WAVES"}
+              - {label: "Artist", name: "artist", widget: "string", hint: "e.g., Angus Muir"}
+              - {label: "Sound Artist", name: "sound_artist", widget: "string", hint: "e.g., Paul Sweetman"}
+              - {label: "Bio", name: "bio", widget: "markdown", hint: "Description of the artwork"}
+            summary: "{{fields.number}} - {{fields.name}}"

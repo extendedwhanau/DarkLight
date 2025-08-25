@@ -355,19 +355,8 @@
     function renderInstallationPage(data) {
         // Render navigation
         const navigation = document.getElementById('navigation');
-        if (data.visible !== false) {
-            const artworks = [
-                { number: '1', name: 'Signal' },
-                { number: '2', name: 'Luminous Waves' },
-                { number: '3', name: 'Twilight Glow' },
-                { number: '4', name: 'Aurora Reflections' },
-                { number: '5', name: 'Beacon' },
-                { number: '6', name: 'Horizon' },
-                { number: '7', name: 'Ethereal Lights' },
-                { number: '8', name: 'Dazzling' }
-            ];
-
-            const navHTML = artworks.map(artwork => `
+        if (data.visible !== false && data.artworks && data.artworks.length > 0) {
+            const navHTML = data.artworks.map(artwork => `
                 <a href="#artwork-${artwork.number}" id="nav-artwork-${artwork.number}">
                     <span class="nav-num">${artwork.number}&nbsp;&nbsp;&nbsp;&nbsp;</span> 
                     <span class="nav-label">${artwork.name}</span>
@@ -385,23 +374,14 @@
             imageContainer.innerHTML = `
                 <img src="${data.image}" alt="Installation Map" class="installation-image">
             `;
+        } else if (data.visible === false) {
+            imageContainer.innerHTML = '';
         }
 
         // Render content
         const content = document.getElementById('content');
-        if (data.visible !== false) {
-            const artworks = [
-                { number: '1', name: 'Signal', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '2', name: 'Luminous Waves', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '3', name: 'Twilight Glow', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '4', name: 'Aurora Reflections', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '5', name: 'Beacon', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '6', name: 'Horizon', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '7', name: 'Ethereal Lights', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' },
-                { number: '8', name: 'Dazzling', artist: 'Angus Muir', sound_artist: 'Paul Sweetman' }
-            ];
-
-            const artworksHTML = artworks.map(artwork => `
+        if (data.visible !== false && data.artworks && data.artworks.length > 0) {
+            const artworksHTML = data.artworks.map(artwork => `
                 <div class="artwork-section" id="artwork-${artwork.number}">
                     <div class="artwork-header">
                         <h1 class="artwork-title">${artwork.number}&nbsp;&nbsp;&nbsp;&nbsp;${artwork.name}</h1>
@@ -410,7 +390,7 @@
                         <div class="artwork-detail">Artist: <strong>${artwork.artist}</strong></div>
                         <div class="artwork-detail">Sound Design: <strong>${artwork.sound_artist}</strong></div>
                     </div>
-                    <div class="artwork-bio">${data.bio || 'Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within.'}</div>
+                    <div class="artwork-bio">${artwork.bio || 'Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within.'}</div>
                 </div>
             `).join('');
 
@@ -421,12 +401,21 @@
                     </div>
                 </section>
             `;
-        } else {
+        } else if (data.visible === false) {
             content.innerHTML = `
                 <section id="installation-main">
                     <div class="section-title">Installation</div>
                     <div class="content-section">
                         <p>This page is currently not available.</p>
+                    </div>
+                </section>
+            `;
+        } else {
+            content.innerHTML = `
+                <section id="installation-main">
+                    <div class="section-title">Installation</div>
+                    <div class="content-section">
+                        <p>No artworks available.</p>
                     </div>
                 </section>
             `;
