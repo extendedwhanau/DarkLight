@@ -529,6 +529,7 @@ button:hover {
         z-index: 1000;
         position: fixed;
         display: flex !important;
+        flex-direction: column;
         opacity: 1;
     }
 
