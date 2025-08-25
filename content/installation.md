@@ -1,46 +1,70 @@
 ---
-title: "Installation"
-image: "/images/map.svg"
-visible: true
+title: Installation
+image: /images/map.svg
+visible: false
 artworks:
   - number: "1"
-    name: "Signal"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Signal
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "2"
-    name: "Luminous Waves"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Luminous Waves
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "3"
-    name: "Twilight Glow"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Twilight Glow
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "4"
-    name: "Aurora Reflections"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Aurora Reflections
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "5"
-    name: "Beacon"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Beacon
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "6"
-    name: "Horizon"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Horizon
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "7"
-    name: "Ethereal Lights"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Ethereal Lights
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
   - number: "8"
-    name: "Dazzling"
-    artist: "Angus Muir"
-    sound_artist: "Paul Sweetman"
-    bio: "Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within."
+    name: Dazzling
+    artist: Angus Muir
+    sound_artist: Paul Sweetman
+    bio: Darkness is a stage for light to reveal its complexities. In the dark,
+      light holds the power to liquify, crystallize, dissolve, and reform with
+      its sharp edges, and soft diffusions. This journey is about shifting and
+      unraveling the structure of light to reveal the spectrum of colour within.
 ---
