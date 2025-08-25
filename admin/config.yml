@@ -143,3 +143,16 @@ collections:
             fields:
               - { name: url, label: Image, widget: image }
               - { name: caption, label: Caption, widget: string, required: false }
+
+      - name: "installation"
+        label: "Installation"
+        file: "content/installation.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Installation"}
+          - {label: "Image", name: "image", widget: "image", default: "/images/map.svg"}
+          - {label: "Artwork Number", name: "artwork_number", widget: "string", hint: "e.g., 1, 2, 3"}
+          - {label: "Artwork Name", name: "artwork_name", widget: "string", hint: "e.g., SIGNAL, LUMINOUS WAVES"}
+          - {label: "Artist", name: "artist", widget: "string", hint: "e.g., Angus Muir"}
+          - {label: "Sound Artist", name: "sound_artist", widget: "string", hint: "e.g., Paul Sweetman"}
+          - {label: "Bio", name: "bio", widget: "markdown", hint: "Description of the artwork"}
+          - {label: "Visible", name: "visible", widget: "boolean", default: true, hint: "Show this page"}

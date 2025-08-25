@@ -15,6 +15,9 @@ floating_buttons:
   - text: About
     link: about.html
     visible: true
+  - text: Installation
+    link: installation.html
+    visible: true
   - text: Gallery
     link: gallery.html
     visible: true
