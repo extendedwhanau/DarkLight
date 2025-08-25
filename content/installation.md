@@ -1,7 +1,7 @@
 ---
 title: Installation
 image: /images/map.svg
-visible: true
+visible: false
 artworks:
   - number: "1"
     name: Signal
