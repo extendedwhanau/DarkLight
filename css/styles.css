@@ -296,7 +296,7 @@ button,
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: .8rem !important;
+    font-size: .7rem !important;
     letter-spacing: .08rem !important;
     border: none;
     display: flex;
@@ -529,7 +529,10 @@ button:hover {
         z-index: 1000;
         position: fixed;
         display: flex !important;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: calc(100vw - 120px);
+        justify-content: flex-end;
         opacity: 1;
     }
 
