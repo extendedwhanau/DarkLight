@@ -307,9 +307,10 @@
         });
 
         // Simple content loading
-        fetch('/content/home.md')
-            .then(response => response.text())
-            .then(text => {
+        (async () => {
+            try {
+                const response = await fetch('/content/home.md');
+                const text = await response.text();
                 const parts = text.split('---');
                 if (parts.length >= 2) {
                     const yamlContent = parts[1];
@@ -554,7 +555,29 @@
                     if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
                         console.log('Floating buttons data:', data.floating_buttons);
                         
-                        const visibleButtons = data.floating_buttons.filter(button => button.visible);
+                        // Check installation page visibility
+                        let installationVisible = true;
+                        try {
+                            const installationResponse = await fetch('/content/installation.md');
+                            if (installationResponse.ok) {
+                                const installationText = await installationResponse.text();
+                                const parts = installationText.split('---');
+                                if (parts.length >= 2) {
+                                    const installationData = jsyaml.load(parts[1]);
+                                    installationVisible = installationData.visible !== false;
+                                }
+                            }
+                        } catch (err) {
+                            console.log('Could not check installation visibility:', err);
+                        }
+                        
+                        const visibleButtons = data.floating_buttons.filter(button => {
+                            // Hide installation button if installation page is not visible
+                            if (button.text === 'Installation' && !installationVisible) {
+                                return false;
+                            }
+                            return button.visible;
+                        });
                         console.log('Visible buttons:', visibleButtons);
                         
                         floatingButtonsContainer.innerHTML = visibleButtons
@@ -711,10 +734,10 @@
                     }, 100);
                     
                 }
-            })
-            .catch(err => {
+            } catch (err) {
                 console.error('Failed to load content:', err);
-            });
+            }
+        })();
 
         // Netlify Identity
         if (window.netlifyIdentity) {
