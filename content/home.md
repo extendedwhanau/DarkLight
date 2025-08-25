@@ -10,7 +10,11 @@ ticket_buttons:
   - sold_out: false
     target: _blank
     link: https://www.iticket.co.nz/events/2025/sep/darklight
-    text: Buy Tickets
+    text: Exhibition Tickets
+  - sold_out: false
+    target: _blank
+    text: Resonate Tickets
+    link: https://www.undertheradar.co.nz/gig/97738/Resonate.utr
 floating_buttons:
   - text: About
     link: about.html
@@ -26,7 +30,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: false
+    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -36,22 +40,22 @@ social:
 partners_section:
   title: Special thanks
   partners:
+    - name: AMD
+      logo: /images/uploads/amd.png
+      link: https://www.angusmuirdesign.co.nz/
+      alt: Angus Muir Design
+    - name: Okahu
+      link: https://www.okahubay.com/
+      alt: Okahu
+      logo: /images/uploads/okahu.png
+    - name: Alba
+      logo: /images/uploads/alba-icons-8.png
+      link: https://drinkalba.com/
+      alt: Alba
     - name: Almighty
       logo: /images/partners/almighty.svg
       link: https://www.drinkalmighty.com/
       alt: Almighty
-    - name: Asahi
-      logo: /images/partners/asahi.svg
-      link: https://www.asahibeverages.co.nz
-      alt: Asahi
-    - name: Brad's Warehouse
-      logo: /images/partners/brads.svg
-      link: https://brads-warehouse.com
-      alt: Brad's Warehouse
-    - name: Culprit
-      logo: /images/partners/culprit.svg
-      link: https://www.culpritdiningroom.co.nz
-      alt: Culprit
     - name: Scapegrace
       logo: /images/partners/sg.svg
       link: https://scapegracedistillery.com
