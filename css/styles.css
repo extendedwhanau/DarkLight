@@ -311,7 +311,7 @@ button,
 button a,
 .ticket-button a,
 .floating-buttons button a {
-    font-size: .8rem !important;
+    font-size: .7rem !important;
     letter-spacing: .08rem !important;
 }
 
@@ -332,7 +332,7 @@ button:hover {
     font-family: "neue-haas-grotesk-display", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: .8rem !important;
+    font-size: .7rem !important;
     letter-spacing: .08rem !important;
     border: none;
     transition: transform 0.3s ease, background 0.3s ease;
@@ -364,6 +364,14 @@ button:hover {
     display: flex;
     gap: 10px;
     z-index: 1000;
+}
+
+.floating-buttons button {
+    font-size: .7rem !important;
+}
+
+.floating-buttons button a {
+    font-size: .7rem !important;
 }
 
 .social-icons {
