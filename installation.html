@@ -405,7 +405,7 @@
                             <h1 class="artwork-title">${artwork.number}&nbsp;&nbsp;&nbsp;&nbsp;${artwork.name}</h1>
                         </div>
                         <div class="artwork-content">
-                            ${(artwork.content || 'Content coming soon...').replace(/\n/g, '<br>')}
+                            ${(artwork.content || 'Content coming soon...').split('\n').map(line => line === '' ? '<br>' : line).join('<br>')}
                         </div>
                     </div>
                 `;
