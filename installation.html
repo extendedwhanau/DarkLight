@@ -199,6 +199,23 @@
             color: #D3D3D3 !important;
         }
 
+        .artwork-content {
+            color: #7B7B7B;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 23px;
+            letter-spacing: 2px;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .artwork-content strong, 
+        .artwork-content b, 
+        .artwork-content span {
+            font-weight: 400 !important;
+            color: #D3D3D3 !important;
+        }
+
         .artwork-section {
             margin-bottom: 90px;
             padding-bottom: 90px;
@@ -382,49 +399,14 @@
         const content = document.getElementById('content');
         if (data.visible !== false && data.artworks && data.artworks.length > 0) {
             const artworksHTML = data.artworks.map(artwork => {
-                // Parse artist_info to extract artist and sound designer information
-                let artistInfo = '';
-                let soundDesignInfo = '';
-                
-                if (artwork.artist_info) {
-                    // Try to parse the artist_info field
-                    const artistInfoText = artwork.artist_info;
-                    
-                    // Look for patterns like "Artist: Name" and "Sound Design: Name"
-                    const artistMatch = artistInfoText.match(/Artist:\s*([^,\n]+)/i);
-                    const soundMatch = artistInfoText.match(/Sound Design:\s*([^,\n]+)/i);
-                    
-                    if (artistMatch) {
-                        artistInfo = artistMatch[1].trim();
-                    }
-                    if (soundMatch) {
-                        soundDesignInfo = soundMatch[1].trim();
-                    }
-                    
-                    // If no structured format found, use the entire text
-                    if (!artistInfo && !soundDesignInfo) {
-                        artistInfo = artistInfoText;
-                    }
-                }
-                
-                // Fallback to old fields if they exist
-                if (!artistInfo && artwork.artist) {
-                    artistInfo = artwork.artist;
-                }
-                if (!soundDesignInfo && artwork.sound_artist) {
-                    soundDesignInfo = artwork.sound_artist;
-                }
-                
                 return `
                     <div class="artwork-section" id="artwork-${artwork.number}">
                         <div class="artwork-header">
                             <h1 class="artwork-title">${artwork.number}&nbsp;&nbsp;&nbsp;&nbsp;${artwork.name}</h1>
                         </div>
-                        <div class="artwork-details">
-                            ${artistInfo ? `<div class="artwork-detail">Artist: <strong>${artistInfo}</strong></div>` : ''}
-                            ${soundDesignInfo ? `<div class="artwork-detail">Sound Design: <strong>${soundDesignInfo}</strong></div>` : ''}
+                        <div class="artwork-content">
+                            ${(artwork.content || 'Content coming soon...').replace(/\n/g, '<br>')}
                         </div>
-                        <div class="artwork-bio">${artwork.bio || 'Darkness is a stage for light to reveal its complexities. In the dark, light holds the power to liquify, crystallize, dissolve, and reform with its sharp edges, and soft diffusions. This journey is about shifting and unraveling the structure of light to reveal the spectrum of colour within.'}</div>
                     </div>
                 `;
             }).join('');
