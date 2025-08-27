@@ -71,5 +71,5 @@ artworks:
       Artist: PXLD. & Catherine Ellis
 
 
-      The Edge is a place of pause- where sea, city, and sky converge in shifting light, offering a moment of reflection at the horizon
+      The Edge is a place of pause- where sea, city, and sky converge in shifting light, offering a moment of reflection at the horizon.
 ---
