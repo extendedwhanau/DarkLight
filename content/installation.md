@@ -51,11 +51,9 @@ artworks:
       Flux is an interactive installation that transforms its space into a responsive pool of liquid light. Visitors' movements trigger cascading formations of luminous metallic substance. Using optical flow, real-time fluid dynamics and raytracing, the work creates an ever-evolving audiovisual composition that responds to human presence.
   - number: "6"
     name: Porcelain
-    content: |
+    content: |-
       Artist: Sarah Jayn Kavali & Creature Post
       Sound Design: Previn Naidu
-
-      x
   - number: "7"
     name: Orbit
     content: >-
