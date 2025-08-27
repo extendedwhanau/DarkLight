@@ -64,4 +64,12 @@ partners_section:
       logo: /images/partners/ei.svg
       link: https://eastimperial.co.nz
       alt: East Imperial
+    - name: Blink
+      alt: Blink
+      link: https://www.blinkltd.co.nz/
+      logo: /images/uploads/blink.png
+    - name: Colab
+      alt: Colab
+      link: https://www.wearecolab.nz/
+      logo: /images/uploads/colab.png
 ---
