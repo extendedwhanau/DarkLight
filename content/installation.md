@@ -13,13 +13,17 @@ artworks:
     content: >-
       Artist: Peter Hobbs and Catherine Ellis
 
-      Sound Design: [Peter Hobbs](https://linktr.ee/peterhobbs)
+      Sound Design: Peter Hobbs
 
 
       Music is vibration is life. This large-scale work is a part of Peter's ongoing investigations into the relationship between music, light and perception, and vibration as the basis of all life and connection.
 
 
-      Music resonates with lasers and speakers, focused into a reflective oval pool where light and sound meet the cymatic water surface to create a cinematic wall of ethereal projections dancing to the process of music made physical.
+      Music resonates with lasers and speakers, focused into a reflective oval pool where light and sound meet the cymatic water surface to create a cinematic wall of ethereal projections dancing to the process of music made physical.\
+
+      \
+
+      [Website](https://linktr.ee/peterhobbs)
   - number: "3"
     name: Signal
     content: |-
