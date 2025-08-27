@@ -157,7 +157,6 @@ collections:
             fields:
               - {label: "Number", name: "number", widget: "string", hint: "e.g., 1, 2, 3"}
               - {label: "Name", name: "name", widget: "string", hint: "e.g., SIGNAL, LUMINOUS WAVES"}
-              - {label: "Artist", name: "artist", widget: "string", hint: "e.g., Angus Muir"}
-              - {label: "Sound Artist", name: "sound_artist", widget: "string", hint: "e.g., Paul Sweetman"}
+              - {label: "Artist & Sound Designer", name: "artist_info", widget: "text", hint: "e.g., Artist: Angus Muir, Sound Design: Paul Sweetman (you can add more people or change titles as needed)"}
               - {label: "Bio", name: "bio", widget: "markdown", hint: "Description of the artwork"}
             summary: "{{fields.number}} - {{fields.name}}"
