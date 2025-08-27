@@ -40,6 +40,8 @@ resolve_cms_formatting() {
         # Fix common CMS formatting issues
         # Remove extra backslashes and fix line breaks
         sed -i.tmp 's/\\$//g' "$file"
+        sed -i.tmp 's/\\\n/\n/g' "$file"
+        sed -i.tmp 's/\\/g' "$file"
         sed -i.tmp 's/  - /  - /g' "$file"
         
         # Ensure consistent YAML formatting

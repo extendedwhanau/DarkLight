@@ -24,13 +24,13 @@ artworks:
     name: Signal
     content: |-
       Artist: PXLD.
-      Sound Design: Paul Sweetman\
-      Mixdown: Dudes of Hazard\
+      Sound Design: Paul Sweetman
+      Mixdown: Dudes of Hazard
       Fabrication: Alistair Munro
   - number: "4"
     name: Sunrise(t)
     content: >-
-      Artist: MAD Studios (Matt Liggins & Angus Muir)\
+      Artist: MAD Studios (Matt Liggins & Angus Muir)
 
       Sound Design: Arli Liberman
 

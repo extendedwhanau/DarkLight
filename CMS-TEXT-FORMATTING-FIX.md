@@ -20,8 +20,15 @@ The italic and link buttons in the CMS weren't working properly because the mark
 
 **After:**
 ```javascript
+// Remove backslashes that CMS adds for line breaks
+.replace(/\\\n/g, '\n')
+.replace(/\\/g, '')
+// Convert markdown to HTML
 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold → strong
 .replace(/\*(.*?)\*/g, '<em>$1</em>')              // Italic → em
+// Handle line breaks properly
+.replace(/\n\n/g, '</p><p>')
+.replace(/\n/g, '<br>')
 ```
 
 ### 2. Updated CSS Styling
@@ -86,6 +93,8 @@ All formatting will display correctly on the website.
 - `*italic*` → `<em>italic</em>`
 - `[link text](url)` → `<a href="url" target="_blank">link text</a>`
 - Double line breaks → New paragraphs
+- Single line breaks → `<br>` tags
+- Backslashes (`\`) → Removed automatically
 
 ### CSS Classes Updated
 - `.content-section strong, .content-section b`
@@ -111,5 +120,19 @@ The changes have been tested to ensure:
 The italic and link buttons in the CMS now work properly! Users can:
 - Format text as bold and italic
 - Add clickable links
+- Use line breaks without backslashes appearing
 - See their formatting immediately on the website
 - Use the CMS interface without technical issues
+
+## 🔧 Additional Fixes
+
+### Line Break Handling
+- **Single line breaks** now create `<br>` tags for proper spacing
+- **Double line breaks** create new paragraphs
+- **Backslashes** are automatically removed from CMS content
+- **Soft returns** in the text editor work correctly
+
+### Content Cleanup
+- Fixed existing content in `installation.md` to remove backslashes
+- Updated merge strategy to handle backslashes automatically
+- Ensured consistent formatting across all pages
