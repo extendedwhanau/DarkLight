@@ -27,7 +27,8 @@ artworks:
     artist: PXLD.
     sound_artist: Paul Sweetman
     bio: |-
-      Mixdown: Dudes of Hazard\
+      Mixdown: Dudes of Hazard
+
       Fabrication: Alistair Munro
 
       x
@@ -36,9 +37,10 @@ artworks:
     artist: MAD Studios (Matt Liggins & Angus Muir)
     sound_artist: Arli Liberman
     bio: >-
-      Animation Design: Pixelpush Han Law & SiewWee H'ng\
+      Animation Design: Pixelpush Han Law & SiewWee H'ng
 
-      Fabrication: Alistair Munro\
+
+      Fabrication: Alistair Munro
 
 
       The beauty of sunrise and sunset is distilled into an analogue, pixelated audiovisual experience, mirroring our planet’s daily encounter with the sun.
