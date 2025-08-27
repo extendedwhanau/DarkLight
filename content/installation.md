@@ -10,33 +10,28 @@ artworks:
       Sound Design: Peter Hobbs
   - number: "2"
     name: Cymatic Etherium
-    content: >
+    content: >-
       Artist: Peter Hobbs and Catherine Ellis
 
-      Sound Design: Peter Hobbs
+      Sound Design: [Peter Hobbs](https://linktr.ee/peterhobbs)
 
 
       Music is vibration is life. This large-scale work is a part of Peter's ongoing investigations into the relationship between music, light and perception, and vibration as the basis of all life and connection.
 
 
       Music resonates with lasers and speakers, focused into a reflective oval pool where light and sound meet the cymatic water surface to create a cinematic wall of ethereal projections dancing to the process of music made physical.
-
-
-      https://linktr.ee/peterhobbs
   - number: "3"
     name: Signal
     content: |-
       Artist: PXLD.
-      Sound Design: Paul Sweetman
-
-      Mixdown: Dudes of Hazard
-
+      Sound Design: Paul Sweetman\
+      Mixdown: Dudes of Hazard\
       Fabrication: Alistair Munro
   - number: "4"
     name: Sunrise(t)
     content: >-
-      Artist: MAD Studios (Matt Liggins & Angus Muir)
-      Sound Design: Arli Liberman
+      Artist: MAD Studios (Matt Liggins & Angus Muir) Sound Design: Arli
+      Liberman
 
       Animation Design: Pixelpush Han Law & SiewWee H'ng
 
