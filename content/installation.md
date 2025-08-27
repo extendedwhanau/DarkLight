@@ -30,8 +30,9 @@ artworks:
   - number: "4"
     name: Sunrise(t)
     content: >-
-      Artist: MAD Studios (Matt Liggins & Angus Muir) Sound Design: Arli
-      Liberman
+      Artist: MAD Studios (Matt Liggins & Angus Muir)\
+
+      Sound Design: Arli Liberman
 
       Animation Design: Pixelpush Han Law & SiewWee H'ng
 
