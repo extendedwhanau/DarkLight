@@ -222,6 +222,18 @@
             font-style: italic !important;
             color: #D3D3D3 !important;
         }
+        
+        /* Make labels grey and names white */
+        .content-section em.label,
+        .content-section .label {
+            color: #7B7B7B !important;
+            font-style: italic !important;
+        }
+        
+        .content-section span.name,
+        .content-section .name {
+            color: #D3D3D3 !important;
+        }
         .content-section span {
             font-weight: 400 !important;
             color: #D3D3D3 !important;
@@ -371,7 +383,7 @@
     function convertMarkdownToHtml(markdown) {
         if (!markdown) return '';
         
-        return markdown
+        let html = markdown
             // Remove backslashes that CMS adds for line breaks
             .replace(/\\\n/g, '\n')
             .replace(/\\/g, '')
@@ -387,6 +399,15 @@
             })
             .filter(p => p !== '')
             .join('');
+        
+        // First, handle any italic text ending with colon (make them labels)
+        html = html.replace(/(<em>([^<]*?):<\/em>)/g, '<em class="label">$2:</em>');
+        // Then handle italic labels with names
+        html = html.replace(/(<em class="label">([^<]*?):<\/em>)\s*([^<\n]+)/g, '<em class="label">$2:</em> <span class="name">$3</span>');
+        // Also handle non-italic labels - more comprehensive
+        html = html.replace(/(Artist|Sound Design|Mixdown|Fabrication|Animation Design):\s*([^<\n\r]+)/g, '<em class="label">$1:</em> <span class="name">$2</span>');
+        
+        return html;
     }
 
     function renderFAQSection(section) {
