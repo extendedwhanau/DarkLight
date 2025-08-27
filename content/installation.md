@@ -5,11 +5,9 @@ visible: true
 artworks:
   - number: "1"
     name: Horizon
-    content: |
+    content: |-
       Artist: PXLD. & Catherine Ellis
       Sound Design: Peter Hobbs
-
-      x
   - number: "2"
     name: Cymatic Etherium
     content: >
@@ -32,8 +30,6 @@ artworks:
       Sound Design: Paul Sweetman\
       Mixdown: Dudes of Hazard\
       Fabrication: Alistair Munro
-
-      x
   - number: "4"
     name: Sunrise(t)
     content: >-
