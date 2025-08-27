@@ -10,7 +10,7 @@ artworks:
     bio: x
   - number: "2"
     name: Cymatic Etherium
-    artist: Peter Hobbs and Catherine Elli
+    artist: Peter Hobbs and Catherine Ellis
     sound_artist: Peter Hobbs
     bio: >-
       Music is vibration is life. This large-scale work is a part of Peter's
