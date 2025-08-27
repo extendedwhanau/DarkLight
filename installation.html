@@ -210,10 +210,23 @@
         }
 
         .artwork-content strong, 
-        .artwork-content b, 
+        .artwork-content b {
+            font-weight: 600 !important;
+            color: #D3D3D3 !important;
+        }
+        .artwork-content em, 
+        .artwork-content i {
+            font-style: italic !important;
+            color: #D3D3D3 !important;
+        }
         .artwork-content span {
             font-weight: 400 !important;
             color: #D3D3D3 !important;
+        }
+        .artwork-content a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 5px;
         }
 
         .artwork-section {
@@ -405,7 +418,7 @@
                             <h1 class="artwork-title">${artwork.number}&nbsp;&nbsp;&nbsp;&nbsp;${artwork.name}</h1>
                         </div>
                         <div class="artwork-content">
-                            ${(artwork.content || 'Content coming soon...').split('\n').map(line => line === '' ? '<br>' : line).join('<br>')}
+                            ${convertMarkdownToHtml(artwork.content || 'Content coming soon...')}
                         </div>
                     </div>
                 `;
@@ -446,8 +459,8 @@
         if (!markdown) return '';
         
         return markdown
-            .replace(/\*\*(.*?)\*\*/g, '<span>$1</span>')
-            .replace(/\*(.*?)\*/g, '<span>$1</span>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
             .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
             .replace(/\n\n/g, '</p><p>')
             .replace(/^/, '<p>')

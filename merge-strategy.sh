@@ -45,6 +45,10 @@ resolve_cms_formatting() {
         # Ensure consistent YAML formatting
         sed -i.tmp 's/content: >-/content: |/g' "$file"
         
+        # Fix markdown formatting for CMS compatibility
+        # Convert any remaining span tags to proper markdown
+        sed -i.tmp 's/<span>\([^<]*\)<\/span>/**\1**/g' "$file"
+        
         rm -f "$file.tmp"
         echo "✅ Fixed formatting in $file"
     fi
