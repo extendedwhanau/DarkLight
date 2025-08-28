@@ -6,7 +6,7 @@ artworks:
   - number: "1"
     name: Horizon
     content: >-
-      Artist: PXLD. & Catherine Ellis
+      Artists: PXLD. & Catherine Ellis
 
       Sound Design: Peter Hobbs
 
@@ -23,7 +23,7 @@ artworks:
   - number: "2"
     name: Cymatic Etherium
     content: >-
-      Artist: Peter Hobbs and Catherine Ellis
+      Artists: Peter Hobbs and Catherine Ellis
 
       Sound Design: Peter Hobbs
 
@@ -77,7 +77,7 @@ artworks:
   - number: "4"
     name: Sunrise(t)
     content: >-
-      Artist: MAD Studios (Matt Liggins & Angus Muir)
+      Artists: MAD Studios (Matt Liggins & Angus Muir)
 
       Sound Design: Arli Liberman
 
@@ -115,7 +115,7 @@ artworks:
   - number: "6"
     name: Porcelain
     content: |-
-      Artist: Sarah Jayn Kavali & Creature Post
+      Artists: Sarah Jayn Kavali & Creature Post
       Sound Design: Previn Naidu
     artist: Sarah Jayn Kavali & Creature Post
     sound_artist: Previn Naidu
@@ -138,7 +138,7 @@ artworks:
   - number: "8"
     name: The Edge
     content: >-
-      Artist: PXLD. & Catherine Ellis
+      Artists: PXLD. & Catherine Ellis
 
 
       The Edge is a place of pause- where sea, city, and sky converge in shifting light, offering a moment of reflection at the horizon.
