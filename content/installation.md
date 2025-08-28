@@ -5,9 +5,16 @@ visible: true
 artworks:
   - number: "1"
     name: Horizon
-    content: |-
+    content: >-
       Artist: PXLD. & Catherine Ellis
+
       Sound Design: Peter Hobbs
+
+
+
+      The perception of an end of one form and a beginning of another. It’s a beautiful illusion created by distance and assembled in our neocortex.As we move closer, the horizon moves too, like the threshold of the speed of light we can never traverse.In reality there is no Other. Molecules flow between perceived forms. Nature, humanity, technology and form are all intimately connected through the ever flowing stream of life that forges connection throughout the cosmos.
+
+      The sounds you hear, all recorded from electromagnetic fields around Okura Bay, represent the molecular fusion of life through this vibrant light horizon stretched out before you.
     bio: |-
       
       .
