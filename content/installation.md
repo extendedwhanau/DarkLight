@@ -46,11 +46,17 @@ artworks:
       [](https://linktr.ee/peterhobbs)
   - number: "3"
     name: Signal
-    content: |-
+    content: >-
       Artist: PXLD.
+
       Sound Design: Paul Sweetman
+
       Mixdown: Dudes of Hazard
+
       Fabrication: Alistair Munro
+
+
+      Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and
     artist: PXLD.
     sound_artist: Paul Sweetman
     bio: >-
