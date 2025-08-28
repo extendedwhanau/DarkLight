@@ -8,8 +8,6 @@ artworks:
     content: |-
       Artist: PXLD. & Catherine Ellis
       Sound Design: Peter Hobbs
-
-      Check
     bio: |-
       
       .
