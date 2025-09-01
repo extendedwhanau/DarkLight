@@ -114,9 +114,14 @@ artworks:
       audiovisual composition that responds to human presence.
   - number: "6"
     name: Porcelain
-    content: |-
+    content: >-
       Artists: Sarah Jayn Kavali & Creature Post
+
       Sound Design: Previn Naidu
+
+
+
+      A sensory symphony, composed of fragments, more beautiful for having been broken. A harmonious blend of creative hands, of sight, sound, taste and smell.
     artist: Sarah Jayn Kavali & Creature Post
     sound_artist: Previn Naidu
     bio: .
