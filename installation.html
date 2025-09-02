@@ -492,7 +492,7 @@
         // Then handle italic labels with names
         html = html.replace(/(<em class="label">([^<]*?):<\/em>)\s*([^<\n]+)/g, '<em class="label">$2:</em> <span class="name">$3</span>');
         // Also handle non-italic labels - more comprehensive
-        html = html.replace(/(Artist|Sound Design|Mixdown|Fabrication|Animation Design):\s*([^<\n\r]+)/g, '<em class="label">$1:</em> <span class="name">$2</span>');
+        html = html.replace(/(Artist|Artists|Sound Design|Mixdown|Fabrication|Animation Design):\s*([^<\n\r]+)/g, '<em class="label">$1:</em> <span class="name">$2</span>');
         
         return html;
     }
