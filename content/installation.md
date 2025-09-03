@@ -120,8 +120,26 @@ artworks:
       Sound Design: Previn Naidu
 
 
-
       A sensory symphony, composed of fragments, more beautiful for having been broken. A harmonious blend of creative hands, of sight, sound, taste and smell.
+
+
+      the choux, pronounced “shoo”  
+
+      a raspberry cream french pastry, with a raspberry crunch
+
+      and finished with a flicker of gold leaf 
+
+      NF, VEGETARIAN
+
+
+
+      the lemona \
+
+      lemon curd and italian meringue encased in pastry
+
+      with a perfectly poised petal to finish
+
+      VEGETARIAN
     artist: Sarah Jayn Kavali & Creature Post
     sound_artist: Previn Naidu
     bio: .
