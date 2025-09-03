@@ -132,7 +132,6 @@ artworks:
       NF, VEGETARIAN
 
 
-
       the lemona \
 
       lemon curd and italian meringue encased in pastry
@@ -140,6 +139,13 @@ artworks:
       with a perfectly poised petal to finish
 
       VEGETARIAN
+
+
+      something decadent
+
+      dark chocolate and peanut torte 
+
+      NO GLUTEN ADDED, NO DAIRY ADDED, VEGAN
     artist: Sarah Jayn Kavali & Creature Post
     sound_artist: Previn Naidu
     bio: .
