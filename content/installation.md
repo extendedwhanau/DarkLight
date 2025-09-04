@@ -146,6 +146,15 @@ artworks:
       dark chocolate and peanut torte 
 
       NO GLUTEN ADDED, NO DAIRY ADDED, VEGAN
+
+
+      the tart
+
+      a creamy caramel milk candy housed in pastry,
+
+      topped with a toasted pecan and a whisper of gold leaf 
+
+      VEGETARIAN
     artist: Sarah Jayn Kavali & Creature Post
     sound_artist: Previn Naidu
     bio: .
