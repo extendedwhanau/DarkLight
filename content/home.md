@@ -1,7 +1,7 @@
 ---
-title: The Edge of Light
+title: Resonate
 subtitle: DARKLIGHT PRESENTS
-dates: 2–5 September 2025
+dates: 5 September 2025
 location: ""
 background_type: image
 background_image: /images/uploads/edge-of-light.jpg
@@ -9,22 +9,18 @@ vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/ren
 ticket_buttons:
   - sold_out: false
     target: _blank
-    link: https://www.iticket.co.nz/events/2025/sep/darklight
-    text: Exhibition Tickets
-  - sold_out: false
-    target: _blank
-    text: Resonate Tickets
+    text: Tickets
     link: https://www.undertheradar.co.nz/gig/97738/Resonate.utr
 floating_buttons:
   - text: About
     link: about.html
-    visible: true
+    visible: false
   - text: Installation
     link: installation.html
-    visible: true
+    visible: false
   - text: Gallery
     link: gallery.html
-    visible: true
+    visible: false
   - text: Resonate
     link: about-resonate.html
     visible: false
