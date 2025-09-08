@@ -1,7 +1,7 @@
 ---
-title: Resonate
-subtitle: DARKLIGHT PRESENTS
-dates: 5 September 2025
+title: Darklight
+subtitle: Let darkness guide you. Let light transform you.
+dates: ""
 location: ""
 background_type: image
 background_image: /images/uploads/resonate-5-sep.png
