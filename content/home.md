@@ -1,6 +1,6 @@
 ---
-title: Darklight
-subtitle: Coming soon
+title: Watch this space
+subtitle: Darklight
 dates: ""
 location: ""
 background_type: image
