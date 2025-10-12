@@ -1,6 +1,6 @@
 ---
 title: Darklight
-subtitle: Let darkness guide you. Let light transform you.
+subtitle: Coming soon
 dates: ""
 location: ""
 background_type: image
