@@ -3,6 +3,11 @@
   command = "echo 'No build needed'"
 
 [[redirects]]
+  from = "/home"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
