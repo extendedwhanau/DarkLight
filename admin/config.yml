@@ -48,6 +48,18 @@ collections:
               - {label: "Link", name: "link", widget: "string", required: false}
               - {label: "Visible", name: "visible", widget: "boolean", default: true}
             summary: "{{fields.text}} {{fields.visible | ternary '' '(Hidden)'}}"
+          - label: "Archive Videos"
+            name: "archive_videos"
+            widget: "list"
+            required: false
+            allow_add: true
+            collapsed: false
+            fields:
+              - {label: "Video Number", name: "video_number", widget: "number", default: 1, hint: "Auto-increments when you add new videos"}
+              - {label: "Video Title", name: "title", widget: "string", hint: "e.g., A Descent into Colour, The Edge of Light"}
+              - {label: "Video URL", name: "video_url", widget: "string", hint: "Paste your video URL here (Vimeo, direct MP4, etc.)"}
+              - {label: "Is Latest Video", name: "is_latest", widget: "boolean", default: false, hint: "Check this box for the most recent video (shows on main page)"}
+            summary: "{{fields.video_number | default: '?'}} - {{fields.title | default: 'Untitled'}} {{fields.is_latest | ternary '(Latest)' ''}}"
           - label: "Social"
             name: "social"
             widget: "object"

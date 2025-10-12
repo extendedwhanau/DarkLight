@@ -125,6 +125,13 @@
             <!-- Vimeo video will be loaded here -->
         </div>
 
+        <!-- Archive Video List -->
+        <div class="archive-video-list" id="archive-video-list">
+            <div class="archive-videos" id="archive-videos">
+                <!-- Video list will be dynamically inserted here -->
+            </div>
+        </div>
+
         <!-- Archive Title Overlay -->
         <div class="archive-title" id="archive-title">
             <h1 id="archive-dynamic-title"></h1>
@@ -455,6 +462,15 @@
                     // Update text content
                     if (data.title) document.getElementById('title').textContent = data.title;
                     if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
+                    
+                    // Update main page with latest video if available
+                    if (data.archive_videos && data.archive_videos.length > 0) {
+                        const latestVideo = data.archive_videos.find(video => video.is_latest);
+                        if (latestVideo) {
+                            console.log('Setting latest video as main video:', latestVideo.title);
+                            document.getElementById('title').textContent = latestVideo.title;
+                        }
+                    }
                     
                     // Handle dates - hide container if empty
                     const datesContainer = document.getElementById('dates-container');
@@ -1055,6 +1071,15 @@
                 } else {
                     console.error('Archive button not found!');
                 }
+                
+                // Add click-to-close functionality
+                overlay.addEventListener('click', (e) => {
+                    // Don't close if clicking on video list items
+                    if (!e.target.closest('.archive-video-item') && !e.target.closest('.archive-video-list')) {
+                        console.log('Archive overlay clicked, closing...');
+                        hideArchive();
+                    }
+                });
             } else {
                 console.error('Archive overlay element not found');
             }
@@ -1082,117 +1107,129 @@
             }
         }
 
+        // Global variables for archive functionality
+        let currentArchiveVideoIndex = 0;
+        let archiveVideos = [];
+
         function loadArchiveVideo() {
             console.log('loadArchiveVideo function called');
-            // Get the archive video URL from the already loaded CMS data
-            if (window.homepageData && window.homepageData.floating_buttons) {
-                console.log('Homepage data found:', window.homepageData);
-                const archiveButton = window.homepageData.floating_buttons.find(button => button.text === 'Archive');
-                console.log('Archive button found:', archiveButton);
-                if (archiveButton && archiveButton.link) {
-                    const videoUrl = archiveButton.link;
-                    console.log('Original video URL:', videoUrl);
-                    
-                    // Extract video ID from Vimeo URL
-                    let videoId = '';
-                    if (videoUrl.includes('vimeo.com/')) {
-                        videoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
-                        console.log('Extracted video ID from vimeo.com:', videoId);
-                    } else if (videoUrl.includes('player.vimeo.com/')) {
-                        videoId = videoUrl.split('player.vimeo.com/video/')[1].split('?')[0];
-                        console.log('Extracted video ID from player.vimeo.com:', videoId);
-                    } else if (videoUrl.includes('vimeo.com/video/')) {
-                        videoId = videoUrl.split('vimeo.com/video/')[1].split('?')[0];
-                        console.log('Extracted video ID from vimeo.com/video/:', videoId);
-                    } else if (videoUrl.includes('playback/')) {
-                        // Handle direct video file URLs like: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4
-                        videoId = videoUrl.split('playback/')[1].split('/')[0];
-                        console.log('Extracted video ID from playback URL:', videoId);
-                    }
-                    
-                    // Clean up video ID (remove any non-numeric characters)
-                    if (videoId) {
-                        videoId = videoId.replace(/[^0-9]/g, '');
-                        console.log('Cleaned video ID:', videoId);
-                    }
-                    
-                    if (videoId) {
-                        // Create proper Vimeo embed URL with autoplay and no sound
-                        const embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&background=1&controls=0&loop=1&title=0&byline=0&portrait=0&dnt=1`;
-                        console.log('Final embed URL:', embedUrl);
-                        
-                        const videoContainer = document.getElementById('archive-video-container');
-                        if (videoContainer) {
-                            console.log('Video container found, setting innerHTML');
-                            
-                            // Try using the original video URL directly in a video element
-                            console.log('Using original video URL directly:', videoUrl);
-                            
-                            videoContainer.innerHTML = `<video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
-                                <source src="${videoUrl}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div id="manual-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 15px 30px; border-radius: 5px; cursor: pointer; z-index: 10; display: none;">Click to Play Video</div>`;
-                            console.log('Video element HTML set');
-                            
-                            // Test if video element was created
-                            const video = videoContainer.querySelector('video');
-                            if (video) {
-                                console.log('Video element created successfully:', video);
-                                console.log('Video src:', video.querySelector('source').src);
-                                
-                                // Add event listeners to video
-                                video.addEventListener('loadstart', () => console.log('Video loadstart event'));
-                                video.addEventListener('loadeddata', () => console.log('Video loadeddata event'));
-                                video.addEventListener('canplay', () => console.log('Video canplay event'));
-                                video.addEventListener('play', () => console.log('Video play event'));
-                                video.addEventListener('error', (e) => console.error('Video error:', e));
-                                
-                                // Show manual play button after 3 seconds if video doesn't start
-                                setTimeout(() => {
-                                    if (video.paused) {
-                                        const manualPlayBtn = document.getElementById('manual-play-btn');
-                                        if (manualPlayBtn) {
-                                            manualPlayBtn.style.display = 'block';
-                                            console.log('Showing manual play button - video is paused');
-                                        }
-                                    }
-                                }, 3000);
-                                
-                                // Add click handler for manual play button
-                                setTimeout(() => {
-                                    const manualPlayBtn = document.getElementById('manual-play-btn');
-                                    if (manualPlayBtn) {
-                                        manualPlayBtn.addEventListener('click', function() {
-                                            console.log('Manual play button clicked');
-                                            video.play().then(() => {
-                                                console.log('Video started playing');
-                                                this.style.display = 'none';
-                                            }).catch(e => {
-                                                console.error('Failed to play video:', e);
-                                            });
-                                        });
-                                    }
-                                }, 100);
-                            } else {
-                                console.error('Video element not found after creation');
-                            }
-                        } else {
-                            console.error('Video container not found');
-                        }
-                    } else {
-                        console.error('Could not extract video ID from URL:', videoUrl);
-                        // Show a fallback message
-                        const videoContainer = document.getElementById('archive-video-container');
-                        if (videoContainer) {
-                            videoContainer.innerHTML = `<div style="color: white; text-align: center; padding-top: 50px;">Could not load video. URL: ${videoUrl}</div>`;
-                        }
-                    }
-                } else {
-                    console.error('Archive button or link not found');
-                }
+            
+            // Get the archive videos from the already loaded CMS data
+            if (window.homepageData && window.homepageData.archive_videos) {
+                console.log('Archive videos found:', window.homepageData.archive_videos);
+                archiveVideos = window.homepageData.archive_videos;
+                
+                // Find the latest video (marked as is_latest: true)
+                const latestVideoIndex = archiveVideos.findIndex(video => video.is_latest);
+                currentArchiveVideoIndex = latestVideoIndex !== -1 ? latestVideoIndex : 0;
+                
+                // Render the video list
+                renderArchiveVideoList();
+                
+                // Load the current video
+                loadCurrentArchiveVideo();
             } else {
-                console.error('Homepage data not available');
+                console.error('Archive videos not found in homepage data');
+            }
+        }
+
+        function renderArchiveVideoList() {
+            console.log('Rendering archive video list...');
+            const videoListContainer = document.getElementById('archive-videos');
+            if (!videoListContainer) {
+                console.error('Archive videos container not found');
+                return;
+            }
+            
+            videoListContainer.innerHTML = '';
+            
+            archiveVideos.forEach((video, index) => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'archive-video-item';
+                if (index === currentArchiveVideoIndex) {
+                    videoItem.classList.add('current');
+                }
+                
+                videoItem.innerHTML = `
+                    <h1 class="archive-video-number">${String(video.video_number || index + 1).padStart(2, '0')}</h1>
+                    <h1 class="archive-video-title">${video.title}</h1>
+                `;
+                
+                videoItem.addEventListener('click', () => {
+                    switchToArchiveVideo(index);
+                });
+                
+                videoListContainer.appendChild(videoItem);
+            });
+        }
+
+        function switchToArchiveVideo(index) {
+            if (index < 0 || index >= archiveVideos.length) {
+                console.error('Invalid video index:', index);
+                return;
+            }
+            
+            console.log('Switching to video index:', index);
+            currentArchiveVideoIndex = index;
+            
+            // Update the video list to highlight current video
+            const videoItems = document.querySelectorAll('.archive-video-item');
+            videoItems.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('current');
+                } else {
+                    item.classList.remove('current');
+                }
+            });
+            
+            // Load the new video
+            loadCurrentArchiveVideo();
+        }
+
+        function loadCurrentArchiveVideo() {
+            if (currentArchiveVideoIndex >= archiveVideos.length) {
+                console.error('Invalid current video index:', currentArchiveVideoIndex);
+                return;
+            }
+            
+            const currentVideo = archiveVideos[currentArchiveVideoIndex];
+            console.log('Loading current video:', currentVideo);
+            
+            const videoContainer = document.getElementById('archive-video-container');
+            const titleElement = document.getElementById('archive-dynamic-title');
+            
+            if (!videoContainer) {
+                console.error('Archive video container not found');
+                return;
+            }
+            
+            // Hide title element (not needed)
+            if (titleElement) {
+                titleElement.style.display = 'none';
+            }
+            
+            // Load video
+            const videoUrl = currentVideo.video_url;
+            console.log('Loading video URL:', videoUrl);
+            
+            videoContainer.innerHTML = `<video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="${videoUrl}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>`;
+            
+            // Test if video element was created
+            const video = videoContainer.querySelector('video');
+            if (video) {
+                console.log('Video element created successfully:', video);
+                
+                // Add event listeners to video
+                video.addEventListener('loadstart', () => console.log('Video loadstart event'));
+                video.addEventListener('loadeddata', () => console.log('Video loadeddata event'));
+                video.addEventListener('canplay', () => console.log('Video canplay event'));
+                video.addEventListener('play', () => console.log('Video play event'));
+                video.addEventListener('error', (e) => console.error('Video error:', e));
+            } else {
+                console.error('Video element not found after creation');
             }
         }
 
