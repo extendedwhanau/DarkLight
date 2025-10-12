@@ -463,14 +463,7 @@
                     if (data.title) document.getElementById('title').textContent = data.title;
                     if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
                     
-                    // Update main page with latest video if available
-                    if (data.archive_videos && data.archive_videos.length > 0) {
-                        const latestVideo = data.archive_videos.find(video => video.is_latest);
-                        if (latestVideo) {
-                            console.log('Setting latest video as main video:', latestVideo.title);
-                            document.getElementById('title').textContent = latestVideo.title;
-                        }
-                    }
+                    // Note: Main page title is now controlled by CMS title field, not latest video
                     
                     // Handle dates - hide container if empty
                     const datesContainer = document.getElementById('dates-container');
