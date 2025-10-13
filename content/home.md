@@ -1,5 +1,5 @@
 ---
-title: Watch this space
+title: New Zealand's indoor temporary light art exhibition
 subtitle: Darklight
 dates: ""
 location: ""
@@ -22,7 +22,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: true
+    visible: false
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -33,7 +33,7 @@ archive_videos:
     is_latest: false
   - video_number: 2
     title: The Edge of Light
-    video_url: https://player.vimeo.com/video/1123758285?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
+    video_url: https://player.vimeo.com/progressive_redirect/playback/1126737858/rendition/1080p/file.mp4?loc=external&signature=2828ed8be3963fdfd488d044065f44b35518888db517296ef04e74c90c46502c
     is_latest: true
 social:
   instagram: https://www.instagram.com/darklight_experience/
