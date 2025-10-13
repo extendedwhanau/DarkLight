@@ -1,5 +1,5 @@
 ---
-title: Watch this space
+title: New Zealand's indoor temporary light art exhibition
 subtitle: Darklight
 dates: ""
 location: ""
