@@ -33,7 +33,7 @@ archive_videos:
     is_latest: false
   - video_number: 2
     title: The Edge of Light
-    video_url: https://player.vimeo.com/video/1123758285?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
+    video_url: https://player.vimeo.com/video/1126737858?h=ece7235d6e
     is_latest: true
 social:
   instagram: https://www.instagram.com/darklight_experience/
