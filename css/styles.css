@@ -806,6 +806,12 @@ html, body {
     z-index: 1000;
     text-align: center;
     pointer-events: none;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.archive-video-list.hidden {
+    opacity: 0;
 }
 
 .archive-videos-header {
@@ -878,6 +884,12 @@ html, body {
     z-index: 1000; /* Same as floating buttons */
     text-align: center;
     pointer-events: none;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.archive-title.hidden {
+    opacity: 0;
 }
 
 .archive-title h1 {

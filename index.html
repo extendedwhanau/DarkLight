@@ -1030,6 +1030,58 @@
             document.addEventListener('touchend', handleGalleryTouchEnd);
         });
 
+        // Archive overlay auto-hide functionality
+        function showArchiveOverlayUI() {
+            const videoList = document.getElementById('archive-video-list');
+            const title = document.getElementById('archive-title');
+            
+            if (videoList) videoList.classList.remove('hidden');
+            if (title) title.classList.remove('hidden');
+            
+            // Reset the timer
+            if (archiveOverlayHideTimer) {
+                clearTimeout(archiveOverlayHideTimer);
+            }
+            
+            // Set new timer to hide after 4 seconds
+            archiveOverlayHideTimer = setTimeout(() => {
+                hideArchiveOverlayUI();
+            }, 4000);
+        }
+        
+        function hideArchiveOverlayUI() {
+            const videoList = document.getElementById('archive-video-list');
+            const title = document.getElementById('archive-title');
+            
+            if (videoList) videoList.classList.add('hidden');
+            if (title) title.classList.add('hidden');
+        }
+        
+        function setupArchiveMouseHandler() {
+            const overlay = document.getElementById('archive-overlay');
+            if (!overlay) return;
+            
+            // Remove any existing handlers
+            overlay.removeEventListener('mousemove', handleArchiveMouseMove);
+            overlay.removeEventListener('touchstart', handleArchiveTouch);
+            overlay.removeEventListener('touchmove', handleArchiveTouch);
+            
+            // Add mouse move handler
+            overlay.addEventListener('mousemove', handleArchiveMouseMove);
+            
+            // Add touch handlers for mobile
+            overlay.addEventListener('touchstart', handleArchiveTouch);
+            overlay.addEventListener('touchmove', handleArchiveTouch);
+        }
+        
+        function handleArchiveMouseMove() {
+            showArchiveOverlayUI();
+        }
+        
+        function handleArchiveTouch() {
+            showArchiveOverlayUI();
+        }
+
         // Archive functionality
         function showArchive() {
             console.log('showArchive function called');
@@ -1051,6 +1103,10 @@
                 setTimeout(() => {
                     loadArchiveVideo();
                 }, 100);
+                
+                // Setup auto-hide functionality
+                setupArchiveMouseHandler();
+                showArchiveOverlayUI(); // Show UI initially and start timer
                 
                 // Change archive button text to "Close"
                 const archiveBtn = document.getElementById('archive-btn');
@@ -1084,6 +1140,23 @@
             if (overlay) {
                 overlay.style.display = 'none';
                 console.log('Archive overlay hidden');
+                
+                // Remove mouse and touch handlers
+                overlay.removeEventListener('mousemove', handleArchiveMouseMove);
+                overlay.removeEventListener('touchstart', handleArchiveTouch);
+                overlay.removeEventListener('touchmove', handleArchiveTouch);
+                
+                // Clear hide timer
+                if (archiveOverlayHideTimer) {
+                    clearTimeout(archiveOverlayHideTimer);
+                    archiveOverlayHideTimer = null;
+                }
+                
+                // Reset UI visibility
+                const videoList = document.getElementById('archive-video-list');
+                const title = document.getElementById('archive-title');
+                if (videoList) videoList.classList.remove('hidden');
+                if (title) title.classList.remove('hidden');
             }
             
             // Change archive button text back to "Archive"
@@ -1103,6 +1176,7 @@
         // Global variables for archive functionality
         let currentArchiveVideoIndex = 0;
         let archiveVideos = [];
+        let archiveOverlayHideTimer = null;
 
         function loadArchiveVideo() {
             console.log('loadArchiveVideo function called');
