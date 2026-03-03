@@ -1,6 +1,6 @@
 ---
-title: New Zealand's indoor temporary light art exhibition
-subtitle: The Hidden World
+title: DARKLIGHT – The Hidden World
+subtitle: Auckland Live Present
 dates: 9–18 April 2026
 location: Hunua Rooms, Aotea Centre
 background_type: image
