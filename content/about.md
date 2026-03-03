@@ -58,8 +58,7 @@ sections:
         answer: The exhibition runs from April 9-18 (April school Holidays), at the
           Hunua Rooms, Aotea Centre, Auckland.
       - question: How long is the experience?
-        answer: The journey through DARKLIGHT The Hidden World takes approximately 45+
-          minutes.
+        answer: Wander at your own pace, discovering a hidden world waiting to be seen.
       - question: Is there an age restriction?
         answer: DARKLIGHT is suitable for all ages. Children under 14 must be
           accompanied by an adult.
