@@ -56,10 +56,11 @@ sections:
           stunning light installations with sound for a unique sensory
           experience.
       - question: When and where is it?
-        answer: The exhibition runs from September 2-4, 2025, at Okahu Bay, 18 Tamaki
-          Drive, Orakei, Auckland.
+        answer: The exhibition runs from April 9-18 (April school Holidays), at the
+          Hunua Rooms, Aotea Centre, Auckland.
       - question: How long is the experience?
-        answer: The journey through DARKLIGHT takes approximately 45-60 minutes.
+        answer: The journey through DARKLIGHT The Hidden World takes approximately 45+
+          minutes.
       - question: Is there an age restriction?
         answer: DARKLIGHT is suitable for all ages. Children under 14 must be
           accompanied by an adult.
@@ -70,8 +71,7 @@ sections:
         answer: Yes! Photography is encouraged. Please tag us @darklight_experience in
           your social media posts.
       - question: Is food included in the ticket price?
-        answer: Yes - A curated taste experience is included, designed to complement the
-          event, but it is not intended as a full meal.
+        answer: No
   - section_id: contact
     title: Contact
     visible: true
