@@ -3,10 +3,10 @@ title: New Zealand's indoor temporary light art exhibition
 subtitle: The Hidden World
 dates: 9–18 April 2026
 location: Hunua Rooms, Aotea Centre
-header_footer_layout: logo_bottom
 background_type: image
 background_image: /images/uploads/resonate-5-sep.png
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
+header_footer_layout: logo_top
 ticket_buttons: []
 floating_buttons:
   - text: About
