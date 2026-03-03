@@ -15,7 +15,7 @@ navigation:
     visible: true
 sections:
   - section_id: about-darklight
-    title: "About: Auckland Live presents Darklight: The Hidden world"
+    title: "About: Auckland Live presents DARKLIGHT, The Hidden world"
     visible: true
     content_type: text
     content: >-
