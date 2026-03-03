@@ -1,6 +1,6 @@
 ---
-title: Aotearoa New Zealand’s premium light experience — coming soon
-subtitle: ""
+title: Aotearoa New Zealand’s premium light experience
+subtitle: Stay Tuned
 dates: ""
 location: ""
 background_type: image
