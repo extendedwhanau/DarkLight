@@ -11,7 +11,7 @@ ticket_buttons: []
 floating_buttons:
   - text: About
     link: about.html
-    visible: true
+    visible: false
   - text: Installation
     link: installation.html
     visible: false
