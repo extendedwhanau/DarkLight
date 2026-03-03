@@ -468,7 +468,16 @@
                     
                     // Update text content
                     if (data.title) document.getElementById('title').textContent = data.title;
-                    if (data.subtitle) document.getElementById('subtitle').textContent = data.subtitle;
+                    
+                    const subtitleElement = document.getElementById('subtitle');
+                    if (subtitleElement) {
+                        if (data.subtitle && data.subtitle.trim()) {
+                            subtitleElement.textContent = data.subtitle;
+                            subtitleElement.style.display = 'block';
+                        } else {
+                            subtitleElement.style.display = 'none';
+                        }
+                    }
                     
                     // Note: Main page title is now controlled by CMS title field, not latest video
                     

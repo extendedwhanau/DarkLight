@@ -18,7 +18,7 @@ collections:
         file: "content/home.md"
         fields:
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Dates", name: "dates", widget: "string", required: false}
           - {label: "Location", name: "location", widget: "string", required: false}
           - label: "Background Type"
