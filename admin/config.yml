@@ -33,8 +33,8 @@ collections:
             name: "header_footer_layout"
             widget: "select"
             options:
-              - { label: "Logo at top, social & buttons at bottom", value: "logo_top" }
-              - { label: "Logo at bottom, social & buttons at top", value: "logo_bottom" }
+              - { label: "Top Logo", value: "logo_top" }
+              - { label: "Bottom Logo", value: "logo_bottom" }
             default: "logo_top"
             hint: "Choose whether the logo is at the top (with social icons and floating buttons at the bottom) or flipped."
           - label: "Ticket Buttons"
