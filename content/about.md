@@ -34,7 +34,8 @@ sections:
       **As night falls**, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an **immersive after-dark world** **of reflection and sensory wonder**.
 
 
-      Book your ticket for a 30-minute session and wander at your own pace, **discovering a world waiting to be seen**.
+
+      Book your session ticket and wander at your own pace, **discovering a world waiting to be seen**.
 
 
       **About Darklight**
