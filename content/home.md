@@ -1,7 +1,7 @@
 ---
 title: New Zealand's indoor temporary light art exhibition
-subtitle: Darklight
-dates: ""
+subtitle: The Hidden World
+dates: 9–18 April 2026
 location: ""
 background_type: image
 background_image: /images/uploads/resonate-5-sep.png
