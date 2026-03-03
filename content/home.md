@@ -41,12 +41,12 @@ social:
 partners_section:
   title: Special thanks
   partners:
-    - name: AMD
-      logo: /images/uploads/amd.png
-      link: https://www.angusmuirdesign.co.nz/
-      alt: Angus Muir Design
     - name: Angus Muir Design
       logo: /images/uploads/amd.png
       link: http://www.angusmuirdesign.co.nz
       alt: Angus Muir Design
+    - name: Auckland Live
+      logo: /images/uploads/dl_al.png
+      alt: Auckland Live
+      link: https://www.aucklandlive.co.nz
 ---
