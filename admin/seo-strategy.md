@@ -1,9 +1,9 @@
 # SEO Strategy for Darklight - Venue Management
 
 ## Current Venue Information
-- **Address**: 18 Tamaki Drive, Orakei, Auckland 1071
-- **Area**: Orakei, Auckland
-- **Venue Type**: Modern venue with waterfront views
+- **Address**: 50 Mayoral Drive, Auckland CBD, Auckland 1010
+- **Area**: Auckland City, CBD
+- **Venue Type**: Leading cultural, entertainment and convention venue space in the heart of the city
 
 ## SEO Best Practices for Venue Changes
 
@@ -15,13 +15,13 @@ Always include structured data for events with venue information:
   "@type": "Event",
   "location": {
     "@type": "Place",
-    "name": "18 Tamaki Drive, Ōrakei",
+    "name": "50 Mayoral Drive, Auckland",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "18 Tamaki Drive",
-      "addressLocality": "Orakei",
+      "streetAddress": "50 Mayoral Drive",
+      "addressLocality": "Auckland",
       "addressRegion": "Auckland",
-      "postalCode": "1071",
+      "postalCode": "1010",
       "addressCountry": "NZ"
     }
   }
