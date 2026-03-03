@@ -1,8 +1,8 @@
 ---
 title: New Zealand's indoor temporary light art exhibition
-subtitle: Darklight
-dates: ""
-location: ""
+subtitle: The Hidden World
+dates: 9–18 April 2026
+location: Hunua Rooms, Aotea Centre
 background_type: image
 background_image: /images/uploads/resonate-5-sep.png
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -22,7 +22,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: false
+    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -41,36 +41,16 @@ social:
 partners_section:
   title: Special thanks
   partners:
-    - name: AMD
+    - name: Angus Muir Design
       logo: /images/uploads/amd.png
-      link: https://www.angusmuirdesign.co.nz/
+      link: http://www.angusmuirdesign.co.nz
       alt: Angus Muir Design
-    - name: Okahu
-      link: https://www.okahubay.com/
-      alt: Okahu
-      logo: /images/uploads/okahu.png
-    - name: Alba
-      logo: /images/uploads/alba-icons-8.png
-      link: https://drinkalba.com/
-      alt: Alba
-    - name: Almighty
-      logo: /images/partners/almighty.svg
-      link: https://www.drinkalmighty.com/
-      alt: Almighty
-    - name: Scapegrace
-      logo: /images/partners/sg.svg
-      link: https://scapegracedistillery.com
-      alt: Scapegrace
-    - name: East Imperial
-      logo: /images/partners/ei.svg
-      link: https://eastimperial.co.nz
-      alt: East Imperial
-    - name: Blink
-      alt: Blink
-      link: https://www.blinkltd.co.nz/
-      logo: /images/uploads/blink.png
-    - name: Colab
-      alt: Colab
-      link: https://www.wearecolab.nz/
-      logo: /images/uploads/colab.png
+    - name: Auckland Live
+      logo: /images/uploads/dl_al.png
+      alt: Auckland Live
+      link: https://www.aucklandlive.co.nz
+    - name: Auckland Council
+      link: https://aucklandunlimited.com
+      alt: Auckland Council Whānau
+      logo: /images/uploads/dl_aw.png
 ---
