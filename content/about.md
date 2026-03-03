@@ -19,8 +19,10 @@ sections:
     visible: true
     content_type: text
     content: >-
-      
-      Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this **April school holiday** with its **most immersive edition yet**: *The Hidden World*, **a luminous journey designed to spark curiosity, wonder, and discovery for all ages**.
+      Following two sold-out seasons, the acclaimed lighting exhibition
+      Darklight returns this **April school holiday** with its **most immersive
+      edition yet**: *The Hidden World*, **a luminous journey designed to spark
+      curiosity, wonder, and discovery for all ages**.
 
 
       **Created for families and design enthusiasts alike,** *The Hidden World* invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, **vibrant environment where art, technology, and imagination converge**.
@@ -32,17 +34,13 @@ sections:
       **As night falls**, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an **immersive after-dark world** **of reflection and sensory wonder**.
 
 
-      Get your ticket to a 30-minute session and step beneath the surface to **discover a world waiting to be seen**.
-
-
-       
+      Book your ticket for a 30-minute session and wander at your own pace, **discovering a world waiting to be seen**.
 
 
       **About Darklight**
 
 
       Darklight is an indoor light exhibition, reimagining how audiences engage with light and sound, using minimalism, mood, and spatial design to evoke deep emotional response. It is more than an exhibition; it is a living exploration of perception, presence, and possibility. More info on [darklight.co](https://darklight.co/#/)
-
 
 
       *Proudly supported by the city centre targeted rate.*
