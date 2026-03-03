@@ -15,7 +15,7 @@ navigation:
     visible: true
 sections:
   - section_id: about-darklight
-    title: About DarkLight
+    title: "About DarkLight: The Hidden world"
     visible: true
     content_type: text
     content: >-
