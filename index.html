@@ -380,6 +380,13 @@
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);
                     
+                    // Header/footer layout: logo top vs logo bottom (social & buttons flip with it)
+                    if (data.header_footer_layout === 'logo_bottom') {
+                        document.body.classList.add('layout-flipped');
+                    } else {
+                        document.body.classList.remove('layout-flipped');
+                    }
+                    
                     // Handle background (image or Vimeo video)
                     if (data.background_type === 'vimeo' && data.vimeo_url) {
                         console.log('Setting Vimeo background:', data.vimeo_url);

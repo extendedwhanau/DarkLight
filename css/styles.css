@@ -173,6 +173,26 @@ body {
     padding: 15px 0 0 0;
 }
 
+/* Flipped layout: logo at bottom, social icons & floating buttons at top */
+body.layout-flipped.homepage .logo {
+    top: auto;
+    bottom: 0;
+    padding: 0 0 15px 0;
+}
+
+body.layout-flipped .social-icons {
+    position: fixed;
+    top: 15px;
+    bottom: auto;
+    left: 25px;
+    right: auto;
+}
+
+body.layout-flipped .floating-buttons {
+    top: 15px;
+    bottom: auto;
+}
+
 .homepage .content {
     display: flex;
     width: 850px;
@@ -492,6 +512,23 @@ button:hover {
     .homepage .logo {
         top: 10px;
         padding: 0 5px 0 5px;
+    }
+
+    body.layout-flipped.homepage .logo {
+        top: auto;
+        bottom: 10px;
+        padding: 0 5px 10px 5px;
+    }
+
+    body.layout-flipped .social-icons {
+        top: 10px;
+        bottom: auto;
+        left: 10px;
+    }
+
+    body.layout-flipped .floating-buttons {
+        top: 10px;
+        bottom: auto;
     }
 
     .homepage .content {

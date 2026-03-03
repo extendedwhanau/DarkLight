@@ -29,6 +29,14 @@ collections:
             hint: "Choose between a static image or a Vimeo video background"
           - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
           - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Paste your Vimeo player URL here (e.g., https://player.vimeo.com/video/123456789)"}
+          - label: "Header & footer layout"
+            name: "header_footer_layout"
+            widget: "select"
+            options:
+              - { label: "Logo at top, social & buttons at bottom", value: "logo_top" }
+              - { label: "Logo at bottom, social & buttons at top", value: "logo_bottom" }
+            default: "logo_top"
+            hint: "Choose whether the logo is at the top (with social icons and floating buttons at the bottom) or flipped."
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
