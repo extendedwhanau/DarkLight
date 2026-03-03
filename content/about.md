@@ -19,39 +19,33 @@ sections:
     visible: true
     content_type: text
     content: >-
-      After a sold-out debut earlier this year, the acclaimed light art
-      experience Darklight by Angus Muir Design returns this September with a
-      bold new chapter: **Darklight: The Edge of Light**. Set against the
-      sweeping backdrop of Okahu Bay, the exhibition will run from 2 to 4
-      September, with the return of the much-loved one-night-only music event
-      Resonate on 5 September.
+      
+      Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this **April school holiday** with its **most immersive edition yet**: *The Hidden World*, **a luminous journey designed to spark curiosity, wonder, and discovery for all ages**.
 
 
-      Inspired by the in-between moments where day turns to night, land meets sea, and the natural world blends with the built environment, The Edge of Light invites audiences into a richly atmospheric experience. 
+      **Created for families and design enthusiasts alike,** *The Hidden World* invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, **vibrant environment where art, technology, and imagination converge**.
 
 
-      Darklight: The Edge of Light introduces seven new installations that follow a line of transition - light shifts, space evolves and sound deepens from stillness to resonance. 
+      **By day**, the space radiates with colour, movement, and **interactive installations for explorers of all ages**.
 
 
-      “This is where light becomes emotion and space becomes experience,” says Angus Muir. “It’s about the edge. Not just in the landscape, but within ourselves. The edge is where we transform.”
+      **As night falls**, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an **immersive after-dark world** **of reflection and sensory wonder**.
 
 
-      This year’s programme features a line-up of some of Aotearoa’s most inventive artists, including Angus Muir, Catherine Ellis, Matt Liggins, Simon Holden, Peter Hobbs, Luke Foley-Martin and Sarah Jayne Kavali. Each artist brings their own perspective to the shared theme of transition.
+      Get your ticket to a 30-minute session and step beneath the surface to **discover a world waiting to be seen**.
 
 
-      The event takes place at OKAHU, located at 18 Tamaki Drive, with panoramic views across the Waitematā. The waterfront setting becomes part of the exhibition, reflecting and amplifying the installations as the evening light shifts. The venue’s open-air design also creates a strong connection between the work and the natural elements.
+       
 
 
-      Sessions are much more limited this time around. Four timed sessions will run each night, starting on the hour from 6pm to 10pm.
+      **About Darklight**
 
 
-      On Friday 5 September, Resonate returns in partnership with Music First. This one-night music-led experience features a curated lineup of DJs including Frank Booker and Love Language, bringing together deep soundscapes, movement, and visuals in a shared space. It continues the sensory story of Darklight through rhythm, community, and celebration. Resonate was a sold-out experience earlier this year and will once again be an unmissable experience for art lovers, design enthusiasts, and anyone interested in the emotional and transformative power of light. 
+      Darklight is an indoor light exhibition, reimagining how audiences engage with light and sound, using minimalism, mood, and spatial design to evoke deep emotional response. It is more than an exhibition; it is a living exploration of perception, presence, and possibility. More info on [darklight.co](https://darklight.co/#/)
 
 
-      Earlier this year, Darklight: A Descent Into Colour earned rave reviews and sold out across multiple nights. Audiences described it as “unlike anything Auckland has seen”. 
 
-
-      With public appetite for immersive, artist-led experiences continuing to grow, The Edge of Light is expected to do the same. Tickets available on-sale from 17th July.
+      *Proudly supported by the city centre targeted rate.*
   - section_id: faq
     title: Frequently Asked Questions
     visible: true
