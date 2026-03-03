@@ -49,4 +49,8 @@ partners_section:
       logo: /images/uploads/dl_al.png
       alt: Auckland Live
       link: https://www.aucklandlive.co.nz
+    - name: Auckland Council
+      link: https://www.aucklandlive.co.nz
+      alt: https://www.aucklandlive.co.nz
+      logo: /images/uploads/dl_aw.png
 ---
