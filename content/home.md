@@ -50,7 +50,7 @@ partners_section:
       alt: Auckland Live
       link: https://www.aucklandlive.co.nz
     - name: Auckland Council
-      link: https://www.aucklandlive.co.nz
+      link: https://aucklandunlimited.com
       alt: Auckland Council Whānau
       logo: /images/uploads/dl_aw.png
 ---
