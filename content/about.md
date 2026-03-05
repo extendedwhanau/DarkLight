@@ -66,8 +66,11 @@ sections:
         answer: Wear comfortable clothing and footwear. The experience involves walking
           and standing.
       - question: Can I take photos?
-        answer: Yes! Photography is encouraged. Please tag us @darklight_experience in
-          your social media posts.
+        answer: >-
+          Yes! Photography is encouraged. Please tag us @darklight_experience
+          and 
+
+          @aucklandlive in your social media posts.
       - question: Is food included in the ticket price?
         answer: No
   - section_id: contact
