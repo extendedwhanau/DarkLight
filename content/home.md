@@ -10,7 +10,7 @@ header_footer_layout: logo_bottom
 ticket_buttons:
   - sold_out: false
     target: _blank
-    text: Auckland Live
+    text: Tickets
     link: https://www.aucklandlive.co.nz/show/darklight
 floating_buttons:
   - text: About
