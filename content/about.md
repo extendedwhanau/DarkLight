@@ -50,8 +50,8 @@ sections:
     content_type: faq
     faq_items:
       - question: What is Darklight?
-        answer: Darklight is New Zealand's first immersive light exhibition, combining
-          stunning light installations with sound for a unique sensory
+        answer: Darklight is New Zealand's first immersive indoor light exhibition,
+          combining stunning light installations with sound for a unique sensory
           experience.
       - question: When and where is it?
         answer: The exhibition runs from April 9-18 (April school Holidays), at the
