@@ -1,22 +1,26 @@
 ---
-title: Aotearoa New Zealand’s premium light experience
-subtitle: Coming Soon
-dates: ""
-location: Aotea Centre, Auckland, New Zealand
+title: "Darklight: The Hidden World"
+subtitle: Auckland Live Presents
+dates: 9—18 April 2026
+location: Hunua Rooms, Aotea Centre
 seo_title: DarkLight at Aotea Centre | Auckland Light Experience
 seo_description: DarkLight is an immersive light and sound experience at Aotea Centre, Auckland. See current dates, tickets and event details on the official homepage.
 event_name: DarkLight
 venue_name: Aotea Centre
 venue_address: 50 Mayoral Drive, Auckland 1010, New Zealand
 background_type: image
-background_image: ""
+background_image: /images/uploads/hiddenworld.jpg
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
-header_footer_layout: logo_top
-ticket_buttons: []
+header_footer_layout: logo_bottom
+ticket_buttons:
+  - sold_out: false
+    target: _blank
+    text: Tickets
+    link: https://www.aucklandlive.co.nz/show/darklight
 floating_buttons:
   - text: About
     link: about.html
-    visible: false
+    visible: true
   - text: Installation
     link: installation.html
     visible: false
@@ -28,7 +32,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: false
+    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
