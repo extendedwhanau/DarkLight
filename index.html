@@ -409,13 +409,13 @@
                         const structuredData = {
                             '@context': 'https://schema.org',
                             '@type': 'Event',
-                            name: cmsData.event_name || cmsData.title || 'DarkLight',
+                            name: cmsData.title || 'DarkLight',
                             eventStatus: 'https://schema.org/EventScheduled',
                             eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
                             location: {
                                 '@type': 'Place',
-                                name: cmsData.venue_name || cmsData.location || 'DarkLight Venue',
-                                address: cmsData.venue_address || cmsData.location || 'Auckland, New Zealand'
+                                name: cmsData.location || 'Auckland, New Zealand',
+                                address: cmsData.location || 'Auckland, New Zealand'
                             }
                         };
 
