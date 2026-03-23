@@ -4,10 +4,12 @@
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DarkLight, New Zealand's immersive light exhibition at 18 Tamaki Dr, Ōkahu Bay, Auckland. Experience 'The Edge of Light' from 2-5 September 2025.">
+    <meta name="description" id="meta-description" content="DarkLight is an immersive light and sound experience in Aotearoa New Zealand. Visit the homepage for current dates and venue details.">
     
     <!-- Social Meta Tags -->
-    <meta property="og:title" content="DarkLight – Immersive Light & Sound Exhibition">
+    <meta property="og:title" id="og-title" content="DarkLight | Immersive Light Experience NZ">
+    <meta property="og:description" id="og-description" content="DarkLight is an immersive light and sound experience in Aotearoa New Zealand. Visit the homepage for current dates and venue details.">
+    <meta property="og:type" content="website">
     <meta property="og:image" content="https://example.com/path-to-social-image.jpg">
     
     <!-- Fonts & Styles -->
@@ -26,7 +28,17 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
     
-    <title>Darklight</title>
+    <script type="application/ld+json" id="event-structured-data">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "DarkLight",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+      }
+    </script>
+    
+    <title id="page-title">DarkLight | Immersive Light Experience NZ</title>
 </head>
 
 <body class="homepage">
@@ -374,8 +386,52 @@
                     }
                     // --- END: Background logic update ---
                     
+                    function updateSeoFromCMS(cmsData) {
+                        const seoTitle = (cmsData.seo_title && cmsData.seo_title.trim())
+                            ? cmsData.seo_title.trim()
+                            : [cmsData.title, cmsData.location].filter(Boolean).join(' | ') || 'DarkLight | Immersive Light Experience NZ';
+
+                        const seoDescription = (cmsData.seo_description && cmsData.seo_description.trim())
+                            ? cmsData.seo_description.trim()
+                            : `DarkLight immersive light and sound experience${cmsData.location ? ` at ${cmsData.location}` : ''}${cmsData.dates ? `, ${cmsData.dates}` : ''}.`;
+
+                        document.title = seoTitle;
+
+                        const descriptionMeta = document.getElementById('meta-description');
+                        if (descriptionMeta) descriptionMeta.setAttribute('content', seoDescription);
+
+                        const ogTitle = document.getElementById('og-title');
+                        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+
+                        const ogDescription = document.getElementById('og-description');
+                        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+
+                        const structuredData = {
+                            '@context': 'https://schema.org',
+                            '@type': 'Event',
+                            name: cmsData.event_name || cmsData.title || 'DarkLight',
+                            eventStatus: 'https://schema.org/EventScheduled',
+                            eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+                            location: {
+                                '@type': 'Place',
+                                name: cmsData.venue_name || cmsData.location || 'DarkLight Venue',
+                                address: cmsData.venue_address || cmsData.location || 'Auckland, New Zealand'
+                            }
+                        };
+
+                        if (cmsData.dates && cmsData.dates.trim()) {
+                            structuredData.description = `${structuredData.name} - ${cmsData.dates}`;
+                        }
+
+                        const ldJsonScript = document.getElementById('event-structured-data');
+                        if (ldJsonScript) {
+                            ldJsonScript.textContent = JSON.stringify(structuredData);
+                        }
+                    }
+
                     // After parsing the CMS data, store it globally:
                     window.homepageData = data;
+                    updateSeoFromCMS(data);
                     
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);

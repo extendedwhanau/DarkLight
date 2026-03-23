@@ -21,6 +21,11 @@ collections:
           - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Dates", name: "dates", widget: "string", required: false}
           - {label: "Location", name: "location", widget: "string", required: false}
+          - {label: "SEO Title", name: "seo_title", widget: "string", required: false, hint: "Recommended: include event name + city + venue"}
+          - {label: "SEO Description", name: "seo_description", widget: "text", required: false, hint: "Short summary with current venue and dates"}
+          - {label: "Event Name (Schema)", name: "event_name", widget: "string", required: false, hint: "Used for structured data shown to search engines"}
+          - {label: "Venue Name (Schema)", name: "venue_name", widget: "string", required: false, hint: "e.g. Aotea Centre"}
+          - {label: "Venue Address (Schema)", name: "venue_address", widget: "string", required: false, hint: "e.g. 50 Mayoral Drive, Auckland 1010, NZ"}
           - label: "Background Type"
             name: "background_type"
             widget: "select"
