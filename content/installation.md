@@ -1,6 +1,6 @@
 ---
 title: Installation
-image: /images/map.svg
+image: /images/uploads/map.png
 visible: false
 artworks:
   - number: "1"
