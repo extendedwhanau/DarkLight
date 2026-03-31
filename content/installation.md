@@ -1,10 +1,10 @@
 ---
 title: Installation
 image: /images/map.svg
-visible: true
+visible: false
 artworks:
   - number: "1"
-    name: Horizon
+    name: Earth in Bloom
     content: >-
       Artists: PXLD. & Catherine Ellis
 
@@ -21,7 +21,7 @@ artworks:
     artist: PXLD. & Catherine Ellis
     sound_artist: Peter Hobbs
   - number: "2"
-    name: Cymatic Etherium
+    name: Beneath The Surface
     content: >-
       Artists: Peter Hobbs and Catherine Ellis
 
@@ -52,7 +52,7 @@ artworks:
 
       [](https://linktr.ee/peterhobbs)
   - number: "3"
-    name: Signal
+    name: Sky Garden
     content: >-
       Artist: PXLD.
 
@@ -75,7 +75,7 @@ artworks:
 
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
   - number: "4"
-    name: Sunrise(t)
+    name: The Core
     content: >-
       Artists: MAD Studios (Matt Liggins & Angus Muir)
 
@@ -97,7 +97,7 @@ artworks:
 
       The beauty of sunrise and sunset is distilled into an analogue, pixelated audiovisual experience, mirroring our planet's daily encounter with the sun.
   - number: "5"
-    name: Flux
+    name: Cosmos
     content: >-
       Artist: Trace Element
 
@@ -112,76 +112,4 @@ artworks:
       formations of luminous metallic substance. Using optical flow, real-time
       fluid dynamics and raytracing, the work creates an ever-evolving
       audiovisual composition that responds to human presence.
-  - number: "6"
-    name: Porcelain
-    content: >-
-      Artists: Sarah Jayn Kavali & Creature Post
-
-      Sound Design: Previn Naidu
-
-
-      A sensory symphony, composed of fragments, more beautiful for having been broken. A harmonious blend of creative hands, of sight, sound, taste and smell.
-
-
-      the choux, pronounced “shoo”  
-
-      a raspberry cream french pastry, with a raspberry crunch
-
-      and finished with a flicker of gold leaf 
-
-      NF, VEGETARIAN
-
-
-      the lemona \
-
-      lemon curd and italian meringue encased in pastry
-
-      with a perfectly poised petal to finish
-
-      VEGETARIAN
-
-
-      something decadent
-
-      dark chocolate and peanut torte 
-
-      NO GLUTEN ADDED, NO DAIRY ADDED, VEGAN
-
-
-      the tart
-
-      a creamy caramel milk candy housed in pastry,
-
-      topped with a toasted pecan and a whisper of gold leaf 
-
-      VEGETARIAN
-    artist: Sarah Jayn Kavali & Creature Post
-    sound_artist: Previn Naidu
-    bio: .
-  - number: "7"
-    name: Orbit
-    content: >-
-      Artist: Luke Foley-Martin
-
-
-      Orbit extends Luke Foley-Martin's exploration of light and its hidden spectrums. Presented as a series of 10 small-scale projected motion-picture videos, the work studies an abstract object, revealing its form only through the shaping effects of coloured light. Filmed at extreme sensitivity, the rotating light becomes both subject and material, its granular noise uncovering colours at the edge of perception.
-    artist: Luke Foley-Martin
-    sound_artist: .
-    bio: Orbit extends Luke Foley-Martin's exploration of light and its hidden
-      spectrums. Presented as a series of 10 small-scale projected
-      motion-picture videos, the work studies an abstract object, revealing its
-      form only through the shaping effects of coloured light. Filmed at extreme
-      sensitivity, the rotating light becomes both subject and material, its
-      granular noise uncovering colours at the edge of perception.
-  - number: "8"
-    name: The Edge
-    content: >-
-      Artists: PXLD. & Catherine Ellis
-
-
-      The Edge is a place of pause- where sea, city, and sky converge in shifting light, offering a moment of reflection at the horizon.
-    artist: PXLD. & Catherine Ellis
-    sound_artist: .
-    bio: The Edge is a place of pause- where sea, city, and sky converge in shifting
-      light, offering a moment of reflection at the horizon.
 ---
