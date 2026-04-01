@@ -18,7 +18,7 @@ artworks:
   - number: "2"
     name: Beneath The Surface
     content: |-
-      Artists: Creature Post
+      Artists: Creature Post & Angus Muir Design
       Sound Design: Peter Hobbs
 
       [x](https://linktr.ee/peterhobbs)
@@ -57,7 +57,7 @@ artworks:
   - number: "4"
     name: The Core
     content: |-
-      Artist: Trace Element
+      Artist: Trace Element & Angus Muir Design
       Sound Design: Peter Hobbs
 
       x
