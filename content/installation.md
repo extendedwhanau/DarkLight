@@ -1,7 +1,7 @@
 ---
 title: Installation
 image: /images/uploads/map.png
-visible: true
+visible: false
 artworks:
   - number: "1"
     name: Earth in Bloom
