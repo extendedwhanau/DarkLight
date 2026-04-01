@@ -2,6 +2,8 @@
 title: "Darklight: The Hidden World"
 subtitle: Auckland Live Presents
 dates: 9—18 April 2026
+event_start_date: "2026-04-09"
+event_end_date: "2026-04-18"
 location: Hunua Rooms, Aotea Centre
 seo_title: "Darklight: The Hidden World | Hunua Rooms, Aotea Centre"
 seo_description: >-

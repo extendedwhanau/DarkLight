@@ -33,6 +33,8 @@
         "@context": "https://schema.org",
         "@type": "Event",
         "name": "DarkLight",
+        "startDate": "2026-04-09",
+        "endDate": "2026-04-18",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
       }
@@ -422,6 +424,11 @@
                         if (cmsData.dates && cmsData.dates.trim()) {
                             structuredData.description = `${structuredData.name} - ${cmsData.dates}`;
                         }
+
+                        const start = cmsData.event_start_date && String(cmsData.event_start_date).trim();
+                        const end = cmsData.event_end_date && String(cmsData.event_end_date).trim();
+                        if (start) structuredData.startDate = start;
+                        if (end) structuredData.endDate = end;
 
                         const ldJsonScript = document.getElementById('event-structured-data');
                         if (ldJsonScript) {

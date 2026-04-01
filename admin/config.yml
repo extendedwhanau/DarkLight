@@ -20,6 +20,8 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Dates", name: "dates", widget: "string", required: false}
+          - {label: "Event start date (Google)", name: "event_start_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-09 — used for search event info"}
+          - {label: "Event end date (Google)", name: "event_end_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-18 — optional but recommended"}
           - {label: "Location", name: "location", widget: "string", required: false}
           - {label: "SEO Title (optional)", name: "seo_title", widget: "string", required: false, hint: "Leave blank to auto-use Title + Location"}
           - {label: "SEO Description (optional)", name: "seo_description", widget: "text", required: false, hint: "Leave blank to auto-generate from event details"}
