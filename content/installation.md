@@ -62,10 +62,7 @@ artworks:
 
       Fabrication: Alistair Munro
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
     artist: PXLD.
     sound_artist: Paul Sweetman
