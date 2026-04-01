@@ -24,7 +24,7 @@ floating_buttons:
     visible: true
   - text: Installation
     link: installation.html
-    visible: false
+    visible: true
   - text: Gallery
     link: gallery.html
     visible: false

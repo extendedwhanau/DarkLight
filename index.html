@@ -638,34 +638,38 @@
                         }
                     }
 
-                    // Handle floating buttons
-                    const floatingButtonsContainer = document.getElementById('floating-buttons');
-                    if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
-                        console.log('Floating buttons data:', data.floating_buttons);
-                        
-                        // Check installation page visibility
-                        let installationVisible = true;
-                        try {
-                            const installationResponse = await fetch('/content/installation.md');
-                            if (installationResponse.ok) {
-                                const installationText = await installationResponse.text();
-                                const parts = installationText.split('---');
-                                if (parts.length >= 2) {
-                                    const installationData = jsyaml.load(parts[1]);
-                                    installationVisible = installationData.visible !== false;
-                                }
+                    // Installation page visibility (shared by initial + delayed floating-button render)
+                    let installationVisible = true;
+                    try {
+                        const installationResponse = await fetch('/content/installation.md');
+                        if (installationResponse.ok) {
+                            const installationText = await installationResponse.text();
+                            const instParts = installationText.split('---');
+                            if (instParts.length >= 2) {
+                                const installationData = jsyaml.load(instParts[1]);
+                                installationVisible = installationData.visible !== false;
                             }
-                        } catch (err) {
-                            console.log('Could not check installation visibility:', err);
                         }
-                        
-                        const visibleButtons = data.floating_buttons.filter(button => {
-                            // Hide installation button if installation page is not visible
+                    } catch (err) {
+                        console.log('Could not check installation visibility:', err);
+                    }
+
+                    function visibleFloatingButtons(buttons) {
+                        if (!buttons || !buttons.length) return [];
+                        return buttons.filter(button => {
                             if (button.text === 'Installation' && !installationVisible) {
                                 return false;
                             }
                             return button.visible;
                         });
+                    }
+
+                    // Handle floating buttons
+                    const floatingButtonsContainer = document.getElementById('floating-buttons');
+                    if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
+                        console.log('Floating buttons data:', data.floating_buttons);
+                        
+                        const visibleButtons = visibleFloatingButtons(data.floating_buttons);
                         console.log('Visible buttons:', visibleButtons);
                         
                         floatingButtonsContainer.innerHTML = visibleButtons
@@ -736,7 +740,7 @@
                         console.log('Container innerHTML:', floatingButtonsContainer?.innerHTML);
                         
                         if (floatingButtonsContainer && data.floating_buttons && data.floating_buttons.length > 0) {
-                            const visibleButtons = data.floating_buttons.filter(button => button.visible);
+                            const visibleButtons = visibleFloatingButtons(data.floating_buttons);
                             console.log('Final visible buttons to render:', visibleButtons.map(b => b.text));
                             
                             const buttonsHTML = visibleButtons
