@@ -6,7 +6,7 @@ artworks:
   - number: "1"
     name: Earth in Bloom
     content: |-
-      Artists: Angus Muir Design, Dr Foothead & Catherine Ellis
+      Artists: Angus Muir, Dr Foothead & Catherine Ellis
       Sound Design: Peter Hobbs
 
       x
@@ -18,7 +18,7 @@ artworks:
   - number: "2"
     name: Beneath The Surface
     content: |-
-      Artists: Creature Post & Angus Muir Design
+      Artists: Creature Post & Angus Muir 
       Sound Design: Peter Hobbs
 
       [x](https://linktr.ee/peterhobbs)
@@ -40,7 +40,7 @@ artworks:
   - number: "3"
     name: Sky Garden
     content: |-
-      Artist: Angus Muir Design & Catherine Ellis
+      Artist: Angus Muir & Catherine Ellis
       Sound Design: Peter Hobbs
 
       x
@@ -57,7 +57,7 @@ artworks:
   - number: "4"
     name: The Core
     content: |-
-      Artist: Trace Element & Angus Muir Design
+      Artist: Trace Element & Angus Muir
       Sound Design: Peter Hobbs
 
       x
@@ -73,7 +73,7 @@ artworks:
   - number: "5"
     name: Cosmos
     content: |-
-      Artist: Angus Muir Design & Catherine Ellis\
+      Artist: Angus Muir & Catherine Ellis\
       Sound Design: Peter Hobbs
 
       x
