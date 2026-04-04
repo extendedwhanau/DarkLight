@@ -37,13 +37,15 @@ sections:
       Book your session ticket and wander at your own pace, **discovering a world waiting to be seen**.
 
 
+
+      Proudly supported by the city centre targeted rate.
+
+
+
       **About Darklight**
 
 
-      Darklight is an indoor light exhibition, reimagining how audiences engage with light and sound, using minimalism, mood, and spatial design to evoke deep emotional response. It is more than an exhibition; it is a living exploration of perception, presence, and possibility. 
-
-
-      *Proudly supported by the city centre targeted rate.*
+      Darklight is an indoor light exhibition, reimagining how audiences engage with light and sound, using minimalism, mood, and spatial design to evoke deep emotional response. It is more than an exhibition; it is a living exploration of perception, presence, and possibility.
   - section_id: faq
     title: Frequently Asked Questions
     visible: true
