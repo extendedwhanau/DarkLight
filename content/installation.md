@@ -84,4 +84,12 @@ artworks:
       formations of luminous metallic substance. Using optical flow, real-time
       fluid dynamics and raytracing, the work creates an ever-evolving
       audiovisual composition that responds to human presence.
+  - number: "6"
+    name: Surface Tension
+    content: |-
+      
+      Artists: Creature Post
+  - number: "7"
+    name: Slipstream
+    content: "Artists: Trace Element"
 ---
