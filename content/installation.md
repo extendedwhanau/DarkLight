@@ -69,9 +69,9 @@ artworks:
       About:\
       Behold. The sky grows from the edge of the earth.
 
-       Where the horizon splits open and the light leaks through.
+      Where the horizon splits open and the light leaks through.
 
-       Rays of sky beams weave themselves into the layers of the atmosphere.
+      Rays of sky beams weave themselves into the layers of the atmosphere.
     artist: PXLD.
     sound_artist: Paul Sweetman
     bio: >-
