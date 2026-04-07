@@ -6,7 +6,7 @@ artworks:
   - number: "1"
     name: Earth in Bloom
     content: >-
-      Artists: \
+      Artists:
 
       **Human Moths - Dr Foothead - Peter Hobbs (Sound Design)**
 
@@ -28,7 +28,7 @@ artworks:
   - number: "2"
     name: Beneath The Surface
     content: >-
-      Artists: \
+      Artists:
 
       **Creature Post - Angus Muir Design - Peter Hobbs (Sound Design)**
 
