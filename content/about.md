@@ -20,26 +20,24 @@ sections:
     content_type: text
     content: >-
       Following two sold-out seasons, the acclaimed lighting exhibition
-      Darklight returns this **April school holiday** with its **most immersive
-      edition yet**: *The Hidden World*, **a luminous journey designed to spark
-      curiosity, wonder, and discovery for all ages**.
+      Darklight returns this April school holiday with its most immersive
+      edition yet: *The Hidden World*, a luminous journey designed to spark
+      curiosity, wonder, and discovery for all ages.
 
 
-      **Created for families and design enthusiasts alike,** *The Hidden World* invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, **vibrant environment where art, technology, and imagination converge**.
+      Created for families and design enthusiasts alike, *The Hidden World* invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
 
 
-      **By day**, the space radiates with colour, movement, and **interactive installations for explorers of all ages**.
+      By day, the space radiates with colour, movement, and interactive installations for explorers of all ages.
 
 
-      **As night falls**, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an **immersive after-dark world** **of reflection and sensory wonder**.
+      As night falls, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an immersive after-dark world of reflection and sensory wonder.
 
 
-      Book your session ticket and wander at your own pace, **discovering a world waiting to be seen**.
-
+      Book your session ticket and wander at your own pace, discovering a world waiting to be seen.
 
 
       Proudly supported by the city centre targeted rate.
-
 
 
       **About Darklight**
