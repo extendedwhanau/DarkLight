@@ -5,11 +5,21 @@ visible: false
 artworks:
   - number: "1"
     name: Earth in Bloom
-    content: |-
-      Artists: Angus Muir, Dr Foothead & Catherine Ellis
-      Sound Design: Peter Hobbs
+    content: >-
+      Artists: \
 
-      x
+      Human Moths - Dr Foothead - Peter Hobbs (Sound Design)
+
+
+      About:\
+
+      Shrink into the secret life beneath the flowers.
+
+
+      Hidden in this microcosm are swirls of colour and luminous detail, visible only to the smallest of creatures. 
+
+
+      Wander through blooming flowers towering overhead, their petals glowing in the playful and imaginative environment.
     bio: |-
       
       .
@@ -17,11 +27,29 @@ artworks:
     sound_artist: Peter Hobbs
   - number: "2"
     name: Beneath The Surface
-    content: |-
-      Artists: Creature Post & Angus Muir 
-      Sound Design: Peter Hobbs
+    content: >-
+      Artists: \
 
-      [x](https://linktr.ee/peterhobbs)
+      Creature Post - Angus Muir Design - Peter Hobbs (Sound Design)
+
+
+
+
+      About:\
+
+      An immersive projection installation that explores the mystery of the oceanic deep, a world still largely undiscovered.
+
+
+      Step into a shifting underwater landscape where the magical and the unknown 
+
+
+      reveal themselves in layers and scale shifts from microscopic to massive. 
+
+
+      Creatures drift in and out of view, light moves like a current, and fleeting moments invite closer attention.
+
+
+      Look deeper. Stay curious. You never know what’s moving just below.
     artist: Peter Hobbs & Catherine Ellis
     sound_artist: Peter Hobbs
     bio: >-
@@ -40,10 +68,17 @@ artworks:
   - number: "3"
     name: Sky Garden
     content: |-
-      Artist: Angus Muir & Catherine Ellis
-      Sound Design: Peter Hobbs
+      Artists:\
+      Catherine Ellis - Angus Muir - Peter Hobbs (Sound Design)
 
-      x
+
+
+      About:\
+      Behold. The sky grows from the edge of the earth.
+
+       Where the horizon splits open and the light leaks through.
+
+       Rays of sky beams weave themselves into the layers of the atmosphere.
     artist: PXLD.
     sound_artist: Paul Sweetman
     bio: >-
@@ -55,6 +90,11 @@ artworks:
 
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
   - number: "4"
+    name: Surface Tension
+    content: |-
+      
+      Artists: Creature Post
+  - number: "5"
     name: The Core
     content: |-
       Artist: Trace Element & Angus Muir
@@ -70,7 +110,7 @@ artworks:
 
 
       The beauty of sunrise and sunset is distilled into an analogue, pixelated audiovisual experience, mirroring our planet's daily encounter with the sun.
-  - number: "5"
+  - number: "6"
     name: Cosmos
     content: |-
       Artist: Angus Muir & Catherine Ellis\
@@ -84,11 +124,6 @@ artworks:
       formations of luminous metallic substance. Using optical flow, real-time
       fluid dynamics and raytracing, the work creates an ever-evolving
       audiovisual composition that responds to human presence.
-  - number: "6"
-    name: Surface Tension
-    content: |-
-      
-      Artists: Creature Post
   - number: "7"
     name: Slipstream
     content: "Artists: Trace Element"
