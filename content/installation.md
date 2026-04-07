@@ -33,17 +33,12 @@ artworks:
       Creature Post - Angus Muir Design - Peter Hobbs (Sound Design)
 
 
-
-
       About:\
 
       An immersive projection installation that explores the mystery of the oceanic deep, a world still largely undiscovered.
 
 
-      Step into a shifting underwater landscape where the magical and the unknown 
-
-
-      reveal themselves in layers and scale shifts from microscopic to massive. 
+      Step into a shifting underwater landscape where the magical and the unknown reveal themselves in layers and scale shifts from microscopic to massive. 
 
 
       Creatures drift in and out of view, light moves like a current, and fleeting moments invite closer attention.
@@ -91,9 +86,27 @@ artworks:
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
   - number: "4"
     name: Surface Tension
-    content: |-
-      
-      Artists: Creature Post
+    content: >-
+      Artists:\
+
+      Trace Element - Peter Hobbs (Sound Design)
+
+
+      About:\
+
+      A living underground world that responds to you.
+
+
+      Run your hands across its surfaces, rough stone gives way to something stranger. 
+
+
+      Explore the cracks in the walls and watch light erupt across the room in blazing shafts, fracturing into razor-thin slivers that scatter through the dark. 
+
+
+      Play a giant light harp and watch light dance from your fingertips.
+
+
+      What will you unlock?
   - number: "5"
     name: The Core
     content: |-
@@ -113,10 +126,15 @@ artworks:
   - number: "6"
     name: Cosmos
     content: |-
-      Artist: Angus Muir & Catherine Ellis\
-      Sound Design: Peter Hobbs
+      Artists:\
+      Angus Muir - Catherine Ellis - Peter Hobbs (Sound Design)
 
-      x
+      About:\
+      This is the final experience, the hidden light from a distant galaxy.
+
+       See the light collide and fracture open. 
+
+      Then drift along with the migrating stars.
     artist: Trace Element
     sound_artist: Sinclair
     bio: Flux is an interactive installation that transforms its space into a
@@ -126,5 +144,19 @@ artworks:
       audiovisual composition that responds to human presence.
   - number: "7"
     name: Slipstream
-    content: "Artists: Trace Element"
+    content: >-
+      Artist:\
+
+      Trace Element
+
+
+      About:\
+
+      Slipstream echoes your presence. 
+
+
+      Move through the space and watch the particles respond, streams of light finding their way toward you. 
+
+
+      Only your movement is captured by the sensor and virtual gravity takes care of the rest.
 ---
