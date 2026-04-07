@@ -8,7 +8,7 @@ artworks:
     content: >-
       Artists: \
 
-      Human Moths - Dr Foothead - Peter Hobbs (Sound Design)
+      **Human Moths - Dr Foothead - Peter Hobbs (Sound Design)**
 
 
       About:\
@@ -30,7 +30,7 @@ artworks:
     content: >-
       Artists: \
 
-      Creature Post - Angus Muir Design - Peter Hobbs (Sound Design)
+      **Creature Post - Angus Muir Design - Peter Hobbs (Sound Design)**
 
 
       About:\
@@ -64,9 +64,7 @@ artworks:
     name: Sky Garden
     content: |-
       Artists:\
-      Catherine Ellis - Angus Muir - Peter Hobbs (Sound Design)
-
-
+      **Catherine Ellis - Angus Muir - Peter Hobbs (Sound Design)**
 
       About:\
       Behold. The sky grows from the edge of the earth.
@@ -89,7 +87,7 @@ artworks:
     content: >-
       Artist:\
 
-      Creature Post
+      **Creature Post**
 
 
       About:\
@@ -103,7 +101,7 @@ artworks:
     content: >-
       Artists:
 
-      Trace Element - Peter Hobbs (Sound Design)
+      **Trace Element - Peter Hobbs (Sound Design)**
 
 
       About:
@@ -134,7 +132,7 @@ artworks:
     name: Cosmos
     content: |-
       Artists:\
-      Angus Muir - Catherine Ellis - Peter Hobbs (Sound Design)
+      **Angus Muir - Catherine Ellis - Peter Hobbs (Sound Design)**
 
       About:\
       This is the final experience, the hidden light from a distant galaxy.
@@ -154,7 +152,7 @@ artworks:
     content: >-
       Artist:\
 
-      Trace Element
+      **Trace Element**
 
 
       About:\
