@@ -74,6 +74,10 @@ sections:
           @aucklandlive in your social media posts.
       - question: Is food included in the ticket price?
         answer: No
+      - answer: >-
+          
+          Some elements may be intense for people with light sensitivity, including those who experience photosensitive epilepsy. If you have specific accessibility questions, please get in touch with our team before attending.
+        question: Does the exhibition contain flashing or bright lights?
   - section_id: contact
     title: Contact
     visible: true
