@@ -3,7 +3,7 @@ title: Installation
 image: /images/uploads/map-new.png
 visible: true
 artworks:
-  - number: "1"
+  - number: "1."
     name: Earth in Bloom
     content: >-
       Artists:
@@ -25,7 +25,7 @@ artworks:
       .
     artist: PXLD. & Catherine Ellis
     sound_artist: Peter Hobbs
-  - number: "2"
+  - number: "2."
     name: Beneath The Surface
     content: >-
       Artists:
@@ -60,7 +60,7 @@ artworks:
 
 
       [](https://linktr.ee/peterhobbs)
-  - number: "3"
+  - number: "3."
     name: Sky Garden
     content: |-
       Artists:\
@@ -82,7 +82,7 @@ artworks:
 
 
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
-  - number: "4"
+  - number: "4."
     name: Surface Tension
     content: >-
       Artist:\
@@ -96,7 +96,7 @@ artworks:
 
 
       Explore the fluid boundary between worlds with your movement, creating ripples in perception.
-  - number: "5"
+  - number: "5."
     name: The Core
     content: >-
       Artists:
@@ -128,7 +128,7 @@ artworks:
 
 
       The beauty of sunrise and sunset is distilled into an analogue, pixelated audiovisual experience, mirroring our planet's daily encounter with the sun.
-  - number: "6"
+  - number: "6."
     name: Cosmos
     content: |-
       Artists:\
@@ -147,7 +147,7 @@ artworks:
       formations of luminous metallic substance. Using optical flow, real-time
       fluid dynamics and raytracing, the work creates an ever-evolving
       audiovisual composition that responds to human presence.
-  - number: "7"
+  - number: "7."
     name: Slipstream
     content: >-
       Artist:\
