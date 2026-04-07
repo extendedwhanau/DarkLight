@@ -87,12 +87,26 @@ artworks:
   - number: "4"
     name: Surface Tension
     content: >-
-      Artists:\
+      Artist:\
+
+      Creature Post
+
+
+      About:\
+
+      Step up to the threshold between dimensions and face your alternate self from another reality.  
+
+
+      Explore the fluid boundary between worlds with your movement, creating ripples in perception.
+  - number: "5"
+    name: The Core
+    content: >-
+      Artists:
 
       Trace Element - Peter Hobbs (Sound Design)
 
 
-      About:\
+      About:
 
       A living underground world that responds to you.
 
@@ -107,13 +121,6 @@ artworks:
 
 
       What will you unlock?
-  - number: "5"
-    name: The Core
-    content: |-
-      Artist: Trace Element & Angus Muir
-      Sound Design: Peter Hobbs
-
-      x
     artist: MAD Studios (Matt Liggins & Angus Muir)
     sound_artist: Arli Liberman
     bio: >-
