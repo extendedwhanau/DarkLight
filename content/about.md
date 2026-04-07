@@ -21,11 +21,11 @@ sections:
     content: >-
       Following two sold-out seasons, the acclaimed lighting exhibition
       Darklight returns this April school holiday with its most immersive
-      edition yet: *The Hidden World*, a luminous journey designed to spark
+      edition yet: The Hidden World, a luminous journey designed to spark
       curiosity, wonder, and discovery for all ages.
 
 
-      Created for families and design enthusiasts alike, *The Hidden World* invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
+      Created for families and design enthusiasts alike, The Hidden World invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
 
 
       By day, the space radiates with colour, movement, and interactive installations for explorers of all ages.
