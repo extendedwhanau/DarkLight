@@ -76,6 +76,11 @@ sections:
           
           Some elements may be intense for people with light sensitivity, including those who experience photosensitive epilepsy. If you have specific accessibility questions, please get in touch with our team before attending.
         question: Does the exhibition contain haze, flashing or bright lights?
+      - question: Is the exhibition wheelchair and pram friendly?
+        answer: "Yes. DARKLIGHT: The Hidden World is fully accessible for wheelchairs
+          and prams. The exhibition is located in the Hunua Rooms at the Aotea
+          Centre and features step-free access throughout the experience.
+          Accessible facilities and lifts are also available within the venue."
   - section_id: contact
     title: Contact
     visible: true
