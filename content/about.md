@@ -21,7 +21,7 @@ sections:
     content: >-
       UPDATE Sat 11 Apr\
 
-      All events scheduled for Sunday, 12 April are going ahead as planned. Please allow extra travel time and continue to check the Auckland Live [website](https://www.aucklandlive.co.nz/) for any updates.
+      All events scheduled for Sunday, 12 April are going ahead as planned. Please allow extra travel time and continue to check the Auckland Live **[website](https://www.aucklandlive.co.nz/)** for any updates.
 
 
 
