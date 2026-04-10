@@ -19,10 +19,14 @@ sections:
     visible: true
     content_type: text
     content: >-
-      Following two sold-out seasons, the acclaimed lighting exhibition
-      Darklight returns this April school holiday with its most immersive
-      edition yet: The Hidden World, a luminous journey designed to spark
-      curiosity, wonder, and discovery for all ages.
+      UPDATE Sat 11 Apr\
+
+      All events scheduled for Sunday, 12 April are going ahead as planned. Please allow extra travel time and continue to check the Auckland Live [website](https://www.aucklandlive.co.nz/) for any updates.
+
+
+
+
+      Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this April school holiday with its most immersive edition yet: The Hidden World, a luminous journey designed to spark curiosity, wonder, and discovery for all ages.
 
 
       Created for families and design enthusiasts alike, The Hidden World invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
