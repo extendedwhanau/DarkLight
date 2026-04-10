@@ -19,11 +19,9 @@ sections:
     visible: true
     content_type: text
     content: >-
-      UPDATE Sat 11 Apr\
+      **UPDATE Sat 11 Apr**\
 
       All events scheduled for Sunday, 12 April are going ahead as planned. Please allow extra travel time and continue to check the Auckland Live **[website](https://www.aucklandlive.co.nz/)** for any updates.
-
-
 
 
       Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this April school holiday with its most immersive edition yet: The Hidden World, a luminous journey designed to spark curiosity, wonder, and discovery for all ages.
