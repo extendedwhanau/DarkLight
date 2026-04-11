@@ -83,6 +83,8 @@ sections:
           and prams. The exhibition is located in the Hunua Rooms at the Aotea
           Centre and features step-free access throughout the experience.
           Accessible facilities and lifts are also available within the venue."
+      - question: Is there door sales?
+        answer: Yes
   - section_id: contact
     title: Contact
     visible: true
