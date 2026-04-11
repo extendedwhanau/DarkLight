@@ -19,7 +19,12 @@ sections:
     visible: true
     content_type: text
     content: >-
+      **Update Sat 11 April, 3pm** 
+
+
       **Cyclone Vaianu and Darklight on Sunday 12th April**\
+
+      \
 
       **We are carefully monitoring advice from MetService and the National Emergency Management Agency relating to the impact of Cyclone Vaianu on Sunday 12th April.**
 
@@ -27,8 +32,9 @@ sections:
       **We are currently still planning to run Darklight on Sunday, however if you have a ticket for tomorrow and are not comfortable attending you are welcome to contact Ticketmaster to reschedule your tickets for an alternative date and time.**  
 
 
-      **You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.** 
+      **You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.  Thank you.** 
 
+       
 
       Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this April school holiday with its most immersive edition yet: The Hidden World, a luminous journey designed to spark curiosity, wonder, and discovery for all ages.
 
