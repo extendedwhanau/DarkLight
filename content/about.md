@@ -19,15 +19,16 @@ sections:
     visible: true
     content_type: text
     content: >-
+      
       **Update Sun 12 April, 9am
 
       DARKLIGHT: The Hidden World is open today, Sunday 12 April.
 
       If you have a ticket for today and are not comfortable attending you are welcome to contact Ticketmaster to reschedule your tickets for an alternative date and time. 
 
-      You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.  
+      You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.  
 
-      We will continue to monitor advice from weather forecast providers and the National Emergency Management Agency throughout the day.**
+      We will continue  to monitor advice from weather forecast providers and the National Emergency Management Agency throughout the day.**
 
 
 
