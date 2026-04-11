@@ -19,9 +19,15 @@ sections:
     visible: true
     content_type: text
     content: >-
-      **UPDATE Sat 11 Apr**\
+      **Cyclone Vaianu and Darklight on Sunday 12th April**\
 
-      All events scheduled for Sunday, 12 April are going ahead as planned. Please allow extra travel time and continue to check the Auckland Live **[website](https://www.aucklandlive.co.nz/)** for any updates.
+      **We are carefully monitoring advice from MetService and the National Emergency Management Agency relating to the impact of Cyclone Vaianu on Sunday 12th April.**
+
+
+      **We are currently still planning to run Darklight on Sunday, however if you have a ticket for tomorrow and are not comfortable attending you are welcome to contact Ticketmaster to reschedule your tickets for an alternative date and time.**  
+
+
+      **You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.** 
 
 
       Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this April school holiday with its most immersive edition yet: The Hidden World, a luminous journey designed to spark curiosity, wonder, and discovery for all ages.
