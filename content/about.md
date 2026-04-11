@@ -19,8 +19,7 @@ sections:
     visible: true
     content_type: text
     content: >-
-      **Update Sat 11 April, 3pm** 
-
+      **Update Sat 11 April, 3pm** \
 
       **Cyclone Vaianu and Darklight on Sunday 12th April**\
 
