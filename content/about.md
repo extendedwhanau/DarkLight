@@ -19,21 +19,10 @@ sections:
     visible: true
     content_type: text
     content: >-
-      
-      **Update Sun 12 April, 9am
-
-      DARKLIGHT: The Hidden World is open today, Sunday 12 April.
-
-      If you have a ticket for today and are not comfortable attending you are welcome to contact Ticketmaster to reschedule your tickets for an alternative date and time. 
-
-      You can contact Ticketmaster by logging into your Ticketmaster account and requesting a change for another day.  
-
-      We will continue  to monitor advice from weather forecast providers and the National Emergency Management Agency throughout the day.**
-
-
-
-
-      Following two sold-out seasons, the acclaimed lighting exhibition Darklight returns this April school holiday with its most immersive edition yet: The Hidden World, a luminous journey designed to spark curiosity, wonder, and discovery for all ages.
+      Following two sold-out seasons, the acclaimed lighting exhibition
+      Darklight returns this April school holiday with its most immersive
+      edition yet: The Hidden World, a luminous journey designed to spark
+      curiosity, wonder, and discovery for all ages.
 
 
       Created for families and design enthusiasts alike, The Hidden World invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
