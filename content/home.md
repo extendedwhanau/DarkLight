@@ -19,10 +19,10 @@ ticket_buttons:
 floating_buttons:
   - text: About
     link: about.html
-    visible: true
+    visible: false
   - text: Installation
     link: installation.html
-    visible: true
+    visible: false
   - text: Gallery
     link: gallery.html
     visible: false
@@ -31,7 +31,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: true
+    visible: false
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
