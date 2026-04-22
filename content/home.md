@@ -11,11 +11,7 @@ background_type: image
 background_image: /images/uploads/hiddenworld.jpg
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
 header_footer_layout: logo_bottom
-ticket_buttons:
-  - sold_out: false
-    target: _blank
-    text: Tickets
-    link: https://www.aucklandlive.co.nz/show/darklight
+ticket_buttons: []
 floating_buttons:
   - text: About
     link: about.html
