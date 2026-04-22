@@ -1,11 +1,11 @@
 ---
 title: "Darklight: The Hidden World"
 subtitle: Next event coming soon
-dates: 9—18 April 2026
-event_start_date: ""
-event_end_date: ""
-location: Hunua Rooms, Aotea Centre
-seo_title: Let darkness guide you. Let light transform you.
+dates: ""
+event_start_date: Let darkness guide you.
+event_end_date: Let light transform you.
+location: ""
+seo_title: ""
 seo_description: Darklight is an immersive light and sound experience
 background_type: image
 background_image: /images/uploads/hiddenworld.jpg
