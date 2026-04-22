@@ -1,14 +1,12 @@
 ---
 title: "Darklight: The Hidden World"
-subtitle: Auckland Live Presents
+subtitle: Next event coming soon
 dates: 9—18 April 2026
-event_start_date: "2026-04-09"
-event_end_date: "2026-04-18"
+event_start_date: ""
+event_end_date: ""
 location: Hunua Rooms, Aotea Centre
-seo_title: "Darklight: The Hidden World | Hunua Rooms, Aotea Centre"
-seo_description: >-
-  Darklight is an immersive light and sound experience at the Hunua Rooms,
-  Aotea Centre, Auckland. 9—18 April 2026. Tickets at aucklandlive.co.nz.
+seo_title: Let darkness guide you. Let light transform you.
+seo_description: Darklight is an immersive light and sound experience
 background_type: image
 background_image: /images/uploads/hiddenworld.jpg
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
