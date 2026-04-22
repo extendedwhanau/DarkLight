@@ -4,7 +4,7 @@ navigation:
   - number: "01"
     label: Darklight
     section_id: about-darklight
-    visible: true
+    visible: false
   - number: "02"
     label: FAQ
     section_id: faq
