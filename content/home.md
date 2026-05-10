@@ -7,9 +7,9 @@ event_end_date: Let light transform you.
 location: ""
 seo_title: ""
 seo_description: Darklight is an immersive light and sound experience
-background_type: image
+background_type: vimeo
 background_image: /images/uploads/hiddenworld.jpg
-vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
+vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1188954654/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=efd05c7a3dcb3ef7397bdbe3c4a68d36a6ce11f6cca796cea5d2d42aa506b7ad
 header_footer_layout: logo_bottom
 ticket_buttons: []
 floating_buttons:
