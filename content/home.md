@@ -1,9 +1,9 @@
 ---
-title: "Darklight: The Hidden World"
-subtitle: Next event coming soon
+title: .
+subtitle: ""
 dates: ""
-event_start_date: Let darkness guide you.
-event_end_date: Let light transform you.
+event_start_date: ""
+event_end_date: ""
 location: ""
 seo_title: ""
 seo_description: Darklight is an immersive light and sound experience
