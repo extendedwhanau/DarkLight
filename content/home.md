@@ -5,7 +5,7 @@ dates: ""
 event_start_date: ""
 event_end_date: ""
 location: ""
-seo_title: ""
+seo_title: Darklight is an immersive light and sound experience
 seo_description: Darklight is an immersive light and sound experience
 background_type: vimeo
 background_image: /images/uploads/hiddenworld.jpg
