@@ -1,7 +1,7 @@
 ---
-title: The Hidden World
-subtitle: "03"
-dates: ""
+title: "03"
+subtitle: ""
+dates: The Hidden World
 event_start_date: ""
 event_end_date: ""
 location: ""
