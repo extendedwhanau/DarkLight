@@ -1,6 +1,6 @@
 ---
-title: The Hidden World
-subtitle: New Plymouth - TSB Showplace
+title: New Plymouth - TSB Showplace
+subtitle: The Hidden World
 dates: 25 September - 4 October. Tickets on sale 6 July.
 event_start_date: ""
 event_end_date: ""
