@@ -15,6 +15,7 @@ ticket_buttons:
   - sold_out: false
     target: _blank
     text: BOOK TICKETS HERE
+    link: https://darklight.co
 floating_buttons:
   - text: About
     link: about.html
