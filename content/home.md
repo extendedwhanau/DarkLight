@@ -14,8 +14,8 @@ header_footer_layout: logo_bottom
 ticket_buttons:
   - sold_out: false
     target: _blank
-    text: BOOK TICKETS HERE
-    link: https://darklight.co
+    text: ""
+    link: ""
 floating_buttons:
   - text: About
     link: about.html
