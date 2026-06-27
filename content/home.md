@@ -31,7 +31,7 @@ floating_buttons:
     visible: false
   - text: Partners
     link: "#"
-    visible: false
+    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -54,12 +54,12 @@ partners_section:
       logo: /images/uploads/amd.png
       link: http://www.angusmuirdesign.co.nz
       alt: Angus Muir Design
-    - name: Auckland Live
-      logo: /images/uploads/dl_al.png
-      alt: Auckland Live
-      link: https://www.aucklandlive.co.nz
-    - name: Auckland Council
-      link: https://aucklandunlimited.com
-      alt: Auckland Council Whānau
-      logo: /images/uploads/dl_aw.png
+    - name: NPDC
+      logo: /images/uploads/npdc-dl-website.png
+      alt: NPDC
+      link: https://www.npdc.govt.nz/
+    - name: NP Partners
+      link: https://nppartners.co.nz/
+      alt: NP Partners
+      logo: /images/uploads/np-partners-dl-website.png
 ---
