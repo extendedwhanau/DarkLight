@@ -46,7 +46,7 @@ archive_videos:
     is_latest: true
   - video_number: 3
     is_latest: true
-    video_url: https://player.vimeo.com/progressive_redirect/playback/1188954654/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=efd05c7a3dcb3ef7397bdbe3c4a68d36a6ce11f6cca796cea5d2d42aa506b7ad
+    video_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
     title: The Hidden World (AKL)
 social:
   instagram: https://www.instagram.com/darklight_experience/
