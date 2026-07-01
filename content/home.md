@@ -44,6 +44,10 @@ archive_videos:
     title: The Edge of Light
     video_url: https://player.vimeo.com/progressive_redirect/playback/1126737858/rendition/1080p/file.mp4?loc=external&signature=2828ed8be3963fdfd488d044065f44b35518888db517296ef04e74c90c46502c
     is_latest: true
+  - video_number: 3
+    is_latest: true
+    video_url: https://player.vimeo.com/progressive_redirect/playback/1188954654/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=efd05c7a3dcb3ef7397bdbe3c4a68d36a6ce11f6cca796cea5d2d42aa506b7ad
+    title: The Hidden World (AKL)
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
