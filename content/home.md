@@ -14,7 +14,7 @@ header_footer_layout: logo_bottom
 ticket_buttons:
   - sold_out: false
     target: _blank
-    text: book tickets here
+    text: BOOK TICKETS HERE
     link: https://www.eventfinda.co.nz/2026/dark-light/taranaki
 floating_buttons:
   - text: About
