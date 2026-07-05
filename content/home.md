@@ -1,7 +1,7 @@
 ---
 title: New Plymouth - TSB Showplace
 subtitle: The Hidden World
-dates: 25 Sep - 4 Oct. Tickets on sale 9am Monday 6 July
+dates: 25 Sep - 4 Oct. Tickets available now
 event_start_date: ""
 event_end_date: ""
 location: ""
@@ -14,8 +14,8 @@ header_footer_layout: logo_bottom
 ticket_buttons:
   - sold_out: false
     target: _blank
-    text: ""
-    link: ""
+    text: book tickets here
+    link: https://www.eventfinda.co.nz/2026/dark-light/taranaki
 floating_buttons:
   - text: About
     link: about.html
