@@ -81,9 +81,6 @@ accom_section:
 
 
     Endless accommodation options from Apartments | Furnished Houses | Family Rooms | Suites and Studios.
-
-
-    Email now : reservations@plymouth.co.nz
   email: reservations@plymouth.co.nz
   email_button_text: Email now
   website: https://www.plymouth.co.nz/
