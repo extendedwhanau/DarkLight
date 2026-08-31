@@ -103,6 +103,17 @@
         </div>
     </div>
 
+    <!-- Accom Section -->
+    <div id="accom-section">
+        <h2 id="accom-title">Accommodation</h2>
+        <div class="accom-body" id="accom-body">
+            <!-- Accom text will be dynamically inserted here -->
+        </div>
+        <div class="accom-actions" id="accom-actions">
+            <!-- Email / website buttons will be dynamically inserted here -->
+        </div>
+    </div>
+
     <!-- Social Icons -->
     <div class="social-icons" id="social-icons">
         <a href="https://instagram.com/darklight_experience" target="_blank" rel="noopener noreferrer">
@@ -338,6 +349,28 @@
                 if (parts.length >= 2) {
                     const yamlContent = parts[1];
                     const data = jsyaml.load(yamlContent);
+
+                    // Flatten Appearance object (CMS grouping) with flat-field fallback
+                    const appearance = data.appearance || {};
+                    data.background_type = appearance.background_type || data.background_type;
+                    data.background_image = appearance.background_image || data.background_image;
+                    data.vimeo_url = appearance.vimeo_url || data.vimeo_url;
+                    data.header_footer_layout = appearance.header_footer_layout || data.header_footer_layout;
+
+                    // Load SEO from separate CMS page
+                    let seoData = {};
+                    try {
+                        const seoResponse = await fetch('/content/seo.md');
+                        if (seoResponse.ok) {
+                            const seoText = await seoResponse.text();
+                            const seoParts = seoText.split('---');
+                            if (seoParts.length >= 2) {
+                                seoData = jsyaml.load(seoParts[1]) || {};
+                            }
+                        }
+                    } catch (seoErr) {
+                        console.log('Could not load SEO content:', seoErr);
+                    }
                     
                     // --- BEGIN: Background logic update ---
                     const videoCover = document.querySelector('.video-cover');
@@ -395,13 +428,13 @@
                     }
                     // --- END: Background logic update ---
                     
-                    function updateSeoFromCMS(cmsData) {
-                        const seoTitle = (cmsData.seo_title && cmsData.seo_title.trim())
-                            ? cmsData.seo_title.trim()
+                    function updateSeoFromCMS(cmsData, seoCmsData = {}) {
+                        const seoTitle = (seoCmsData.seo_title && seoCmsData.seo_title.trim())
+                            ? seoCmsData.seo_title.trim()
                             : [cmsData.title, cmsData.location].filter(Boolean).join(' | ') || 'DarkLight | Immersive Light Experience NZ';
 
-                        const seoDescription = (cmsData.seo_description && cmsData.seo_description.trim())
-                            ? cmsData.seo_description.trim()
+                        const seoDescription = (seoCmsData.seo_description && seoCmsData.seo_description.trim())
+                            ? seoCmsData.seo_description.trim()
                             : `DarkLight immersive light and sound experience${cmsData.location ? ` at ${cmsData.location}` : ''}${cmsData.dates ? `, ${cmsData.dates}` : ''}.`;
 
                         document.title = seoTitle;
@@ -432,8 +465,8 @@
                             structuredData.description = `${structuredData.name} - ${cmsData.dates}`;
                         }
 
-                        const start = cmsData.event_start_date && String(cmsData.event_start_date).trim();
-                        const end = cmsData.event_end_date && String(cmsData.event_end_date).trim();
+                        const start = seoCmsData.event_start_date && String(seoCmsData.event_start_date).trim();
+                        const end = seoCmsData.event_end_date && String(seoCmsData.event_end_date).trim();
                         if (start) structuredData.startDate = start;
                         if (end) structuredData.endDate = end;
 
@@ -445,7 +478,7 @@
 
                     // After parsing the CMS data, store it globally:
                     window.homepageData = data;
-                    updateSeoFromCMS(data);
+                    updateSeoFromCMS(data, seoData);
                     
                     console.log('Browser:', navigator.userAgent);
                     console.log('Full data loaded:', data);
@@ -635,6 +668,38 @@
                         }
                     }
 
+                    // Handle accom section
+                    const accomSection = document.getElementById('accom-section');
+                    const accomTitle = document.getElementById('accom-title');
+                    const accomBody = document.getElementById('accom-body');
+                    const accomActions = document.getElementById('accom-actions');
+                    const accom = data.accom_section || {};
+
+                    if (accomTitle && accom.title) {
+                        accomTitle.textContent = accom.title;
+                    }
+                    if (accomBody && accom.body) {
+                        const paragraphs = String(accom.body)
+                            .split(/\n\s*\n/)
+                            .map(p => p.trim().replace(/\n/g, '<br>'))
+                            .filter(Boolean);
+                        accomBody.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+                    }
+                    if (accomActions) {
+                        const email = (accom.email || 'reservations@plymouth.co.nz').trim();
+                        const emailLabel = (accom.email_button_text || 'Email now').trim();
+                        const website = (accom.website || '').trim();
+                        let actionsHTML = '';
+                        if (email) {
+                            actionsHTML += `<a class="accom-email-btn" href="mailto:${email}">${emailLabel}</a>`;
+                            actionsHTML += `<a class="accom-email-address" href="mailto:${email}">${email}</a>`;
+                        }
+                        if (website) {
+                            actionsHTML += `<a class="accom-website-btn" href="${website}" target="_blank" rel="noopener noreferrer">Visit website</a>`;
+                        }
+                        accomActions.innerHTML = actionsHTML;
+                    }
+
                     // Handle social icons
                     const socialIcons = document.getElementById('social-icons');
                     if (data.social && socialIcons) {
@@ -674,166 +739,123 @@
                         });
                     }
 
-                    // Handle floating buttons
-                    const floatingButtonsContainer = document.getElementById('floating-buttons');
-                    if (data.floating_buttons && data.floating_buttons.length > 0 && floatingButtonsContainer) {
-                        console.log('Floating buttons data:', data.floating_buttons);
-                        
-                        const visibleButtons = visibleFloatingButtons(data.floating_buttons);
-                        console.log('Visible buttons:', visibleButtons);
-                        
-                        floatingButtonsContainer.innerHTML = visibleButtons
-                            .map(button => {
-                                if (button.text === 'Partners') {
-                                    return `<button id="partners-btn">${button.text}</button>`;
-                                } else if (button.text === 'Gallery') {
-                                    return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
-                                } else if (button.text === 'Archive') {
-                                    return `<button id="archive-btn" onclick="showArchive()">${button.text}</button>`;
-                                } else {
-                                    return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
-                                }
-                            })
-                            .join('');
-                            
-                        // Set up partners toggle functionality
-                        const partnersBtn = document.getElementById('partners-btn');
-                        const mainContent = document.getElementById('main-content');
-                        
-                        console.log('Partners button found:', !!partnersBtn);
-                        console.log('Partners section found:', !!partnersSection);
-                        
-                        if (partnersBtn && partnersSection) {
-                            console.log('Setting up partners button click handler');
-                            let showingPartners = false;
-                            
-                            partnersBtn.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                showingPartners = !showingPartners;
-                                console.log('Partners button clicked, showing:', showingPartners);
-                                console.log('Partners section element:', partnersSection);
-                                console.log('Partners section classes:', partnersSection.className);
-                                
-                                if (showingPartners) {
-                                    partnersSection.classList.add('active');
-                                    mainContent.style.opacity = '0';
-                                    mainContent.style.visibility = 'hidden';
-                                    document.body.style.overflow = 'hidden';
-                                    console.log('Partners section should now be visible');
-                                } else {
-                                    partnersSection.classList.remove('active');
-                                    mainContent.style.opacity = '1';
-                                    mainContent.style.visibility = 'visible';
-                                    document.body.style.overflow = '';
-                                    console.log('Partners section should now be hidden');
-                                }
-                            });
-
-                            // Close partners section when clicking outside
-                            document.addEventListener('click', (e) => {
-                                if (showingPartners && !partnersSection.contains(e.target) && e.target !== partnersBtn) {
-                                    showingPartners = false;
-                                    partnersSection.classList.remove('active');
-                                    mainContent.style.opacity = '1';
-                                    mainContent.style.visibility = 'visible';
-                                    document.body.style.overflow = '';
-                                }
-                            });
+                    function renderFloatingButtonHTML(button) {
+                        const label = (button.text || '').trim();
+                        const key = label.toLowerCase();
+                        if (key === 'partners') {
+                            return `<button id="partners-btn" type="button">${label}</button>`;
                         }
+                        if (key === 'accom') {
+                            return `<button id="accom-btn" type="button">${label}</button>`;
+                        }
+                        if (key === 'gallery') {
+                            return `<button id="gallery-btn" type="button" onclick="showGallery()">${label}</button>`;
+                        }
+                        if (key === 'archive') {
+                            return `<button id="archive-btn" type="button" onclick="showArchive()">${label}</button>`;
+                        }
+                        const external = button.link && button.link.startsWith('http');
+                        return `<button type="button"><a href="${button.link || '#'}" ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}>${label}</a></button>`;
                     }
-                    
-                    // Ensure floating buttons are rendered consistently
-                    setTimeout(() => {
-                        const floatingButtonsContainer = document.getElementById('floating-buttons');
-                        console.log('Floating buttons container:', floatingButtonsContainer);
-                        console.log('Container innerHTML:', floatingButtonsContainer?.innerHTML);
-                        
-                        if (floatingButtonsContainer && data.floating_buttons && data.floating_buttons.length > 0) {
-                            const visibleButtons = visibleFloatingButtons(data.floating_buttons);
-                            console.log('Final visible buttons to render:', visibleButtons.map(b => b.text));
-                            
-                            const buttonsHTML = visibleButtons
-                                .map(button => {
-                                    if (button.text === 'Partners') {
-                                        return `<button id="partners-btn">${button.text}</button>`;
-                                    } else if (button.text === 'Gallery') {
-                                        return `<button id="gallery-btn" onclick="showGallery()">${button.text}</button>`;
-                                    } else if (button.text === 'Archive') {
-                                        return `<button id="archive-btn" onclick="showArchive()">${button.text}</button>`;
-                                    } else {
-                                        return `<button><a href="${button.link}" ${button.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${button.text}</a></button>`;
-                                    }
-                                })
-                                .join('');
-                            
-                            floatingButtonsContainer.innerHTML = buttonsHTML;
-                            console.log('Final rendered HTML:', buttonsHTML);
-                            
-                            // Re-attach event listeners after re-rendering
-                            const partnersBtn = document.getElementById('partners-btn');
-                            const galleryBtn = document.getElementById('gallery-btn');
-                            const mainContent = document.getElementById('main-content');
-                            
-                            // Gallery button handler - don't override existing onclick
-                            if (galleryBtn) {
-                                console.log('Gallery button found, checking current onclick');
-                                const currentOnclick = galleryBtn.getAttribute('onclick');
-                                console.log('Current onclick:', currentOnclick);
-                                // Only add event listener if no onclick is set
-                                if (!currentOnclick) {
-                                    console.log('No onclick set, adding showGallery handler');
-                                    galleryBtn.addEventListener('click', (e) => {
-                                        console.log('Gallery button clicked!');
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        showGallery();
-                                    });
-                                }
-                            } else {
-                                console.log('Gallery button not found');
-                            }
-                            
-                            if (partnersBtn && partnersSection) {
-                                console.log('Re-attaching partners button click handler');
-                                let showingPartners = false;
-                                
-                                partnersBtn.addEventListener('click', (e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    showingPartners = !showingPartners;
-                                    console.log('Partners button clicked, showing:', showingPartners);
-                                    console.log('Partners section element:', partnersSection);
-                                    console.log('Partners section classes:', partnersSection.className);
-                                    
-                                    if (showingPartners) {
-                                        partnersSection.classList.add('active');
-                                        mainContent.style.opacity = '0';
-                                        mainContent.style.visibility = 'hidden';
-                                        document.body.style.overflow = 'hidden';
-                                        console.log('Partners section should now be visible');
-                                    } else {
-                                        partnersSection.classList.remove('active');
-                                        mainContent.style.opacity = '1';
-                                        mainContent.style.visibility = 'visible';
-                                        document.body.style.overflow = '';
-                                        console.log('Partners section should now be hidden');
-                                    }
-                                });
 
-                                // Close partners section when clicking outside
-                                document.addEventListener('click', (e) => {
-                                    if (showingPartners && !partnersSection.contains(e.target) && e.target !== partnersBtn) {
-                                        showingPartners = false;
-                                        partnersSection.classList.remove('active');
-                                        mainContent.style.opacity = '1';
-                                        mainContent.style.visibility = 'visible';
-                                        document.body.style.overflow = '';
-                                    }
-                                });
+                    function closeHomePopup(section) {
+                        if (section) section.classList.remove('active');
+                    }
+
+                    function openHomePopup(section, mainContent) {
+                        if (!section || !mainContent) return;
+                        // Only one centre popup at a time
+                        closeHomePopup(partnersSection);
+                        closeHomePopup(accomSection);
+                        section.classList.add('active');
+                        mainContent.style.opacity = '0';
+                        mainContent.style.visibility = 'hidden';
+                        document.body.style.overflow = 'hidden';
+                    }
+
+                    function restoreMainContent(mainContent) {
+                        if (!mainContent) return;
+                        mainContent.style.opacity = '1';
+                        mainContent.style.visibility = 'visible';
+                        document.body.style.overflow = '';
+                    }
+
+                    if (!window.__homePopupState) {
+                        window.__homePopupState = { partners: false, accom: false };
+                    }
+
+                    function bindCentrePopupToggle(btn, section, mainContent, stateKey) {
+                        if (!btn || !section || !mainContent || btn.dataset.bound === 'true') return;
+                        btn.dataset.bound = 'true';
+
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const willShow = !window.__homePopupState[stateKey];
+                            window.__homePopupState.partners = false;
+                            window.__homePopupState.accom = false;
+                            closeHomePopup(partnersSection);
+                            closeHomePopup(accomSection);
+
+                            if (willShow) {
+                                window.__homePopupState[stateKey] = true;
+                                openHomePopup(section, mainContent);
+                            } else {
+                                restoreMainContent(mainContent);
                             }
-                        }
-                    }, 100);
+                        });
+                    }
+
+                    // Single outside-click closer for centre popups
+                    if (!window.__homePopupOutsideBound) {
+                        window.__homePopupOutsideBound = true;
+                        document.addEventListener('click', (e) => {
+                            const mainContent = document.getElementById('main-content');
+                            const partnersBtn = document.getElementById('partners-btn');
+                            const accomBtn = document.getElementById('accom-btn');
+                            const partnersEl = document.getElementById('partners-section');
+                            const accomEl = document.getElementById('accom-section');
+
+                            if (window.__homePopupState.partners) {
+                                if (partnersEl && !partnersEl.contains(e.target) && e.target !== partnersBtn && !(partnersBtn && partnersBtn.contains(e.target))) {
+                                    window.__homePopupState.partners = false;
+                                    closeHomePopup(partnersEl);
+                                    restoreMainContent(mainContent);
+                                }
+                            }
+                            if (window.__homePopupState.accom) {
+                                if (accomEl && !accomEl.contains(e.target) && e.target !== accomBtn && !(accomBtn && accomBtn.contains(e.target))) {
+                                    window.__homePopupState.accom = false;
+                                    closeHomePopup(accomEl);
+                                    restoreMainContent(mainContent);
+                                }
+                            }
+                        });
+                    }
+
+                    function setupFloatingButtons() {
+                        const floatingButtonsContainer = document.getElementById('floating-buttons');
+                        const mainContent = document.getElementById('main-content');
+                        if (!floatingButtonsContainer || !data.floating_buttons || !data.floating_buttons.length) return;
+
+                        const visibleButtons = visibleFloatingButtons(data.floating_buttons);
+                        floatingButtonsContainer.innerHTML = visibleButtons.map(renderFloatingButtonHTML).join('');
+
+                        bindCentrePopupToggle(
+                            document.getElementById('partners-btn'),
+                            partnersSection,
+                            mainContent,
+                            'partners'
+                        );
+                        bindCentrePopupToggle(
+                            document.getElementById('accom-btn'),
+                            accomSection,
+                            mainContent,
+                            'accom'
+                        );
+                    }
+
+                    setupFloatingButtons();
                     
                 }
             } catch (err) {

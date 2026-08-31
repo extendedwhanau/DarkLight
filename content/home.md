@@ -2,15 +2,12 @@
 title: New Plymouth - TSB Showplace
 subtitle: The Hidden World
 dates: 25 Sep - 4 Oct. Tickets available now
-event_start_date: ""
-event_end_date: ""
 location: ""
-seo_title: Darklight is an immersive light and sound experience
-seo_description: Darklight is an immersive light and sound experience
-background_type: vimeo
-background_image: ""
-vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
-header_footer_layout: logo_bottom
+appearance:
+  background_type: vimeo
+  background_image: ""
+  vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
+  header_footer_layout: logo_bottom
 ticket_buttons:
   - sold_out: false
     target: _blank
@@ -23,9 +20,9 @@ floating_buttons:
   - text: Partners
     link: "#"
     visible: true
-  - visible: true
-    text: Accom
-    link: https://www.plymouth.co.nz/
+  - text: Accom
+    link: "#"
+    visible: true
   - text: Installation
     link: installation.html
     visible: false
@@ -73,4 +70,17 @@ partners_section:
       logo: /images/uploads/plymouth-accom-dl-website-copy.png
       link: https://www.plymouth.co.nz/
       alt: Plymouth
+accom_section:
+  title: Accommodation
+  body: |
+    Buy your tickets and book your accommodation in New Plymouth – exclusive accommodation partner with Darklight.
+
+    First five confirmed accommodation bookings receive complimentary Darklight family pass for 2 adults and 2 children!
+
+    Endless accommodation options from Apartments | Furnished Houses | Family Rooms | Suites and Studios.
+
+    Email now : reservations@plymouth.co.nz
+  email: reservations@plymouth.co.nz
+  email_button_text: Email now
+  website: https://www.plymouth.co.nz/
 ---

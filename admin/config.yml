@@ -20,27 +20,29 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
           - {label: "Dates", name: "dates", widget: "string", required: false}
-          - {label: "Event start date (Google)", name: "event_start_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-09 — used for search event info"}
-          - {label: "Event end date (Google)", name: "event_end_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-18 — optional but recommended"}
           - {label: "Location", name: "location", widget: "string", required: false}
-          - {label: "SEO Title (optional)", name: "seo_title", widget: "string", required: false, hint: "Leave blank to auto-use Title + Location"}
-          - {label: "SEO Description (optional)", name: "seo_description", widget: "text", required: false, hint: "Leave blank to auto-generate from event details"}
-          - label: "Background Type"
-            name: "background_type"
-            widget: "select"
-            options: ["image", "vimeo"]
-            default: "image"
-            hint: "Choose between a static image or a Vimeo video background"
-          - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "This is the main background image for the home page"}
-          - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Paste your Vimeo player URL here (e.g., https://player.vimeo.com/video/123456789)"}
-          - label: "Header & footer layout"
-            name: "header_footer_layout"
-            widget: "select"
-            options:
-              - { label: "Top Logo", value: "logo_top" }
-              - { label: "Bottom Logo", value: "logo_bottom" }
-            default: "logo_top"
-            hint: "Choose whether the logo is at the top (with social icons and floating buttons at the bottom) or flipped."
+          - label: "Appearance"
+            name: "appearance"
+            widget: "object"
+            collapsed: false
+            hint: "Background and header/footer layout for the home page"
+            fields:
+              - label: "Background Type"
+                name: "background_type"
+                widget: "select"
+                options: ["image", "vimeo"]
+                default: "image"
+                hint: "Choose between a static image or a Vimeo video background"
+              - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "Main background image (also used as video poster)"}
+              - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Paste your Vimeo progressive MP4 / player URL"}
+              - label: "Header & footer layout"
+                name: "header_footer_layout"
+                widget: "select"
+                options:
+                  - { label: "Top Logo", value: "logo_top" }
+                  - { label: "Bottom Logo", value: "logo_bottom" }
+                default: "logo_top"
+                hint: "Logo at top (social + buttons at bottom) or flipped"
           - label: "Ticket Buttons"
             name: "ticket_buttons"
             widget: "list"
@@ -93,6 +95,26 @@ collections:
                   - {label: "Link", name: "link", widget: "string"}
                   - {label: "Alt Text", name: "alt", widget: "string"}
                 summary: "{{fields.name}}"
+          - label: "Accom Section"
+            name: "accom_section"
+            widget: "object"
+            collapsed: true
+            hint: "Popup shown when the Accom floating button is clicked"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Accommodation"}
+              - {label: "Body", name: "body", widget: "text", hint: "Popup text. Use blank lines between paragraphs."}
+              - {label: "Email", name: "email", widget: "string", default: "reservations@plymouth.co.nz"}
+              - {label: "Email Button Text", name: "email_button_text", widget: "string", default: "Email now"}
+              - {label: "Website", name: "website", widget: "string", required: false, hint: "Optional website link shown with the email"}
+
+      - name: "seo"
+        label: "SEO"
+        file: "content/seo.md"
+        fields:
+          - {label: "SEO Title", name: "seo_title", widget: "string", required: false, hint: "Leave blank to auto-use Home Title + Location"}
+          - {label: "SEO Description", name: "seo_description", widget: "text", required: false, hint: "Leave blank to auto-generate from event details"}
+          - {label: "Event start date (Google)", name: "event_start_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-09 — used for search event info"}
+          - {label: "Event end date (Google)", name: "event_end_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-18 — optional but recommended"}
 
       - name: "about"
         label: "About"
