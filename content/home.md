@@ -23,7 +23,7 @@ floating_buttons:
   - text: Partners
     link: "#"
     visible: true
-  - visible: true
+  - visible: false
     text: Accom
     link: https://www.plymouth.co.nz/
   - text: Installation
