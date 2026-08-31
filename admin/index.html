@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
+  <style>
+    /* Hide Decap CMS "(optional)" field labels */
+    [class*="FieldLabel"] [class*="hint"],
+    [class*="ControlLabel"] [class*="hint"] {
+      display: none !important;
+    }
+  </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     // Debug any CMS initialization issues
@@ -40,6 +47,12 @@
         // Listen for successful initialization
         window.CMS.on('mounted', function() {
           console.log('CMS has mounted successfully');
+          // Fallback: hide any remaining "(optional)" labels
+          document.querySelectorAll('label span, [class*="FieldLabel"] span').forEach(function(el) {
+            if (el.textContent.trim() === '(optional)') {
+              el.style.display = 'none';
+            }
+          });
         });
         
         // Listen for media library events

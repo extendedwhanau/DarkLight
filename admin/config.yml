@@ -18,23 +18,21 @@ collections:
         file: "content/home.md"
         fields:
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
-          - {label: "Dates", name: "dates", widget: "string", required: false}
-          - {label: "Location", name: "location", widget: "string", required: false}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Dates", name: "dates", widget: "string"}
+          - {label: "Location", name: "location", widget: "string"}
           - label: "Appearance"
             name: "appearance"
             widget: "object"
             collapsed: false
-            hint: "Background and header/footer layout for the home page"
             fields:
               - label: "Background Type"
                 name: "background_type"
                 widget: "select"
                 options: ["image", "vimeo"]
                 default: "image"
-                hint: "Choose between a static image or a Vimeo video background"
-              - {label: "Background Image", name: "background_image", widget: "image", required: false, default: "/images/background-image.jpg", hint: "Main background image (also used as video poster)"}
-              - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false, hint: "Paste your Vimeo progressive MP4 / player URL"}
+              - {label: "Background Image", name: "background_image", widget: "image", default: "/images/background-image.jpg"}
+              - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string"}
               - label: "Header & footer layout"
                 name: "header_footer_layout"
                 widget: "select"
@@ -42,51 +40,46 @@ collections:
                   - { label: "Top Logo", value: "logo_top" }
                   - { label: "Bottom Logo", value: "logo_bottom" }
                 default: "logo_top"
-                hint: "Logo at top (social + buttons at bottom) or flipped"
-          - label: "Ticket Buttons"
+          - label: "Tickets"
             name: "ticket_buttons"
             widget: "list"
-            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string", required: false}
-              - {label: "Link", name: "link", widget: "string", required: false}
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
               - {label: "Is Sold Out", name: "sold_out", widget: "boolean", default: false}
               - {label: "Target", name: "target", widget: "select", options: ["_blank", "_self"], default: "_blank"}
             summary: "{{fields.text}} {{fields.sold_out | ternary '(Sold Out)' ''}}"
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
-            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string", required: false}
-              - {label: "Link", name: "link", widget: "string", required: false}
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
               - {label: "Visible", name: "visible", widget: "boolean", default: true}
             summary: "{{fields.text}} {{fields.visible | ternary '' '(Hidden)'}}"
-          - label: "Archive Videos"
+          - label: "Archive"
             name: "archive_videos"
             widget: "list"
-            required: false
             allow_add: true
             collapsed: false
             fields:
-              - {label: "Video Number", name: "video_number", widget: "number", default: 1, hint: "Auto-increments when you add new videos"}
-              - {label: "Video Title", name: "title", widget: "string", hint: "e.g., A Descent into Colour, The Edge of Light"}
-              - {label: "Video URL", name: "video_url", widget: "string", hint: "Paste your video URL here (Vimeo, direct MP4, etc.)"}
-              - {label: "Is Latest Video", name: "is_latest", widget: "boolean", default: false, hint: "Check this box for the most recent video (shows on main page)"}
+              - {label: "Video Number", name: "video_number", widget: "number", default: 1}
+              - {label: "Video Title", name: "title", widget: "string"}
+              - {label: "Video URL", name: "video_url", widget: "string"}
+              - {label: "Is Latest Video", name: "is_latest", widget: "boolean", default: false}
             summary: "{{fields.video_number | default: '?'}} - {{fields.title | default: 'Untitled'}} {{fields.is_latest | ternary '(Latest)' ''}}"
           - label: "Social"
             name: "social"
             widget: "object"
-            required: false
             fields:
-              - {label: "Instagram", name: "instagram", widget: "string", required: false}
-              - {label: "Facebook", name: "facebook", widget: "string", required: false}
-          - label: "Partners Section"
+              - {label: "Instagram", name: "instagram", widget: "string"}
+              - {label: "Facebook", name: "facebook", widget: "string"}
+          - label: "Partners"
             name: "partners_section"
             widget: "object"
             fields:
               - {label: "Title", name: "title", widget: "string", default: "Special thanks"}
-              - label: "Partners"
+              - label: "Logos"
                 name: "partners"
                 widget: "list"
                 fields:
@@ -95,26 +88,25 @@ collections:
                   - {label: "Link", name: "link", widget: "string"}
                   - {label: "Alt Text", name: "alt", widget: "string"}
                 summary: "{{fields.name}}"
-          - label: "Accom Section"
+          - label: "Accom"
             name: "accom_section"
             widget: "object"
             collapsed: true
-            hint: "Popup shown when the Accom floating button is clicked"
             fields:
               - {label: "Title", name: "title", widget: "string", default: "Accommodation"}
-              - {label: "Body", name: "body", widget: "text", hint: "Popup text. Use blank lines between paragraphs."}
+              - {label: "Body", name: "body", widget: "text"}
               - {label: "Email", name: "email", widget: "string", default: "reservations@plymouth.co.nz"}
               - {label: "Email Button Text", name: "email_button_text", widget: "string", default: "Email now"}
-              - {label: "Website", name: "website", widget: "string", required: false, hint: "Optional website link shown with the email"}
+              - {label: "Website", name: "website", widget: "string"}
 
       - name: "seo"
         label: "SEO"
         file: "content/seo.md"
         fields:
-          - {label: "SEO Title", name: "seo_title", widget: "string", required: false, hint: "Leave blank to auto-use Home Title + Location"}
-          - {label: "SEO Description", name: "seo_description", widget: "text", required: false, hint: "Leave blank to auto-generate from event details"}
-          - {label: "Event start date (Google)", name: "event_start_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-09 — used for search event info"}
-          - {label: "Event end date (Google)", name: "event_end_date", widget: "string", required: false, hint: "ISO date only, e.g. 2026-04-18 — optional but recommended"}
+          - {label: "SEO Title", name: "seo_title", widget: "string"}
+          - {label: "SEO Description", name: "seo_description", widget: "text"}
+          - {label: "Event start date (Google)", name: "event_start_date", widget: "string"}
+          - {label: "Event end date (Google)", name: "event_end_date", widget: "string"}
 
       - name: "about"
         label: "About"
