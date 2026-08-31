@@ -4,7 +4,7 @@ subtitle: The Hidden World
 dates: 25 Sep - 4 Oct. Tickets available now
 event_start_date: ""
 event_end_date: ""
-location: ""
+location: New Plymouth - TSB Showplace
 seo_title: Darklight is an immersive light and sound experience
 seo_description: Darklight is an immersive light and sound experience
 background_type: vimeo
