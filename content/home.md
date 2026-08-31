@@ -86,5 +86,5 @@ accom_section:
     Email now : reservations@plymouth.co.nz
   email: reservations@plymouth.co.nz
   email_button_text: Email now
-  website: ""
+  website: https://www.plymouth.co.nz/
 ---
