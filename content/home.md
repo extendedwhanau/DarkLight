@@ -72,7 +72,7 @@ partners_section:
       alt: Plymouth
 accom_section:
   title: Accommodation
-  body: >
+  body: >-
     Buy your tickets and book your accommodation in New Plymouth – exclusive
     accommodation partner with Darklight.
 
@@ -80,7 +80,9 @@ accom_section:
     First five confirmed accommodation bookings receive complimentary Darklight family pass for 2 adults and 2 children!
 
 
-    Endless accommodation options from Apartments | Furnished Houses | Family Rooms | Suites and Studios.
+    Endless accommodation options from
+
+    Apartments | Furnished Houses | Family Rooms | Suites & Studios
   email: reservations@plymouth.co.nz
   email_button_text: Email now
   website: ""
