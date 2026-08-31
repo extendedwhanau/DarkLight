@@ -72,7 +72,7 @@ partners_section:
       alt: Plymouth
 accom_section:
   title: Accommodation
-  body: >
+  body: >-
     Buy your tickets and book your accommodation in New Plymouth – exclusive
     accommodation partner with Darklight.
 
