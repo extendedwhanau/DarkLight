@@ -72,11 +72,6 @@
       </video>
       <!-- Blocks Safari hover controls — sits above video, below page content -->
       <div class="video-shield" aria-hidden="true"></div>
-      
-      <!-- Tap to play overlay for mobile -->
-      <div id="video-tap-overlay" style="display: none !important; opacity: 0; visibility: hidden;">
-        <span>TAP TO ENTER EXPERIENCE</span>
-      </div>
     </div>
 
     <!-- Main Content -->
@@ -182,14 +177,17 @@
             if (!video) return;
             video.controls = false;
             video.removeAttribute('controls');
+            video.setAttribute('muted', '');
             video.setAttribute('playsinline', '');
             video.setAttribute('webkit-playsinline', '');
             video.setAttribute('x-webkit-airplay', 'deny');
+            video.setAttribute('autoplay', '');
             video.disablePictureInPicture = true;
             video.disableRemotePlayback = true;
             video.playsInline = true;
             video.muted = true;
             video.defaultMuted = true;
+            video.autoplay = true;
             ['loadedmetadata', 'loadeddata', 'canplay'].forEach((eventName) => {
                 video.addEventListener(eventName, () => {
                     video.controls = false;
@@ -198,33 +196,31 @@
             });
         }
 
-        // Hide tap overlay permanently
-        function hideTapOverlay() {
-            const tapOverlay = document.getElementById('video-tap-overlay');
-            if (tapOverlay) {
-                tapOverlay.classList.remove('active');
-                tapOverlay.style.display = 'none';
+        function attemptBackgroundVideoPlay(video) {
+            if (!video) return;
+            prepareBackgroundVideo(video);
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch((err) => {
+                    console.log('Background video autoplay retry needed:', err.message || err);
+                });
             }
         }
 
-        // Show tap overlay only when needed
-        function showTapOverlay() {
-            const tapOverlay = document.getElementById('video-tap-overlay');
-            if (tapOverlay) {
-                tapOverlay.classList.add('active');
-                tapOverlay.style.display = 'flex';
-            }
-        }
-
-        // Completely disable tap overlay (for image backgrounds)
-        function disableTapOverlay() {
-            const tapOverlay = document.getElementById('video-tap-overlay');
-            if (tapOverlay) {
-                tapOverlay.classList.remove('active');
-                tapOverlay.style.display = 'none';
-                tapOverlay.style.opacity = '0';
-                tapOverlay.style.visibility = 'hidden';
-                tapOverlay.style.pointerEvents = 'none';
+        function bindBackgroundVideoAutoplay(video) {
+            if (!video) return;
+            prepareBackgroundVideo(video);
+            attemptBackgroundVideoPlay(video);
+            ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach((eventName) => {
+                video.addEventListener(eventName, () => attemptBackgroundVideoPlay(video));
+            });
+            if (!window.__videoUnlockBound) {
+                window.__videoUnlockBound = true;
+                const unlockPlayback = () => {
+                    document.querySelectorAll('.video-cover video').forEach(attemptBackgroundVideoPlay);
+                };
+                document.addEventListener('touchstart', unlockPlayback, { once: true, passive: true, capture: true });
+                document.addEventListener('click', unlockPlayback, { once: true, capture: true });
             }
         }
 
@@ -235,26 +231,27 @@
                 videoCover.remove();
                 console.log('Video cover element removed');
             }
-            disableTapOverlay();
+            if (videoCover) {
+                videoCover.remove();
+                console.log('Video cover element removed');
+            }
         }
 
-        // Handle mobile video autoplay and tap-to-play
+        // Set up background video playback (no tap-to-play button)
         function handleMobileVideo() {
             const video = document.querySelector('.video-cover video');
             const videoCover = document.querySelector('.video-cover');
-            const tapOverlay = document.getElementById('video-tap-overlay');
             
             if (!video || !videoCover || videoHandlingInitialized) return;
             
-            // Only handle video if the video cover element exists (video background selected)
             if (!document.contains(videoCover)) {
-                console.log('Video cover element removed, skipping mobile video handling');
+                console.log('Video cover element removed, skipping video handling');
                 return;
             }
             
             videoHandlingInitialized = true;
+            videoCover.style.display = 'block';
 
-            // Show content when video is ready
             const showContent = () => {
                 const logo = document.querySelector('.logo');
                 const content = document.querySelector('.content');
@@ -262,7 +259,6 @@
                 if (content) content.classList.add('loaded');
             };
 
-            // Hide loading screen when video starts playing
             const hideLoadingScreen = () => {
                 const loadingOverlay = document.getElementById('loading-overlay');
                 if (loadingOverlay) {
@@ -270,97 +266,28 @@
                 }
             };
 
-            // Listen for video events
             video.addEventListener('play', () => {
                 hideLoadingScreen();
                 showContent();
-                hideTapOverlay();
             });
             video.addEventListener('canplay', showContent);
             video.addEventListener('loadeddata', showContent);
-            video.addEventListener('playing', hideTapOverlay);
-            
-            // For mobile, handle tap-to-play more intelligently
-            if (isMobile()) {
-                console.log('Mobile device detected, setting up improved tap-to-play');
-                videoCover.style.display = 'block';
-                
-                // Start with overlay hidden
-                hideTapOverlay();
-                
-                // Set up tap-to-play functionality
-                if (tapOverlay) {
-                    tapOverlay.addEventListener('click', () => {
-                        video.play().then(() => {
-                            hideTapOverlay();
-                        }).catch(err => {
-                            console.log('Video play failed:', err);
-                        });
-                    });
-                }
-                
-                // Only show overlay if video is actually paused and user interaction is needed
-                video.addEventListener('pause', () => {
-                    // Only show overlay if it's not a natural pause (like buffering)
-                    if (video.readyState >= 2) { // HAVE_CURRENT_DATA or higher
-                        showTapOverlay();
-                    }
-                });
-                
-                // Hide overlay when video resumes
-                video.addEventListener('play', hideTapOverlay);
-                video.addEventListener('playing', hideTapOverlay);
-                
-                // Don't show overlay on ended - just let it loop
-                video.addEventListener('ended', hideTapOverlay);
-                
-            } else {
-                // Desktop - show video normally, hide overlay
-                videoCover.style.display = 'block';
-                hideTapOverlay();
-            }
+            video.addEventListener('playing', showContent);
+
+            bindBackgroundVideoAutoplay(video);
         }
 
-        // Initialize mobile video handling
         document.addEventListener('DOMContentLoaded', () => {
-            // Start with tap overlay disabled by default
-            disableTapOverlay();
             handleMobileVideo();
         });
         window.addEventListener('load', () => {
-            // Ensure tap overlay is disabled on load
-            disableTapOverlay();
             handleMobileVideo();
         });
 
-        // Add video debugging
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.querySelector('.video-cover video');
             if (video) {
-                prepareBackgroundVideo(video);
-                console.log('Video element found:', video);
-                console.log('Video src:', video.querySelector('source')?.src);
-                console.log('Video readyState:', video.readyState);
-                console.log('Video networkState:', video.networkState);
-                
-                video.addEventListener('loadstart', () => console.log('Video loadstart'));
-                video.addEventListener('loadedmetadata', () => console.log('Video loadedmetadata'));
-                video.addEventListener('loadeddata', () => console.log('Video loadeddata'));
-                video.addEventListener('canplay', () => console.log('Video canplay'));
-                video.addEventListener('canplaythrough', () => console.log('Video canplaythrough'));
-                video.addEventListener('play', () => console.log('Video play'));
-                video.addEventListener('playing', () => console.log('Video playing'));
-                video.addEventListener('error', (e) => {
-                    console.error('Video error:', e);
-                    console.error('Video error details:', video.error);
-                });
-                
-                // Try to play the video
-                video.play().then(() => {
-                    console.log('Video autoplay successful');
-                }).catch(err => {
-                    console.error('Video autoplay failed:', err);
-                });
+                bindBackgroundVideoAutoplay(video);
             }
         });
 
@@ -415,16 +342,15 @@
                     if (data.background_type === 'vimeo' && data.vimeo_url) {
                         // Show video, hide image background
                         if (videoCover) videoCover.style.display = 'block';
-                        if (videoElement) {
-                            prepareBackgroundVideo(videoElement);
-                        }
                         if (videoSource) {
                             videoSource.src = data.vimeo_url;
-                            if (videoElement) videoElement.load();
                         }
-                        // Optionally set poster if background_image is set
-                        if (videoElement && data.background_image) {
-                            videoElement.setAttribute('poster', data.background_image);
+                        if (videoElement) {
+                            if (data.background_image) {
+                                videoElement.setAttribute('poster', data.background_image);
+                            }
+                            videoElement.load();
+                            bindBackgroundVideoAutoplay(videoElement);
                         }
                         document.body.style.background = '';
                     } else if (data.background_type === 'image' && data.background_image) {
@@ -528,38 +454,8 @@
                             videoElement.src = data.vimeo_url;
                             const video = document.querySelector('.video-cover video');
                             if (video) {
-                                prepareBackgroundVideo(video);
                                 video.load();
-                                
-                                // Handle mobile video after source is updated
-                                if (isMobile()) {
-                                    console.log('Mobile device detected, handling video after source update');
-                                    hideTapOverlay(); // Start with overlay hidden
-                                    
-                                    // Try to autoplay after a short delay to ensure video is loaded
-                                    setTimeout(() => {
-                                        video.play().then(() => {
-                                            console.log('Mobile video autoplay successful after source update');
-                                            hideTapOverlay();
-                                        }).catch(err => {
-                                            console.log('Mobile video autoplay failed after source update, showing tap overlay:', err);
-                                            showTapOverlay();
-                                        });
-                                    }, 500);
-                                } else {
-                                    // Desktop - ensure overlay is hidden
-                                    hideTapOverlay();
-                                }
-                                
-                                // Add error handling for video
-                                video.addEventListener('error', (e) => {
-                                    console.error('Video error:', e);
-                                    console.error('Video error details:', video.error);
-                                });
-                                video.addEventListener('loadstart', () => console.log('Video load started'));
-                                video.addEventListener('loadeddata', () => console.log('Video data loaded'));
-                                video.addEventListener('canplay', () => console.log('Video can play'));
-                                video.addEventListener('play', () => console.log('Video started playing'));
+                                bindBackgroundVideoAutoplay(video);
                             }
                         }
                         

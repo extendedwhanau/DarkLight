@@ -141,45 +141,6 @@ body {
   pointer-events: none;
 }
 
-/* Tap to play overlay */
-#video-tap-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: none !important;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  cursor: default;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  pointer-events: none;
-}
-
-#video-tap-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  display: flex !important;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-#video-tap-overlay span {
-  color: #D3D3D3;
-  font-size: .8rem;
-  letter-spacing: .08rem;
-  font-weight: 400;
-  text-align: center;
-  padding: 20px;
-  border: 2px solid #D3D3D3;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.5);
-}
-
 /* Ensure content stays above video */
 .homepage .logo,
 .homepage .content {
@@ -837,44 +798,6 @@ button:hover {
 }
 
 
-
-#video-tap-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.95);
-    z-index: 10000;
-    display: none !important;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 2rem;
-    font-family: inherit;
-    text-align: center;
-    transition: opacity 0.5s;
-    opacity: 0;
-    pointer-events: none;
-}
-
-#video-tap-overlay span {
-    padding: 2rem 2.5rem;
-    background: rgba(0,0,0,0.7);
-    border-radius: 1.5rem;
-    font-size: .8rem;
-    letter-spacing: .08rem;
-    font-weight: 400;
-    color: #D3D3D3;
-    font-family: "neue-haas-grotesk-display", sans-serif;
-    text-align: center;
-}
-
-@media (min-width: 769px) {
-    #video-tap-overlay {
-        display: none !important;
-    }
-}
 
 #title {
     color: #D3D3D3;
