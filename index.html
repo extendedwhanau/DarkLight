@@ -60,7 +60,9 @@
         playsinline 
         webkit-playsinline 
         x5-playsinline
-        controls="false"
+        disablePictureInPicture
+        disableRemotePlayback
+        controlslist="nodownload nofullscreen noremoteplayback"
         width="100%" 
         height="100%"
         style="object-fit: cover;"
@@ -356,6 +358,11 @@
                     if (data.background_type === 'vimeo' && data.vimeo_url) {
                         // Show video, hide image background
                         if (videoCover) videoCover.style.display = 'block';
+                        if (videoElement) {
+                            // Safari treats controls="false" as controls ON — never set the attribute
+                            videoElement.controls = false;
+                            videoElement.removeAttribute('controls');
+                        }
                         if (videoSource) {
                             videoSource.src = data.vimeo_url;
                             if (videoElement) videoElement.load();
@@ -466,6 +473,9 @@
                             videoElement.src = data.vimeo_url;
                             const video = document.querySelector('.video-cover video');
                             if (video) {
+                                // Keep Safari from showing hover controls
+                                video.controls = false;
+                                video.removeAttribute('controls');
                                 video.load();
                                 
                                 // Handle mobile video after source is updated
