@@ -69,4 +69,8 @@ partners_section:
       link: https://nppartners.co.nz/
       alt: NP Partners
       logo: /images/uploads/np-partners-dl-website.png
+    - name: Plymouth
+      logo: /images/uploads/plymouth-accom-dl-website-copy.png
+      link: https://www.plymouth.co.nz/
+      alt: Plymouth
 ---
