@@ -8,7 +8,7 @@ location: ""
 seo_title: Darklight is an immersive light and sound experience
 seo_description: Darklight is an immersive light and sound experience
 background_type: vimeo
-background_image: /images/uploads/hiddenworld.jpg
+background_image: ""
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
 header_footer_layout: logo_bottom
 ticket_buttons:
@@ -20,6 +20,12 @@ floating_buttons:
   - text: About
     link: about.html
     visible: false
+  - text: Partners
+    link: "#"
+    visible: true
+  - visible: false
+    text: Accom
+    link: https://www.plymouth.co.nz/
   - text: Installation
     link: installation.html
     visible: false
@@ -29,9 +35,6 @@ floating_buttons:
   - text: Resonate
     link: about-resonate.html
     visible: false
-  - text: Partners
-    link: "#"
-    visible: true
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
@@ -66,4 +69,8 @@ partners_section:
       link: https://nppartners.co.nz/
       alt: NP Partners
       logo: /images/uploads/np-partners-dl-website.png
+    - name: Plymouth
+      logo: /images/uploads/plymouth-accom-dl-website-copy.png
+      link: https://www.plymouth.co.nz/
+      alt: Plymouth
 ---
