@@ -8,7 +8,7 @@ location: ""
 seo_title: Darklight is an immersive light and sound experience
 seo_description: Darklight is an immersive light and sound experience
 background_type: vimeo
-background_image: /images/uploads/hiddenworld.jpg
+background_image: ""
 vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
 header_footer_layout: logo_bottom
 ticket_buttons:
