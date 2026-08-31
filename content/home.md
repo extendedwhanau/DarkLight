@@ -35,8 +35,14 @@ floating_buttons:
   - visible: true
     text: Archive
     link: https://player.vimeo.com/progressive_redirect/playback/1098907408/rendition/1080p/file.mp4?loc=external&signature=2a8e6c8e0fecc39d6f581a4c445218e4e2e62079454b53f292f49f2603812d7b
-  - visible: false
+  - visible: true
     text: Accom
+    link: "Buy your tickets and book your accommodation in New Plymouth – exclusive
+      accommodation partner with Darklight.  First five confirmed accommodation
+      bookings receive complimentary Darklight family pass for 2 adults and 2
+      children!  Endless accommodation options from Apartments | Furnished
+      Houses | Family Rooms | Suites and Studios.  Email now :
+      reservations@plymouth.co.nz"
 archive_videos:
   - video_number: 1
     title: A Descent into Colour
