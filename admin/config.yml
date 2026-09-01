@@ -17,22 +17,24 @@ collections:
         label: "Home"
         file: "content/home.md"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Subtitle", name: "subtitle", widget: "string"}
-          - {label: "Dates", name: "dates", widget: "string"}
-          - {label: "Location", name: "location", widget: "string"}
+          - {label: "Title", name: "title", widget: "string", required: false}
+          - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+          - {label: "Dates", name: "dates", widget: "string", required: false}
+          - {label: "Location", name: "location", widget: "string", required: false}
           - label: "Appearance"
             name: "appearance"
             widget: "object"
             collapsed: false
+            required: false
             fields:
               - label: "Background Type"
                 name: "background_type"
                 widget: "select"
                 options: ["image", "vimeo"]
                 default: "image"
-              - {label: "Background Image", name: "background_image", widget: "image", default: "/images/background-image.jpg"}
-              - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string"}
+                required: false
+              - {label: "Background Image", name: "background_image", widget: "image", required: false}
+              - {label: "Vimeo Video URL", name: "vimeo_url", widget: "string", required: false}
               - label: "Header & footer layout"
                 name: "header_footer_layout"
                 widget: "select"
@@ -40,73 +42,81 @@ collections:
                   - { label: "Top Logo", value: "logo_top" }
                   - { label: "Bottom Logo", value: "logo_bottom" }
                 default: "logo_top"
+                required: false
           - label: "Tickets"
             name: "ticket_buttons"
             widget: "list"
+            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Text", name: "text", widget: "string", required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
               - {label: "Is Sold Out", name: "sold_out", widget: "boolean", default: false}
               - {label: "Target", name: "target", widget: "select", options: ["_blank", "_self"], default: "_blank"}
             summary: "{{fields.text}} {{fields.sold_out | ternary '(Sold Out)' ''}}"
           - label: "Floating Buttons"
             name: "floating_buttons"
             widget: "list"
+            required: false
             fields:
-              - {label: "Text", name: "text", widget: "string"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Text", name: "text", widget: "string", required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
               - {label: "Visible", name: "visible", widget: "boolean", default: true}
             summary: "{{fields.text}} {{fields.visible | ternary '' '(Hidden)'}}"
           - label: "Archive"
             name: "archive_videos"
             widget: "list"
+            required: false
             allow_add: true
             collapsed: false
             fields:
               - {label: "Video Number", name: "video_number", widget: "number", default: 1}
-              - {label: "Video Title", name: "title", widget: "string"}
-              - {label: "Video URL", name: "video_url", widget: "string"}
+              - {label: "Video Title", name: "title", widget: "string", required: false}
+              - {label: "Video URL", name: "video_url", widget: "string", required: false}
               - {label: "Is Latest Video", name: "is_latest", widget: "boolean", default: false}
             summary: "{{fields.video_number | default: '?'}} - {{fields.title | default: 'Untitled'}} {{fields.is_latest | ternary '(Latest)' ''}}"
           - label: "Social"
             name: "social"
             widget: "object"
+            required: false
             fields:
-              - {label: "Instagram", name: "instagram", widget: "string"}
-              - {label: "Facebook", name: "facebook", widget: "string"}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
           - label: "Partners"
             name: "partners_section"
             widget: "object"
+            required: false
             fields:
-              - {label: "Title", name: "title", widget: "string", default: "Special thanks"}
+              - {label: "Title", name: "title", widget: "string", default: "Special thanks", required: false}
               - label: "Logos"
                 name: "partners"
                 widget: "list"
+                required: false
                 fields:
-                  - {label: "Name", name: "name", widget: "string"}
-                  - {label: "Logo", name: "logo", widget: "image"}
-                  - {label: "Link", name: "link", widget: "string"}
-                  - {label: "Alt Text", name: "alt", widget: "string"}
+                  - {label: "Name", name: "name", widget: "string", required: false}
+                  - {label: "Logo", name: "logo", widget: "image", required: false}
+                  - {label: "Link", name: "link", widget: "string", required: false}
+                  - {label: "Alt Text", name: "alt", widget: "string", required: false}
                 summary: "{{fields.name}}"
           - label: "Accom"
             name: "accom_section"
             widget: "object"
             collapsed: true
+            required: false
             fields:
-              - {label: "Title", name: "title", widget: "string", default: "Accommodation"}
-              - {label: "Body", name: "body", widget: "text"}
-              - {label: "Email", name: "email", widget: "string", default: "reservations@plymouth.co.nz"}
-              - {label: "Email Button Text", name: "email_button_text", widget: "string", default: "Email now"}
-              - {label: "Website", name: "website", widget: "string"}
+              - {label: "Title", name: "title", widget: "string", default: "Accommodation", required: false}
+              - {label: "Body", name: "body", widget: "text", required: false}
+              - {label: "Email", name: "email", widget: "string", default: "reservations@plymouth.co.nz", required: false}
+              - {label: "Email Button Text", name: "email_button_text", widget: "string", default: "Email now", required: false}
+              - {label: "Website", name: "website", widget: "string", required: false}
 
       - name: "seo"
         label: "SEO"
         file: "content/seo.md"
         fields:
-          - {label: "SEO Title", name: "seo_title", widget: "string"}
-          - {label: "SEO Description", name: "seo_description", widget: "text"}
-          - {label: "Event start date (Google)", name: "event_start_date", widget: "string"}
-          - {label: "Event end date (Google)", name: "event_end_date", widget: "string"}
+          - {label: "SEO Title", name: "seo_title", widget: "string", required: false}
+          - {label: "SEO Description", name: "seo_description", widget: "text", required: false}
+          - {label: "Event start date (Google)", name: "event_start_date", widget: "string", required: false}
+          - {label: "Event end date (Google)", name: "event_end_date", widget: "string", required: false}
 
       - name: "about"
         label: "About"
@@ -174,26 +184,28 @@ collections:
         label: "Gallery"
         file: content/gallery.md
         fields:
-          - { name: title, label: Gallery Title, widget: string }
+          - { name: title, label: Gallery Title, widget: string, required: false }
           - label: Images
             name: images
             widget: list
+            required: false
             fields:
-              - { name: url, label: Image, widget: image }
+              - { name: url, label: Image, widget: image, required: false }
               - { name: caption, label: Caption, widget: string, required: false }
 
       - name: "installation"
         label: "Installation"
         file: "content/installation.md"
         fields:
-          - {label: "Title", name: "title", widget: "string", default: "Installation"}
-          - {label: "Image", name: "image", widget: "image", default: "/images/map.svg"}
-          - {label: "Visible", name: "visible", widget: "boolean", default: true, hint: "Show this page"}
+          - {label: "Title", name: "title", widget: "string", required: false}
+          - {label: "Image", name: "image", widget: "image", required: false}
+          - {label: "Visible", name: "visible", widget: "boolean", default: true}
           - label: "Artworks"
             name: "artworks"
             widget: "list"
+            required: false
             fields:
-              - {label: "Number", name: "number", widget: "string", hint: "e.g., 1, 2, 3"}
-              - {label: "Name", name: "name", widget: "string", hint: "e.g., SIGNAL, LUMINOUS WAVES"}
-              - {label: "Content", name: "content", widget: "markdown", hint: "Include artist, sound designer, and bio information all in one field"}
+              - {label: "Number", name: "number", widget: "string", required: false}
+              - {label: "Name", name: "name", widget: "string", required: false}
+              - {label: "Content", name: "content", widget: "markdown", required: false}
             summary: "{{fields.number}} - {{fields.name}}"
