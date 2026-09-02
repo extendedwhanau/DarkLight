@@ -70,6 +70,10 @@ partners_section:
       logo: /images/uploads/plymouth-accom-dl-website-copy.png
       link: https://www.plymouth.co.nz/
       alt: Plymouth
+    - name: Centre City
+      alt: Centre City
+      link: https://centre-city.co.nz/
+      logo: /images/uploads/city-centre-dl-website.png
 accom_section:
   title: Accommodation
   body: >-
