@@ -73,7 +73,7 @@ partners_section:
     - name: Centre City
       alt: Centre City
       link: https://centre-city.co.nz/
-      logo: /images/uploads/city-centre-dl-website.png
+      logo: /images/uploads/centre-city-dl-website.png
 accom_section:
   title: Accommodation
   body: >-
