@@ -78,7 +78,7 @@ sections:
       - question: Is there door sales available on the day?
         answer: Yes
       - question: Is the exhibition wheelchair and pram friendly?
-        answer: "Yes. DARKLIGHT: The Hidden World is fully accessible for wheelchairs
+        answer: "Yes. Darklight: The Hidden World is fully accessible for wheelchairs
           and prams. The exhibition is located in the Hunua Rooms at the Aotea
           Centre and features step-free access throughout the experience.
           Accessible facilities and lifts are also available within the venue."
