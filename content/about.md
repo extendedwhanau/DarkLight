@@ -19,25 +19,42 @@ sections:
     visible: true
     content_type: text
     content: >-
-      Following two sold-out seasons, the acclaimed lighting exhibition
-      Darklight returns this April school holiday with its most immersive
-      edition yet: The Hidden World, a luminous journey designed to spark
-      curiosity, wonder, and discovery for all ages.
+      Step into a luminous journey of wonder and discovery for all ages.
 
 
-      Created for families and design enthusiasts alike, The Hidden World invites visitors to look closer and uncover the unseen magic of light. From glowing flowers to projection on mist, it is a living, vibrant environment where art, technology, and imagination converge.
+      NP Partners Presents Darklight: The Hidden World, an acclaimed immersive light and sound experience taking over the TSB Showplace these September school holidays. See every corner transformed into vivid worlds of light and sound.
 
 
-      By day, the space radiates with colour, movement, and interactive installations for explorers of all ages.
+      Showing outside of Auckland for the first time, this is your chance to experience a world-class indoor light and sound takeover at Taranaki’s premier events venue.
 
 
-      As night falls, the atmosphere transforms, light deepens, soundscapes emerge, and the experience becomes an immersive after-dark world of reflection and sensory wonder.
+      It may be on during the school holidays, but Darklight is just as memorable for adults. Enjoy a unique night out with friends, grab refreshments at the bar in the Theatre Royal Lounge from 5pm, then explore and see what unfolds.
 
 
-      Book your session ticket and wander at your own pace, discovering a world waiting to be seen.
+      **Plan your visit**
 
 
-      Proudly supported by the city centre targeted rate.
+      * Suitable for all ages - kids under 5 are free
+
+      * Enjoy one hour of free parking, courtesy of Centre City. A special parking validation code will be provided at the venue on the day of the event.
+
+      * Book a start time, then explore at your own pace. Allow at least one hour
+
+      * Walk-up tickets available for sessions not yet sold out
+
+      * Visit the Kandy Bar to fuel your journey. The Theatre Royal Lounge bar opens at 5pm
+
+      * All spaces are accessible to visitors with limited mobility, with lift access and an alternative route available to ensure no one misses out on the magic
+
+      * Pram parking is encouraged in our dedicated indoor space. There is plenty for little ones to explore and play with at this event!
+
+      * Filming is welcome. If you’re posting online, tag in the Darklight socials
+
+
+      **Important information**
+
+
+      Some areas feature flashing and fast-moving lighting effects
 
 
       **About Darklight**
