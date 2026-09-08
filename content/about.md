@@ -71,20 +71,27 @@ sections:
           combining stunning light installations with sound for a unique sensory
           experience.
       - question: When and where is it?
-        answer: The exhibition runs from April 9-18 (April school Holidays), at the
-          Hunua Rooms, Aotea Centre, Auckland.
+        answer: The exhibition runs from September 25 - October 4 (School Holidays), at
+          TSB Showplace, 92-100 Devon Street West, New Plymouth
       - question: How long is the experience?
         answer: Wander at your own pace, discovering a hidden world waiting to be seen.
+          We recommend allowing about an hour to enjoy the exhibition.
       - question: Is there door sales available on the day?
-        answer: Yes
+        answer: Yes. If a session hasn't sold out, tickets will be available from the
+          TSB Showplace box office. To secure your preferred start time now,
+          book at [darklight.co](darklight.co)
       - question: Is the exhibition wheelchair and pram friendly?
-        answer: "Yes. Darklight: The Hidden World is fully accessible for wheelchairs
-          and prams. The exhibition is located in the Hunua Rooms at the Aotea
-          Centre and features step-free access throughout the experience.
-          Accessible facilities and lifts are also available within the venue."
-      - answer: >-
-          
-          Some elements may be intense for people with light sensitivity, including those who experience photosensitive epilepsy. If you have specific accessibility questions, please get in touch with our team before attending.
+        answer: "Yes. DARKLIGHT: The Hidden World is fully accessible for wheelchairs
+          and prams. The exhibition is located at TSB Showplace and features
+          step-free access throughout the experience. Accessible facilities and
+          lifts are also available within the venue. There will be a Pram Park,
+          which we recommend using, as prams take up a lot of space."
+      - question: Who can I contact if I have questions about accessibility?
+        answer: Some elements may be intense for people with light sensitivity,
+          including those who experience photosensitive epilepsy. There will be
+          a ‘break room’ located within the venue. Please ask the venue staff.
+      - answer: Yes! Photography is encouraged. Please tag us @darklight_experience and
+          @hello_np in your social media posts.
         question: Does the exhibition contain haze, flashing or bright lights?
       - question: Can I take photos?
         answer: >-
@@ -99,7 +106,12 @@ sections:
         answer: Wear comfortable clothing and footwear. The experience involves walking
           and standing.
       - question: Is food included in the ticket price?
-        answer: No
+        answer: >-
+          No, but the Kandy Bar is open at the venue to fuel your journey, and
+          the Theatre Royal Lounge bar opens at 5pm.
+
+
+          If you’re interested in a hospitality package that includes canapés prior to your group visit, please contact npeventvenues@npdc.govt.nz. Please note that minimum numbers do apply and availability is strictly limited.
   - section_id: contact
     title: Contact
     visible: true
