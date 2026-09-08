@@ -16,7 +16,7 @@ ticket_buttons:
 floating_buttons:
   - text: About
     link: about.html
-    visible: true
+    visible: false
   - text: Partners
     link: "#"
     visible: true
@@ -25,7 +25,7 @@ floating_buttons:
     visible: true
   - text: Installation
     link: installation.html
-    visible: true
+    visible: false
   - text: Gallery
     link: gallery.html
     visible: false
