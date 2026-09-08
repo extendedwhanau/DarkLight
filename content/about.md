@@ -79,7 +79,7 @@ sections:
       - question: Is there door sales available on the day?
         answer: Yes. If a session hasn't sold out, tickets will be available from the
           TSB Showplace box office. To secure your preferred start time now,
-          book at [darklight.co](darklight.co)
+          book at www.darklight.co
       - question: Is the exhibition wheelchair and pram friendly?
         answer: "Yes. DARKLIGHT: The Hidden World is fully accessible for wheelchairs
           and prams. The exhibition is located at TSB Showplace and features
