@@ -16,7 +16,7 @@ ticket_buttons:
 floating_buttons:
   - text: About
     link: about.html
-    visible: false
+    visible: true
   - text: Partners
     link: "#"
     visible: true
