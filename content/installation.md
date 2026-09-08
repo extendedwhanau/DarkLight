@@ -1,6 +1,6 @@
 ---
 title: Installation
-image: /images/uploads/map-website-tsb.png
+image: /images/uploads/map-website-tsb-np.png
 visible: true
 artworks:
   - number: "1."
