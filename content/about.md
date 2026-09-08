@@ -62,7 +62,7 @@ sections:
 
       Darklight is an indoor light exhibition, reimagining how audiences engage with light and sound, using minimalism, mood, and spatial design to evoke deep emotional response. It is more than an exhibition; it is a living exploration of perception, presence, and possibility.
   - section_id: faq
-    title: Frequently Asked Questions
+    title: "Frequently Asked Questions (click the question to see the answer) "
     visible: true
     content_type: faq
     faq_items:
