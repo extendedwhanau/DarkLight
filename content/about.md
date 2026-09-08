@@ -36,7 +36,7 @@ sections:
 
       * Suitable for all ages - kids under 5 are free
 
-      * Enjoy one hour of free parking, courtesy of Centre City. A special parking validation code will be provided at the venue on the day of the event.
+      * Enjoy one hour of free parking, courtesy of Centre City. A special parking validation code will be    provided at the venue on the day of the event.
 
       * Book a start time, then explore at your own pace. Allow at least one hour
 
@@ -44,9 +44,9 @@ sections:
 
       * Visit the Kandy Bar to fuel your journey. The Theatre Royal Lounge bar opens at 5pm
 
-      * All spaces are accessible to visitors with limited mobility, with lift access and an alternative route available to ensure no one misses out on the magic
+      * All spaces are accessible to visitors with limited mobility, with lift access and an alternative route    available to ensure no one misses out on the magic
 
-      * Pram parking is encouraged in our dedicated indoor space. There is plenty for little ones to explore and play with at this event!
+      * Pram parking is encouraged in our dedicated indoor space. There is plenty for little ones to explore    and play with at this event!
 
       * Filming is welcome. If you’re posting online, tag in the Darklight socials
 
