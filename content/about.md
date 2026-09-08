@@ -94,11 +94,8 @@ sections:
           @hello_np in your social media posts.
         question: Does the exhibition contain haze, flashing or bright lights?
       - question: Can I take photos?
-        answer: >-
-          Yes! Photography is encouraged. Please tag us @darklight_experience
-          and 
-
-          @aucklandlive in your social media posts.
+        answer: Yes! Photography is encouraged. Please tag us @darklight_experience and
+          @hello_np in your social media posts.
       - question: Is there an age restriction?
         answer: DARKLIGHT is suitable for all ages. Children under 14 must be
           accompanied by an adult.
