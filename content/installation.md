@@ -27,7 +27,7 @@ artworks:
     content: >-
       Artists:
 
-      **Trace Element - Peter Hobbs (Sound Design)**
+      **Trace Element**
 
 
       About:
