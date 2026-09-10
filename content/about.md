@@ -116,5 +116,5 @@ sections:
     content_type: about_us
     about_us_items:
       - name: General info
-        description: "[info@darklight.co](info@darklight.co)"
+        description: info@darklight.co
 ---
