@@ -15,7 +15,7 @@ navigation:
     visible: true
 sections:
   - section_id: about-darklight
-    title: NP Partners Presents DARKLIGHT, The Hidden world
+    title: NP Partners presents DARKLIGHT, The Hidden world
     visible: true
     content_type: text
     content: >-
