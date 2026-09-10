@@ -79,7 +79,8 @@ sections:
       - question: Is there door sales available on the day?
         answer: Yes. If a session hasn't sold out, tickets will be available from the
           TSB Showplace box office. To secure your preferred start time now,
-          book at www.darklight.co
+          book at
+          [www.eventfinda.co.nz](https://www.eventfinda.co.nz/2026/dark-light/taranaki)
       - question: Is the exhibition wheelchair and pram friendly?
         answer: "Yes. DARKLIGHT: The Hidden World is fully accessible for wheelchairs
           and prams. The exhibition is located at TSB Showplace and features
@@ -87,11 +88,11 @@ sections:
           lifts are also available within the venue. There will be a Pram Park,
           which we recommend using, as prams take up a lot of space."
       - question: Who can I contact if I have questions about accessibility?
-        answer: Some elements may be intense for people with light sensitivity,
+        answer: Please get in touch with the team at the TSB Showplace before attending
+          or ask one of their amazing staff at the venue.
+      - answer: Some elements may be intense for people with light sensitivity,
           including those who experience photosensitive epilepsy. There will be
           a ‘break room’ located within the venue. Please ask the venue staff.
-      - answer: Yes! Photography is encouraged. Please tag us @darklight_experience and
-          @hello_np in your social media posts.
         question: Does the exhibition contain haze, flashing or bright lights?
       - question: Can I take photos?
         answer: Yes! Photography is encouraged. Please tag us @darklight_experience and
