@@ -20,11 +20,11 @@ floating_buttons:
   - text: Partners
     link: "#"
     visible: true
-  - text: Accom
-    link: "#"
-    visible: true
   - text: Installation
     link: installation.html
+    visible: true
+  - text: Accom
+    link: "#"
     visible: true
   - text: Gallery
     link: gallery.html
