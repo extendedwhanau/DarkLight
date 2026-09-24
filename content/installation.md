@@ -142,7 +142,7 @@ artworks:
 
 
       Explore the fluid boundary between worlds with your movement, creating ripples in perception.
-  - number: "6."
+  - number: "7."
     name: Sky Garden
     content: |-
       Artists:\
