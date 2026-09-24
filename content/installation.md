@@ -112,6 +112,23 @@ artworks:
     artist: PXLD. & Catherine Ellis
     sound_artist: Peter Hobbs
   - number: "5."
+    name: Slipstream
+    content: >-
+      Artist:\
+
+      **Trace Element**
+
+
+      About:\
+
+      Slipstream echoes your presence. 
+
+
+      Move through the space and watch the particles respond, streams of light finding their way toward you. 
+
+
+      Only your movement is captured by the sensor and virtual gravity takes care of the rest.
+  - number: "6."
     name: Surface Tension
     content: >-
       Artist:\
@@ -147,21 +164,4 @@ artworks:
 
 
       Signal draws people in, transforming its slow rotation into a rhythmic ritual. The piece invites audiences to move with it, creating a shared sensory journey through light, motion, and sound.
-  - number: "7."
-    name: Slipstream
-    content: >-
-      Artist:\
-
-      **Trace Element**
-
-
-      About:\
-
-      Slipstream echoes your presence. 
-
-
-      Move through the space and watch the particles respond, streams of light finding their way toward you. 
-
-
-      Only your movement is captured by the sensor and virtual gravity takes care of the rest.
 ---
