@@ -10,7 +10,7 @@ artworks:
       **Angus Muir - Catherine Ellis - Peter Hobbs (Sound Design)**
 
       About:\
-      This is the final experience, the hidden light from a distant galaxy.
+      The hidden light from a distant galaxy.
 
        See the light collide and fracture open. 
 
