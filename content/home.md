@@ -1,7 +1,7 @@
 ---
-title: New Plymouth - TSB Showplace
-subtitle: The Hidden World
-dates: 25 Sep - 4 Oct. Tickets available now
+title: DARKLIGHT
+subtitle: "Let darkness guide you. "
+dates: Let light transform you.
 location: ""
 appearance:
   background_type: vimeo
@@ -9,23 +9,23 @@ appearance:
   vimeo_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
   header_footer_layout: logo_bottom
 ticket_buttons:
-  - sold_out: false
+  - sold_out: true
     target: _blank
     text: BOOK TICKETS HERE
     link: https://www.eventfinda.co.nz/2026/dark-light/taranaki
 floating_buttons:
   - text: About
     link: about.html
-    visible: true
+    visible: false
   - text: Partners
     link: "#"
-    visible: true
+    visible: false
   - text: Installation
     link: installation.html
-    visible: true
+    visible: false
   - text: Accom
     link: "#"
-    visible: true
+    visible: false
   - text: Gallery
     link: gallery.html
     visible: false
