@@ -1,6 +1,6 @@
 ---
-title: DARKLIGHT
-subtitle: "Let darkness guide you. "
+title: "Let darkness guide you. "
+subtitle: DARKLIGHT
 dates: Let light transform you.
 location: ""
 appearance:
