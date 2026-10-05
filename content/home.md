@@ -43,7 +43,7 @@ archive_videos:
   - video_number: 2
     title: The Edge of Light
     video_url: https://player.vimeo.com/progressive_redirect/playback/1126737858/rendition/1080p/file.mp4?loc=external&signature=2828ed8be3963fdfd488d044065f44b35518888db517296ef04e74c90c46502c
-    is_latest: true
+    is_latest: false
   - video_number: 3
     is_latest: true
     video_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
