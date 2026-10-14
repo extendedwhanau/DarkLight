@@ -48,10 +48,6 @@ archive_videos:
     is_latest: true
     video_url: https://player.vimeo.com/progressive_redirect/playback/1191033302/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2737ffc42505abb280f76551820febeb08d404e4bbdfa71f22169c6096c620bc
     title: The Hidden World
-  - video_number: 4
-    is_latest: false
-    title: Mind in the Ether
-    video_url: https://player.vimeo.com/video/1235630794?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479%22%20frameborder=%220%22%20allow=%22autoplay;%20fullscreen;%20picture-in-picture;%20clipboard-write;%20encrypted-media;%20web-share%22%20referrerpolicy=%22strict-origin-when-cross-origin%22%20style=%22position:absolute;top:0;left:0;width:100%;height:100%;%22%20title=%22Darklight:%20Mind%20in%20the%20ether%20-%20July%202026%22%3E%3C/iframe%3E%3C/div%3E%3Cscript%20src=%22https://player.vimeo.com/api/player.js%22%3E%3C/script%3E
 social:
   instagram: https://www.instagram.com/darklight_experience/
   facebook: https://www.facebook.com/experiencedarklight/
